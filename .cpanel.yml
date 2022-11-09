@@ -2,4 +2,4 @@
 deployment:
   tasks:
     - export DEPLOYPATH=/home4/kashmivu/public_html/
-    - /bin/cp -R images $DEPLOYPATHe
+    - /bin/cp -R * $DEPLOYPATH
