@@ -1,4 +1,4 @@
-    document.addEventListener("DOMContentLoaded", function(event) {
+document.addEventListener("DOMContentLoaded", function (event) {
 
     const showNavbar = (toggleId, navId, bodyId, headerId) => {
         const toggle = document.getElementById(toggleId),
@@ -35,7 +35,7 @@
 
 });
 
-window.onload = function(){
-    $('#nav-bar').attr('class', 'l-navbar show');
-    $('#body-pd').attr('class', 'body-pd');
-    }
+// window.onload = function(){
+//     $('#nav-bar').attr('class', 'l-navbar show');
+//     $('#body-pd').attr('class', 'body-pd');
+//     }

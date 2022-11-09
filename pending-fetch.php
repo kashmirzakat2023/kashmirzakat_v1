@@ -8,7 +8,7 @@ include 'assets/nav-links.php'; ?>
     <?php
     $id = $_GET['id'];
     include 'assets/connection.php';
-    $result = mysqli_query($db, "SELECT * FROM funds_form where id = '$id' ");
+    $result = mysqli_query($db, "SELECT * FROM form_data where status='Pending'  and id = '$id' ");
     ?>
 </head>
 
@@ -119,11 +119,11 @@ include 'assets/nav-links.php'; ?>
                                                             <img src="<?php echo "images/" . $data['pan_copy']; ?>" class="d-block w-100" alt="...">
                                                         </div>
                                                     <?php }
-                                                    if ($data['adhaar_copy'] != ''){ ?>
-                                                    <div class="carousel-item">
-                                                        <img src="<?php echo "images/" . $data['adhaar_copy']; ?>" class="d-block w-100" alt="...">
-                                                    </div>
-                                                <?php } ?>
+                                                    if ($data['adhaar_copy'] != '') { ?>
+                                                        <div class="carousel-item">
+                                                            <img src="<?php echo "images/" . $data['adhaar_copy']; ?>" class="d-block w-100" alt="...">
+                                                        </div>
+                                                    <?php } ?>
                                                 </div>
                                                 <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
                                                     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -209,10 +209,10 @@ include 'assets/nav-links.php'; ?>
             <!-- --------------------- -->
         </div>
         </div>
-        <?php
+    <?php
     }
-        include 'assets/footer.php';
-        ?>
+    include 'assets/footer.php';
+    ?>
 </body>
 
 </html>

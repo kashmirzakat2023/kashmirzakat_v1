@@ -1,6 +1,4 @@
-<?php 
-session_start();
-
+<?php
 include 'assets/nav-links.php'; ?>
 <html>
 
@@ -9,14 +7,14 @@ include 'assets/nav-links.php'; ?>
     <script src="js/success.js"></script>
     <?php
     $id = $_GET['id'];
-    
+
     include 'assets/connection.php';
-    $result = mysqli_query($db, " SELECT * FROM funds_form where id = '$id'");
+    $result = mysqli_query($db, " SELECT * FROM form_data where id = '$id' and status='Accepted' ");
     ?>
 </head>
 
 <body>
-        <?php
+    <?php
     include 'assets/navbar.php';
     if (isset($_SESSION['username'])) {
 
@@ -24,9 +22,9 @@ include 'assets/nav-links.php'; ?>
             // $today = time();
             $_SESSION['id'] = $data['id'];
             $id = $data['id'];
-        ?>
+    ?>
             <title>Edit</title>
-            <form method="post" >
+            <form method="post">
 
                 <div class="row row-cols-1 mt-5 mx-lg-3 mx-md-3 mx-2 mb-5 " style="margin-right: 0 !important;">
                     <div class="col col-10 mx-auto">
@@ -46,7 +44,7 @@ include 'assets/nav-links.php'; ?>
                             <label for="floatingInput">Bank Name <label class=" fw-bold text-danger">*</label></label>
                         </div>
                         <div class="form-floating mb-3">
-                            <input type="text" class="form-control" name="ifsc" id="floatingInput" value="<?php echo $data['ifsc'];?>" placeholder="bank" required>
+                            <input type="text" class="form-control" name="ifsc" id="floatingInput" value="<?php echo $data['ifsc']; ?>" placeholder="bank" required>
                             <label for="floatingInput">IFSC Code <label class=" fw-bold text-danger">*</label></label>
                         </div>
 
@@ -102,10 +100,6 @@ include 'assets/nav-links.php'; ?>
         transition: .3s ease-in-out;
     }
 
-    img {
-        display: block;
-        margin: 0 auto 15px;
-    }
 </style>
 
 <?php
@@ -119,12 +113,12 @@ if (isset($_POST['submit'])) {
     $acc_num = $_POST['acc_num'];
     $acc_name = $_POST['acc_name'];
 
-    $result = mysqli_query($db, "UPDATE funds_form set 
+    $result = mysqli_query($db, "UPDATE form_data set 
         ifsc='$ifsc',
         bank_name='$bank_name',
         acc_num='$acc_num',
         acc_name='$acc_name'
-        where id='$id' ");
+        where id='$id' and status = 'Accepted' ");
 
     if ($result) {
         echo '<script>alert("Kyc details Updated Successfully")</script>';

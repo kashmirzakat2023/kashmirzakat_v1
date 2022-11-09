@@ -2,6 +2,7 @@
 <!--<div id="loading">-->
 <!--    <img id="loading-image" src="images/hug.gif" alt="Loading..." />-->
 <!--</div>-->
+
 <head>
     <link rel="shortcut icon" type="image/x-icon" href="images/favicon.ico">
 </head>
@@ -31,6 +32,40 @@
         <a href="index.php" class=" text-dark mt-1">
             <small class=" d-flex justify-content-around"><i class='bx bx-home  px-1 fs-3'></i> Home</small>
         </a>
-
     </div>
 </header>
+<div class="l-navbar " id="nav-bar">
+    <nav class="nav" style="z-index: 100 !important;">
+        <div>
+            <a href="admin-dashboard.php?useremail=<?php echo $useremail; ?> " class="nav_logo">
+                <i class='bx bx-layer nav_logo-icon'></i>
+                <span class="nav_logo-name"><b>DASHBOARD</b></span> </a>
+            <div class="nav_list">
+                <a href="admin-dashboard.php?useremail=<?php echo $useremail; ?>" class="nav_link " data-bs-toggle="tooltip" data-bs-placement="right" title="dashboard" id="dashboard">
+                    <i class='bx bx-grid-alt nav_icon'></i>
+                    <span class="nav_name">Dashboard</span> </a>
+                <a href="admin-campaigns.php?useremail=<?php echo $useremail; ?>" class="nav_link " title="Causes" data-bs-toggle="tooltip" data-bs-placement="right" id="campaign">
+                    <i class='bx bxs-megaphone nav_icon '></i>
+                    <span class="nav_name">Causes</span> </a>
+                <a href="admin-donations.php?useremail=<?php echo $useremail; ?>" class="nav_link " title="Donations" data-bs-toggle="tooltip" data-bs-placement="right" id="donations">
+                    <i class='bx bx-money nav_icon'></i>
+                    <span class="nav_name">Donations</span> </a>
+                <a href="users.php?useremail=<?php echo $useremail; ?>" class="nav_link" title="My Donations" data-bs-toggle="tooltip" data-bs-placement="right" id="users">
+                    <i class='bx bxs-user nav_icon'></i>
+                    <span class="nav_name">Users</span> </a>
+                <a href="bank-pending.php?useremail=<?php echo $useremail; ?>" class="nav_link " title="Withdrawls" data-bs-toggle="tooltip" data-bs-placement="right" id="bank_pending">
+                    <i class='bx bx-time-five nav_icon'></i>
+                    <span class="nav_name">Bank Pending</span> </a>
+                <a href="admin-withdrawls.php?useremail=<?php echo $useremail; ?>" class="nav_link " title="Withdrawls" data-bs-toggle="tooltip" data-bs-placement="right" id="withdrawls">
+                    <i class='bx bx-money-withdraw nav_icon'></i>
+                    <span class="nav_name">Withdrawls</span> </a>
+                <!-- <a href="dashboard-scholarship.php?useremail=<?php echo $useremail; ?>" class="nav_link" title="Scholaarship" data-bs-toggle="tooltip" data-bs-placement="right" id="scholarship">
+                    <i class='bx bxs-graduation nav_icon'></i>
+                    <span class="nav_name">Scholarships</span> </a> -->
+            </div>
+        </div>
+        <a href="logout.php" class="nav_link">
+            <i class='bx bx-log-out nav_icon' title="Signout" data-bs-toggle="tooltip" data-bs-placement="bottom"></i>
+            <span class="nav_name">SignOut</span> </a>
+    </nav>
+</div>

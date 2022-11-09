@@ -29,7 +29,7 @@ include 'assets/nav-links.php'; ?>
                     <tr>
                         <th scope="row"><?php echo $data['id']; ?></th>
                         <td><?php echo $data['name']; ?></td>
-                        <td><a href="raise-detail.php?cause=<?php echo $data['cause_title']; ?>">
+                        <td><a href="raise-detail.php?campaign=<?php echo $data['cause_title']; ?>">
                                 <?php echo $data['cause_title']; ?>
                                 <i class="fas fa-external-link"></i>
                             </a></td>

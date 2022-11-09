@@ -8,7 +8,7 @@
     $id = $_GET['id'];
     
     include 'assets/connection.php';
-    $result = mysqli_query($db, " SELECT * FROM funds_form where id = '$id'");
+    $result = mysqli_query($db, " SELECT * FROM form_data where status='Pending' and id = '$id'");
     ?>
 </head>
 
@@ -117,12 +117,12 @@ if (isset($_POST['submit'])) {
     $acc_num = $_POST['acc_num'];
     $acc_name = $_POST['acc_name'];
 
-    $result = mysqli_query($db, "UPDATE funds_form set 
+    $result = mysqli_query($db, "UPDATE form_data set 
         ifsc='$ifsc',
         bank_name='$bank_name',
         acc_num='$acc_num',
         acc_name='$acc_name'
-        where id='$id' ");
+        where id='$id' and status = 'Pending' ");
 
     if ($result) {
         echo '<script>alert("Kyc details Updated Successfully")</script>';

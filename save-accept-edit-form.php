@@ -17,10 +17,10 @@ if (isset($_POST['submit'])) {
     if (!empty($profile_pic)){
         if (!move_uploaded_file($tempname9, $folder9))
             echo ('<script>alert("Error in uploading Image")</script>');
-        $result = mysqli_query($db, "UPDATE accepted_form set cause_title='$cause_title',location='$location',eligible='$eligible',profile_pic='$profile_pic',amount='$amount',cause_explain='$cause_explain' where id='$id' and status='Rejected'");
+        $result = mysqli_query($db, "UPDATE form_data set cause_title='$cause_title',location='$location',eligible='$eligible',profile_pic='$profile_pic',amount='$amount',cause_explain='$cause_explain' where id='$id' and status='Rejected'");
     }
     else {
-        $result = mysqli_query($db, "UPDATE accepted_form set cause_title='$cause_title',location='$location',eligible='$eligible',amount='$amount',cause_explain='$cause_explain' where id='$id' and status='Rejected'");
+        $result = mysqli_query($db, "UPDATE form_data set cause_title='$cause_title',location='$location',eligible='$eligible',amount='$amount',cause_explain='$cause_explain' where id='$id' and status='Rejected'");
     }
 
 

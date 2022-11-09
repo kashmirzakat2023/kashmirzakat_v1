@@ -6,7 +6,7 @@ include 'assets/nav-links.php'; ?>
     <?php
     $id = $_GET['id'];
     include 'assets/connection.php';
-    $result = mysqli_query($db, " SELECT * FROM accepted_form where id = '$id' and status='Accepted'");
+    $result = mysqli_query($db, " SELECT * FROM form_data where id = '$id' and status='Accepted'");
     ?>
 </head>
 
@@ -26,7 +26,7 @@ include 'assets/nav-links.php'; ?>
         $percent = floor(($ramount / $amount) * 100);
     ?>
         <title><?php echo $data['cause_title']; ?></title>
-        <div class="donate-head text-center p-4 bg-success text-light ">
+        <div class="donate-head text-center p-4 text-light " style="background-color: var(--bg_dark_blue);">
             <h1 class=" fw-bolder">Donate</h1>
             <h3><?php echo $data['cause_title']; ?></h3>
         </div>

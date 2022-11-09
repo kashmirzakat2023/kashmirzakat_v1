@@ -6,11 +6,9 @@ include 'assets/nav-links.php'; ?>
 <head>
     <title>Forget Password</title>
     <?php
-
-    include 'assets/nav-links.php';
     include 'assets/navbar.php';
     include 'assets/connection.php';
-    $result = mysqli_query($db, "SELECT * FROM accepted_form where purpose='Education' and status='Accepted'");
+    $result = mysqli_query($db, "SELECT * FROM form_data where purpose='Education' and status='Accepted'");
     ?>
 </head>
 

@@ -16,44 +16,16 @@ include 'assets/connection.php';
 if (isset($_SESSION['username']) and $_SESSION['username'] == 'admin') {
 ?>
     <body id="body-pd">
-        <?php
+                <?php
         include 'assets/admin-navbar-dash.php';
         ?>
-        <div class="l-navbar " id="nav-bar">
-            <nav class="nav" style="z-index: 100 !important;">
-                <div>
-                    <a href="admin-dashboard.php?useremail=<?php echo $useremail; ?> " class="nav_logo">
-                        <i class='bx bx-layer nav_logo-icon'></i>
-                        <span class="nav_logo-name"><b>DASHBOARD</b></span> </a>
-                    <div class="nav_list">
-                        <a href="admin-dashboard.php?useremail=<?php echo $useremail; ?>" class="nav_link ">
-                            <i class='bx bx-grid-alt nav_icon'></i>
-                            <span class="nav_name">Dashboard</span> </a>
-                        <a href="admin-campaigns.php?useremail=<?php echo $useremail; ?>" class="nav_link " title="Causes" data-bs-toggle="tooltip" data-bs-placement="bottom">
-                            <i class='bx bxs-megaphone nav_icon '></i>
-                            <span class="nav_name">Causes</span> </a>
-                        <a href="admin-donations.php?useremail=<?php echo $useremail; ?>" class="nav_link active" title="Donations" data-bs-toggle="tooltip" data-bs-placement="bottom">
-                            <i class='bx bx-money nav_icon'></i>
-                            <span class="nav_name">Donations</span> </a>
-                        <a href="users.php?useremail=<?php echo $useremail; ?>" class="nav_link" title="My Donations" data-bs-toggle="tooltip" data-bs-placement="bottom">
-                            <i class='bx bxs-user nav_icon'></i>
-                            <span class="nav_name">Users</span> </a>
-                        <a href="bank-pending.php?useremail=<?php echo $useremail; ?>" class="nav_link " title="Withdrawls" data-bs-toggle="tooltip" data-bs-placement="bottom">
-                            <i class='bx bx-time-five nav_icon'></i>
-                            <span class="nav_name">Bank Pending</span> </a>
-                        <a href="admin-withdrawls.php?useremail=<?php echo $useremail; ?>" class="nav_link" title="Withdrawls" data-bs-toggle="tooltip" data-bs-placement="bottom">
-                            <i class='bx bx-money-withdraw nav_icon'></i>
-                            <span class="nav_name">Withdrawls</span> </a>
-                        <a href="dashboard-scholarship.php?useremail=<?php echo $useremail; ?>" class="nav_link" title="Scholaarship" data-bs-toggle="tooltip" data-bs-placement="bottom">
-                            <i class='bx bxs-graduation nav_icon'></i>
-                            <span class="nav_name">Scholarships</span> </a>
-                    </div>
-                </div>
-                <a href="logout.php" class="nav_link">
-                    <i class='bx bx-log-out nav_icon' title="Signout" data-bs-toggle="tooltip" data-bs-placement="bottom"></i>
-                    <span class="nav_name">SignOut</span> </a>
-            </nav>
-        </div>
+        <script>
+            window.onload = (event) => {
+                $('#nav-bar').attr('class', 'l-navbar show');
+                $('#body-pd').attr('class', 'body-pd');
+                $('#donations').addClass("nav_link active");
+            }
+        </script>
         <!--Container Main start-->
 
         <br>
@@ -87,9 +59,9 @@ if (isset($_SESSION['username']) and $_SESSION['username'] == 'admin') {
                                 <td>
                                     <?php
                                     $id = $row1['raiseid'];
-                                    $result = mysqli_query($db, "SELECT * FROM accepted_form where id='$id' and status='Accepted'  ");
+                                    $result = mysqli_query($db, "SELECT * FROM form_data where id='$id' and status='Accepted'  ");
                                     while ($row = mysqli_fetch_array($result)) { ?>
-                                        <a href="raise-detail.php?cause=<?php echo $row['cause_title']; ?>">
+                                        <a href="raise-detail.php?campaign=<?php echo $row['id']; ?>">
                                             <?php echo $row['cause_title']; ?>
                                             <i class="fas fa-external-link"></i>
                                         </a>
@@ -170,36 +142,13 @@ if (isset($_SESSION['username']) and $_SESSION['username'] == 'admin') {
         <?php
         include 'assets/navbar-dash.php';
         ?>
-        <div class="l-navbar " id="nav-bar">
-            <nav class="nav" style="z-index: 100 !important;">
-                <div> <a href="user-dashboard.php" class="nav_logo">
-                        <i class='bx bx-layer nav_logo-icon'></i>
-                        <span class="nav_logo-name"><b>DASHBOARD</b></span> </a>
-                    <div class="nav_list">
-                        <a href="user-dashboard.php?useremail=<?php echo $useremail; ?>" class="nav_link ">
-                            <i class='bx bx-grid-alt nav_icon'></i>
-                            <span class="nav_name">Dashboard</span> </a>
-                        <a href="campaigns.php?useremail=<?php echo $useremail; ?>" class="nav_link " title="Causes" data-bs-toggle="tooltip" data-bs-placement="bottom">
-                            <i class='bx bxs-megaphone nav_icon '></i>
-                            <span class="nav_name">Causes</span> </a>
-                        <a href="donations.php?useremail=<?php echo $useremail; ?>" class="nav_link active" title="Donations" data-bs-toggle="tooltip" data-bs-placement="bottom">
-                            <i class='bx bx-money nav_icon'></i>
-                            <span class="nav_name">Donations</span> </a>
-                        <a href="my-donations.php?useremail=<?php echo $useremail; ?>" class="nav_link " title="My Donations" data-bs-toggle="tooltip" data-bs-placement="bottom">
-                            <i class='bx bx-donate-heart nav_icon'></i>
-                            <span class="nav_name">My Donations</span> </a>
-                        <a href="withdrawls.php?useremail=<?php echo $useremail; ?>" class="nav_link " title="Withdrawls" data-bs-toggle="tooltip" data-bs-placement="bottom">
-                            <i class='bx bx-money-withdraw nav_icon'></i>
-                            <span class="nav_name">Withdrawls</span> </a>
-                        <a href="dashboard-scholarship.php?useremail=<?php echo $useremail; ?>" class="nav_link" title="Scholaarship" data-bs-toggle="tooltip" data-bs-placement="bottom">
-                            <i class='bx bxs-graduation nav_icon'></i>
-                            <span class="nav_name">Scholarships</span> </a>
-                    </div>
-                </div> <a href="logout.php" class="nav_link">
-                    <i class='bx bx-log-out nav_icon' title="Signout" data-bs-toggle="tooltip" data-bs-placement="bottom"></i>
-                    <span class="nav_name">SignOut</span> </a>
-            </nav>
-        </div>
+        <script>
+            window.onload = (event) => {
+                $('#donations').addClass("nav_link active");
+                $('#nav-bar').attr('class', 'l-navbar show');
+                $('#body-pd').attr('class', 'body-pd');
+            }
+        </script>
         <!--Container Main start-->
 
         <br>
@@ -233,9 +182,9 @@ if (isset($_SESSION['username']) and $_SESSION['username'] == 'admin') {
                                 <td>
                                     <?php
                                     $id = $row1['raiseid'];
-                                    $result = mysqli_query($db, "SELECT * FROM accepted_form where id='$id' and status='Accepted' ");
+                                    $result = mysqli_query($db, "SELECT * FROM form_data where id='$id' and status='Accepted' ");
                                     while ($row = mysqli_fetch_array($result)) { ?>
-                                        <a href="raise-detail.php?cause=<?php echo $row['cause_title']; ?>">
+                                        <a href="raise-detail.php?campaign=<?php echo $row['id']; ?>">
                                             <?php echo $row['cause_title']; ?>
                                             <i class="fas fa-external-link"></i>
                                         </a>

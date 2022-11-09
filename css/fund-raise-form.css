@@ -1,24 +1,86 @@
-@media (max-width:600px){
+@media (max-width:600px) {
     option {
         font-size: 80% !important;
         width: 80% !important;
     }
+
     form {
         width: 90% !important;
         padding: 10px !important;
     }
+
+    #drop-zone {
+        height: 40vh;
+    }
+
+    .drop-zone i {
+        font-size: 70px !important;
+    }
+
+    label,
+    small,
+    body,
+    input,
+    select {
+        font-size: 80%;
+    }
+
+    h1 {
+        font-size: 180%;
+    }
 }
+
+
+.fund-raise button:focus {
+    outline:  none !important;
+    box-shadow: 0 0 0.5px 3px var(--bg_light_blue)  !important;
+  }
+
 center h1 {
     padding: 10px;
     border-radius: 20px;
     font-weight: bolder;
 }
 
-.fund-raise{
+.fund-raise {
+    display: flex;
+    justify-content: center;
+    margin-left: auto;
+    margin-right: auto;
+    flex-direction: column;
+    background-color: white;
     border: 1px;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
     padding: 20px 100px;
-    margin: 20px 0;
+    margin-top: 30px ;
     border-radius: 10px;
 }
 
+#drop-zone {
+    max-width: 450vw;
+    width: 100%;
+    height: 60vh;
+    border: 2px dashed grey;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#drop-zone img {
+    object-fit: contain;
+    height: 100%;
+    width: 100%;
+    display: none;
+}
+
+
+@media (max-width:550px) {}
+
+label {
+    font-weight: 500;
+}
+
+small {
+    font-size: 11px;
+}

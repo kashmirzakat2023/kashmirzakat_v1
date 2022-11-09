@@ -7,7 +7,7 @@
     <?php
     $id = $_GET['id'];
     include 'assets/connection.php';
-    $result = mysqli_query($db, " SELECT * FROM funds_form where id = '$id'");
+    $result = mysqli_query($db, " SELECT * FROM form_data where id = '$id' and status = 'Accepted' ");
     ?>
 </head>
 
@@ -21,7 +21,7 @@
             $id = $data['id'];
     ?>
             <title>Edit</title>
-            <form method="post" class="fund-raise shadow w-75 d-flex mx-auto me-auto mt-5 flex-column" enctype="multipart/form-data" action="save-pending-edit-form.php?id=<?php echo $id; ?>">
+            <form method="post" class="fund-raise shadow w-75 d-flex mx-auto me-auto mt-5 flex-column mb-3" enctype="multipart/form-data" action="save-pending-edit-form.php?id=<?php echo $id; ?>">
                 <h3 class=" text-center fw-bold">Edit Form</h3>
                 <div class="row row-cols-1 mt-5 mx-lg-3 mx-md-3 mx-2 mb-5 w-100 " style="margin-right: 0 !important;">
                     <div class="col col-12 mx-auto">
@@ -351,18 +351,17 @@
                                 </script>
                                 <label for="title" class=" fw-bold ">Summary</label>
                                 <div class="form-floating mb-3">
-                                        <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" name="cause_summary" style="height: 100px">
-                                            <?= $data['cause_summary']; ?>
-                                    </textarea>
-                                    
+                                    <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" name="cause_summary" style="height: 100px">
+                                            <?php echo $data['cause_summary']; ?>
+                                        </textarea>
                                     <label for="floatingTextarea2">Summary</label>
                                 </div>
                             </div>
-                                <div class=" d-flex justify-content-around p-2 bg-light">
-                                    <button class="btn btn-primary m-2 col-3 px-12 fs-5 w-100" id="submit" name="submit" type="submit">Save</button>
-                                </div>
+                            <div class=" d-flex justify-content-around p-2 bg-light">
+                                <button class="btn btn-primary m-2 col-3 px-12 fs-5 w-100" id="submit" name="submit" type="submit">Save</button>
+                            </div>
                         </div>
-                        
+
                     <?php } ?>
                     </div>
                 </div>
@@ -411,10 +410,6 @@
     @media (max-width:550px) {
         #drop-zone {
             height: 40vh;
-        }
-
-        i {
-            font-size: 70px !important;
         }
 
         label,

@@ -1,5 +1,7 @@
 <?php
-include 'assets/nav-links.php'; ?>
+include 'assets/nav-links.php'; 
+if(isset($_SESSION['username'])){
+?>
 <html>
 
 <head>
@@ -7,9 +9,9 @@ include 'assets/nav-links.php'; ?>
     include 'assets/navbar.php';
     include 'assets/connection.php';
     $useremail = $_SESSION['useremail'];
-    $funds = mysqli_query($db, "SELECT * FROM accepted_form where email='$useremail' and status='Accepted' ");
-    $rej = mysqli_query($db, "SELECT * FROM accepted_form where email='$useremail' and status='Rejected' ");
-    $pend = mysqli_query($db, "SELECT * FROM funds_form where email='$useremail' ");
+    $funds = mysqli_query($db, "SELECT * FROM form_data where email='$useremail' and status='Accepted' ");
+    $rej = mysqli_query($db, "SELECT * FROM form_data where email='$useremail' and status='Rejected' ");
+    $pend = mysqli_query($db, "SELECT * FROM form_data where email='$useremail'and status='Pending' ");
     $users = mysqli_query($db, "SELECT * FROM users where email='$useremail' ");
     ?>
     <title>Account Settings</title>
@@ -554,3 +556,8 @@ include 'assets/nav-links.php'; ?>
 </script>
 
 </html>
+<?php
+} else {
+    echo '<script>alert("Login to view account settings")</script>';
+    echo '<script>window.location = "index.php"</script>';
+}

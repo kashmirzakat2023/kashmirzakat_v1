@@ -1,5 +1,6 @@
 <?php
 include 'assets/connection.php';
+echo '<script>console.log("Test")</script>';
 
 if (isset($_POST['email'])) {
   // Get image name
@@ -17,18 +18,15 @@ if (isset($_POST['email'])) {
 
   $six_digit_number = random_int(100000, 999999);
 
+  //   $subject = "Kashmir Zakat - OTP (One Time Password)";
+  //   $from = 'info@kashmirzakat.com';
+  //   $to = $email;
+  //   $emailFrom = 'Kashmir zakat';
+  //   $headers = 'From: ' . $emailFrom . "\r\n";
+  //   $headers .= 'Reply-To: ' . $to . "\r\n";
 
-
-//   $subject = "Kashmir Zakat - OTP (One Time Password)";
-//   $from = 'info@kashmirzakat.com';
-//   $to = $email;
-//   $emailFrom = 'Kashmir zakat';
-//   $headers = 'From: ' . $emailFrom . "\r\n";
-//   $headers .= 'Reply-To: ' . $to . "\r\n";
-
-
-$to      = $email;
-$subject = 'Kashmir Zakat - OTP (One Time Password)';
+  $to      = $email;
+  $subject = 'Kashmir Zakat - OTP (One Time Password)';
 
   $mailBody = '<html><body>
   <div style="text-center: center; width: 60%; margin: auto; max-width: 100%; font-family: Arial;  ">
@@ -39,23 +37,17 @@ $subject = 'Kashmir Zakat - OTP (One Time Password)';
     </div>
     </body>
     </html>';
-    $headers = 'From: Kashmirzakat ' . "\r\n" ;
-  $headers=  'Reply-To: '.$email . "\r\n" ;
+  $headers = 'From: Kashmirzakat ' . "\r\n";
+  $headers =  'Reply-To: ' . $email . "\r\n";
   $headers .= 'MIME-Version: 1.0' . "\r\n";
   $headers .= "Content-type:text/html;charset=iso-8859-1" . "\r\n" . 'X-Mailer: PHP/' . phpversion();
 
-
-
-
-
   if ($email != '') {
-    if(mail($to, $subject, $mailBody, $headers))
-    echo $six_digit_number;
+    if (mail($to, $subject, $mailBody, $headers))
+      echo $six_digit_number;
     else
-    echo 'otp not sent';
-
+      echo 'otp not sent';
   } else {
     echo ("mail send faild");
   }
 }
-    ?>

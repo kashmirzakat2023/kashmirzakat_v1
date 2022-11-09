@@ -16,7 +16,7 @@ if (isset($_POST['submit'])) {
     $eligible = $_POST['eligible'];
     $cause_explain = $_POST['cause_explain'];
     $cause_summary = $_POST['cause_summary'];
-    
+
     $profile_pic = $_FILES["profile_pic"]["name"];
     $tempname1 = $_FILES["profile_pic"]["tmp_name"];
     $folder1 = "images/" . $profile_pic;
@@ -37,7 +37,7 @@ if (isset($_POST['submit'])) {
     $adhaar_copy = $_FILES["adhaar_copy"]["name"];
     $tempname6 = $_FILES["adhaar_copy"]["tmp_name"];
     $folder6 = "images/" . $adhaar_copy;
-    
+
     $person = $_POST['person'];
     $acc_name = $_POST['acc_name'];
     $acc_num = $_POST['acc_num'];
@@ -58,7 +58,7 @@ if (isset($_POST['submit'])) {
 
     $optional = $_POST['optional'];
 
-    $sql = "INSERT INTO funds_form(
+    $sql = "INSERT INTO form_data(
         profile_pic,
         cause_title,
         purpose,
@@ -79,7 +79,8 @@ if (isset($_POST['submit'])) {
         optional,
         person,
         cause_summary,
-        email)
+        email,
+        status)
         VALUES(
         '$profile_pic',
         '$cause_title',
@@ -101,7 +102,8 @@ if (isset($_POST['submit'])) {
         '$optional',
         '$person',
         '$cause_summary',
-        '$email') ";
+        '$email',
+        'Pending') ";
 
 
     if (!move_uploaded_file($tempname1, $folder1) || !move_uploaded_file($tempname2, $folder2) || !move_uploaded_file($tempname3, $folder3) || !move_uploaded_file($tempname5, $folder5) || !move_uploaded_file($tempname6, $folder6))
@@ -110,7 +112,7 @@ if (isset($_POST['submit'])) {
         $mailBody = '<div style="text-center: center; width: 60%; margin: auto; max-width: 100%; font-family: Arial;  ">
         <div>Hi, ' . $_SESSION['username'] . '</div>
         <div><h4>You have successfully raised a form </h4></div>
-        <div><h3>'.$cause_title.'</h3></div>
+        <div><h3>' . $cause_title . '</h3></div>
         <div>Our team will update you soon</div>
         </div>';
 

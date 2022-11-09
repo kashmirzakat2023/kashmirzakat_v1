@@ -1,50 +1,51 @@
-<?php 
+<?php
 include 'assets/nav-links.php'; ?>
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-
-<script>
-    window.addEventListener('beforeunload', function (e) {
-  // Cancel the event
-  e.preventDefault(); // If you prevent default behavior in Mozilla Firefox prompt will always be shown
-  // Chrome requires returnValue to be set
-  e.returnValue = '';
-});
-
-</script>
-<title>Fund Raise Form</title>
+    
+    <head>
+        
+        <script src="js/drag-drop.js" defer></script>
+        <script>
+        window.addEventListener('beforeunload', function(e) {
+            // Cancel the event
+            e.preventDefault(); // If you prevent default behavior in Mozilla Firefox prompt will always be shown
+            // Chrome requires returnValue to be set
+            e.returnValue = '';
+        });
+    </script>
+    <title>Fund Raise Form</title>
 
 </head>
+
 <body>
-<?php
-if (isset($_SESSION['username'])) {
-include 'assets/navbar.php';
-?>
+    <?php
+    if (isset($_SESSION['username'])) {
+        include 'assets/navbar.php';
+    ?>
 
         <form class="col-8 col-sm-9 mb-5 fund-raise " method="post" enctype="multipart/form-data" action="funds-store.php">
             <h1 class="text-center fw-bolder py-2">Basic Information</h1>
 
             <label for="img" class=" text-danger mb-1" style="display: none;" id="size"> *Image size must be less than 2 MB</label>
             <label for="img" class=" text-danger mb-1" style="display: none;" id="reso"> *Image Image resolution must be more than 800*400 px</label>
-            <div id="drop-zone" class="mb-4">
+            <div id="drop-zone" class="mb-4" style="cursor: pointer;">
                 <img src="" id="img" alt="profile image">
                 <p class=" text-center card-text p-5" id="para">
                     <i class="fas fa-cloud-upload text-secondary" style="font-size: 150px;"></i> <br><br>
                     <b> Drag and Drop an image / Click to Select an image</b> <br><br>
                     Max file size is 2 MB. Allowed file types : JPEG, PNG and JPG <br> Minimum size 800*400
                 </p>
-                <input type="file" id="myfile" name="profile_pic" onchange="Filevalidation(this.id); " accept="image/png,image/jpeg,image/jpg" hidden >
+                <input type="file" id="myfile" name="profile_pic" onchange="Filevalidation(this.id); " accept="image/png,image/jpeg,image/jpg" hidden>
             </div>
 
             <div class="form-floating mb-3">
-                <input type="text" class="form-control" id="floatingInput" name="cause_title" placeholder="Enter cause title(max-250 letters)" >
+                <input type="text" class="form-control" id="floatingInput" name="cause_title" placeholder="Enter cause title(max-250 letters)">
                 <label for="floatingInput">Title of cause <label class=" fw-bold text-danger">*</label></label>
             </div>
 
             <div class="form-floating mb-3">
-                <select class="form-select" id="floatingSelect" name="purpose" aria-label="Floating label select example" >
+                <select class="form-select" id="floatingSelect" name="purpose" aria-label="Floating label select example">
                     <option selected>Purpose for Raising Funds</option>
                     <option value="Education">Education</option>
                     <option value="Health">Health</option>
@@ -55,12 +56,12 @@ include 'assets/navbar.php';
                 <label for="floatingSelect">Select <label class=" fw-bold text-danger">*</label></label>
             </div>
             <div class="form-floating mb-3">
-                <input type="number" class="form-control" name="amount" id="floatingInput" placeholder="amount" >
+                <input type="number" class="form-control" name="amount" id="floatingInput" placeholder="amount">
                 <label for="floatingInput">Amount (in ₹) <label class=" fw-bold text-danger">*</label></label>
             </div>
 
             <div class="form-floating mb-3">
-                <select class="form-select" id="floatingSelect" name="country" aria-label="Floating label select example" >
+                <select class="form-select" id="floatingSelect" name="country" aria-label="Floating label select example">
                     <!-- <input type="text" class="form-control" name="location" id="floatingInput" placeholder="" > -->
                     <option>Select your country</option>
                     <option value="AF">Afghanistan</option>
@@ -318,14 +319,14 @@ include 'assets/navbar.php';
                 </select>
                 <label for="floatingSelect">Select <label class=" fw-bold text-danger">*</label></label>
             </div>
-            
+
             <div class="form-floating mb-3">
-                <input type="text" class="form-control" id="floatingInput city" name="location" placeholder="Enter location" >
+                <input type="text" class="form-control" id="floatingInput city" name="location" placeholder="Enter location">
                 <label for="floatingInput">Enter City name <label class=" fw-bold text-danger">*</label></label>
             </div>
 
             <div class="form-floating mb-3">
-                <select class="form-select" id="floatingSelect" name="eligible" aria-label="Floating label select example" >
+                <select class="form-select" id="floatingSelect" name="eligible" aria-label="Floating label select example">
                     <option selected>Is the cause zakat eligible</option>
                     <option value="Yes">Yes</option>
                     <option value="No">No</option>
@@ -336,19 +337,19 @@ include 'assets/navbar.php';
             <textarea id="editor" placeholder="Explain your cause" name="cause_explain"></textarea>
             <script>
                 ClassicEditor
-                    .create( document.querySelector( '#editor' ) )
-                    .catch( error => {
-                        console.error( error );
-                    } );
+                    .create(document.querySelector('#editor'))
+                    .catch(error => {
+                        console.error(error);
+                    });
             </script>
-            
+
             <div class="form-floating mb-3 mt-3">
-                <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" name="cause_summary" style="height: 100px" ></textarea>
+                <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" name="cause_summary" style="height: 100px"></textarea>
                 <label for="floatingTextarea2">Summary of Your Cause <label class=" fw-bold text-danger">*</label></label>
             </div>
             <label for="exmp">Upload supporting documents(Atleast One document is <b>Mandatory</b>)</label>
             <div class="form-floating mb-3">
-                <input accept="image/png,image/jpeg,image/jpg" type="file" class="form-control" id="file1" onchange="Filevalidation(this.id)" placeholder="" name="doc1" style="padding-left: 30px; padding-top: 16px ;" >
+                <input accept="image/png,image/jpeg,image/jpg" type="file" class="form-control" id="file1" onchange="Filevalidation(this.id)" placeholder="" name="doc1" style="padding-left: 30px; padding-top: 16px ;">
             </div>
             <div class="form-floating mb-3">
                 <input accept="image/png,image/jpeg,image/jpg" type="file" class="form-control" id="file2" onchange="Filevalidation(this.id)" placeholder="" name="doc2" style="padding-left: 30px; padding-top: 16px ;">
@@ -380,28 +381,28 @@ include 'assets/navbar.php';
             </div>
             <div class="ngo-list" style="display:none;">
                 <div class="form-floating mb-3">
-                    <input type="text" class="form-control" name="ngo_name" id="floatingInput" placeholder="bank" >
+                    <input type="text" class="form-control" name="ngo_name" id="floatingInput" placeholder="bank">
                     <label for="floatingInput">NGO Name <label class=" fw-bold text-danger">*</label></label>
                 </div>
                 <div class="form-floating mb-3">
-                    <input type="text" class="form-control" name="ngo_num" id="floatingInput" placeholder="bank" >
+                    <input type="text" class="form-control" name="ngo_num" id="floatingInput" placeholder="bank">
                     <label for="floatingInput">NGO Registration Number <label class=" fw-bold text-danger">*</label></label>
                 </div>
             </div>
             <div class="form-floating mb-3">
-                <input type="text" class="form-control" name="acc_name" id="floatingInput" placeholder="bank" >
+                <input type="text" class="form-control" name="acc_name" id="floatingInput" placeholder="bank">
                 <label for="floatingInput">Account Holder Name <label class=" fw-bold text-danger">*</label></label>
             </div>
             <div class="form-floating mb-3">
-                <input type="text" class="form-control" name="acc_num" id="floatingInput" placeholder="bank" >
+                <input type="text" class="form-control" name="acc_num" id="floatingInput" placeholder="bank">
                 <label for="floatingInput">Beneficiary Account Number <label class=" fw-bold text-danger">*</label></label>
             </div>
             <div class="form-floating mb-3">
-                <input type="text" class="form-control" name="bank_name" id="floatingInput" placeholder="bank" >
+                <input type="text" class="form-control" name="bank_name" id="floatingInput" placeholder="bank">
                 <label for="floatingInput">Bank Name <label class=" fw-bold text-danger">*</label></label>
             </div>
             <div class="form-floating mb-3">
-                <input type="text" class="form-control" name="ifsc" id="floatingInput" placeholder="bank" >
+                <input type="text" class="form-control" name="ifsc" id="floatingInput" placeholder="bank">
                 <label for="floatingInput">IFSC Code <label class=" fw-bold text-danger">*</label></label>
             </div>
             <!--<label for="exmp">Upload Bank Passbook/Cheque leaf(Optional)</label>-->
@@ -414,21 +415,21 @@ include 'assets/navbar.php';
                 <h1>KYC Details</h1>
             </center>
             <div class="form-floating mb-3">
-                <input type="text" class="form-control" name="pan_num" id="floatingInput" placeholder="pan" >
+                <input type="text" class="form-control" name="pan_num" id="floatingInput" placeholder="pan">
                 <label for="floatingInput">PAN Card Number <label class=" fw-bold text-danger">*</label></label>
             </div>
             <label for="exmp">Upload PAN Card Copy <label class=" fw-bold text-danger">*</label></label>
             <div class="form-floating">
-                <input accept="image/png,image/jpeg,image/jpg" type="file" class="form-control mb-1" id="file5" onchange="Filevalidation(this.id)" placeholder="" name="pan_copy" style="padding-left: 30px; padding-top: 16px ;" >
+                <input accept="image/png,image/jpeg,image/jpg" type="file" class="form-control mb-1" id="file5" onchange="Filevalidation(this.id)" placeholder="" name="pan_copy" style="padding-left: 30px; padding-top: 16px ;">
             </div>
             <small class=" mb-3">Max file size is 2 MB. Allowed file types : JPEG, PNG and JPG</small>
             <div class="form-floating mb-3">
-                <input type="text" class="form-control mb-1" name="adhaar_num" id="floatingInput" placeholder="adhaar" >
+                <input type="text" class="form-control mb-1" name="adhaar_num" id="floatingInput" placeholder="adhaar">
                 <label for="floatingInput">Aadhaar Card Number <label class=" fw-bold text-danger">*</label></label>
             </div>
             <label for="exmp">Upload Adhaar Card Copy <label class=" fw-bold text-danger">*</label></label>
             <div class="form-floating ">
-                <input accept="image/png,image/jpeg,image/jpg" type="file" class="form-control mb-1" id="file6" onchange="Filevalidation(this.id)" placeholder="" name="adhaar_copy" style="padding-left: 30px; padding-top: 16px ;" >
+                <input accept="image/png,image/jpeg,image/jpg" type="file" class="form-control mb-1" id="file6" onchange="Filevalidation(this.id)" placeholder="" name="adhaar_copy" style="padding-left: 30px; padding-top: 16px ;">
             </div>
             <small class=" mb-3">Max file size is 2 MB. Allowed file types : JPEG, PNG and JPG</small>
 
@@ -440,7 +441,7 @@ include 'assets/navbar.php';
             </div>
 
             <div class="mb-3 form-check">
-                <input type="checkbox" class="form-check-input" id="exampleCheck1" name="checkbox" >
+                <input type="checkbox" class="form-check-input" id="exampleCheck1" name="checkbox">
                 <label class="form-check-label" for="exampleCheck1">I Agree to share aadhar details with Kashmir Zakat for
                     verfication <label class=" fw-bold text-danger">*</label></label>
             </div>
@@ -449,76 +450,16 @@ include 'assets/navbar.php';
             <button type="submit" id="submit" name="submit" class="btn btn-primary mb-3 fs-4">Submit</button>
         </form>
         <?php include 'assets/footer.php'; ?>
-    </body>
+</body>
 
 </html>
-<script src="js/drag-drop.js"></script>
-<style>
-    #drop-zone {
-        max-width: 450vw;
-        width: 100%;
-        height: 60vh;
-        border: 2px dashed grey;
-        border-radius: 10px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-
-    #drop-zone img {
-        object-fit: contain;
-        height: 100%;
-        width: 100%;
-        display: none;
-    }
-
-    .fund-raise {
-        display: flex;
-        justify-content: center;
-        margin-left: auto;
-        margin-right: auto;
-        flex-direction: column;
-        background-color: white;
-    }
-
-    @media (max-width:550px) {
-        #drop-zone {
-            height: 40vh;
-        }
-
-        .drop-zone i {
-            font-size: 70px !important;
-        }
-
-        label,
-        small,
-        body,
-        input,
-        select {
-            font-size: 80%;
-        }
-
-        h1 {
-            font-size: 180%;
-        }
-    }
-
-    label {
-        font-weight: 500;
-    }
-
-    small {
-        font-size: 11px;
-    }
-</style>
 <script>
-    $(document).ready(function(){
-        $("input[type='radio']").click(function(){
+    $(document).ready(function() {
+        $("input[type='radio']").click(function() {
             var radioValue = $("input[name='person']:checked").val();
-            if(radioValue == 'NGO'){
+            if (radioValue == 'NGO') {
                 $(".ngo-list").show();
-            }
-            else{
+            } else {
                 $(".ngo-list").hide();
             }
         });
@@ -526,7 +467,7 @@ include 'assets/navbar.php';
 </script>
 
 <?php } else {
-    echo '<script>alert("Login/Register to Raise a cause")</script>';
-    echo '<script>window.location = "index.php"</script>';
-}
+        echo '<script>alert("Login/Register to Raise a cause")</script>';
+        echo '<script>window.location = "index.php"</script>';
+    }
 ?>

@@ -26,10 +26,10 @@ USE `db`;
 -- --------------------------------------------------------
 
 --
--- Table structure for table `accepted_form`
+-- Table structure for table `form_data`
 --
 
-CREATE TABLE `accepted_form` (
+CREATE TABLE `form_data` (
   `id` int(20) NOT NULL,
   `profile_pic` varchar(300) NOT NULL,
   `cause_title` varchar(300) NOT NULL,
@@ -59,10 +59,10 @@ CREATE TABLE `accepted_form` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `accepted_form`
+-- Dumping data for table `form_data`
 --
 
-INSERT INTO `accepted_form` (`id`, `profile_pic`, `cause_title`, `purpose`, `amount`, `location`, `eligible`, `cause_explain`, `doc1`, `doc2`, `doc3`, `acc_name`, `acc_num`, `bank_name`, `ifsc`, `passbook`, `pan_num`, `pan_copy`, `adhaar_num`, `adhaar_copy`, `optional`, `name`, `status`, `date`, `cause_summary`, `person`) VALUES
+INSERT INTO `form_data` (`id`, `profile_pic`, `cause_title`, `purpose`, `amount`, `location`, `eligible`, `cause_explain`, `doc1`, `doc2`, `doc3`, `acc_name`, `acc_num`, `bank_name`, `ifsc`, `passbook`, `pan_num`, `pan_copy`, `adhaar_num`, `adhaar_copy`, `optional`, `name`, `status`, `date`, `cause_summary`, `person`) VALUES
 (2, 'Screenshot (10).png', 'Help mister to pay his btech fees', 'Health', 60000, 'Hyderabad', 'Yes', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the ', 'Screenshot (16).png', '', '', 'Roshan', 2147483647, 'Andhra Bank', 'kjhgfdfgh9876567', 'Screenshot (15).png', 0, 'Screenshot (9).png', 2147483647, 'Screenshot (9).png', '', 'roshan', 'Accepted', '2022-02-20', '', NULL),
 (3, 'Screenshot (10).png', 'Help Roshan to pay his btech fees', 'Health', 200000, 'Hyderabad', 'Yes', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.', 'Screenshot (16).png', 'Screenshot (15).png', 'Screenshot (15).png', 'Roshan', 2147483647, 'Andhra Bank', 'kjhgfdfgh9876567', 'Screenshot (15).png', 0, 'Screenshot (9).png', 2147483647, 'Screenshot (9).png', '', 'roshan', 'Accepted', '2022-02-03', '', NULL),
 (4, 'Screenshot (10).png', 'Help faisal to pay his btech fees', 'Health', 40000, 'Hyderabad', 'Yes', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.', 'Screenshot (16).png', 'Screenshot (15).png', 'Screenshot (15).png', 'Roshan', 2147483647, 'Andhra Bank', 'kjhgfdfgh9876567', 'Screenshot (15).png', 0, 'Screenshot (9).png', 2147483647, 'Screenshot (9).png', '', 'faisal', 'Accepted', '2022-02-01', '', NULL),
@@ -393,9 +393,9 @@ INSERT INTO `withdrawl_request` (`raiseid`, `amount`, `name`, `date`, `time`, `s
 --
 
 --
--- Indexes for table `accepted_form`
+-- Indexes for table `form_data`
 --
-ALTER TABLE `accepted_form`
+ALTER TABLE `form_data`
   ADD PRIMARY KEY (`id`),
   ADD KEY `id` (`id`);
 
@@ -466,9 +466,9 @@ ALTER TABLE `withdrawl_request`
 --
 
 --
--- AUTO_INCREMENT for table `accepted_form`
+-- AUTO_INCREMENT for table `form_data`
 --
-ALTER TABLE `accepted_form`
+ALTER TABLE `form_data`
   MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
@@ -656,7 +656,7 @@ CREATE TABLE `pma__navigationhiding` (
 --
 
 INSERT INTO `pma__navigationhiding` (`username`, `item_name`, `item_type`, `db_name`, `table_name`) VALUES
-('root', 'accepted_form', 'table', 'db', ''),
+('root', 'form_data', 'table', 'db', ''),
 ('root', 'bank_pending', 'table', 'db', ''),
 ('root', 'bank_reject', 'table', 'db', '');
 
@@ -688,7 +688,7 @@ CREATE TABLE `pma__recent` (
 --
 
 INSERT INTO `pma__recent` (`username`, `tables`) VALUES
-('root', '[{\"db\":\"db\",\"table\":\"payments\"},{\"db\":\"db\",\"table\":\"accepted_form\"},{\"db\":\"db\",\"table\":\"withdrawl_pending\"},{\"db\":\"db\",\"table\":\"withdrawl_request\"},{\"db\":\"db\",\"table\":\"funds_form\"},{\"db\":\"db\",\"table\":\"rejected_form\"},{\"db\":\"db\",\"table\":\"files\"},{\"db\":\"db\",\"table\":\"users\"},{\"db\":\"db\",\"table\":\"like\"},{\"db\":\"db\",\"table\":\"bank_pending\"}]');
+('root', '[{\"db\":\"db\",\"table\":\"payments\"},{\"db\":\"db\",\"table\":\"form_data\"},{\"db\":\"db\",\"table\":\"withdrawl_pending\"},{\"db\":\"db\",\"table\":\"withdrawl_request\"},{\"db\":\"db\",\"table\":\"funds_form\"},{\"db\":\"db\",\"table\":\"rejected_form\"},{\"db\":\"db\",\"table\":\"files\"},{\"db\":\"db\",\"table\":\"users\"},{\"db\":\"db\",\"table\":\"like\"},{\"db\":\"db\",\"table\":\"bank_pending\"}]');
 
 -- --------------------------------------------------------
 

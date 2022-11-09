@@ -3,9 +3,9 @@ include 'assets/connection.php';
 $name = $_POST['email'];
 $id = $_POST['id'];
 
-$query = "UPDATE funds_form SET 
+$query = "UPDATE form_data SET 
             cause_manager = '$name' 
-            where id = '$id' ";
+            where id = '$id' and status='Pending' ";
 if(mysqli_query($db, $query)){
     echo true;
 } else {

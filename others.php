@@ -22,7 +22,7 @@ include 'assets/nav-links.php'; ?>
 <?php
 
 include 'assets/connection.php';
-$result = mysqli_query($db, "SELECT * FROM accepted_form where purpose='Others' and status='Accepted' ");
+$result = mysqli_query($db, "SELECT * FROM form_data where purpose='Others' and status='Accepted' ");
 ?>
 <div class="row row-cols-1 row-cols-md-3 row-cols-lg-4 row-cols-sm-2 g-4 mr-3 m-2 mb-5">
     <?php

@@ -24,8 +24,8 @@ $id = $_GET['id'];
 include 'assets/connection.php';
 if (isset($_POST['submit'])) {
     $reject_reason = $_POST['reject_reason'];
-    if (mysqli_query($db, "UPDATE accepted_form SET status = 'Rejected' where id='$id'")) {
-        // $result = mysqli_query($db, "DELETE FROM accepted_form where id= '$id'");
+    if (mysqli_query($db, "UPDATE form_data SET status = 'Rejected' where id='$id'")) {
+        // $result = mysqli_query($db, "DELETE FROM form_data where id= '$id'");
         echo '<script>alert("Cause rejected successfully");</script>';
         echo '<script>window.location = "index.php"</script>';
     } else {

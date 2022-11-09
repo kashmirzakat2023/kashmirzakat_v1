@@ -1,4 +1,4 @@
 <?php
-$db = mysqli_connect("localhost", "kashmivu_id_rsa", "Kashmirzakat@123", "kashmivu_db");
+$db = mysqli_connect("localhost", "root", "", "db1");
 if (!$db) die('could not connect Mysql server');
 ?>

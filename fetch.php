@@ -1,4 +1,4 @@
-<?php 
+<?php
 include 'assets/nav-links.php'; ?>
 <html>
 
@@ -8,7 +8,7 @@ include 'assets/nav-links.php'; ?>
   <?php
   $id = $_GET['id'];
   include 'assets/connection.php';
-  $result = mysqli_query($db, " SELECT * FROM accepted_form where id = '$id' and status='Accepted'");
+  $result = mysqli_query($db, " SELECT * FROM form_data where id = '$id' and status='Accepted'");
   ?>
 </head>
 
@@ -73,33 +73,34 @@ include 'assets/nav-links.php'; ?>
                 </p>
                 <!-- ----- -->
                 <h4>Supporting documents</h4>
-                <div class="d-flex">
+                <div class="d-flex justify-content-start">
                   <a type="button" class="rounded-2" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                    <img src="<?php echo "images/" . $data['doc1']; ?>" style="width:90%" class="cursor rounded-2 p-1 border border-dark">
+                    <img src="<?php echo "images/" . $data['doc1']; ?>" style="width:10vw; height: 10vh" class="cursor rounded-2 p-1 border border-dark">
                   </a>
                   <?php if ($data['doc2'] != '') { ?>
                     <a type="button" class="rounded-2" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                      <img src="<?php echo "images/" . $data['doc2']; ?>" style="width:90%" class="cursor rounded-2 p-1 border border-dark">
+                      <img src="<?php echo "images/" . $data['doc2']; ?>" style="width:10vw; height: 10vh" class="cursor rounded-2 p-1 border border-dark">
                     </a>
                   <?php }
                   if ($data['doc3'] != '') { ?>
                     <a type="button" class="rounded-2" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                      <img src="<?php echo "images/" . $data['doc3']; ?>" style="width:90%" class="cursor rounded-2 p-1 border border-dark">
+                      <img src="<?php echo "images/" . $data['doc3']; ?>" style="width:10vw; height: 10vh" class="cursor rounded-2 p-1 border border-dark">
                     </a>
                   <?php }
                   if ($data['passbook'] != '') { ?>
                     <a type="button" class="rounded-2" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                      <img src="<?php echo "images/" . $data['passbook']; ?>" style="width:90%" class="cursor rounded-2 p-1 border border-dark">
+                      <img src="<?php echo "images/" . $data['passbook']; ?>" style="width:10vw; height: 10vh" class="cursor rounded-2 p-1 border border-dark">
                     </a>
                   <?php }
                   if ($data['pan_copy'] != '') { ?>
                     <a type="button" class="rounded-2" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                      <img src="<?php echo "images/" . $data['pan_copy']; ?>" style="width:90%" class="cursor rounded-2 p-1 border border-dark">
+                      <img src="<?php echo "images/" . $data['pan_copy']; ?>" style="width:10vw; height: 10vh" class="cursor rounded-2 p-1 border border-dark">
                     </a>
-                  <?php } if ($data['adhaar_copy'] != '') { ?>
-                  <a type="button" class="rounded-2" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                    <img src="<?php echo "images/" . $data['adhaar_copy']; ?>" style="width:90%" class="cursor rounded-2 p-1 border border-dark">
-                  </a>
+                  <?php }
+                  if ($data['adhaar_copy'] != '') { ?>
+                    <a type="button" class="rounded-2" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                      <img src="<?php echo "images/" . $data['adhaar_copy']; ?>" style="width:10vw; height: 10vh" class="cursor rounded-2 p-1 border border-dark">
+                    </a>
                   <?php } ?>
 
                 </div>
@@ -130,17 +131,18 @@ include 'assets/nav-links.php'; ?>
                             <?php }
                             if ($data['passbook'] != '') { ?>
                               <div class="carousel-item">
-                                <img src="<?php echo "images/" . $data['passbook']; ?>"  class="d-block w-100" alt="...">
+                                <img src="<?php echo "images/" . $data['passbook']; ?>" class="d-block w-100" alt="...">
                               </div>
                             <?php }
                             if ($data['pan_copy'] != '') { ?>
                               <div class="carousel-item">
-                                <img src="<?php echo "images/" . $data['pan_copy']; ?>"  class="d-block w-100" alt="...">
+                                <img src="<?php echo "images/" . $data['pan_copy']; ?>" class="d-block w-100" alt="...">
                               </div>
-                            <?php } if ($data['adhaar_copy'] != '') {  ?>
-                            <div class="carousel-item">
-                              <img src="<?php echo "images/" . $data['adhaar_copy']; ?>"  class="d-block w-100" alt="...">
-                            </div>
+                            <?php }
+                            if ($data['adhaar_copy'] != '') {  ?>
+                              <div class="carousel-item">
+                                <img src="<?php echo "images/" . $data['adhaar_copy']; ?>" class="d-block w-100" alt="...">
+                              </div>
                             <?php } ?>
                           </div>
                           <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
@@ -214,10 +216,10 @@ include 'assets/nav-links.php'; ?>
           </div>
         </div>
         <div class=" d-flex justify-content-around p-2 bg-light">
-        <a class="btn btn-danger m-2 col-3 px-12 fs-5" href="accepted-reject.php?id=<?php echo $data['id']; ?>" name="submit" type="submit">Reject</a>
-        <a class="btn btn-primary m-2 col-3 px-12 fs-5" href="user-pending-edit-form.php?id=<?php echo $data['id']; ?>" name="submit" type="submit">Edit</a>
-        <a class="btn btn-primary m-2 col-3 px-12 fs-5" href="edit-user-form-kyc.php?id=<?php echo $data['id']; ?>"name="submit" type="submit">Edit Kyc</a>
-    </div>
+          <a class="btn btn-danger m-2 col-3 px-12 fs-5" href="accepted-reject.php?id=<?php echo $data['id']; ?>" name="submit" type="submit">Reject</a>
+          <a class="btn btn-primary m-2 col-3 px-12 fs-5" href="user-pending-edit-form.php?id=<?php echo $data['id']; ?>" name="submit" type="submit">Edit</a>
+          <a class="btn btn-primary m-2 col-3 px-12 fs-5" href="edit-user-form-kyc.php?id=<?php echo $data['id']; ?>" name="submit" type="submit">Edit Kyc</a>
+        </div>
       </div>
 
       <!---------------------------------------------------------------------------------------------------------------->
@@ -260,7 +262,7 @@ include 'assets/nav-links.php'; ?>
               if (mysqli_num_rows($query1) > 0) {
             ?>
                 <p class="card-text rounded-1 mb-3 border border-danger" style=" font-size: 40px;   padding: 0px; color: red;">
-                  <i class="fas fa-heart" value="<?php echo $data['name']; ?>" style="cursor:pointer;"></i>
+                  <i class="fas fa-heart" value="" style="cursor:pointer;"></i>
                   <span id="likes">
                     <?php
                     echo mysqli_num_rows($query3);
@@ -271,7 +273,7 @@ include 'assets/nav-links.php'; ?>
               } else {
               ?>
                 <p class="card-text rounded-1 mb-3 border border-danger" style=" font-size: 40px;padding: 0px; color: red;">
-                  <i class="far fa-heart " value="<?php echo $data['name']; ?>" style="cursor:pointer; "></i>
+                  <i class="far fa-heart " value="" style="cursor:pointer; "></i>
                   <span id="likes">
                     <?php
                     echo mysqli_num_rows($query3);
@@ -285,7 +287,7 @@ include 'assets/nav-links.php'; ?>
               ?>
               <p class="card-text rounded-1 mb-3 border border-danger" style=" font-size: 40px;  padding: 0px; color: red;">
                 <i class="far fa-heart " style="cursor:not-allowed; "></i>
-                <span id="show_like<?php echo $data['name']; ?>">
+                <span id="show_like">
                   <?php
                   echo mysqli_num_rows($query3);
                   ?>

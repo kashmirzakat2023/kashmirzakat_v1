@@ -2,12 +2,11 @@
 include 'assets/nav-links.php'; ?>
 <html prefix="og: https://ogp.me/ns#">
 
-    <link rel="stylesheet" href="css/success.css">
-    <?php
-    $id = $_GET['campaign'];
-    include 'assets/connection.php';
-    $result = mysqli_query($db, " SELECT * FROM accepted_form where id = '$id' and status='Accepted'");
-    ?>
+<link rel="stylesheet" href="css/success.css">
+<?php
+$id = $_GET['campaign'];
+include 'assets/connection.php';
+?>
 
 <body>
 
@@ -17,6 +16,7 @@ include 'assets/nav-links.php'; ?>
     <?php }
     include 'assets/navbar.php';
 
+    $result = mysqli_query($db, " SELECT * FROM form_data where id = '$id' and status='Accepted'");
     while ($data = mysqli_fetch_array($result)) {
         // $today = time();
         $_SESSION['id'] = $data['id'];
@@ -31,11 +31,7 @@ include 'assets/nav-links.php'; ?>
 
         $_SESSION['cause'] = $data['cause_title'];
         $CurPageURL = "https://" . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
-        $name = $data['name'];
-        $query1 = mysqli_query($db, "SELECT * FROM users where name = '$name' ");
-        while ($user1 = mysqli_fetch_array($query1)) {
-            $useremail1 = $user1['email'];
-        }
+        $useremail1 = $data['email'];
 
     ?>
 
@@ -55,19 +51,19 @@ include 'assets/nav-links.php'; ?>
             <!--<meta name="twitter:image:alt" content="https://kashmirzakat.com/images/logo.jpeg">-->
             <!--<meta property="og:type" content="website" />-->
             <!--<meta property="og:updated_time" content="1440432930" />-->
-                <meta property="og:site_name" content="Kashmir Zakat">
-                <meta property="og:title" content="<?php echo $data['cause_title']; ?>">
-                <meta property="og:description" content="<?php echo $data['cause_summary']; ?>">
-                <meta property="og:image" content="<?php echo 'https://kashmirzakat.com/images/' . $data['profile_pic']; ?>">
-                <meta property="og:image:secure_url" content="<?php echo 'https://kashmirzakat.com/images/' . $data['profile_pic']; ?>" />
-                <meta property="og:image:type" content="image/jpeg">
-                <meta property="og:image:width" content="200">
-                <meta property="og:image:height" content="200">
-                <meta property="og:url" content="http://www.kashmirzakat.com">
-                <link itemprop="thumbnailUrl" href="<?php echo 'https://kashmirzakat.com/images/' . $data['profile_pic']; ?>"> 
-                <span itemprop="thumbnail" itemscope itemtype="http://schema.org/ImageObject"> 
-                  <link itemprop="url" href="<?php echo 'https://kashmirzakat.com/images/' . $data['profile_pic']; ?>"> 
-                </span>
+            <meta property="og:site_name" content="Kashmir Zakat">
+            <meta property="og:title" content="<?php echo $data['cause_title']; ?>">
+            <meta property="og:description" content="<?php echo $data['cause_summary']; ?>">
+            <meta property="og:image" content="<?php echo 'https://kashmirzakat.com/images/' . $data['profile_pic']; ?>">
+            <meta property="og:image:secure_url" content="<?php echo 'https://kashmirzakat.com/images/' . $data['profile_pic']; ?>" />
+            <meta property="og:image:type" content="image/jpeg">
+            <meta property="og:image:width" content="200">
+            <meta property="og:image:height" content="200">
+            <meta property="og:url" content="http://www.kashmirzakat.com">
+            <link itemprop="thumbnailUrl" href="<?php echo 'https://kashmirzakat.com/images/' . $data['profile_pic']; ?>">
+            <span itemprop="thumbnail" itemscope itemtype="http://schema.org/ImageObject">
+                <link itemprop="url" href="<?php echo 'https://kashmirzakat.com/images/' . $data['profile_pic']; ?>">
+            </span>
         </head>
         <title><?php echo $data['cause_title']; ?></title>
         <div class="row row-cols-1 mt-5 mx-lg-3 mx-md-3 mx-2 mb-5" style="margin-right: 0 !important;">
@@ -104,35 +100,43 @@ include 'assets/nav-links.php'; ?>
                             </li>
                         </ul>
                         <style>
-                        .nav-tabs-items {
-                            color: black !important;
-                        }
-                        @media (max-width:600px){
-                            .nav-tabs-items{
-                                padding: 5px ;
+                            .nav-tabs-items {
+                                color: black !important;
                             }
-                            .cause_title {
-                                font-size: 18px;
+
+                            @media (max-width:600px) {
+                                .nav-tabs-items {
+                                    padding: 5px;
+                                }
+
+                                .cause_title {
+                                    font-size: 18px;
+                                }
+
+                                .container {
+                                    padding: 0 !important;
+                                }
+
+                                .profile_img {
+                                    width: 50vw;
+                                    height: 50vw;
+                                }
                             }
-                            .container  {
-                                padding: 0 !important;   
-                            }
-                            .profile_img{
-                                width: 50vw;
-                                height: 50vw;
-                            }
-                        }
+
                             table {
                                 width: 100%;
-                            border-collapse: collapse;
-                        }
-                        table, td {
-                            border: 2px solid black;
-                            padding: 8px 2px;
-                        }
-                        .w-45 {
-                            width: 49%;
-                        }
+                                border-collapse: collapse;
+                            }
+
+                            table,
+                            td {
+                                border: 2px solid black;
+                                padding: 8px 2px;
+                            }
+
+                            .w-45 {
+                                width: 49%;
+                            }
                         </style>
 
                         <!-- Tab panes -->
@@ -141,37 +145,37 @@ include 'assets/nav-links.php'; ?>
                                 <p>
                                     <label class=" fw-bold" for="d">My Story : </label><br>
 
-                                    <? 
-                                    $data1 = ''; 
+                                    <?
+                                    $data1 = '';
                                     $data1 = str_replace('&', '&amp;', $data['cause_explain']);
                                     ?>
-                                    <div >
-                                        <?php echo $data1 ?>
-                                        </div>
+                                <div>
+                                    <?php echo $data1 ?>
+                                </div>
 
-                                    <label class=" fw-bold" for="d">Cause Summary : </label><br>
-                                    <?php
-                                    echo ($data['cause_summary']);
-                                    ?>
+                                <label class=" fw-bold" for="d">Cause Summary : </label><br>
+                                <?php
+                                echo ($data['cause_summary']);
+                                ?>
                                 </p>
                                 <!-- ----- -->
                                 <h4>Supporting documents</h4>
                                 <!--<div class="row-cols-1 w-100 row-cols-md-3 row-cols-lg-3">-->
-                                    <div class="d-flex row ">
+                                <div class="d-flex row ">
+                                    <a type="button" class="rounded-2 col-4" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                        <img src="<?php echo "images/" . $data['doc1']; ?>" width="100%" class="cursor rounded-2 p-1 border border-dark">
+                                    </a>
+                                    <?php if ($data['doc2'] != '') { ?>
                                         <a type="button" class="rounded-2 col-4" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                            <img src="<?php echo "images/" . $data['doc1']; ?>" width="100%"  class="cursor rounded-2 p-1 border border-dark">
+                                            <img src="<?php echo "images/" . $data['doc2']; ?>" width="100%" class="cursor rounded-2 p-1 border border-dark">
                                         </a>
-                                        <?php if ($data['doc2'] != '') { ?>
-                                            <a type="button" class="rounded-2 col-4" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                                <img src="<?php echo "images/" . $data['doc2']; ?>" width="100%" class="cursor rounded-2 p-1 border border-dark">
-                                            </a>
-                                        <?php }
-                                        if ($data['doc3'] != '') { ?>
-                                            <a type="button" class="rounded-2 col-4" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                                <img src="<?php echo "images/" . $data['doc3']; ?>" width="100%" class="cursor rounded-2 p-1 border border-dark">
-                                            </a>
-                                        <?php } ?>
-                                    </div>
+                                    <?php }
+                                    if ($data['doc3'] != '') { ?>
+                                        <a type="button" class="rounded-2 col-4" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                            <img src="<?php echo "images/" . $data['doc3']; ?>" width="100%" class="cursor rounded-2 p-1 border border-dark">
+                                        </a>
+                                    <?php } ?>
+                                </div>
                                 <!--</div>-->
 
                                 <!-- Modal -->
@@ -185,16 +189,16 @@ include 'assets/nav-links.php'; ?>
                                             <div class="modal-body">
                                                 <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
                                                     <div class="carousel-inner" style="overflow:auto">
-                                                        <div class="carousel-item active" >
-                                                            <img src="<?php echo "images/" . $data['doc1']; ?>"  class="d-flex mx-auto me-auto h-100" alt="attachment1">
+                                                        <div class="carousel-item active">
+                                                            <img src="<?php echo "images/" . $data['doc1']; ?>" class="d-flex mx-auto me-auto h-100" alt="attachment1">
                                                         </div>
                                                         <?php if ($data['doc2'] != '') { ?>
-                                                            <div class="carousel-item" >
+                                                            <div class="carousel-item">
                                                                 <img src="<?php echo "images/" . $data['doc2']; ?>" class="d-flex mx-auto me-auto h-100" alt="attachment1">
                                                             </div>
                                                         <?php }
                                                         if ($data['doc3'] != '') { ?>
-                                                            <div class="carousel-item" >
+                                                            <div class="carousel-item">
                                                                 <img src="<?php echo "images/" . $data['doc3']; ?>" class="d-flex mx-auto me-auto h-100" alt="attachment1">
                                                             </div>
                                                         <?php } ?>
@@ -261,16 +265,16 @@ include 'assets/nav-links.php'; ?>
                                                     <b class="text-success">₹<?php echo $row2['amount']; ?></b>
                                                     <!--<small class=" text-muted">~ <?php echo $days; ?> days ago</small>-->
                                                     <small class=" text-muted">~ <?php
-                                                    $month  = date_format(date_create($row2['tran_date']), "d M,Y");
-                                                    echo $month; 
-                                                    ?></small>
+                                                                                    $month  = date_format(date_create($row2['tran_date']), "d M,Y");
+                                                                                    echo $month;
+                                                                                    ?></small>
                                                 </div>
                                             </div>
                                         </div>
-                                <?php }
-                                } else {?>
+                                    <?php }
+                                } else { ?>
                                     <h5>No updates.</h5>
-                                <?php }?>
+                                <?php } ?>
                                 <hr>
                             </div>
                             <div id="menu2" class="container tab-pane fade"><br>
@@ -292,22 +296,33 @@ include 'assets/nav-links.php'; ?>
                                                     <b class="text-success">₹<?php echo $row2['samount']; ?></b>
                                                     <!--<small class=" text-muted">~ <?php echo $days; ?> days ago</small>-->
                                                     <small class=" text-muted">~ <?php
-                                                    $month  = date_format(date_create($row2['tran_date']), "d M,Y");
-                                                    echo $month; 
-                                                    ?></small>
+                                                                                    $month  = date_format(date_create($row2['tran_date']), "d M,Y");
+                                                                                    echo $month;
+                                                                                    ?></small>
                                                 </div>
                                             </div>
                                         </div>
-                                <?php }
-                                } else {?>
+                                    <?php }
+                                } else { ?>
                                     <h5>No updates.</h5>
-                                <?php }?>
+                                <?php } ?>
                                 <hr>
                             </div>
                         </div>
 
                     </div>
                 </div>
+                <?php
+                if (isset($_SESSION['username']) and $_SESSION['username'] == 'admin'){
+                ?>
+                <div class=" d-flex justify-content-around p-2 bg-light">
+                    <a class="btn btn-danger m-2 col-3 px-12 fs-5" href="accepted-reject.php?id=<?php echo $data['id']; ?>" name="submit" type="submit">Reject</a>
+                    <a class="btn btn-primary m-2 col-3 px-12 fs-5" href="user-pending-edit-form.php?id=<?php echo $data['id']; ?>" name="submit" type="submit">Edit</a>
+                    <a class="btn btn-primary m-2 col-3 px-12 fs-5" href="edit-user-form-kyc.php?id=<?php echo $data['id']; ?>" name="submit" type="submit">Edit Kyc</a>
+                </div>
+                <?php
+                }
+                ?>
             </div>
 
             <!---------------------------------------------------------------------------------------------------------------->
@@ -343,8 +358,8 @@ include 'assets/nav-links.php'; ?>
                         $days = 30 - round($timeleft / (60 * 60 * 24));
                         if ($days < 0) {
                         ?>
-                            <a href="#" class="btn btn-secondary donate  btn-lg box-shadow--8dp w-100 mb-3 fs-5 " style="padding: 10px; cursor:not-allowed;" disabled>
-                                <small><i class="fas fa-lock"></i> Cause Ended</small>
+                            <a href="#" class="btn btn-secondary donate  btn-lg box-shadow--8dp w-100 mb-3 " style="padding: 10px; cursor:not-allowed;" disabled>
+                                <small class="fs-5"><i class="fas fa-lock"></i> Cause Ended</small>
                             </a>
                         <?php
                         } else if (!($ramount >= $amount)) { ?>
@@ -356,60 +371,60 @@ include 'assets/nav-links.php'; ?>
                         <?php
                         }
                         ?>
-                        <div class= " mb-3 d-flex justify-content-between flex-row">
-                            
-                        <?php
-                        $query3 = mysqli_query($db, "select * from `like` where raiseid='" . $_SESSION['id'] . "'");
-                        if (isset($_SESSION['username'])) {
-                            $query1 = mysqli_query($db, "select * from `like` where raiseid='" . $_SESSION['id'] . "' and username='" . $_SESSION['username'] . "'");
-                            if (mysqli_num_rows($query1) > 0) {
-                        ?>
-                                <p class="card-text rounded-1 mb-3 border border-danger w-45" style=" font-size: 40px;   padding: 0px; color: red;">
-                                    <i class="fas fa-heart" value="<?php echo $data['name']; ?>" style="cursor:pointer;"></i>
-                                    <span id="likes">
-                                        <?php
-                                        echo mysqli_num_rows($query3);
-                                        ?>
-                                    </span>
-                                </p>
-                            <?php
-                            } else {
-                            ?>
-                                <p class="card-text rounded-1 mb-3 border border-danger w-45" style=" font-size: 40px;padding: 0px; color: red;">
-                                    <i class="far fa-heart " value="<?php echo $data['name']; ?>" style="cursor:pointer; "></i>
-                                    <span id="likes">
-                                        <?php
-                                        echo mysqli_num_rows($query3);
-                                        ?>
-                                    </span>
-                                </p>
+                        <div class=" mb-3 d-flex justify-content-between flex-row">
 
                             <?php
-                            }
-                        } else {
+                            $query3 = mysqli_query($db, "select * from `like` where raiseid='" . $_SESSION['id'] . "'");
+                            if (isset($_SESSION['username'])) {
+                                $query1 = mysqli_query($db, "select * from `like` where raiseid='" . $_SESSION['id'] . "' and username='" . $_SESSION['username'] . "'");
+                                if (mysqli_num_rows($query1) > 0) {
                             ?>
-                            <p class="card-text rounded-1 mb-3 border border-danger w-45" style=" font-size: 40px;  padding: 0px; color: red;">
-                                <i class="far fa-heart " style="cursor:not-allowed;"></i>
-                                <span id="show_like<?php echo $data['name']; ?>">
-                                    <?php
-                                    echo mysqli_num_rows($query3);
-                                    ?>
-                                </span>
-                            </p>
-                        <?php
-                        }
-                        $date = strtotime($data['date']);
-                        $now = time();
-                        $timeleft = $now - $date;
-                        $days = 30 - round($timeleft / (60 * 60 * 24));
-                        ?>
+                                    <p class="card-text rounded-1 mb-3 border border-danger w-45" style=" font-size: 40px;   padding: 0px; color: red;">
+                                        <i class="fas fa-heart" value=""></i>
+                                        <span id="likes">
+                                            <?php
+                                            echo mysqli_num_rows($query3);
+                                            ?>
+                                        </span>
+                                    </p>
+                                <?php
+                                } else {
+                                ?>
+                                    <p class="card-text rounded-1 mb-3 border border-danger w-45" style=" font-size: 40px;padding: 0px; color: red;">
+                                        <i class="far fa-heart " value="" style="cursor:pointer;"></i>
+                                        <span id="likes">
+                                            <?php
+                                            echo mysqli_num_rows($query3);
+                                            ?>
+                                        </span>
+                                    </p>
+
+                                <?php
+                                }
+                            } else {
+                                ?>
+                                <p class="card-text rounded-1 mb-3 border border-danger w-45" style=" font-size: 40px;  padding: 0px; color: red;">
+                                    <i class="far fa-heart " style="cursor:not-allowed;"></i>
+                                    <span id="show_like">
+                                        <?php
+                                        echo mysqli_num_rows($query3);
+                                        ?>
+                                    </span>
+                                </p>
+                            <?php
+                            }
+                            $date = strtotime($data['date']);
+                            $now = time();
+                            $timeleft = $now - $date;
+                            $days = 30 - round($timeleft / (60 * 60 * 24));
+                            ?>
 
                             <p class="card-text rounded-1 w-45 mb-3 d-flex justify-content-center align-items-center" style="border: 1px solid black; padding: 0px;">
                                 <b><i class="fas fa-hourglass-half"></i>
                                     <?php
-                        if ($days > 0 and !($ramount >= $amount)) {
-                                    echo $days;
-                        } else echo 0;
+                                    if ($days > 0 and !($ramount >= $amount)) {
+                                        echo $days;
+                                    } else echo 0;
                                     ?> days left</b>
                             </p>
                         </div>
@@ -482,12 +497,11 @@ include 'assets/nav-links.php'; ?>
                     <button class="btn btn-secondary border input-group-text fw-bold" id="button" onclick="copyToClipboard('#text')">copy</button>
                 </div>
                 <div class="text-center mt-3 d-flex flex-column mx-auto justify-content-center align-items-center">
-                        <h3 class="fw-bold">Scan QR Code</h1>
+                    <h3 class="fw-bold">Scan QR Code</h1>
                         <img src="" class="qr-code img-thumbnail img-responsive w-50" />
                 </div>
 
                 <script>
-                    
                     function htmlEncode(value) {
                         return $('<div/>').text(value)
                             .html();
@@ -546,7 +560,7 @@ include 'assets/nav-links.php'; ?>
                         });
 
                         jQuery(".social-share.whatsapp").on("click", function() {
-                            url = "whatsapp://send?text=" +"*<?php echo $data['cause_title']; ?>*"+"%0D%0A %0D%0A"+"<?php echo $data['cause_summary']; ?>"+ " %0D%0A %0D%0A Read more - "+ pageUrl+ " %0D%0A %0D%0A Donate - "+" <?php echo 'https://kashmirzakat.com/donate.php?id='.$id;?>";
+                            url = "whatsapp://send?text=" + "*<?php echo $data['cause_title']; ?>*" + "%0D%0A %0D%0A" + "<?php echo $data['cause_summary']; ?>" + " %0D%0A %0D%0A Read more - " + pageUrl + " %0D%0A %0D%0A Donate - " + " <?php echo 'https://kashmirzakat.com/donate.php?id=' . $id; ?>";
                             socialWindow1(url);
                         });
                     }

@@ -68,62 +68,10 @@ $id = $_GET['id'];
 if (isset($_POST['submit'])) {
 include 'assets/connection.php';
     $reject_reason=$_POST['reject_reason'];
-        if(mysqli_query( $db, "INSERT INTO accepted_form 
-        (profile_pic,
-        cause_title,
-        purpose,
-        amount, 
-        location,
-        eligible,
-        cause_explain,
-        doc1,
-        doc2,
-        doc3,
-        acc_name,
-        acc_num,
-        bank_name,
-        ifsc,
-        passbook,
-        pan_num,
-        pan_copy,
-        adhaar_num,
-        adhaar_copy,
-        optional,
-        email,
-        date,
-        status,
-        reason,
-        cause_manager)
-        SELECT 
-        profile_pic,
-        cause_title,
-        purpose,
-        amount, 
-        location,
-        eligible,
-        cause_explain,
-        doc1,
-        doc2,
-        doc3,
-        acc_name,
-        acc_num,
-        bank_name,
-        ifsc,
-        passbook,
-        pan_num,
-        pan_copy,
-        adhaar_num,
-        adhaar_copy,
-        optional,
-        email,
-        date,
-        'Rejected',
-        '$reject_reason',
-        cause_manager
-        FROM funds_form where id= '$id' ")
+        if(mysqli_query( $db, "UPDATE form_data set status='Rejected' , reason = '$reject_reason' where id= '$id' ")
     ) {
         $subject = "Cause Rejected by kashmirzakat team";
-        $result = mysqli_query($db, " SELECT * FROM accepted_form where id = '$id' ");
+        $result = mysqli_query($db, " SELECT * FROM form_data where id = '$id' ");
         while ($data = mysqli_fetch_array($result)) {
             $to = $data['email'];
         }
@@ -141,7 +89,7 @@ include 'assets/connection.php';
         $headers .= 'MIME-Version: 1.0' . "\r\n";
         $headers .= "Content-type:text/html;charset=iso-8859-1" . "\r\n" . 'X-Mailer: PHP/' . phpversion();
         mail($to, $subject, $mailBody, $headers);
-        $result = mysqli_query($db, "DELETE FROM funds_form where id= '$id'");
+        $result = mysqli_query($db, "DELETE FROM form_data where id= '$id' and status='Pending' ");
         echo '<script>alert("Cause rejected successfully");</script>';
         echo '<script>window.location = "index.php"</script>';
     } else {

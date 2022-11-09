@@ -1,5 +1,5 @@
 const dropZone = document.querySelector('#drop-zone');
-const inputElement = document.querySelector('input');
+const inputElement = document.querySelector('#myfile');
 const img = document.getElementById('img');
 let p = document.querySelector('p')
 

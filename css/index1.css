@@ -1,0 +1,123 @@
+.bg-blue {
+    background-color: var(--bg_dark_blue);
+    color: #fff;
+}
+
+.count {
+    margin-right: 0 !important;
+    margin-left: 0 !important;
+}
+
+.counter {
+    background-color: #C9CBFE;
+    padding: 20px 0;
+    border-radius: 5px;
+}
+
+.count-title {
+    font-size: 45px;
+    font-weight: 600;
+    margin-top: 10px;
+    margin-bottom: 0;
+    text-align: center;
+}
+
+.count-text {
+    font-size: 25px;
+    font-weight: normal;
+    margin-top: 10px;
+    margin-bottom: 0;
+    text-align: center;
+}
+
+.fa-2x {
+    margin: 0 auto;
+    float: none;
+    display: table;
+    font-size: 60px !important;
+    color: var(--bg_dark_blue);
+}
+
+@media (max-width:900px) {
+    .w-sm-100 {
+        width: 90% !important;
+    }
+}
+
+.bg-aubergine {
+    padding: 10px;
+    background-color: var(--bg_light_blue);
+
+}
+
+.kashmir_banner1 {
+    background-color: #edeefc;
+}
+
+.feat p {
+    margin: 0 !important;
+}
+
+.main_carousel img {
+    height: 95vh !important;
+    width: 100% !important;
+}
+
+.ht {
+    height: 533px;
+}
+
+.ht:hover {
+    transform: translateY(-2px);
+}
+
+.card:hover {
+    box-shadow: rgba(14, 30, 37, 0.12) 0px 4px 6px 0px, rgba(14, 30, 37, 0.32) 0px 4px 20px 0px !important;
+
+}
+
+.card .card-img-top {
+    height: 225px;
+}
+
+.card .span {
+    position: absolute;
+    top: -10px;
+    left: -10px;
+    width: 150px;
+    height: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.card .span::before {
+    content: 'Successful';
+    display: flex;
+    position: absolute;
+    justify-content: center;
+    align-items: center;
+    text-transform: uppercase;
+    font-weight: 600;
+    color: white;
+    width: 150%;
+    height: 40px;
+    background-color: rgb(16, 129, 16);
+    letter-spacing: 0.1em;
+    transform: rotate(-45deg) translateY(-20px);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+
+}
+
+.card .span::after {
+    content: '';
+    position: absolute;
+    width: 10x;
+    height: 10px;
+    left: 0;
+    bottom: 0;
+    background: rgb(30, 39, 30);
+    box-shadow: 140px -140px rgb(8, 126, 8);
+    z-index: -1;
+}

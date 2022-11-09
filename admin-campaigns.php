@@ -1,4 +1,4 @@
-<?php 
+<?php
 session_start(); ?>
 <html>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
@@ -11,7 +11,7 @@ session_start(); ?>
 <?php
 include 'assets/connection.php';
 $useremail = $_GET['useremail'];
-$result = mysqli_query($db, "SELECT * FROM accepted_form where status='Accepted'");
+$result = mysqli_query($db, "SELECT * FROM form_data where status='Accepted'");
 if (isset($_SESSION['username']) && $_SESSION['username'] == 'admin') {
 ?>
 
@@ -19,43 +19,17 @@ if (isset($_SESSION['username']) && $_SESSION['username'] == 'admin') {
         <?php
         include 'assets/admin-navbar-dash.php';
         ?>
-        <div class="l-navbar " id="nav-bar">
-            <nav class="nav" style="z-index: 100 !important;">
-                <div> <a href="admin-dashboard.php?useremail=<?php echo $useremail; ?>" class="nav_logo">
-                        <i class='bx bx-layer nav_logo-icon'></i>
-                        <span class="nav_logo-name"><b>DASHBOARD</b></span> </a>
-                    <div class="nav_list">
-                        <a href="admin-dashboard.php?useremail=<?php echo $useremail; ?>" class="nav_link ">
-                            <i class='bx bx-grid-alt nav_icon'></i>
-                            <span class="nav_name">Dashboard</span> </a>
-                        <a href="admin-campaigns.php?useremail=<?php echo $useremail; ?>" class="nav_link active" title="Causes" data-bs-toggle="tooltip" data-bs-placement="bottom">
-                            <i class='bx bxs-megaphone nav_icon '></i>
-                            <span class="nav_name">Causes</span> </a>
-                        <a href="admin-donations.php?useremail=<?php echo $useremail; ?>" class="nav_link" title="Donations" data-bs-toggle="tooltip" data-bs-placement="bottom">
-                            <i class='bx bx-money nav_icon'></i>
-                            <span class="nav_name">Donations</span> </a>
-                        <a href="users.php?useremail=<?php echo $useremail; ?>" class="nav_link" title="My Donations" data-bs-toggle="tooltip" data-bs-placement="bottom">
-                            <i class='bx bxs-user nav_icon'></i>
-                            <span class="nav_name">Users</span> </a>
-                        <a href="bank-pending.php?useremail=<?php echo $useremail; ?>" class="nav_link " title="Withdrawls" data-bs-toggle="tooltip" data-bs-placement="bottom">
-                            <i class='bx bx-time-five nav_icon'></i>
-                            <span class="nav_name">Bank Pending</span> </a>
-                        <a href="admin-withdrawls.php?useremail=<?php echo $useremail; ?>" class="nav_link" title="Withdrawls" data-bs-toggle="tooltip" data-bs-placement="bottom">
-                            <i class='bx bx-money-withdraw nav_icon'></i>
-                            <span class="nav_name">Withdrawls</span> </a>
-                        <a href="dashboard-scholarship.php?useremail=<?php echo $useremail; ?>" class="nav_link" title="Scholaarship" data-bs-toggle="tooltip" data-bs-placement="bottom">
-                            <i class='bx bxs-graduation nav_icon'></i>
-                            <span class="nav_name">Scholarships</span> </a>
-                    </div>
-                </div> <a href="logout.php" class="nav_link">
-                    <i class='bx bx-log-out nav_icon' title="Signout" data-bs-toggle="tooltip" data-bs-placement="bottom"></i>
-                    <span class="nav_name">SignOut</span> </a>
-            </nav>
-        </div>
+        <script>
+            window.onload = (event) => {
+                $('#nav-bar').attr('class', 'l-navbar show');
+                $('#body-pd').attr('class', 'body-pd');
+                $('#campaign').addClass("nav_link active");
+            }
+        </script>
         <!--Container Main start-->
 
         <br>
-        <div class="height-100 bg-light">
+        <div class="height-100">
             <h1>Causes</h1>
             <div class="row">
 
@@ -66,7 +40,7 @@ if (isset($_SESSION['username']) && $_SESSION['username'] == 'admin') {
                                 <div class="col mr-2">
                                     <h1 class="mb-3 fw-bolder text-light" style="font-size: 50px !important;">
                                         <?php
-                                        $acc = mysqli_query($db, "SELECT * FROM accepted_form  where status='Accepted' ");
+                                        $acc = mysqli_query($db, "SELECT * FROM form_data  where status='Accepted' ");
                                         echo mysqli_num_rows($acc);
                                         ?>
                                     </h1>
@@ -92,7 +66,7 @@ if (isset($_SESSION['username']) && $_SESSION['username'] == 'admin') {
                                 <div class="col mr-2">
                                     <h1 class="mb-3 fw-bolder text-light" style="font-size: 50px !important;">
                                         <?php
-                                        $pen = mysqli_query($db, "SELECT * FROM funds_form  ");
+                                        $pen = mysqli_query($db, "SELECT * FROM form_data where status='Pending'");
                                         echo mysqli_num_rows($pen);
                                         ?>
                                     </h1>
@@ -118,7 +92,7 @@ if (isset($_SESSION['username']) && $_SESSION['username'] == 'admin') {
                                 <div class="col mr-2">
                                     <h1 class="mb-3 fw-bolder text-light" style="font-size: 50px !important;">
                                         <?php
-                                        $rej = mysqli_query($db, "SELECT * FROM accepted_form where status='Rejected' ");
+                                        $rej = mysqli_query($db, "SELECT * FROM form_data where status='Rejected' ");
                                         echo mysqli_num_rows($rej);
                                         ?>
                                     </h1>
@@ -139,7 +113,7 @@ if (isset($_SESSION['username']) && $_SESSION['username'] == 'admin') {
                 </div>
             </div>
         </div>
-    <?php include 'assets/footer-dash.php';?>
+        <?php include 'assets/footer-dash.php'; ?>
     </body>
 <?php
 } else {

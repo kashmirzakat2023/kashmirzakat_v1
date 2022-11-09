@@ -13,7 +13,7 @@ $id = $_GET['id'];
 include 'assets/connection.php';
 $query1 = mysqli_query($db, "SELECT * FROM withdrawl_pending where wid = '$wid' and raiseid=$id ");
 $query2 = mysqli_query($db, "SELECT * FROM payments where raiseid= $id and status='Accepted'");
-$query3= mysqli_query($db, "SELECT * FROM accepted_form where id= $id");
+$query3= mysqli_query($db, "SELECT * FROM form_data where id= $id");
 $tamt=0;
 $email;
 
@@ -38,41 +38,6 @@ $query = mysqli_query($db, "SELECT * FROM withdrawl_request where wid = '$wid' "
             <?php
             include 'assets/admin-navbar-dash.php';
             ?>
-            <div class="l-navbar " id="nav-bar">
-                <nav class="nav" style="z-index: 100 !important;">
-                    <div>
-                        <a href="admin-dashboard.php?useremail=<?php echo $useremail; ?> " class="nav_logo">
-                            <i class='bx bx-layer nav_logo-icon'></i>
-                            <span class="nav_logo-name"><b>DASHBOARD</b></span> </a>
-                        <div class="nav_list">
-                            <a href="admin-dashboard.php?useremail=<?php echo $useremail; ?>" class="nav_link ">
-                                <i class='bx bx-grid-alt nav_icon'></i>
-                                <span class="nav_name">Dashboard</span> </a>
-                            <a href="admin-campaigns.php?useremail=<?php echo $useremail; ?>" class="nav_link " title="Causes" data-bs-toggle="tooltip" data-bs-placement="bottom">
-                                <i class='bx bxs-megaphone nav_icon '></i>
-                                <span class="nav_name">Causes</span> </a>
-                            <a href="admin-donations.php?useremail=<?php echo $useremail; ?>" class="nav_link " title="Donations" data-bs-toggle="tooltip" data-bs-placement="bottom">
-                                <i class='bx bx-money nav_icon'></i>
-                                <span class="nav_name">Donations</span> </a>
-                            <a href="users.php?useremail=<?php echo $useremail; ?>" class="nav_link" title="My Donations" data-bs-toggle="tooltip" data-bs-placement="bottom">
-                                <i class='bx bxs-user nav_icon'></i>
-                                <span class="nav_name">Users</span> </a>
-                            <a href="bank-pending.php?useremail=<?php echo $useremail; ?>" class="nav_link " title="Withdrawls" data-bs-toggle="tooltip" data-bs-placement="bottom">
-                                <i class='bx bx-time-five nav_icon'></i>
-                                <span class="nav_name">Bank Pending</span> </a>
-                            <a href="admin-withdrawls.php?useremail=<?php echo $useremail; ?>" class="nav_link active" title="Withdrawls" data-bs-toggle="tooltip" data-bs-placement="bottom">
-                                <i class='bx bx-money-withdraw nav_icon'></i>
-                                <span class="nav_name">Withdrawls</span> </a>
-                            <a href="dashboard-scholarship.php?useremail=<?php echo $useremail; ?>" class="nav_link" title="Scholaarship" data-bs-toggle="tooltip" data-bs-placement="bottom">
-                                <i class='bx bxs-graduation nav_icon'></i>
-                                <span class="nav_name">Scholarships</span> </a>
-                        </div>
-                    </div>
-                    <a href="logout.php" class="nav_link">
-                        <i class='bx bx-log-out nav_icon' title="Signout" data-bs-toggle="tooltip" data-bs-placement="bottom"></i>
-                        <span class="nav_name">SignOut</span> </a>
-                </nav>
-            </div>
             <!--Container Main start-->
             <div class="height-100 p-3">
 
@@ -91,12 +56,12 @@ $query = mysqli_query($db, "SELECT * FROM withdrawl_request where wid = '$wid' "
                             <input type="number" value="<?php echo $row1['amount']; ?>" class="form-control" name="amount" placeholder="Minimum amount ₹50 INR " aria-label="amount" aria-describedby="addon-wrapping" required>
                         </div>
                         <?php $raiseid = $row1['raiseid'];
-                        $result1 = mysqli_query($db, "SELECT * FROM accepted_form where id='$raiseid' and status='Accepted' ");
+                        $result1 = mysqli_query($db, "SELECT * FROM form_data where id='$raiseid' and status='Accepted' ");
                         while ($rows = mysqli_fetch_array($result1)) {
                         ?>
                             <label for="">Cause Title</label>
                             <div class="form-group mb-3 border border-1 p-2 rounded-1">
-                                <a href="raise-detail.php?cause=<?php echo $rows['cause_title']; ?>">
+                                <a href="raise-detail.php?campaign=<?php echo $rows['cause_title']; ?>">
                                     <img src="<?php echo "images/" . $rows['profile_pic']; ?>" width="40px" alt="" srcset=""> <?php echo $rows['cause_title']; ?>
                                     <i class="fas fa-external-link"></i>
                                 </a>
@@ -147,7 +112,7 @@ $query = mysqli_query($db, "SELECT * FROM withdrawl_request where wid = '$wid' "
             $sql = "INSERT INTO withdrawl_pending(
                 name,raiseid,samount,tran_date,bank_name,tran_id,others,status,wid, email ) values
                 ('$name','$raiseid','$amount','$tran_date','$bank_name','$tran_id','$optional','$status','$wid', '$email') ";
-            $sql2="update accepted_form set withdrawl_amount='$total_amount' where id='$id'";
+            $sql2="update form_data set withdrawl_amount='$total_amount' where id='$id'";
             if (mysqli_query($db, $sql) && mysqli_query($db,$sql2)) {
                 
                 $result = mysqli_query($db, "DELETE FROM withdrawl_request where wid= '$wid'");

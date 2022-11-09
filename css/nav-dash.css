@@ -20,7 +20,7 @@
 body {
   position: relative;
   margin: var(--header-height) 0 0 0;
-  padding: 0 1rem;
+  /* padding: 0 1rem; */
   font-family: var(--body-font);
   font-size: var(--normal-font-size);
   transition: 0.5s;
@@ -120,6 +120,8 @@ a {
 }
 
 .body-pd {
+  margin-right: 10px;
+  overflow-x: hidden;
   padding-left: calc(var(--nav-width) + 1rem);
 }
 
@@ -161,6 +163,6 @@ a {
   }
 
   .body-pd {
-    padding-left: calc(var(--nav-width) + 188px);
+    padding-left: calc(var(--nav-width) + 170px);
   }
 }

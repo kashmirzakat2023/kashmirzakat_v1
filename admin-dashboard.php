@@ -12,7 +12,7 @@ session_start(); ?>
 <?php
 include 'assets/connection.php';
 $useremail = $_SESSION['useremail'];
-$result = mysqli_query($db, "SELECT * FROM accepted_form  where status='Accepted'");
+$result = mysqli_query($db, "SELECT * FROM form_data  where status='Accepted'");
 $user = mysqli_query($db, "SELECT * FROM users ");
 $query = mysqli_query($db, "SELECT * FROM payments  where status='complete'");
 if (isset($_SESSION['username']) && $_SESSION['username'] == 'admin') {
@@ -22,47 +22,18 @@ if (isset($_SESSION['username']) && $_SESSION['username'] == 'admin') {
         <?php
         include 'assets/admin-navbar-dash.php';
         ?>
-        <div class="l-navbar " id="nav-bar">
-            <nav class="nav" style="z-index: 100 !important;">
-                <div>
-                    <a href="admin-dashboard.php?useremail=<?php echo $useremail; ?> " class="nav_logo">
-                        <i class='bx bx-layer nav_logo-icon'></i>
-                        <span class="nav_logo-name"><b>DASHBOARD</b></span> </a>
-                    <div class="nav_list">
-                        <a href="admin-dashboard.php?useremail=<?php echo $useremail; ?>" class="nav_link active ">
-                            <i class='bx bx-grid-alt nav_icon'></i>
-                            <span class="nav_name">Dashboard</span> </a>
-                        <a href="admin-campaigns.php?useremail=<?php echo $useremail; ?>" class="nav_link " title="Causes" data-bs-toggle="tooltip" data-bs-placement="bottom">
-                            <i class='bx bxs-megaphone nav_icon '></i>
-                            <span class="nav_name">Causes</span> </a>
-                        <a href="admin-donations.php?useremail=<?php echo $useremail; ?>" class="nav_link " title="Donations" data-bs-toggle="tooltip" data-bs-placement="bottom">
-                            <i class='bx bx-money nav_icon'></i>
-                            <span class="nav_name">Donations</span> </a>
-                        <a href="users.php?useremail=<?php echo $useremail; ?>" class="nav_link" title="My Donations" data-bs-toggle="tooltip" data-bs-placement="bottom">
-                            <i class='bx bxs-user nav_icon'></i>
-                            <span class="nav_name">Users</span> </a>
-                        <a href="bank-pending.php?useremail=<?php echo $useremail; ?>" class="nav_link " title="Withdrawls" data-bs-toggle="tooltip" data-bs-placement="bottom">
-                            <i class='bx bx-time-five nav_icon'></i>
-                            <span class="nav_name">Bank Pending</span> </a>
-                        <a href="admin-withdrawls.php?useremail=<?php echo $useremail; ?>" class="nav_link " title="Withdrawls" data-bs-toggle="tooltip" data-bs-placement="bottom">
-                            <i class='bx bx-money-withdraw nav_icon'></i>
-                            <span class="nav_name">Withdrawls</span> </a>
-                        <a href="dashboard-scholarship.php?useremail=<?php echo $useremail; ?>" class="nav_link" title="Scholaarship" data-bs-toggle="tooltip" data-bs-placement="bottom">
-                            <i class='bx bxs-graduation nav_icon'></i>
-                            <span class="nav_name">Scholarships</span> </a>
-                    </div>
-                </div>
-                <a href="logout.php" class="nav_link">
-                    <i class='bx bx-log-out nav_icon' title="Signout" data-bs-toggle="tooltip" data-bs-placement="bottom"></i>
-                    <span class="nav_name">SignOut</span> </a>
-            </nav>
-        </div>
+        <script>
+            window.onload = (event) => {
+                $('#nav-bar').attr('class', 'l-navbar show');
+                $('#body-pd').attr('class', 'body-pd');
+                $('#dashboard').addClass("nav_link active");
+            }
+        </script>
         <!--Container Main start-->
-        <div class="height-100 bg-light">
+        <div class="height-100">
             <h1> Dashboard</h1>
             <div class="row">
-
-                <div class="col-lg-4 col-md-6 col-12 mb-4">
+                <div class="col-lg-3 col-md-6 col-12 mb-4 ">
                     <div class="card bg-warning shadow h-100 " style="box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px !important;">
                         <div class="card-body ">
                             <div class="row no-gutters align-items-center">
@@ -76,7 +47,7 @@ if (isset($_SESSION['username']) && $_SESSION['username'] == 'admin') {
                                         Donations</div>
                                 </div>
                                 <div class="col-auto">
-                                    <i class='bx bx-donate-heart fs-5' style="color:rgba(0,0,0,0.5); font-size:100px !important;" ;></i>
+                                    <i class='bx bx-donate-heart  box_icon'></i>
                                 </div>
                             </div>
                         </div>
@@ -87,12 +58,12 @@ if (isset($_SESSION['username']) && $_SESSION['username'] == 'admin') {
                         </a>
                     </div>
                 </div>
-                <div class="col-lg-4 col-md-6 col-12 mb-4">
+                <div class="col-lg-3 col-md-6 col-12 mb-4">
                     <div class="card bg-success shadow h-100 " style="box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px !important;">
                         <div class="card-body ">
                             <div class="row no-gutters align-items-center">
                                 <div class="col mr-2">
-                                    <h1 class="mb-3 fw-bolder text-light" style="font-size: 40px !important;">₹
+                                    <h1 class="mb-3 fw-bolder text-light" style="font-size: 30px !important;">₹
                                         <?php
                                         $donations = 0;
                                         while ($row = mysqli_fetch_array($query))
@@ -104,22 +75,21 @@ if (isset($_SESSION['username']) && $_SESSION['username'] == 'admin') {
                                         Funds Raised</div>
                                 </div>
                                 <div class="col-auto">
-                                    <i class='fas fa-rupee-sign fs-5' style="color:rgba(0,0,0,0.5); font-size:100px !important;" ;></i>
+                                    <i class='fas fa-rupee-sign  box_icon'></i>
                                 </div>
                             </div>
                         </div>
                         <div class=" text-light text-center p-1 mb-0 " style="background-color: rgba(0,0,0,0.3);">
                             <small>Funds Raised</small>
-                            <!-- <a href="#"><i class="fas fa-arrow-circle-right text-light"></i></a> -->
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-4 col-md-6 col-12 mb-4">
+                <div class="col-lg-3 col-md-6 col-12 mb-4">
                     <div class="card bg-danger shadow h-100 " style="box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px !important;">
                         <div class="card-body ">
                             <div class="row no-gutters align-items-center">
                                 <div class="col mr-2">
-                                    <h1 class="mb-3 fw-bolder text-light" style="font-size: 40px !important;">
+                                    <h1 class="mb-3 fw-bolder text-light" style="font-size: 30px !important;">
                                         <?php
 
                                         echo mysqli_num_rows($result);
@@ -129,50 +99,27 @@ if (isset($_SESSION['username']) && $_SESSION['username'] == 'admin') {
                                         Causes</div>
                                 </div>
                                 <div class="col-auto">
-                                    <i class='bx bxs-megaphone fs-5' style="color:rgba(0,0,0,0.5); font-size:100px !important;" ;></i>
+                                    <i class='bx bxs-megaphone '></i>
                                 </div>
                             </div>
                         </div>
                         <a href="admin-campaigns.php?useremail=<?php echo $useremail; ?>">
-                            <div class=" text-light text-center p-1 mb-0 " style="background-color: rgba(0,0,0,0.3);">
+                            <div class="text-light text-center p-1 mb-0 " style="background-color: rgba(0,0,0,0.3);">
                                 <small>view....</small><i class="fas fa-arrow-circle-right text-light"></i>
                             </div>
                         </a>
                     </div>
                 </div>
-            </div>
-            <!--Container Main end-->
-            <div class="row row-cols-1 row-cols-lg-2">
-                
-            <?php
-            $sql = "SELECT * FROM payments where status='complete'";
-            $result = mysqli_query($db, $sql);
-            $chart_data = "";
-            while ($row = mysqli_fetch_array($result)) {
-
-                $productname = $row['name'];
-                $month[]  = date_format(date_create($row['date']), "M d,Y");
-                $sales[] = $row['amount'];
-            }
-            if (mysqli_num_rows($result) > 0) {
-            ?>
-            
-                <div class="col-12 col-lg-6 col-md-6">
-                    <h3 class="page-header py-2">Donations </h3>
-                    <canvas id="chartjs_line"></canvas>
-                </div>
-
-            <?php
-            } ?>
-            <div class="col-lg-4 col-md-6 col-12 mb-4 mx-5 float-end">
-                    <div class="card bg-info shadow h-50 " style="box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px !important;">
+                <div class="col-lg-3 col-md-6 col-12 mb-4">
+                    <div class="card bg-info shadow h-100 " style="box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px !important;">
                         <div class="card-body ">
                             <div class="row no-gutters align-items-center">
                                 <div class="col mr-2">
-                                    <h1 class="mb-3 fw-bolder text-light" style="font-size: 40px !important;">₹
+                                    <h1 class="mb-3 fw-bolder text-light" style="font-size: 30px !important;">₹
                                         <?php
                                         $query = mysqli_query($db, "SELECT * FROM payments  where status='complete'");
                                         $donations = 0;
+                                        $tip = 0;
                                         while ($row = mysqli_fetch_array($query))
                                             $tip += $row['tip'];
                                         echo $tip;
@@ -182,19 +129,43 @@ if (isset($_SESSION['username']) && $_SESSION['username'] == 'admin') {
                                         Tips Raised</div>
                                 </div>
                                 <div class="col-auto">
-                                    <i class='fas fa-rupee-sign fs-5' style="color:rgba(0,0,0,0.5); font-size:100px !important;" ;></i>
+                                    <i class='bx bx-money box_icon'></i>
                                 </div>
                             </div>
                         </div>
-                        <div class=" text-light text-center p-1" style="background-color: rgba(0,0,0,0.3); margin-top: -20px;">
+                        <div class=" text-light text-center p-1 mb-0 " style="background-color: rgba(0,0,0,0.3);">
                             <small>Tips Raised</small>
-                            <!-- <a href="#"><i class="fas fa-arrow-circle-right text-light"></i></a> -->
                         </div>
                     </div>
                 </div>
             </div>
+            <!--Container Main end-->
+            <div class="row row-cols-1 row-cols-lg-2">
+
+                <?php
+                $sql = "SELECT * FROM payments where status='complete'";
+                $result = mysqli_query($db, $sql);
+                $chart_data = "";
+                while ($row = mysqli_fetch_array($result)) {
+
+                    $productname = $row['name'];
+                    $month[]  = date_format(date_create($row['date']), "M d,Y");
+                    $sales[] = $row['amount'];
+                }
+                if (mysqli_num_rows($result) > 0) {
+                ?>
+
+                    <div class="col-12 col-lg-6 col-md-6">
+                        <h3 class="page-header py-2">Donations </h3>
+                        <canvas id="chartjs_line"></canvas>
+                    </div>
+
+                <?php
+                } ?>
+            </div>
             <?php
-            include 'assets/footer-dash.php'; ?>
+            include 'assets/footer-dash.php';
+            ?>
     </body>
 
 </html>
@@ -247,3 +218,13 @@ if (isset($_SESSION['username']) && $_SESSION['username'] == 'admin') {
 <?php
 }
 ?>
+<style>
+    .col-auto i {
+        font-size: 50px;
+        color: rgba(0, 0, 0, 0.5)
+    }
+
+    .card-body {
+        padding: 5px 10px;
+    }
+</style>
