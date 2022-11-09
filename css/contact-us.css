@@ -1,0 +1,16 @@
+.contact-form label{
+    font-weight:600;
+
+}
+
+.contact-info{
+    height: 100%;
+    justify-content: center;
+    background-color: #a7aafc;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.contact-left {
+    /*background-color:  #C9CBFE!important;*/
+}

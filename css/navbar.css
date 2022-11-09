@@ -1,0 +1,120 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300&display=swap');
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: 'Inter', sans-serif;
+}
+body {
+}
+.btn-primary, .nav-pills .nav-link.active, .nav-pills .show > .nav-link {
+    background-color: #4247C9 !important;
+}
+
+.input:focus {
+    outline: none !important;
+    border:1px solid #4247C9 !important;
+    box-shadow: 0 0 10px #000 !important;
+  }
+  
+.main-nav .nav-item {
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+}
+
+.main-nav .nav-item a {
+  color: rgb(0, 0, 0) !important;
+  float: left;
+  padding: 5px 15px !important;
+  font-weight: 600;
+}
+
+.main-nav .nav-item a:hover {
+  background-color: #4247C9;
+  border-radius: 5px;
+  color: white !important;
+}
+
+.main-nav .dropdown:hover .dropdown-menu {
+  display: block;
+}
+.main-nav .dropdown-menu {
+  margin-top: 35px;
+  z-index: 100;
+  background-color: #fff !important;
+  width: max-content;
+  border: none;
+}
+
+.main-nav .dropdown-menu a:hover {
+  border: none;
+  background-color: #4247C9;
+}
+
+.main-nav .raise-btn :hover,
+.main-nav .nav-item .raise-btn :hover {
+  background-color: #4247C9;
+  box-shadow: 0px 0px 3px #4247C9, 0px 0px 3px #4247C9;
+  border: 1px solid #4247C9;
+  transition: 0.4s !important;
+}
+
+.main-nav .nav-item .raise-btn {
+    border-color: #a7aafc;
+    background-color: #a7aafc;
+}
+
+.fontawesome .fas {
+  width: 100% !important;
+  font-size: 150px;
+  text-align: center;
+  background-color: rgb(108, 109, 108);
+  padding: 20px 10px;
+  color: white;
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
+}
+
+@media (min-width: 993px) {
+    body {
+        overflow-x: hidden;
+    }
+  .main-nav .dropdown-menu {
+    margin-left: -30px !important;
+  }
+  .main-nav .nav-item {
+    padding-right: 10px;
+  }
+.main-nav .navbar-brand img {
+  /*width: 200px !important;*/
+  height: 45px;
+}
+
+}
+
+
+.main-nav .navbar-brand img {
+  /*width: 200px !important;*/
+  height: 35px;
+}
+
+
+nav{
+    margin-top:0px !important;
+    margin-bottom:0px !important;
+}
+
+nav .bg-light,.navbar-light{
+  padding-top: 3px !important;
+  padding-bottom: 3px !important;
+    background-color: #fffefe !important;
+    box-shadow: 0 1px 3px 0 rgb(0 0 0 / 15%);
+    /*border-bottom:1px solid grey;*/
+}
+
+footer .row {
+    margin-right: 0 !important;
+    margin-left: 0 !important;
+}
+

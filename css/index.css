@@ -1,0 +1,136 @@
+@import url("https://fonts.googleapis.com/css2?family=Inconsolata:wght@700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital@1&display=swap");
+body {
+  overflow-x: hidden !important;
+  transition: 0.5s;
+  top: 0px !important;
+  box-sizing: border-box;
+            padding: 0;
+            margin: 0;
+}
+
+.goog-te-banner-frame.skiptranslate {
+  display: none !important;
+}
+
+.goog-te-banner-frame{
+  display: none !important;
+}
+
+#btn-back-to-top {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        z-index: 100;
+    }
+
+
+#google_translate_element select{
+
+ background-color:rgb(255, 255, 255);
+
+ color:#000;
+
+ border: 1px solid;
+
+ border-radius:3px;
+
+ padding:6px 8px
+
+ }
+
+.img-back {
+  /* margin-top: -60px; */
+  padding: 160px 15px;
+  max-width: 100%;
+  height: 100vh;
+  background-origin: padding-box;
+  background: url(../images/helping-hands.jpg);
+  background-size: cover;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-position: center;
+  box-shadow: inset 0 0 0 2000px #1c1c1c25;
+}
+
+@media (max-width: 600px) {
+  .container {
+    padding: 100px 15px;
+  }
+  .goog-te-banner-frame.skiptranslate {
+  display: none !important;
+}
+
+.car-img {
+    height:30vh !important;
+}
+
+.goog-te-banner-frame{
+  display: none !important;
+}
+}
+@media (min-width: 768px) {
+  .card h1 {
+    font-weight: 500;
+    padding-bottom: 10px;
+    font-size: 50px;
+  }
+}
+
+center h1 {
+  padding: 20px 0;
+}
+
+.card-group-1 .card-title,
+.card-group-1 .card-text {
+  color: white;
+  font-family: Libre Baskerville;
+}
+
+.card-group-1 {
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.btn-outline-success {
+  transition: 0.5s !important;
+}
+
+.fa-arrow-right {
+  background-color: rgb(255, 255, 255) !important;
+  color: blue !important;
+}
+
+.fa-arrow-right:hover {
+  background-color: rgb(241, 246, 250) !important;
+  color: rgb(24, 24, 185) !important;
+}
+
+.next-logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: auto;
+  padding-bottom: auto;
+}
+
+.next-logo .card {
+  border: none !important;
+}
+
+.wrapper {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  max-width: 430px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/*.nav-tabs-items .nav-links a{*/
+/*  color: black !important; */
+/*  padding: 10px 30px ;*/
+/*}*/
+/*@media (max-width:700px){*/
+/*    .nav-tabs-items a{*/
+/*        padding:5px 0 ;*/
+/*    }*/
+/*}*/
