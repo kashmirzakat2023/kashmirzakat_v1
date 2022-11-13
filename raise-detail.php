@@ -371,7 +371,7 @@ include 'assets/connection.php';
                         <?php
                         }
                         ?>
-                        <div class=" mb-3 d-flex justify-content-between flex-row">
+                        <div class=" mb-0 d-flex justify-content-between flex-row">
 
                             <?php
                             $query3 = mysqli_query($db, "select * from `like` where raiseid='" . $_SESSION['id'] . "'");
@@ -448,9 +448,9 @@ include 'assets/connection.php';
                             <p class="card-text mt-2"> Raised by <b><?php echo mysqli_num_rows($result1); ?></b> donors</p>
                         </div>
                         </div>
-                        <div class=" d-flex justify-content-between mx-4 mt-2 mb-3">
-                            <p class="px-2 rounded-1 card-text" style="color: red;"><small> <?php echo $data['purpose']; ?></small> <i class="fas fa-tag"></i></p>
-                            <p class="px-2 rounded-1 card-text">
+                        <div class=" d-flex justify-content-between mx-4 mt-2 mb-1">
+                            <p class="rounded-1 card-text" style="color: red;"><small> <?php echo $data['purpose']; ?></small> <i class="fas fa-tag"></i></p>
+                            <p class="rounded-1 card-text">
                                 <?php
                                 if ($data['eligible'] == "Yes") {
 

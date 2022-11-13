@@ -38,11 +38,6 @@
     color: var(--bg_dark_blue);
 }
 
-@media (max-width:900px) {
-    .w-sm-100 {
-        width: 90% !important;
-    }
-}
 
 .bg-aubergine {
     padding: 10px;
@@ -121,3 +116,14 @@
     box-shadow: 140px -140px rgb(8, 126, 8);
     z-index: -1;
 }
+    @media (max-width:900px) {
+        .w-sm-100 {
+            width: 90% !important;
+        }
+    
+        .main_carousel img {
+            height: 30vh !important;
+            width: 100% !important;
+        }
+        
+    }
