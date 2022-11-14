@@ -37,7 +37,7 @@ include 'assets/nav-links.php'; ?>
                         <form method="post" action="payment.php?id=<?php echo $id; ?>">
                             <label class="control-label form-floating " for="fname">Donation Type</label>
                             <select class="form-select mb-3" aria-label="Default select example" id="select" name="type" required>
-                                <option value="" selected>Select</option>
+                                <option value="none" selected>Select</option>
                                 <option value="Zakat">Zakat</option>
                                 <option value="Sadqua">Sadqua</option>
                                 <option value="Fitra">Fitra</option>
@@ -63,7 +63,7 @@ include 'assets/nav-links.php'; ?>
                                     <div class="form-group mb-3 col-6">
                                         <label class="control-label form-floating " for="select1">Support us by adding a tip of :</label>
                                         <select class="form-select mb-1" aria-label="Default select example" id="select1" name="tip" required>
-                                            <option value="">Select one</option>
+                                            <option value="0">Select one</option>
                                             <option value="2">2% </option>
                                             <option value="5">5% </option>
                                             <option value="8">8% </option>
@@ -825,72 +825,82 @@ include 'assets/nav-links.php'; ?>
 <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
 <script>
     $('body').on('click', '#upi', function(e) {
-        var tip;
-        var amt = parseInt(document.getElementById('amount').value);
-        var selectedval = parseInt($("select#select1").children("option:selected").val());
-        if (selectedval == '2' || selectedval == '5' || selectedval == '8' || selectedval == '12' || selectedval == '15' || selectedval == '20') {
-            tip = (selectedval * amt / 100);
-        } else
+        let tip = 0;
+        let amt = parseInt(document.getElementById('amount').value);
+        let selectedval = parseInt($("select#select1").children("option:selected").val());
+        if (selectedval == 2 || selectedval == 5 || selectedval == 8 || selectedval == 12 || selectedval == 15 || selectedval == 20)
+            tip = parseInt(selectedval * amt / 100);
+        else if (selectedval == 0)
+            tip = 0;
+        else
             tip = parseInt($('#camount').val());
-        var totalAmount = amt + tip;
-        var select = document.getElementById('select').value;
-        var fname = document.getElementById('fname').value;
-        var email = document.getElementById('email').value;
-        var phone = document.getElementById('phone').value;
-        var city = document.getElementById('city').value;
-        var country = document.getElementById('country').value;
-        var comment = document.getElementById('comment').value;
-        var checkebox = document.getElementById('checked');
-        var checked = '';
+        let totalAmount = 0;
+        if (tip > 0)
+            totalAmount = amt + tip
+        else
+            totalAmount = amt
+        let select = document.getElementById('select').value;
+        let fname = document.getElementById('fname').value;
+        let email = document.getElementById('email').value;
+        let phone = document.getElementById('phone').value;
+        let city = document.getElementById('city').value;
+        let country = document.getElementById('country').value;
+        let comment = document.getElementById('comment').value;
+        let checkebox = document.getElementById('checked');
+        let checked = '';
         if (checkebox.checked) {
-            var checked = 'yes';
+            checked = 'yes';
         } else {
-            var checked = 'no';
+            checked = 'no';
         }
-        if (amt != '' || fname != '' || email != '') {
-            jQuery.ajax({
-                type: 'POST',
-                url: 'razor-pay.php',
-                data: "totalAmount=" + amt +
-                    "&select=" + select +
-                    "&fname=" + fname +
-                    "&email=" + email +
-                    "&phone=" + phone +
-                    "&city=" + city +
-                    "&country=" + country +
-                    "&comment=" + comment +
-                    "&checked=" + checked +
-                    "&tip=" + tip,
+        if (amt >= 50) {
+            if (select != 'none') {
 
-                success: function(result) {
-                    var options = {
-                        "key": "rzp_test_jd35wgSgoguq1g", // secret key id
-                        "amount": (totalAmount * 100), // 2000 paise = INR 20
-                        "name": "Kashmirzakat",
-                        "description": "Payment",
-                        "image": "images/logo.jpeg",
-                        "prefill ": {
-                            "name": fname,
-                            "email": email,
-                            "contact": phone
-                        },
-                        "handler": function(response) {
-                            $.ajax({
-                                type: 'POST',
-                                url: "razor-pay.php",
-                                data: "payment_id=" + response.razorpay_payment_id,
-                                success: function(msg) {
-                                    window.location.href = 'payment-successful.php';
-                                }
-                            });
-                        }
-                    };
-                    var rzp1 = new Razorpay(options);
-                    rzp1.open();
-                }
-            });
+                jQuery.ajax({
+                    type: 'POST',
+                    url: 'razor-pay.php',
+                    data: "totalAmount=" + amt +
+                        "&select=" + select +
+                        "&fname=" + fname +
+                        "&email=" + email +
+                        "&phone=" + phone +
+                        "&city=" + city +
+                        "&country=" + country +
+                        "&comment=" + comment +
+                        "&checked=" + checked +
+                        "&tip=" + tip,
+
+                    success: function(result) {
+                        let options = {
+                            "key": "rzp_test_jd35wgSgoguq1g", // secret key id
+                            "amount": (totalAmount * 100), // 2000 paise = INR 20
+                            "name": "Kashmirzakat",
+                            "description": "Payment",
+                            "image": "images/logo.jpeg",
+                            "prefill ": {
+                                "name": fname,
+                                "email": email,
+                                "contact": phone
+                            },
+                            "handler": function(response) {
+                                $.ajax({
+                                    type: 'POST',
+                                    url: "razor-pay.php",
+                                    data: "payment_id=" + response.razorpay_payment_id,
+                                    success: function(msg) {
+                                        window.location.href = 'payment-successful.php';
+                                    }
+                                });
+                            }
+                        };
+                        let rzp1 = new Razorpay(options);
+                        rzp1.open();
+                    }
+                });
+            } else
+                alert('Please select donation type')
         } else {
-            alert('Please fill all required Fields')
+            alert('Amount must be greater than 50')
         }
     });
 </script>
