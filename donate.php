@@ -783,7 +783,7 @@ include 'assets/nav-links.php'; ?>
                         <div class="card-body text-center">
                             <h5 class="card-title"><?php echo $user1['name']; ?>
                                 <a href="mailto:<?php echo $user1['email']; ?>">
-                                    <i class="fas fa-envelope text-danger cursor"></i>
+                                    <i class="fas fa-envelope text-info cursor"></i>
                                 </a>
                             </h5>
                             <p class="card-text">Created: <?php echo $data['date']; ?></p>
