@@ -847,50 +847,50 @@ include 'assets/nav-links.php'; ?>
         } else {
             var checked = 'no';
         }
-        // if(amt != '' || fname != '' || email != '' ){
-        jQuery.ajax({
-            type: 'POST',
-            url: 'razor-pay.php',
-            data: "totalAmount=" + amt +
-                "&select=" + select +
-                "&fname=" + fname +
-                "&email=" + email +
-                "&phone=" + phone +
-                "&city=" + city +
-                "&country=" + country +
-                "&comment=" + comment +
-                "&checked=" + checked +
-                "&tip=" + tip,
+        if (amt != '' || fname != '' || email != '') {
+            jQuery.ajax({
+                type: 'POST',
+                url: 'razor-pay.php',
+                data: "totalAmount=" + amt +
+                    "&select=" + select +
+                    "&fname=" + fname +
+                    "&email=" + email +
+                    "&phone=" + phone +
+                    "&city=" + city +
+                    "&country=" + country +
+                    "&comment=" + comment +
+                    "&checked=" + checked +
+                    "&tip=" + tip,
 
-            success: function(result) {
-                var options = {
-                    "key": "rzp_test_jd35wgSgoguq1g", // secret key id
-                    "amount": (totalAmount * 100), // 2000 paise = INR 20
-                    "name": "Kashmirzakat",
-                    "description": "Payment",
-                    "image": "images/logo.jpeg",
-                    "prefill ": {
-                        "name": fname,
-                        "email": email,
-                        "contact": phone
-                    },
-                    "handler": function(response) {
-                        $.ajax({
-                            type: 'POST',
-                            url: "razor-pay.php",
-                            data: "payment_id=" + response.razorpay_payment_id,
-                            success: function(msg) {
-                                window.location.href = 'payment-successful.php';
-                            }
-                        });
-                    }
-                };
-                var rzp1 = new Razorpay(options);
-                rzp1.open();
-            }
-        });
-        // } else {
-        //     alert('Please fill all required Fields')
-        // }
+                success: function(result) {
+                    var options = {
+                        "key": "rzp_test_jd35wgSgoguq1g", // secret key id
+                        "amount": (totalAmount * 100), // 2000 paise = INR 20
+                        "name": "Kashmirzakat",
+                        "description": "Payment",
+                        "image": "images/logo.jpeg",
+                        "prefill ": {
+                            "name": fname,
+                            "email": email,
+                            "contact": phone
+                        },
+                        "handler": function(response) {
+                            $.ajax({
+                                type: 'POST',
+                                url: "razor-pay.php",
+                                data: "payment_id=" + response.razorpay_payment_id,
+                                success: function(msg) {
+                                    window.location.href = 'payment-successful.php';
+                                }
+                            });
+                        }
+                    };
+                    var rzp1 = new Razorpay(options);
+                    rzp1.open();
+                }
+            });
+        } else {
+            alert('Please fill all required Fields')
+        }
     });
 </script>
