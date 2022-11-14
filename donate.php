@@ -57,8 +57,8 @@ include 'assets/nav-links.php'; ?>
                                 To facilitate website please select any tip
                             </div>
                             <div class="bg-success py-2 px-3 mb-4 mt-4 rounded-2 text-light">
-                                <p class=" fw-bold p-1">By supporting kashmirzakat, you are helping us reach out to more campaigns like this and scale our impact. 
-                                We'll use a portion of your tip to promote campaigns, manage logistics and also donate to various causes. </p>
+                                <p class=" fw-bold p-1">By supporting kashmirzakat, you are helping us reach out to more campaigns like this and scale our impact.
+                                    We'll use a portion of your tip to promote campaigns, manage logistics and also donate to various causes. </p>
                                 <div class="row ">
                                     <div class="form-group mb-3 col-6">
                                         <label class="control-label form-floating " for="select1">Support us by adding a tip of :</label>
@@ -86,55 +86,54 @@ include 'assets/nav-links.php'; ?>
                                 </div>
                             </div>
                             <script>
-                               $(document).ready(function() {
-                                     $("#amount").keyup(function() {
+                                $(document).ready(function() {
+                                    $("#amount").keyup(function() {
                                         var amt = parseInt(document.getElementById('amount').value);
                                         var selectedval = $("select#select1").children("option:selected").val();
-                                        if(selectedval == 'other'){
-                                            if(camt >=0)
+                                        if (selectedval == 'other') {
+                                            if (camt >= 0)
                                                 camt = parseInt($('#camount').val());
-                                            else{
+                                            else {
                                                 camt = 0;
-                                                }   
-                                            tamt=amt+camt;
+                                            }
+                                            tamt = amt + camt;
                                             document.getElementById('tamount').value = tamt;
-                                        }
-                                        else{
-                                            var tip = (selectedval *amt / 100);
+                                        } else {
+                                            var tip = (selectedval * amt / 100);
                                             var tamt = tip + amt;
                                             document.getElementById('tamount').value = tamt;
                                         }
                                     });
-                                    
+
                                     $("select#select1").change(function() {
                                         var selectedval = parseInt($(this).children("option:selected").val());
                                         var amt = parseInt(document.getElementById('amount').value);
-                                        var tip = (selectedval *amt / 100);
+                                        var tip = (selectedval * amt / 100);
                                         var tamt = tip + amt;
                                         document.getElementById('tamount').value = tamt;
                                     });
-                                    
+
                                     $(".custom-tip").keyup(function() {
-                                        if(camt >=0)
+                                        if (camt >= 0)
                                             camt = parseInt($('#camount').val());
                                         else
                                             camt = 0;
                                         var amt = parseInt(document.getElementById('amount').value);
-                                        tamt=amt+camt;
+                                        tamt = amt + camt;
                                         document.getElementById('tamount').value = tamt;
                                     });
-                                    
+
                                     $("select#select1").change(function() {
-                                         var selectedval = ($(this).children("option:selected").val());
-                                        if(selectedval == 'other'){
+                                        var selectedval = ($(this).children("option:selected").val());
+                                        if (selectedval == 'other') {
                                             $(".custom-tip").show();
                                             var amt = parseInt(document.getElementById('amount').value);
                                             camt = parseInt($('#camount').val());
-                                            tamt=amt+camt;
+                                            tamt = amt + camt;
                                             document.getElementById('tamount').value = tamt;
                                         }
-                                        if(selectedval == '2' || selectedval == '5' || selectedval == '8' || selectedval == '12' || selectedval == '15' || selectedval == '20') $(".custom-tip").hide();
-                                        
+                                        if (selectedval == '2' || selectedval == '5' || selectedval == '8' || selectedval == '12' || selectedval == '15' || selectedval == '20') $(".custom-tip").hide();
+
                                     });
                                 });
                             </script>
@@ -822,19 +821,18 @@ include 'assets/nav-links.php'; ?>
             document.getElementById('amt').style.display = "none";
         }
     }
-
 </script>
 <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
 <script>
     $('body').on('click', '#upi', function(e) {
         var tip;
         var amt = parseInt(document.getElementById('amount').value);
-            var selectedval = parseInt($("select#select1").children("option:selected").val());
-        if(selectedval == '2' || selectedval == '5' || selectedval == '8' || selectedval == '12' || selectedval == '15' || selectedval == '20'){
-            tip = (selectedval *amt / 100);
+        var selectedval = parseInt($("select#select1").children("option:selected").val());
+        if (selectedval == '2' || selectedval == '5' || selectedval == '8' || selectedval == '12' || selectedval == '15' || selectedval == '20') {
+            tip = (selectedval * amt / 100);
         } else
             tip = parseInt($('#camount').val());
-        var totalAmount = amt+tip;
+        var totalAmount = amt + tip;
         var select = document.getElementById('select').value;
         var fname = document.getElementById('fname').value;
         var email = document.getElementById('email').value;
@@ -850,47 +848,47 @@ include 'assets/nav-links.php'; ?>
             var checked = 'no';
         }
         // if(amt != '' || fname != '' || email != '' ){
-            jQuery.ajax({
-                type: 'POST',
-                url: 'razor-pay.php',
-                data: "totalAmount=" + amt +
-                    "&select=" + select +
-                    "&fname=" + fname +
-                    "&email=" + email +
-                    "&phone=" + phone +
-                    "&city=" + city +
-                    "&country=" + country +
-                    "&comment=" + comment +
-                    "&checked=" + checked+
-                    "&tip=" + tip,
-    
-                success: function(result) {
-                    var options = {
-                        "key": "rzp_test_jd35wgSgoguq1g", // secret key id
-                        "amount": (totalAmount * 100), // 2000 paise = INR 20
-                        "name": "Kashmirzakat",
-                        "description": "Payment",
-                        "image": "images/logo.jpeg",
-                        "prefill ": {
-                            "name": fname,
-                            "email": email,
-                            "contact": phone
-                        },
-                        "handler": function(response) {
-                            $.ajax({
-                                type: 'POST',
-                                url: "razor-pay.php",
-                                data: "payment_id=" + response.razorpay_payment_id,
-                                success: function(msg) {
-                                    window.location.href = 'payment-successful.php';
-                                }
-                            });
-                        }
-                    };
-                    var rzp1 = new Razorpay(options);
-                    rzp1.open();
-                }
-            });
+        jQuery.ajax({
+            type: 'POST',
+            url: 'razor-pay.php',
+            data: "totalAmount=" + amt +
+                "&select=" + select +
+                "&fname=" + fname +
+                "&email=" + email +
+                "&phone=" + phone +
+                "&city=" + city +
+                "&country=" + country +
+                "&comment=" + comment +
+                "&checked=" + checked +
+                "&tip=" + tip,
+
+            success: function(result) {
+                var options = {
+                    "key": "rzp_test_jd35wgSgoguq1g", // secret key id
+                    "amount": (totalAmount * 100), // 2000 paise = INR 20
+                    "name": "Kashmirzakat",
+                    "description": "Payment",
+                    "image": "images/logo.jpeg",
+                    "prefill ": {
+                        "name": fname,
+                        "email": email,
+                        "contact": phone
+                    },
+                    "handler": function(response) {
+                        $.ajax({
+                            type: 'POST',
+                            url: "razor-pay.php",
+                            data: "payment_id=" + response.razorpay_payment_id,
+                            success: function(msg) {
+                                window.location.href = 'payment-successful.php';
+                            }
+                        });
+                    }
+                };
+                var rzp1 = new Razorpay(options);
+                rzp1.open();
+            }
+        });
         // } else {
         //     alert('Please fill all required Fields')
         // }
