@@ -1,6 +1,11 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat&display=swap");
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300&display=swap');
 
+:root {
+  --bg_dark_blue: #4247C9;
+  --bg_light_blue: #a7aafc;
+}
+
 * {
   padding: 0;
   margin: 0;
@@ -8,10 +13,28 @@
   font-family: 'Inter', sans-serif;
 }
 
-:root {
-  --bg_dark_blue: #4247C9;
-  --bg_light_blue: #a7aafc;
+body {
+  box-sizing: border-box !important;
+  padding: 0 !important;
 }
+
+/* scrollbar css */
+/* *::-webkit-scrollbar-track {
+  z-index: -1;
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  background-color: #fcfcfc;
+}
+
+*::-webkit-scrollbar {
+  width: 15px;
+  background-color: #fcfcfc;
+}
+
+*::-webkit-scrollbar-thumb {
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, .3);
+  background-color: #a4a0a0; 
+}
+  */
 
 .btn-primary,
 .nav-pills .nav-link.active,
@@ -19,13 +42,17 @@
   background-color: var(--bg_dark_blue) !important;
 }
 
-input[type="checkbox"]:checked, input[type="radio"]:checked {
+input[type="checkbox"]:checked,
+input[type="radio"]:checked {
   background-color: var(--bg_dark_blue) !important;
 }
 
-input:focus, select:focus, option, textarea:focus {
-  outline:  none !important;
-  box-shadow: 0 0 0.5px 3px var(--bg_light_blue)  !important;
+input:focus,
+select:focus,
+option,
+textarea:focus {
+  outline: none !important;
+  box-shadow: 0 0 0.5px 3px var(--bg_light_blue) !important;
 }
 
 
@@ -125,7 +152,7 @@ nav .bg-light,
   padding-top: 3px !important;
   padding-bottom: 3px !important;
   background-color: #fffefe !important;
-  box-shadow: 0 1px 3px 0 rgb(0 0 0 / 15%);
+  box-shadow: 0px 0px 5px var(--bg_light_blue), 0px 0px 5px var(--bg_light_blue);
   /*border-bottom:1px solid grey;*/
 }
 
