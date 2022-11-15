@@ -19,7 +19,7 @@ if (isset($_SESSION['username']) ) {
         ?>
         <script>
             window.onload = (event) => {
-                $('#nav-bar').attr('class', 'l-navbar show');
+                // $('#nav-bar').attr('class', 'l-navbar show');
                 $('#body-pd').attr('class', 'body-pd');
                 $('#withdrawls').addClass("nav_link active");
             }

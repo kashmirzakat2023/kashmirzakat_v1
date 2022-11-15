@@ -21,7 +21,7 @@ if (isset($_SESSION['username'])) {
         <script>
             window.onload = (event) => {
                 $('#campaign').addClass("nav_link active");
-                $('#nav-bar').attr('class', 'l-navbar show');
+                // $('#nav-bar').attr('class', 'l-navbar show');
                 $('#body-pd').attr('class', 'body-pd');
             }
         </script>

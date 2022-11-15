@@ -34,7 +34,7 @@
         </a>
     </div>
 </header>
-<div class="l-navbar " id="nav-bar">
+<div class="l-navbar show" id="nav-bar">
     <nav class="nav" style="z-index: 100 !important;">
         <div>
             <a href="admin-dashboard.php?useremail=<?php echo $useremail; ?> " class="nav_logo">

@@ -36,6 +36,6 @@ document.addEventListener("DOMContentLoaded", function (event) {
 });
 
 // window.onload = function(){
-//     $('#nav-bar').attr('class', 'l-navbar show');
+//     // $('#nav-bar').attr('class', 'l-navbar show');
 //     $('#body-pd').attr('class', 'body-pd');
 //     }
