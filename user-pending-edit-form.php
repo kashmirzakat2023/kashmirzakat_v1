@@ -7,7 +7,7 @@
     <?php
     $id = $_GET['id'];
     include 'assets/connection.php';
-    $result = mysqli_query($db, " SELECT * FROM form_data where id = '$id' and status = 'Accepted' ");
+    $result = mysqli_query($db, " SELECT * FROM form_data where id = '$id' and status = 'Pending' ");
     ?>
 </head>
 

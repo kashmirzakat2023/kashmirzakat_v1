@@ -40,6 +40,7 @@ if (isset($_SESSION['useremail'])) {
                             <th scope="col">Status</th>
                             <th scope="col">Date</th>
                             <th scope="col">Deadline</th>
+                            <th scope="col">View</th>
                             <th scope="col">Actions</th>
                         </tr>
                     </thead>
@@ -78,6 +79,9 @@ if (isset($_SESSION['useremail'])) {
                                 $date = date_create($row['date']);
                                 date_add($date, date_interval_create_from_date_string("30 days"));
                                 echo date_format($date, "d M,Y"); ?>
+                            </td>
+                            <td>
+                                <a class="btn btn-success" href="raise-detail.php?campaign=<?php echo $row['id']; ?>" style="padding: 3px 7px !important;">View</a>
                             </td>
                             <td>
                                 <a class="btn btn-primary" href="withdrawl-request.php?id=<?php echo $row['id']; ?>" style="padding: 3px 7px !important;">Make Withdrawl</a>
