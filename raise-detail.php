@@ -2,11 +2,34 @@
 include 'assets/nav-links.php'; ?>
 <html prefix="og: https://ogp.me/ns#">
 
-<link rel="stylesheet" href="css/success.css">
-<?php
-$id = $_GET['campaign'];
-include 'assets/connection.php';
-?>
+<head>
+    <?php
+    $id = $_GET['campaign'];
+    include 'assets/connection.php';
+    $result = mysqli_query($db, " SELECT * FROM form_data where id = '$id' and status='Accepted'");
+    while ($data = mysqli_fetch_array($result)) {
+    ?>
+
+        <link rel="stylesheet" href="css/success.css">
+        <meta property="og:site_name" content="Kashmir Zakat">
+        <meta property="og:title" content="<?php echo $data['cause_title']; ?>">
+        <meta property="og:description" content="<?php echo $data['cause_summary']; ?>">
+        <meta property="og:image" content="<?php echo 'https://kashmirzakat.com/images/' . $data['profile_pic']; ?>">
+        <meta property="og:image:secure_url" content="<?php echo 'https://kashmirzakat.com/images/' . $data['profile_pic']; ?>" />
+        <meta property="og:image:type" content="image/jpeg">
+        <meta property="og:image:width" content="200">
+        <meta property="og:image:height" content="200">
+        <meta property="og:url" content="http://www.kashmirzakat.com">
+        <link itemprop="thumbnailUrl" href="<?php echo 'https://kashmirzakat.com/images/' . $data['profile_pic']; ?>">
+        <span itemprop="thumbnail" itemscope itemtype="http://schema.org/ImageObject">
+            <link itemprop="url" href="<?php echo 'https://kashmirzakat.com/images/' . $data['profile_pic']; ?>">
+        </span>
+        <title><?php echo $data['cause_title']; ?></title>
+
+    <?php
+    }
+    ?>
+</head>
 
 <body>
 
@@ -35,37 +58,6 @@ include 'assets/connection.php';
 
     ?>
 
-        <head>
-            <!--<link itemprop="thumbnailUrl" href="<?php echo 'https://kashmirzakat.com/images/' . $data['profile_pic']; ?>">-->
-            <!--<span itemprop="thumbnail" itemscope itemtype="http://schema.org/ImageObject">-->
-            <!--    <link itemprop="url" href="https://kashmirzakat.com/images/'.$data['profile_pic'];?>">-->
-            <!--</span>-->
-
-            <!--<meta name="description" content="<?php echo $data['cause_summary']; ?>">-->
-            <!--<meta property="og:title" content="<?php echo $data['cause_title']; ?>">-->
-            <!--<meta property="og:description" content="<?php echo $data['cause_summary']; ?>">-->
-            <!--<meta property="og:url" content="<?php echo $CurPageURL; ?>">-->
-            <!--<meta property="og:image:secure_url" itemprop="image" content="<?php echo 'https://kashmirzakat.com/images/' . $data['profile_pic']; ?>">-->
-            <!--<meta property="og:site_name" content="Kashmirzakat.com">-->
-            <!--<meta name="twitter:card" content="summary_large_image">-->
-            <!--<meta name="twitter:image:alt" content="https://kashmirzakat.com/images/logo.jpeg">-->
-            <!--<meta property="og:type" content="website" />-->
-            <!--<meta property="og:updated_time" content="1440432930" />-->
-            <meta property="og:site_name" content="Kashmir Zakat">
-            <meta property="og:title" content="<?php echo $data['cause_title']; ?>">
-            <meta property="og:description" content="<?php echo $data['cause_summary']; ?>">
-            <meta property="og:image" content="<?php echo 'https://kashmirzakat.com/images/' . $data['profile_pic']; ?>">
-            <meta property="og:image:secure_url" content="<?php echo 'https://kashmirzakat.com/images/' . $data['profile_pic']; ?>" />
-            <meta property="og:image:type" content="image/jpeg">
-            <meta property="og:image:width" content="200">
-            <meta property="og:image:height" content="200">
-            <meta property="og:url" content="http://www.kashmirzakat.com">
-            <link itemprop="thumbnailUrl" href="<?php echo 'https://kashmirzakat.com/images/' . $data['profile_pic']; ?>">
-            <span itemprop="thumbnail" itemscope itemtype="http://schema.org/ImageObject">
-                <link itemprop="url" href="<?php echo 'https://kashmirzakat.com/images/' . $data['profile_pic']; ?>">
-            </span>
-        </head>
-        <title><?php echo $data['cause_title']; ?></title>
         <div class="row row-cols-1 mt-5 mx-lg-3 mx-md-3 mx-2 mb-5" style="margin-right: 0 !important;">
             <div class="col col-lg-7 col-md-7 col-12 mr-0 mx-lg-5 mx-md-3">
                 <div class="card border-0">
@@ -78,8 +70,7 @@ include 'assets/connection.php';
                                 <div class="links">
                                     <ul>
                                         <li class=" fw-bold social-share whatsapp btn btn-success mb-2 px-4 "><i class="fab fa-whatsapp"></i> Whatsapp</li>
-                                        <a href="mailto:example@gmail.com?subject=<?php echo $data['cause_title']; ?>&body=Follow this link to view my cause!%0D%0A<?php echo $CurPageURL; ?>%0D%0A<?php echo $data['cause_summary']; ?>" id="ml_share" class=" fw-bold btn btn-secondary mb-2 px-4 ">
-                                            <i class="fas fa-at"></i> Mail</a>
+                                        <li id="ml_share" class=" fw-bold social-share mail btn btn-secondary mb-2 px-4 "><i class="fas fa-at"></i> Mail</li>
                                         <li class="fw-bold social-share facebook btn btn-primary mb-2 px-4 "><i class="fab fa-facebook-f"></i> Facebook</li>
                                         <li class="fw-bold social-share twitter btn btn-info mb-2 px-4 text-light "><i class="fab fa-twitter "></i> Twitter</li>
                                         <li class="fw-bold social-share linkedin btn btn-light mb-2 px-4 border"><i class="fab fa-linkedin text-primary "></i> LinkedIn</li>
@@ -313,13 +304,13 @@ include 'assets/connection.php';
                     </div>
                 </div>
                 <?php
-                if (isset($_SESSION['username']) and $_SESSION['username'] == 'admin'){
+                if (isset($_SESSION['username']) and $_SESSION['username'] == 'admin') {
                 ?>
-                <div class=" d-flex justify-content-around p-2 bg-light">
-                    <a class="btn btn-danger m-2 col-3 px-12 fs-5" href="accepted-reject.php?id=<?php echo $data['id']; ?>" name="submit" type="submit">Reject</a>
-                    <a class="btn btn-primary m-2 col-3 px-12 fs-5" href="user-pending-edit-form.php?id=<?php echo $data['id']; ?>" name="submit" type="submit">Edit</a>
-                    <a class="btn btn-primary m-2 col-3 px-12 fs-5" href="edit-user-form-kyc.php?id=<?php echo $data['id']; ?>" name="submit" type="submit">Edit Kyc</a>
-                </div>
+                    <div class=" d-flex justify-content-around p-2 bg-light">
+                        <a class="btn btn-danger m-2 col-3 px-12 fs-5" href="accepted-reject.php?id=<?php echo $data['id']; ?>" name="submit" type="submit">Reject</a>
+                        <a class="btn btn-primary m-2 col-3 px-12 fs-5" href="user-pending-edit-form.php?id=<?php echo $data['id']; ?>" name="submit" type="submit">Edit</a>
+                        <a class="btn btn-primary m-2 col-3 px-12 fs-5" href="edit-user-form-kyc.php?id=<?php echo $data['id']; ?>" name="submit" type="submit">Edit Kyc</a>
+                    </div>
                 <?php
                 }
                 ?>
@@ -545,18 +536,23 @@ include 'assets/connection.php';
                         var tweet = encodeURIComponent(jQuery("meta[property='og:description']").attr("content"));
 
                         jQuery(".social-share.facebook").on("click", function() {
-                            url = "https://www.facebook.com/sharer.php?u=" + pageUrl;
+                            url = "https://www.facebook.com/sharer/sharer.php?u=" + pageUrl +"&quote = *<?php echo $data['cause_title']; ?>*" + "%0D%0A %0D%0A" + "<?php echo $data['cause_summary']; ?>" + " %0D%0A %0D%0A Read more - " + pageUrl + " %0D%0A %0D%0A Donate - " + " <?php echo 'https://kashmirzakat.com/donate.php?id=' . $id; ?>";
                             socialWindow(url);
                         });
 
                         jQuery(".social-share.twitter").on("click", function() {
-                            url = "https://twitter.com/intent/tweet?url=" + pageUrl + "&text=" + tweet;
+                            url = "https://twitter.com/intent/tweet?url=" + pageUrl + "&text= *<?php echo $data['cause_title']; ?>*" + "%0D%0A %0D%0A" + "<?php echo $data['cause_summary']; ?>" + " %0D%0A %0D%0A Read more - " + pageUrl + " %0D%0A %0D%0A Donate - " + " <?php echo 'https://kashmirzakat.com/donate.php?id=' . $id; ?>";;
                             socialWindow(url);
                         });
 
                         jQuery(".social-share.linkedin").on("click", function() {
                             url = "https://www.linkedin.com/shareArticle?mini=true&url=" + pageUrl;
                             socialWindow(url);
+                        });
+                        
+                        jQuery(".social-share.mail").on("click", function(e) {
+                            e.preventDefault();
+                            location.href = "mailto:?subject=<?php echo $data['cause_title']; ?>&body=" +"<?php echo $data['cause_title']; ?> %0D%0A %0D%0A <?php echo $data['cause_summary']; ?> %0D%0A %0D%0A Read more - " + pageUrl + "%0D%0A %0D%0A";
                         });
 
                         jQuery(".social-share.whatsapp").on("click", function() {
