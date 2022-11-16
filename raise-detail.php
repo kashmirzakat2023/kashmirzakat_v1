@@ -81,13 +81,29 @@ include 'assets/nav-links.php'; ?>
                         </div>
                         <ul class="nav nav-tabs nav-tabs-items" role="tablist">
                             <li class="nav-item text-center col-4 ">
-                                <a class="nav-link active nav-tabs-items" data-bs-toggle="tab" href="#home">Story</a>
+                                <a class="nav-link active nav-tabs-items" data-bs-toggle="tab" href="#home">Story
+                                </a>
                             </li>
-                            <li class="nav-item  text-center col-4 ">
-                                <a class="nav-link nav-tabs-items" data-bs-toggle="tab" href="#menu1">Donations</a>
+                            <li class="nav-item  text-center col-4">
+                                <a class="nav-link nav-tabs-items position-relative" data-bs-toggle="tab" href="#menu1">
+                                    Donations
+                                    <span class="position-absolute top-50 translate-middle badge rounded-pill" style="margin-left: 15px !important; background: var(--bg_dark_blue);">
+                                        <?php
+                                        $res = mysqli_query($db, "SELECT * FROM payments where raiseid='$id' and status='complete'");
+                                        echo mysqli_num_rows($res);
+                                        ?>
+                                    </span>
+                                </a>
                             </li>
                             <li class="nav-item  text-center  col-4 ">
-                                <a class="nav-link nav-tabs-items" data-bs-toggle="tab" href="#menu2">Updates</a>
+                                <a class="nav-link nav-tabs-items position-relative" data-bs-toggle="tab" href="#menu2">Updates
+                                <span class="position-absolute top-50 translate-middle badge rounded-pill" style="margin-left: 15px !important; background: var(--bg_dark_blue);">
+                                        <?php
+                                        $res = mysqli_query($db, "SELECT * FROM withdrawl_pending where raiseid='$id' and status='accepted'");
+                                        echo mysqli_num_rows($res);
+                                        ?>
+                                    </span>
+                                </a>
                             </li>
                         </ul>
                         <style>
@@ -536,7 +552,7 @@ include 'assets/nav-links.php'; ?>
                         var tweet = encodeURIComponent(jQuery("meta[property='og:description']").attr("content"));
 
                         jQuery(".social-share.facebook").on("click", function() {
-                            url = "https://www.facebook.com/sharer/sharer.php?u=" + pageUrl +"&quote = *<?php echo $data['cause_title']; ?>*" + "%0D%0A %0D%0A" + "<?php echo $data['cause_summary']; ?>" + " %0D%0A %0D%0A Read more - " + pageUrl + " %0D%0A %0D%0A Donate - " + " <?php echo 'https://kashmirzakat.com/donate.php?id=' . $id; ?>";
+                            url = "https://www.facebook.com/sharer/sharer.php?u=" + pageUrl + "&quote = *<?php echo $data['cause_title']; ?>*" + "%0D%0A %0D%0A" + "<?php echo $data['cause_summary']; ?>" + " %0D%0A %0D%0A Read more - " + pageUrl + " %0D%0A %0D%0A Donate - " + " <?php echo 'https://kashmirzakat.com/donate.php?id=' . $id; ?>";
                             socialWindow(url);
                         });
 
@@ -549,10 +565,10 @@ include 'assets/nav-links.php'; ?>
                             url = "https://www.linkedin.com/shareArticle?mini=true&url=" + pageUrl;
                             socialWindow(url);
                         });
-                        
+
                         jQuery(".social-share.mail").on("click", function(e) {
                             e.preventDefault();
-                            location.href = "mailto:?subject=<?php echo $data['cause_title']; ?>&body=" +"<?php echo $data['cause_title']; ?> %0D%0A %0D%0A <?php echo $data['cause_summary']; ?> %0D%0A %0D%0A Read more - " + pageUrl + "%0D%0A %0D%0A";
+                            location.href = "mailto:?subject=<?php echo $data['cause_title']; ?>&body=" + "<?php echo $data['cause_title']; ?> %0D%0A %0D%0A <?php echo $data['cause_summary']; ?> %0D%0A %0D%0A Read more - " + pageUrl + "%0D%0A %0D%0A";
                         });
 
                         jQuery(".social-share.whatsapp").on("click", function() {
