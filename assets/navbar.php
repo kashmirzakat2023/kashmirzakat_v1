@@ -326,9 +326,8 @@ if (!isset($_SESSION['username'])) {
                     'name': name,
                     'email': email,
                     'password': password,
-                    'rpassword': rpassword,
                     'phone': phone
-                };
+                }
                 // document.getElementById("submit").disabled = false;
                 $.ajax({
                     type: 'POST',
@@ -337,15 +336,33 @@ if (!isset($_SESSION['username'])) {
                     dataType: 'JSON',
                     success: function(data) {
                         getOTPNumberCode = data;
-                        document.getElementById('otpVerify').style.display = "block";
-                        document.getElementById('resendOTP').style.display = 'block';
-                        document.getElementById('submitOTP').style.display = 'block';
-                        document.getElementById('head').style.display = 'block';
-                        document.getElementById('hidden').style.display = 'none';
-                        document.getElementById('submit').style.display = 'none';
+                        $('#otpVerify').css({
+                            "display": "block"
+                        });
+                        $('#resendOTP').css({
+                            "display": 'block'
+                        });
+                        $('#submitOTP').css({
+                            "display": 'block'
+                        });
+                        $('#head').css({
+                            "display": 'block'
+                        });
+                        $('#hidden').css({
+                            "display": 'none'
+                        });
+                        $('#submit').css({
+                            "display": 'none'
+                        });
+                        // document.getElementById('otpVerify').style.display = "block";
+                        // document.getElementById('resendOTP').style.display = 'block';
+                        // document.getElementById('submitOTP').style.display = 'block';
+                        // document.getElementById('head').style.display = 'block';
+                        // document.getElementById('hidden').style.display = 'none';
+                        // document.getElementById('submit').style.display = 'none';
                     },
                     error: function(e) {
-                        console.log(e);
+                        console.log(e,"error at otp mail");
                     }
                 });
             } else {
