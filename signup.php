@@ -26,7 +26,7 @@ if (isset($_POST['email'])) {
   $headers .= "Content-type:text/html;charset=iso-8859-1" . "\r\n" . 'X-Mailer: PHP/' . phpversion();
 
   if (mail($to, $subject, $mailBody, $headers))
-  echo $six_digit_number;
+  echo $six_digit_number*786;
   else
     echo 'otp not sent';
 }
