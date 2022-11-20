@@ -189,7 +189,7 @@ if (!isset($_SESSION['username'])) {
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="button" id="submit" class="btn btn-primary" onclick="getOTPNumber();">Register</button>
+                    <button type="button" id="submit" class="btn btn-primary register" onclick="getOTPNumber();">Register</button>
                     <button type="button" name="" id="resendOTP" style="display: none;" class="btn btn-primary" onclick="getOTPNumber(); ">Resend</button>
                     <button type="button" id="submitOTP" style="display: none;" onclick="validateOTP(); " name="" class="btn btn-success">Verify OTP</button>
                 </div>
@@ -228,16 +228,18 @@ if (!isset($_SESSION['username'])) {
                     $('#strengthMessage').removeClass()
                     $('#strengthMessage').addClass('Weak')
                     // document.getElementById("submit").disabled = true;
+                    $(".register").prop("disabled", true);
                     return 'Weak'
                 } else if (strength == 2) {
                     $('#strengthMessage').removeClass()
                     $('#strengthMessage').addClass('Good')
-                    dis = false;
+                    $(".register").prop("disabled", false);
+
                     return 'Good'
                 } else {
                     $('#strengthMessage').removeClass()
                     $('#strengthMessage').addClass('Strong')
-                    dis = false;
+                    $(".register").prop("disabled", false);
                     return 'Strong'
                 }
             }
@@ -258,14 +260,17 @@ if (!isset($_SESSION['username'])) {
                 if ($('#rpassword').val() == $('#password').val()) {
                     $('#message').html('Password Matched').css('color', 'green');
                     // document.getElementById("submit").disabled = false;
+                    $(".register").prop("disabled", false);
                     dis = false;
                 }
             else {
                 $('#message').html('Password Not Matching').css('color', 'red');
+                $(".register").prop("disabled", true);
                 // document.getElementById("submit").disabled = true;
             }
             if (($('#password').val()) == '' && ($('#rpassword').val()) == '') {
                 $('#message').html('');
+                $(".register").prop("disabled", true);
                 // document.getElementById("submit").disabled = true;
             }
         }
@@ -287,7 +292,9 @@ if (!isset($_SESSION['username'])) {
                         success: function(response) {
 
                             $('#uname_response').html(response);
-
+                            $(".register").prop("disabled", true);
+                            if (response == "<span style='color: green;'>Available.</span>")
+                                $(".register").prop("disabled", false);
                         }
                     });
                 } else {
@@ -309,8 +316,12 @@ if (!isset($_SESSION['username'])) {
             var password = jQuery('#password').val();
             var rpassword = jQuery('#rpassword').val();
             var phone = jQuery('#phone').val();
+            // if ($("#isAgeSelected").is(':checked'))
+            //     $("#txtAge").show(); // checked
+            // else
+            //     $("#txtAge").hide(); // unchecked
 
-            if (name != '' && email != '' && password != '' && rpassword != '' && phone != '') {
+            if (name != '' && email != '' && password != '' && rpassword != '' && phone != '' && $("#exampleCheck1").is(':checked')) {
                 var data = {
                     'name': name,
                     'email': email,
@@ -332,6 +343,9 @@ if (!isset($_SESSION['username'])) {
                         document.getElementById('head').style.display = 'block';
                         document.getElementById('hidden').style.display = 'none';
                         document.getElementById('submit').style.display = 'none';
+                    },
+                    error: function(e) {
+                        console.log(e);
                     }
                 });
             } else {
