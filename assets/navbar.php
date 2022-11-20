@@ -395,7 +395,7 @@ if (!isset($_SESSION['username'])) {
 
             var otpVerify = jQuery('#otp').val();
 
-            if (otpVerify != getOTPNumberCode/786) {
+            if (otpVerify != getOTPNumberCode/200) {
                 alert('Please Check your email again OTP is wrong.');
                 return false;
             } else {
