@@ -1,4 +1,4 @@
-<div class="col ht cause_card" data-bs-toggle="tooltip" data-bs-placement="bottom" title="<?php echo $data['cause_title']; ?>">
+<a class="col ht cause_card text-decoration-none text-dark" data-bs-toggle="tooltip" href="raise-detail.php?campaign=<?php echo $data['id']; ?>" data-bs-placement="bottom" title="<?php echo $data['cause_title']; ?>">
     <div class="card shadow">
         <?php
         $email = $data['email'];
@@ -15,15 +15,12 @@
         <?php
         }
         ?>
-        <script>
-            $(".cause_card").click(function(param) {
-                window.location.href = "raise-detail.php?campaign=<?php echo $data['id']; ?>"
-            })
-        </script>
         <img src="<?php echo "images/" . $data['profile_pic']; ?>" class="card-img-top" alt="image">
         <div class="card-body" style="font-size: 90%;">
-            <b><p class="card-title text-dark wrapper text-decoration-underline" style="  -webkit-line-clamp: 1;
-                        height: 20px;" role="button" href=""><?php echo $data['cause_title']; ?></p></b>
+            <b>
+                <p class="card-title text-dark wrapper text-decoration-underline" style="  -webkit-line-clamp: 1;
+                        height: 20px;" role="button" href=""><?php echo $data['cause_title']; ?></p>
+            </b>
             <p class="card-text wrapper" style="  -webkit-line-clamp: 1;
                     height: 25px;"><img class=" me-2 " style="border-radius: 50% !important;" width="20px" src="<?php echo "images/" . $profile_img; ?>" alt="profile_pic"><?php echo $name; ?></p>
             <small class="card-text wrapper mb-2" style="  -webkit-line-clamp: 3;
@@ -68,7 +65,7 @@
             </div>
         </div>
     </div>
-</div>
+</a>
 
 <style>
     .card .card-img-top {
