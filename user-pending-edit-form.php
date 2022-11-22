@@ -53,7 +53,7 @@
                                         <option value="Education">Education</option>
                                         <option value="Health">Health</option>
                                         <option value="Livelihood">Livelihood</option>
-                                        <option value="Scholarship">scholarship</option>
+                                        <!-- <option value="Scholarship">scholarship</option> -->
                                         <option value="Others">others</option>
                                     </select>
                                     <label for="floatingSelect">Select</label>

@@ -18,7 +18,7 @@
         <img src="<?php echo "images/" . $data['profile_pic']; ?>" class="card-img-top" alt="image">
         <div class="card-body" style="font-size: 90%;">
             <b>
-                <p class="card-title text-dark wrapper text-decoration-underline" style="  -webkit-line-clamp: 1;
+                <p class="card-title text-dark wrapper text-decoration-underline " style="  -webkit-line-clamp: 1;
                         height: 20px;" role="button" href=""><?php echo $data['cause_title']; ?></p>
             </b>
             <p class="card-text wrapper" style="  -webkit-line-clamp: 1;

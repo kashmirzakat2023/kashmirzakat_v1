@@ -52,8 +52,9 @@ if (isset($_SESSION['useremail'])) {
                         <tr>
                             <th scope="row"><?php echo $row['id']; ?></th>
                             <td>
-                                <a href="raise-detail.php?campaign=<?php echo $row['id']; ?>">
-                                    <img src="<?php echo "images/" . $row['profile_pic']; ?>" width="40px" alt="" srcset=""> <?php echo $row['cause_title']; ?>
+                                <a href="raise-detail.php?campaign=<?php echo $row['id']; ?>" class=" d-flex justify-content-start align-items-start">
+                                    <img src="<?php echo "images/" . $row['profile_pic']; ?>" width="50px" alt="" srcset="">
+                                    <p class=" text-truncate wrapper text-break" style="  -webkit-line-clamp: 1; height: 20px;"><?php echo $row['cause_title']; ?></p>...&nbsp;
                                     <i class="fas fa-external-link"></i>
                                 </a>
                             </td>

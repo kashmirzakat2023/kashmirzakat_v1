@@ -387,7 +387,7 @@ include 'assets/nav-links.php'; ?>
                                 if (mysqli_num_rows($query1) > 0) {
                             ?>
                                     <p class="card-text rounded-1 mb-3 border border-danger w-45" style=" font-size: 40px;   padding: 0px; color: red;">
-                                        <i class="fas fa-heart" value=""></i>
+                                        <i class="fas fa-heart " value=""></i>
                                         <span id="likes">
                                             <?php
                                             echo mysqli_num_rows($query3);

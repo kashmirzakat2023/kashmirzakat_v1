@@ -79,9 +79,11 @@ textarea:focus {
 }
 
 .main-nav .dropdown-menu {
-  margin-top: 35px;
+  position: relative;
+  top: 35px;
   z-index: 100;
   background-color: #fff !important;
+  height: 210px;
   width: max-content;
   border: none;
 }
@@ -122,6 +124,7 @@ textarea:focus {
 
   .main-nav .dropdown-menu {
     margin-left: -30px !important;
+    height: 190px;
   }
 
   .main-nav .nav-item {

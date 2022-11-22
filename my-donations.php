@@ -53,8 +53,9 @@ if (isset($_SESSION['username'])) {
                             ?>
                                 <td><?php echo $row['raiseid']; ?></td>
                                 <td>
-                                    <a href="raise-detail.php?campaign=<?php echo $row1['id']; ?>">
-                                        <img src="<?php echo "images/" . $row1['profile_pic']; ?>" width="40px" alt="" srcset=""> <?php echo $row1['cause_title']; ?>
+                                    <a href="raise-detail.php?campaign=<?php echo $row1['id']; ?>" class=" d-flex justify-content-start align-items-start">
+                                        <img src="<?php echo "images/" . $row1['profile_pic']; ?>" width="50px" alt="" srcset="">
+                                        <p class=" text-truncate wrapper text-break" style="  -webkit-line-clamp: 2; height: 40px;"><?php echo $row1['cause_title']; ?></p>...&nbsp;
                                         <i class="fas fa-external-link"></i>
                                     </a>
                                 </td>

@@ -28,9 +28,9 @@
                         <li>
                             <a class="dropdown-item" href="livelihood.php">Livelihood</a>
                         </li>
-                        <li>
+                        <!-- <li>
                             <a class="dropdown-item" href="scholarship.php">Scholarship</a>
-                        </li>
+                        </li> -->
                         <li><a class="dropdown-item" href="others.php">Others</a></li>
                         <li><a class="dropdown-item" href="successfully-completed.php">Completed</a></li>
                     </ul>
@@ -362,7 +362,7 @@ if (!isset($_SESSION['username'])) {
                         // document.getElementById('submit').style.display = 'none';
                     },
                     error: function(e) {
-                        console.log(e,"error at otp mail");
+                        console.log(e, "error at otp mail");
                     }
                 });
             } else {
@@ -395,7 +395,7 @@ if (!isset($_SESSION['username'])) {
 
             var otpVerify = jQuery('#otp').val();
 
-            if (otpVerify != getOTPNumberCode/200) {
+            if (otpVerify != getOTPNumberCode / 200) {
                 alert('Please Check your email again OTP is wrong.');
                 return false;
             } else {

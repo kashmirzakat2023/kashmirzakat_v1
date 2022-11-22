@@ -166,3 +166,15 @@ a {
     padding-left: calc(var(--nav-width) + 170px);
   }
 }
+
+.wrapper {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  max-width: 225px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.height-100 td {
+  width: max-content;
+}

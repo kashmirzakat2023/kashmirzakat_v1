@@ -1,4 +1,4 @@
-<?php 
+<?php
 session_start(); ?>
 <html>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
@@ -35,7 +35,7 @@ if (isset($_SESSION['username'])) {
                 <table class="table border">
                     <thead>
                         <tr>
-                            <th scope="col">Cause ID</th>
+                            <th scope="col">ID</th>
                             <th scope="col">Donar</th>
                             <th scope="col">Cause</th>
                             <th scope="col">Donated</th>
@@ -62,8 +62,9 @@ if (isset($_SESSION['username'])) {
                                     while ($rows = mysqli_fetch_array($result1)) {
                                     ?>
                                         <td>
-                                            <a href="raise-detail.php?campaign=<?php echo $rows['id']; ?>">
-                                                <img src="<?php echo "images/" . $rows['profile_pic']; ?>" width="40px" alt="" srcset=""> <?php echo $rows['cause_title']; ?>
+                                            <a href="raise-detail.php?campaign=<?php echo $rows['id']; ?>" class=" d-flex justify-content-start align-items-start">
+                                                <img src="<?php echo "images/" . $rows['profile_pic']; ?>" width="50px" alt="" srcset="">
+                                                <p class=" text-truncate wrapper text-break" style="  -webkit-line-clamp: 2; height: 40px;"><?php echo $rows['cause_title']; ?></p>...&nbsp;
                                                 <i class="fas fa-external-link"></i>
                                             </a>
                                         </td>

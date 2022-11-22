@@ -61,34 +61,34 @@ include 'assets/nav-links.php'
     </div>
 
     <h1 class="fw-bolder text-center mt-5 ">Discover</h1>
-    <div class="row row-cols-1 row-cols-md-3 row-cols-lg-5 row-cols-sm-2 g-4 m-3 mb-3 fontawesome">
+    <div class="row row-cols-2 row-cols-md-3 row-cols-lg-6 justify-content-evenly row-cols-sm-2 g-4 m-3 mb-3 fontawesome">
         <div class="col ">
             <div class="card">
-                <img src="images/education.png" height="200px" class="card-img-top" alt="images/helping-hands.jpg">
+                <img src="images/education.png" class="card-img-top" alt="images/helping-hands.jpg">
                 <a class="btn btn-outline-success m-2 fw-bold" href="education.php">Education</a>
             </div>
         </div>
         <div class="col">
             <div class="card">
-                <img src="images/healthcare.png" class="card-img-top" height="200px" alt="images/helping-hands.jpg">
+                <img src="images/healthcare.png" class="card-img-top" alt="images/helping-hands.jpg">
                 <a class="btn btn-outline-success m-2 fw-bold" href="healthcare.php">Healthcare</a>
             </div>
         </div>
         <div class="col">
             <div class="card">
-                <img src="images/livelihood.png" height="200px" class="card-img-top" alt="images/helping-hands.jpg">
+                <img src="images/livelihood.png" class="card-img-top" alt="images/helping-hands.jpg">
                 <a class="btn btn-outline-success m-2 fw-bold" href="livelihood.php">Livelihood</a>
             </div>
         </div>
-        <div class="col">
+        <!-- <div class="col">
             <div class="card">
                 <img src="images/scholarship.png" height="200px" class="card-img-top" alt="images/helping-hands.jpg">
                 <a class="btn btn-outline-success m-2 fw-bold" href="scholarship.php">Scholarship</a>
             </div>
-        </div>
+        </div> -->
         <div class="col">
             <div class="card">
-                <img src="images/others.png" height="200px" class="card-img-top" alt="images/helping-hands.jpg">
+                <img src="images/others.png" class="card-img-top" alt="images/helping-hands.jpg">
                 <a class="btn btn-outline-success m-2 fw-bold" href="others.php">Others</a>
             </div>
         </div>
@@ -145,86 +145,82 @@ include 'assets/nav-links.php'
     <?php
 
     include 'assets/connection.php';
-    $result1 = mysqli_query($db, "SELECT  * FROM form_data where purpose='Education' and status='Accepted' LIMIT 4");
-    $result2 = mysqli_query($db, "SELECT  * FROM form_data where purpose='Health' and status='Accepted' LIMIT 4");
-    $result3 = mysqli_query($db, "SELECT  * FROM form_data where purpose='Livelihood' and status='Accepted' LIMIT 4");
-    $result4 = mysqli_query($db, "SELECT  * FROM form_data where purpose='Scholarship' and status='Accepted' LIMIT 4");
-    $result5 = mysqli_query($db, "SELECT  * FROM form_data where purpose='Others' and status='Accepted' LIMIT 4");
-    $result7 = mysqli_query($db, "SELECT  * FROM form_data where status='Accepted' LIMIT 4");
     $result8 = mysqli_query($db, "SELECT  * FROM form_data where status='Accepted' LIMIT 4");
     $ramount = 0;
     $amount = 0;
     $percent = 0;
 
-    while ($data = mysqli_fetch_array($result7)) {
-        $amount = $data['amount'];
-        $ramount = 0;
-        $id = $data['id'];
-        $resul1 = mysqli_query($db, " SELECT * FROM payments where raiseid = '$id'");
-        while ($data1 = mysqli_fetch_array($resul1)) {
-            $ramount += $data1['amount'];
-        }
-        $percent = floor(($ramount / $amount) * 100);
-    }
-    if ($percent >= 30 and $percent < 100) {
+    $result7 = mysqli_query($db, "SELECT  * FROM form_data where status='Accepted' LIMIT 4");
+    // while ($data = mysqli_fetch_array($result7)) {
+    //     $amount = $data['amount'];
+    //     $ramount = 0;
+    //     $id = $data['id'];
+    //     $resul1 = mysqli_query($db, " SELECT * FROM payments where raiseid = '$id'");
+    //     while ($data1 = mysqli_fetch_array($resul1)) {
+    //         $ramount += $data1['amount'];
+    //     }
+    //     $percent = floor(($ramount / $amount) * 100);
+    // }
+    // if ($percent >= 30 and $percent < 100) {
     ?>
-        <h1 class=" text-center fw-bold mt-5 mt-5 mb-3">&nbsp&nbsp Featured Cause</h1>
-        <div class="row row-cols-1 row-cols-md-3 row-cols-lg-4 row-cols-sm-2 g-4 mr-3 m-2 mb-5">
-            <?php
-            while ($data = mysqli_fetch_array($result7)) {
+    <h1 class=" text-center fw-bold mt-5 mt-5 mb-3">&nbsp&nbsp Featured Cause</h1>
+    <div class="row row-cols-1 row-cols-md-3 row-cols-lg-4 row-cols-sm-2 g-4 mr-3 m-2 mb-5">
+        <?php
+        while ($data = mysqli_fetch_array($result7)) {
+            $amount = $data['amount'];
+            $ramount = 0;
+            $id = $data['id'];
+            $resul1 = mysqli_query($db, " SELECT * FROM payments where raiseid = '$id' and status='complete'");
+            while ($data1 = mysqli_fetch_array($resul1)) {
+                $ramount += $data1['amount'];
+            }
+            $percent = number_format(($ramount / $amount) * 100, 1);
+
+            if ($percent >= 30 and $percent < 100) {
                 $amount = $data['amount'];
-                $ramount = 0;
-                // $id = $data['id'];
-                $resul1 = mysqli_query($db, " SELECT * FROM payments where raiseid = '$id' and status='complete'");
-                while ($data1 = mysqli_fetch_array($resul1)) {
-                    $ramount += $data1['amount'];
-                }
-                $percent = floor(($ramount / $amount) * 100);
+                $id = $data['id'];
+                include 'causes.php';
+            }
+        } ?>
+    </div>
+    <?php
+    // }
+    // while ($data = mysqli_fetch_array($result7)) {
+    //     $amount = $data['amount'];
+    //     $ramount = 0;
+    //     $id = $data['id'];
+    //     $resul1 = mysqli_query($db, " SELECT * FROM payments where raiseid = '$id'");
+    //     while ($data1 = mysqli_fetch_array($resul1)) {
+    //         $ramount += $data1['amount'];
+    //     }
 
-                if ($percent >= 30 and $percent < 100) {
-                    $amount = $data['amount'];
-                    $id = $data['id'];
-                    include 'causes.php';
-                }
-            } ?>
-        </div>
+    //     if ($amount > 0 and $ramount >= $amount) {
+    ?>
+    <h1 class=" text-center fw-bold mt-5 mb-3">&nbsp&nbsp Successful Cause</h1>
+    <div class="row row-cols-1 row-cols-md-3 row-cols-lg-4 row-cols-sm-2 g-4 mr-3 m-2 mb-5">
         <?php
-    }
-    while ($data = mysqli_fetch_array($result7)) {
-        $amount = $data['amount'];
-        $ramount = 0;
-        $id = $data['id'];
-        $resul1 = mysqli_query($db, " SELECT * FROM payments where raiseid = '$id'");
-        while ($data1 = mysqli_fetch_array($resul1)) {
-            $ramount += $data1['amount'];
-        }
-
-        if ($amount > 0 and $ramount >= $amount) {
-        ?>
-            <h1 class=" text-center fw-bold mt-5 mb-3">&nbsp&nbsp Successful Cause</h1>
-            <div class="row row-cols-1 row-cols-md-3 row-cols-lg-4 row-cols-sm-2 g-4 mr-3 m-2 mb-5">
-                <?php
-                while ($data = mysqli_fetch_array($result8)) {
-                    $amount = $data['amount'];
-                    $ramount = 0;
-                    $id = $data['id'];
-                    $resul1 = mysqli_query($db, " SELECT * FROM payments where raiseid = '$id'and status='complete'");
-                    while ($data1 = mysqli_fetch_array($resul1)) {
-                        $ramount += $data1['amount'];
-                    }
-                    if ($ramount >= $amount) {
-                        $amount = $data['amount'];
-                        $id = $data['id'];
-                        $percent = floor(($ramount / $amount) * 100);
-                        include 'causes.php';
-                    }
-                } ?>
-            </div>
-        <?php
-        }
-    }
+        while ($data = mysqli_fetch_array($result8)) {
+            $amount = $data['amount'];
+            $ramount = 0;
+            $id = $data['id'];
+            $resul1 = mysqli_query($db, " SELECT * FROM payments where raiseid = '$id'and status='complete'");
+            while ($data1 = mysqli_fetch_array($resul1)) {
+                $ramount += $data1['amount'];
+            }
+            if ($ramount >= $amount) {
+                $amount = $data['amount'];
+                $id = $data['id'];
+                $percent = number_format(($ramount / $amount) * 100, 1);
+                include 'causes.php';
+            }
+        } ?>
+    </div>
+    <?php
+    //     }
+    // }
+    $result1 = mysqli_query($db, "SELECT  * FROM form_data where purpose='Education' and status='Accepted' LIMIT 4");
     if (mysqli_num_rows($result1) > 0) {
-        ?>
+    ?>
         <h1 class=" text-center fw-bold mt-5 mb-3">&nbsp&nbsp Education Cause</h1>
         <div class="row row-cols-1 row-cols-md-3 row-cols-lg-4 row-cols-sm-2 g-4 mr-3 m-2 mb-5">
             <?php
@@ -236,14 +232,14 @@ include 'assets/nav-links.php'
                 while ($data1 = mysqli_fetch_array($resul1)) {
                     $ramount += $data1['amount'];
                 }
-                $percent = floor(($ramount / $amount) * 100);
-
+                $percent = number_format(($ramount / $amount) * 100, 1);
                 include 'causes.php';
             }
             ?>
         </div>
     <?php
     }
+    $result2 = mysqli_query($db, "SELECT  * FROM form_data where purpose='Health' and status='Accepted' LIMIT 4");
     if (mysqli_num_rows($result2) > 0) {
     ?>
         <h1 class=" text-center fw-bold mt-5 mb-3">&nbsp&nbsp Healthcare Cause</h1>
@@ -257,13 +253,14 @@ include 'assets/nav-links.php'
                 while ($data1 = mysqli_fetch_array($resul1)) {
                     $ramount += $data1['amount'];
                 }
-                $percent = floor(($ramount / $amount) * 100);
+                $percent = number_format(($ramount / $amount) * 100, 1);
 
                 include 'causes.php';
             } ?>
         </div>
     <?php
     }
+    $result3 = mysqli_query($db, "SELECT  * FROM form_data where purpose='Livelihood' and status='Accepted' LIMIT 4");
     if (mysqli_num_rows($result3) > 0) {
     ?>
         <h1 class=" text-center fw-bold mt-5 mb-3">&nbsp&nbsp Livelihood Cause</h1>
@@ -277,13 +274,14 @@ include 'assets/nav-links.php'
                 while ($data1 = mysqli_fetch_array($resul1)) {
                     $ramount += $data1['amount'];
                 }
-                $percent = floor(($ramount / $amount) * 100);
+                $percent = number_format(($ramount / $amount) * 100, 1);
 
                 include 'causes.php';
             } ?>
         </div>
     <?php
     }
+    $result4 = mysqli_query($db, "SELECT  * FROM form_data where purpose='Scholarship' and status='Accepted' LIMIT 4");
     if (mysqli_num_rows($result4) > 0) {
     ?>
         <h1 class=" text-center fw-bold mt-5 mb-3">&nbsp&nbsp Scholarship Cause</h1>
@@ -297,13 +295,14 @@ include 'assets/nav-links.php'
                 while ($data1 = mysqli_fetch_array($resul1)) {
                     $ramount += $data1['amount'];
                 }
-                $percent = floor(($ramount / $amount) * 100);
+                $percent = number_format(($ramount / $amount) * 100, 1);
 
                 include 'causes.php';
             } ?>
         </div>
     <?php
     }
+    $result5 = mysqli_query($db, "SELECT  * FROM form_data where purpose='Others' and status='Accepted' LIMIT 4");
     if (mysqli_num_rows($result5) > 0) {
     ?>
         <h1 class=" text-center fw-bold mt-5 mb-3">&nbsp&nbsp Others Cause</h1>
@@ -317,7 +316,7 @@ include 'assets/nav-links.php'
                 while ($data1 = mysqli_fetch_array($resul1)) {
                     $ramount += $data1['amount'];
                 }
-                $percent = floor(($ramount / $amount) * 100);
+                $percent = number_format(($ramount / $amount) * 100, 1);
 
                 include 'causes.php';
             } ?>
