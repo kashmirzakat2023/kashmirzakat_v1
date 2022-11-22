@@ -61,7 +61,7 @@ include 'assets/nav-links.php'
     </div>
 
     <h1 class="fw-bolder text-center mt-5 ">Discover</h1>
-    <div class="row row-cols-2 row-cols-md-3 row-cols-lg-6 justify-content-evenly row-cols-sm-2 g-4 m-3 mb-3 fontawesome">
+    <div class="row row-cols-1 row-cols-md-3 row-cols-lg-6 justify-content-evenly row-cols-sm-2 g-4 m-3 mb-3 fontawesome">
         <div class="col ">
             <div class="card">
                 <img src="images/education.png" class="card-img-top" alt="images/helping-hands.jpg">
