@@ -61,20 +61,20 @@ include 'assets/nav-links.php'
     </div>
 
     <h1 class="fw-bolder text-center mt-5 ">Discover</h1>
-    <div class="row row-cols-1 row-cols-md-3 row-cols-lg-6 justify-content-evenly row-cols-sm-2 g-4 m-3 mb-3 fontawesome">
-        <div class="col ">
+    <div class="row row-cols-1 row-cols-md-3 row-cols-lg-6 justify-content-center justify-content-lg-evenly justify-content-md-evenly g-4 m-3 mb-3 fontawesome">
+        <div class="col  d-flex justify-content-center">
             <div class="card">
                 <img src="images/education.png" class="card-img-top" alt="images/helping-hands.jpg">
                 <a class="btn btn-outline-success m-2 fw-bold" href="education.php">Education</a>
             </div>
         </div>
-        <div class="col">
+        <div class="col d-flex justify-content-center">
             <div class="card">
                 <img src="images/healthcare.png" class="card-img-top" alt="images/helping-hands.jpg">
                 <a class="btn btn-outline-success m-2 fw-bold" href="healthcare.php">Healthcare</a>
             </div>
         </div>
-        <div class="col">
+        <div class="col d-flex justify-content-center">
             <div class="card">
                 <img src="images/livelihood.png" class="card-img-top" alt="images/helping-hands.jpg">
                 <a class="btn btn-outline-success m-2 fw-bold" href="livelihood.php">Livelihood</a>
@@ -86,7 +86,7 @@ include 'assets/nav-links.php'
                 <a class="btn btn-outline-success m-2 fw-bold" href="scholarship.php">Scholarship</a>
             </div>
         </div> -->
-        <div class="col">
+        <div class="col d-flex justify-content-center">
             <div class="card">
                 <img src="images/others.png" class="card-img-top" alt="images/helping-hands.jpg">
                 <a class="btn btn-outline-success m-2 fw-bold" href="others.php">Others</a>
