@@ -97,7 +97,7 @@ include 'assets/nav-links.php'; ?>
                             </li>
                             <li class="nav-item  text-center  col-4 ">
                                 <a class="nav-link nav-tabs-items position-relative" data-bs-toggle="tab" href="#menu2">Updates
-                                <span class="position-absolute top-50 translate-middle badge rounded-pill" style="margin-left: 15px !important; background: var(--bg_dark_blue);">
+                                    <span class="position-absolute top-50 translate-middle badge rounded-pill" style="margin-left: 15px !important; background: var(--bg_dark_blue);">
                                         <?php
                                         $res = mysqli_query($db, "SELECT * FROM withdrawl_pending where raiseid='$id' and status='accepted'");
                                         echo mysqli_num_rows($res);
@@ -437,7 +437,7 @@ include 'assets/nav-links.php'; ?>
                         </div>
                         <div class="card-text rounded-1" style="border: 1px solid black; padding: 10px 10px;">
                             <p>
-                                <strong class="fs-5 ">₹<?php echo $ramount; ?></strong> of ₹<?php echo $amount; ?> goal
+                                <strong class="fs-5 text-success">₹<?php echo $ramount; ?></strong> of ₹<?php echo $amount; ?> goal
                             </p>
                             <?php if (!($ramount >= $amount) and $days > 0) { ?>
                                 <div class="progress">
@@ -452,7 +452,7 @@ include 'assets/nav-links.php'; ?>
                             <?php
                             }
                             ?>
-                            <p class="card-text mt-2"> Raised by <b><?php echo mysqli_num_rows($result1); ?></b> donors</p>
+                            <p class="card-text mt-2"> Raised by <b class=" text-success"><?php echo mysqli_num_rows($result1); ?></b> donors</p>
                         </div>
                         </div>
                         <div class=" d-flex justify-content-between mx-4 mt-2 mb-1">
@@ -508,79 +508,78 @@ include 'assets/nav-links.php'; ?>
                         <img src="" class="qr-code img-thumbnail img-responsive w-50" />
                 </div>
 
-                <script>
-                    function htmlEncode(value) {
-                        return $('<div/>').text(value)
-                            .html();
-                    }
-
-                    function copyToClipboard(element) {
-                        var $temp = $("<input>");
-                        $("body").append($temp);
-                        $temp.val($(element).text()).select();
-                        document.execCommand("copy");
-                        document.getElementById('button').innerHTML = 'Copied';
-                        document.getElementById('button').style.backgroundColor = '#5cb85c';
-                        $temp.remove();
-                    }
-
-                    window.onload = function() {
-                        let finalURL = 'https://chart.googleapis.com/chart?cht=qr&chl=' + htmlEncode(location.href) + '&chs=160x160&chld=L|0'
-                        // Replace the src of the image with
-                        // the QR code image
-                        $('.qr-code').attr('src', finalURL);
-                        document.getElementById('text').innerHTML = location.href;
-                    }
-                </script>
-                <script>
-                    setShareLinks();
-
-                    function socialWindow1(url) {
-                        window.open(url, "_self");
-
-                    }
-
-                    function socialWindow(url) {
-                        var left = (screen.width - 570) / 2;
-                        var top = (screen.height - 570) / 2;
-                        var params = "menubar=no,toolbar=no,status=no,width=570,height=570,top=" + top + ",left=" + left;
-                        window.open(url, "NewWindow", params);
-                    }
-
-                    function setShareLinks() {
-                        var pageUrl = encodeURIComponent(document.URL);
-                        var tweet = encodeURIComponent(jQuery("meta[property='og:description']").attr("content"));
-
-                        jQuery(".social-share.facebook").on("click", function() {
-                            url = "https://www.facebook.com/sharer/sharer.php?u=" + pageUrl + "&quote = *<?php echo $data['cause_title']; ?>*" + "%0D%0A %0D%0A" + "<?php echo $data['cause_summary']; ?>" + " %0D%0A %0D%0A Read more - " + pageUrl + " %0D%0A %0D%0A Donate - " + " <?php echo 'https://kashmirzakat.com/donate.php?id=' . $id; ?>";
-                            socialWindow(url);
-                        });
-
-                        jQuery(".social-share.twitter").on("click", function() {
-                            url = "https://twitter.com/intent/tweet?url=" + pageUrl + "&text= *<?php echo $data['cause_title']; ?>*" + "%0D%0A %0D%0A" + "<?php echo $data['cause_summary']; ?>" + " %0D%0A %0D%0A Read more - " + pageUrl + " %0D%0A %0D%0A Donate - " + " <?php echo 'https://kashmirzakat.com/donate.php?id=' . $id; ?>";;
-                            socialWindow(url);
-                        });
-
-                        jQuery(".social-share.linkedin").on("click", function() {
-                            url = "https://www.linkedin.com/shareArticle?mini=true&url=" + pageUrl;
-                            socialWindow(url);
-                        });
-
-                        jQuery(".social-share.mail").on("click", function(e) {
-                            e.preventDefault();
-                            location.href = "mailto:?subject=<?php echo $data['cause_title']; ?>&body=" + "<?php echo $data['cause_title']; ?> %0D%0A %0D%0A <?php echo $data['cause_summary']; ?> %0D%0A %0D%0A Read more - " + pageUrl + "%0D%0A %0D%0A";
-                        });
-
-                        jQuery(".social-share.whatsapp").on("click", function() {
-                            url = "whatsapp://send?text=" + "*<?php echo $data['cause_title']; ?>*" + "%0D%0A %0D%0A" + "<?php echo $data['cause_summary']; ?>" + " %0D%0A %0D%0A Read more - " + pageUrl + " %0D%0A %0D%0A Donate - " + " <?php echo 'https://kashmirzakat.com/donate.php?id=' . $id; ?>";
-                            socialWindow1(url);
-                        });
-                    }
-                </script>
                 <!-- --------------------- -->
 
             </div>
         </div>
+        
+        <script>
+            function htmlEncode(value) {
+                return $('<div/>').text(value)
+                    .html();
+            }
+
+            function copyToClipboard(element) {
+                var $temp = $("<input>");
+                $("body").append($temp);
+                $temp.val($(element).text()).select();
+                document.execCommand("copy");
+                document.getElementById('button').innerHTML = 'Copied';
+                document.getElementById('button').style.backgroundColor = '#5cb85c';
+                $temp.remove();
+            }
+
+            window.onload = function() {
+                let finalURL = 'https://chart.googleapis.com/chart?cht=qr&chl=' + htmlEncode(location.href) + '&chs=160x160&chld=L|0'
+                // Replace the src of the image with
+                // the QR code image
+                $('.qr-code').attr('src', finalURL);
+                document.getElementById('text').innerHTML = location.href;
+            }
+            setShareLinks();
+
+            function socialWindow1(url) {
+                window.open(url, "_self");
+
+            }
+
+            function socialWindow(url) {
+                var left = (screen.width - 570) / 2;
+                var top = (screen.height - 570) / 2;
+                var params = "menubar=no,toolbar=no,status=no,width=570,height=570,top=" + top + ",left=" + left;
+                window.open(url, "NewWindow", params);
+            }
+
+            function setShareLinks() {
+                var pageUrl = encodeURIComponent(document.URL);
+                var tweet = encodeURIComponent(jQuery("meta[property='og:description']").attr("content"));
+
+                jQuery(".social-share.facebook").on("click", function() {
+                    url = "https://www.facebook.com/sharer/sharer.php?u=" + pageUrl + "&quote = *<?php echo $data['cause_title']; ?>*" + "%0D%0A %0D%0A" + "<?php echo $data['cause_summary']; ?>" + " %0D%0A %0D%0A Read more - " + pageUrl + " %0D%0A %0D%0A Donate - " + " <?php echo 'https://kashmirzakat.com/donate.php?id=' . $id; ?>";
+                    socialWindow(url);
+                });
+
+                jQuery(".social-share.twitter").on("click", function() {
+                    url = "https://twitter.com/intent/tweet?url=" + pageUrl + "&text= *<?php echo $data['cause_title']; ?>*" + "%0D%0A %0D%0A" + "<?php echo $data['cause_summary']; ?>" + " %0D%0A %0D%0A Read more - " + pageUrl + " %0D%0A %0D%0A Donate - " + " <?php echo 'https://kashmirzakat.com/donate.php?id=' . $id; ?>";;
+                    socialWindow(url);
+                });
+
+                jQuery(".social-share.linkedin").on("click", function() {
+                    url = "https://www.linkedin.com/shareArticle?mini=true&url=" + pageUrl;
+                    socialWindow(url);
+                });
+
+                jQuery(".social-share.mail").on("click", function(e) {
+                    e.preventDefault();
+                    location.href = "mailto:?subject=<?php echo $data['cause_title']; ?>&body=" + "<?php echo $data['cause_title']; ?> %0D%0A %0D%0A <?php echo $data['cause_summary']; ?> %0D%0A %0D%0A Read more - " + pageUrl + "%0D%0A %0D%0A";
+                });
+
+                jQuery(".social-share.whatsapp").on("click", function() {
+                    url = "whatsapp://send?text=" + "*<?php echo $data['cause_title']; ?>*" + "%0D%0A %0D%0A" + "<?php echo $data['cause_summary']; ?>" + " %0D%0A %0D%0A Read more - " + pageUrl + " %0D%0A %0D%0A Donate - " + " <?php echo 'https://kashmirzakat.com/donate.php?id=' . $id; ?>";
+                    socialWindow1(url);
+                });
+            }
+        </script>
     <?php
     }
     include 'assets/footer.php';
