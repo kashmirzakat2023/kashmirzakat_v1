@@ -71,9 +71,6 @@
 
 }
 
-.fontawesome .card-img-top {
-    height: 200px;
-}
 
 .card .span {
     position: absolute;
@@ -138,8 +135,5 @@
 }
 
 .fontawesome img {
-    height: 200px !important;
-}
-.fontawesome .card {
-    width: 220px;
+    height: 190px !important;
 }
