@@ -61,7 +61,7 @@ include 'assets/nav-links.php'
     </div>
 
     <h1 class="fw-bolder text-center mt-5 ">Discover</h1>
-    <div class="row row-cols-1 row-cols-md-3 row-cols-lg-6 justify-content-center justify-content-lg-evenly justify-content-md-evenly g-4 m-3 mb-3 fontawesome">
+    <div class="row row-cols-2 row-cols-md-3 row-cols-lg-6 justify-content-center justify-content-lg-evenly justify-content-md-evenly g-4 m-3 mb-3 fontawesome">
         <div class="col  d-flex justify-content-center">
             <div class="card">
                 <img src="images/education.png" class="card-img-top" alt="images/helping-hands.jpg">
@@ -98,7 +98,7 @@ include 'assets/nav-links.php'
         <div class=" bg-aubergine mb-3 py-5 jumbtron mt-5">
             <div class=" mb-2">
                 <h1 class=" text-center mb-5 mt-3">Why <b class="bg-blue rounded-2 p-2 fw-bolder">Kashmirzakat</b> ?</h1>
-                <div class=" row row-cols-1 row-cols-lg-3 row-cols-3  d-flex flex-row justify-content-around mt-5">
+                <div class=" row row-cols-1 row-cols-lg-3  d-flex flex-row justify-content-around mt-5">
                     <div class=" d-flex justify-content-center  align-items-center col-7 col-lg-3 col-md-3 feat">
                         <h6 class=" d-flex justify-content-center align-content-center"><i class="fas fa-book fs-1 feature-list"></i>
                             &nbsp &nbsp <p><b>SHARIYAH'S</b> <br>Compliant</p>

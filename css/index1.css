@@ -114,6 +114,10 @@
     z-index: -1;
 }
 
+
+.fontawesome img {
+    height: 190px !important;
+}
 @media (max-width:600px) {
     .w-sm-100 {
         width: 90% !important;
@@ -125,15 +129,11 @@
     }
 
     .fontawesome img {
-        height: 100px !important;
+        height: 150px !important;
     }
     
     .fontawesome .btn{
         font-size: 12px;
     }
 
-}
-
-.fontawesome img {
-    height: 190px !important;
 }
