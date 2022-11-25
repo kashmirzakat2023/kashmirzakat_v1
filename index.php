@@ -62,11 +62,11 @@ include 'assets/nav-links.php'
 
     <h1 class="fw-bolder text-center mt-5 ">Discover</h1>
     <div class="row row-cols-2 row-cols-md-3 row-cols-lg-6 justify-content-center justify-content-lg-evenly justify-content-md-evenly g-4 m-3 mb-3 fontawesome">
-        <div class="col  d-flex justify-content-center">
-            <div class="card">
+        <div class="col d-flex justify-content-center">
+            <p class="card">
                 <img src="images/education.png" class="card-img-top" alt="images/helping-hands.jpg">
-                <a class="btn btn-outline-success m-2 fw-bold" href="education.php">Education</a>
-            </div>
+                <a class="btn btn-outline-success m-2 fw-bold" href="education.php" class=" m-2 fw-bold text-dark text-center">Education</a>
+            </p>
         </div>
         <div class="col d-flex justify-content-center">
             <div class="card">
