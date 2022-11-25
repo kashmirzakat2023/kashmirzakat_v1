@@ -1,7 +1,4 @@
 @media (max-width:600px) {
-    * {
-        font-size: 100% !important;
-    }
     option {
         font-size: 80% !important;
         width: 80% !important;
@@ -25,7 +22,7 @@
     body,
     input,
     select {
-        /* font-size: 80%; */
+        font-size: 80%;
     }
 
     h1 {
