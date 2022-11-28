@@ -168,7 +168,7 @@ include 'assets/nav-links.php'; ?>
                                 <!-- ----- -->
                                 <h4>Supporting documents</h4>
                                 <!--<div class="row-cols-1 w-100 row-cols-md-3 row-cols-lg-3">-->
-                                <div class="d-flex row ">
+                                <div class="d-flex row supporting">
                                     <a type="button" class="rounded-2 col-4" data-bs-toggle="modal" data-bs-target="#exampleModal">
                                         <img src="<?php echo "images/" . $data['doc1']; ?>" width="50%" class="cursor rounded-2 p-1 border border-dark">
                                     </a>
