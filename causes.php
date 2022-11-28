@@ -24,7 +24,7 @@
             <p class="card-text wrapper" style="  -webkit-line-clamp: 1;
                     height: 25px;"><img class=" me-2 " style="border-radius: 50% !important;" width="20px" src="<?php echo "images/" . $profile_img; ?>" alt="profile_pic"><?php echo $name; ?></p>
             <small class="card-text wrapper mb-2" style="  -webkit-line-clamp: 3;
-                    height: 60px;"> <?php echo $data['cause_summary']; ?></small>
+                    height: 70px;"> <?php echo $data['cause_summary']; ?></small>
 
             <div class=" d-flex justify-content-between " style="margin-bottom: -20px;">
                 <p class="card-text"><i class="fas fa-map-marker-alt "></i> <?php echo $data['location']; ?></p>
