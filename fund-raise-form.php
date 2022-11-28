@@ -2,11 +2,11 @@
 include 'assets/nav-links.php'; ?>
 <!DOCTYPE html>
 <html lang="en">
-    
-    <head>
-        
-        <script src="js/drag-drop.js" defer></script>
-        <script>
+
+<head>
+
+    <script src="js/drag-drop.js" defer></script>
+    <script>
         window.addEventListener('beforeunload', function(e) {
             // Cancel the event
             e.preventDefault(); // If you prevent default behavior in Mozilla Firefox prompt will always be shown
@@ -453,6 +453,15 @@ include 'assets/nav-links.php'; ?>
 </body>
 
 </html>
+<style>
+    label,
+    small,
+    body,
+    input,
+    select {
+        font-size: 80%;
+    }
+</style>
 <script>
     $(document).ready(function() {
         $("input[type='radio']").click(function() {

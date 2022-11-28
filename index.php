@@ -341,3 +341,11 @@ include 'assets/nav-links.php'
         });
     }
 </script>
+<style>
+    @media (max-width: 500px) {
+        *{
+            font-size: 100%;
+        }
+        
+    }
+</style>
