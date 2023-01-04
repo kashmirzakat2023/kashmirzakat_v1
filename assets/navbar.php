@@ -40,9 +40,6 @@
                         Raise Cause</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="contact-us.php">Contact</a>
-                </li>
-                <li class="nav-item">
                     <a class="nav-link" href="about-us.php">About Us</a>
                 </li>
                 <li class="nav-item search">
@@ -52,7 +49,10 @@
                 </li>
                 <?php
                 if (!isset($_SESSION['username'])) {
-                ?>
+                    ?>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact-us.php">Contact</a>
+                    </li>
                     <li class="nav-item">
                         <a class="nav-link" type="button" data-bs-toggle="modal" data-bs-target="#signin">SignIn</a>
                     </li>
@@ -64,6 +64,9 @@
                     $useremail = $_SESSION['useremail'];
                     if ($_SESSION['username'] == "admin") {
                     ?>
+                             <li class="nav-item">
+                        <a class="nav-link" href="admin-contactlist.php">Contact List</a>
+                    </li>
                         <li class="nav-item dropdown ">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 Admin

@@ -324,7 +324,7 @@ include 'assets/nav-links.php'; ?>
                 ?>
                     <div class=" d-flex justify-content-around p-2 bg-light">
                         <a class="btn btn-danger m-2 col-3 px-12 fs-5" href="accepted-reject.php?id=<?php echo $data['id']; ?>" name="submit" type="submit">Reject</a>
-                        <a class="btn btn-primary m-2 col-3 px-12 fs-5" href="user-pending-edit-form.php?id=<?php echo $data['id']; ?>" name="submit" type="submit">Edit</a>
+                        <a class="btn btn-primary m-2 col-3 px-12 fs-5" href="admin-accept-edit-form.php?id=<?php echo $data['id']; ?>" name="submit" type="submit">Edit</a>
                         <a class="btn btn-primary m-2 col-3 px-12 fs-5" href="edit-user-form-kyc.php?id=<?php echo $data['id']; ?>" name="submit" type="submit">Edit Kyc</a>
                     </div>
                 <?php
