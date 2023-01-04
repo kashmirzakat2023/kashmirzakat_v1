@@ -1,25 +1,26 @@
-<?php include 'assets/nav-links.php'; ?>
-<html>
+<?php include 'assets/nav-links.php';
+if (isset($_SESSION['useremail'])) {
+?>
+    <html>
 
-<head>
-    <link rel="stylesheet" href="css/success.css">
-    <script src="js/success.js"></script>
-    <?php
-    $id = $_GET['id'];
-    include 'assets/connection.php';
-    $result = mysqli_query($db, " SELECT * FROM form_data where id = '$id' and status = 'Pending' ");
-    ?>
-</head>
+    <head>
+        <link rel="stylesheet" href="css/success.css">
+        <script src="js/success.js"></script>
+        <?php
+        $id = $_GET['id'];
+        include 'assets/connection.php';
+        $result = mysqli_query($db, " SELECT * FROM form_data where id = '$id'");
+        ?>
+    </head>
 
-<body>
-    <?php
-    include 'assets/navbar.php';
-    if (isset($_SESSION['useremail'])) {
+    <body>
+        <?php
+        include 'assets/navbar.php';
         while ($data = mysqli_fetch_array($result)) {
             // $today = time();
             $_SESSION['id'] = $data['id'];
             $id = $data['id'];
-    ?>
+        ?>
             <title>Edit</title>
             <form method="post" class="fund-raise shadow w-75 d-flex mx-auto me-auto mt-5 flex-column mb-3" enctype="multipart/form-data" action="save-pending-edit-form.php?id=<?php echo $id; ?>">
                 <h3 class=" text-center fw-bold">Edit Form</h3>
@@ -369,115 +370,115 @@
             <?php
             include 'assets/footer.php';
             ?>
-</body>
+    </body>
 
-</html>
-<style>
-    .container1 {
-        /* width: 200px; */
-        margin: 50px auto;
-        font-family: sans-serif;
-    }
-
-    .hidden {
-        display: none;
-    }
-
-    #file {
-        display: none;
-        margin: 0 auto;
-    }
-
-    #upload {
-        display: block;
-        padding: 10px 25px;
-        border: 0;
-        margin: 0 auto;
-        font-size: 15px;
-        letter-spacing: 0.05em;
-        cursor: pointer;
-        background: #216e69;
-        color: #fff;
-        outline: none;
-        transition: .3s ease-in-out;
-    }
-
-    #uploadImg {
-        display: block;
-        margin: 0 auto 15px;
-    }
-
-    @media (max-width:550px) {
-        #drop-zone {
-            height: 40vh;
+    </html>
+    <style>
+        .container1 {
+            /* width: 200px; */
+            margin: 50px auto;
+            font-family: sans-serif;
         }
 
-        label,
-        small,
-        body,
-        input,
-        select {
-            font-size: 80%;
+        .hidden {
+            display: none;
         }
 
-        h1 {
-            font-size: 180%;
-        }
-    }
-
-    label {
-        font-weight: 500;
-    }
-
-    small {
-        font-size: 11px;
-    }
-</style>
-
-<script>
-    $(function() {
-        var container1 = $('.container1'),
-            inputFile = $('#file'),
-            img, btn, txt = 'Edit Picture',
-            txtAfter = 'Change';
-
-        if (!container1.find('#upload').length) {
-            container1.find('.input').append('<input type="button" class="rounded-2 mt-2" value="' + txt + '" id="upload">');
-            btn = $('#upload');
-            container1.prepend('<img src="<?php echo $pic; ?>" class="rounded-1" class="hidden" alt="Uploaded file" id="uploadImg" width="100%" height="400px">');
-            img = $('#uploadImg');
+        #file {
+            display: none;
+            margin: 0 auto;
         }
 
-        btn.on('click', function() {
-            img.animate({
-                opacity: 0
-            }, 300);
-            inputFile.click();
-        });
+        #upload {
+            display: block;
+            padding: 10px 25px;
+            border: 0;
+            margin: 0 auto;
+            font-size: 15px;
+            letter-spacing: 0.05em;
+            cursor: pointer;
+            background: #216e69;
+            color: #fff;
+            outline: none;
+            transition: .3s ease-in-out;
+        }
 
-        inputFile.on('change', function(e) {
-            container1.find('label').html(inputFile.val());
+        #uploadImg {
+            display: block;
+            margin: 0 auto 15px;
+        }
 
-            var i = 0;
-            for (i; i < e.originalEvent.srcElement.files.length; i++) {
-                var file = e.originalEvent.srcElement.files[i],
-                    reader = new FileReader();
-
-                reader.onloadend = function() {
-                    img.attr('src', reader.result).animate({
-                        opacity: 1
-                    }, 700);
-                }
-                reader.readAsDataURL(file);
-                img.removeClass('hidden');
+        @media (max-width:550px) {
+            #drop-zone {
+                height: 40vh;
             }
 
-            btn.val(txtAfter);
+            label,
+            small,
+            body,
+            input,
+            select {
+                font-size: 80%;
+            }
+
+            h1 {
+                font-size: 180%;
+            }
+        }
+
+        label {
+            font-weight: 500;
+        }
+
+        small {
+            font-size: 11px;
+        }
+    </style>
+
+    <script>
+        $(function() {
+            var container1 = $('.container1'),
+                inputFile = $('#file'),
+                img, btn, txt = 'Edit Picture',
+                txtAfter = 'Change';
+
+            if (!container1.find('#upload').length) {
+                container1.find('.input').append('<input type="button" class="rounded-2 mt-2" value="' + txt + '" id="upload">');
+                btn = $('#upload');
+                container1.prepend('<img src="<?php echo $pic; ?>" class="rounded-1" class="hidden" alt="Uploaded file" id="uploadImg" width="100%" height="400px">');
+                img = $('#uploadImg');
+            }
+
+            btn.on('click', function() {
+                img.animate({
+                    opacity: 0
+                }, 300);
+                inputFile.click();
+            });
+
+            inputFile.on('change', function(e) {
+                container1.find('label').html(inputFile.val());
+
+                var i = 0;
+                for (i; i < e.originalEvent.srcElement.files.length; i++) {
+                    var file = e.originalEvent.srcElement.files[i],
+                        reader = new FileReader();
+
+                    reader.onloadend = function() {
+                        img.attr('src', reader.result).animate({
+                            opacity: 1
+                        }, 700);
+                    }
+                    reader.readAsDataURL(file);
+                    img.removeClass('hidden');
+                }
+
+                btn.val(txtAfter);
+            });
         });
-    });
-</script>
+    </script>
 <?php
-    } else {
-        echo '<script>alert("Unauthenticated Access")</script>';
-        echo '<script>window.location = "index.php"</script>';
-    }
+} else {
+    echo '<script>alert("Unauthenticated Access")</script>';
+    echo '<script>window.location = "index.php"</script>';
+}

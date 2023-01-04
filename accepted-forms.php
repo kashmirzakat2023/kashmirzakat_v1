@@ -36,9 +36,9 @@ if (isset($_SESSION['useremail']) && $_SESSION['username'] == "admin") {
                         <th scope="col">Cause Title</th>
                         <th scope="col">Amount</th>
                         <th scope="col">Funds Raised</th>
+                        <th scope="col">Date</th>
                         <th scope="col">CM name</th>
-                        <th scope="col">Know More</th>
-                        <th scope="col">Reject</th>
+                        <th scope="col">Actions</th>
                     </tr>
                 </thead>
                 <tbody><?php
@@ -53,6 +53,10 @@ if (isset($_SESSION['useremail']) && $_SESSION['username'] == "admin") {
                             <td><?php echo $data['cause_title']; ?></td>
                             <td><?php echo $data['amount']; ?></td>
                             <td><?php echo $donations; ?></td>
+                            <td><?php
+                                echo date('d-m-Y', strtotime($data['date']))
+                                // echo date( 'Y-m-d',$data['date']); 
+                                ?></td>
                             <td>
                                 <?php
                                 if ($useremail == 'causemanager@causemanager.com') {
@@ -67,8 +71,16 @@ if (isset($_SESSION['useremail']) && $_SESSION['username'] == "admin") {
                                 }
                                 ?>
                             </td>
-                            <td><a class="btn btn-outline-primary m-2" href="raise-detail.php?campaign=<?php echo $data['id']; ?>">View</a></td>
-                            <td><a class="btn btn-outline-danger m-2" href="accepted-reject.php?id=<?php echo $data['id']; ?>">Reject</a></td>
+                            <td><a class="btn btn-outline-success m-2" href="raise-detail.php?campaign=<?php echo $data['id']; ?>">View</a>
+                            <a class="btn btn-outline-danger m-2" href="accepted-reject.php?id=<?php echo $data['id']; ?>">Reject</a>
+                            <?php
+                            if ($useremail == 'admin@admin.com') {
+                            ?>
+                                <a class="btn btn-outline-primary m-2" href="admin-accept-edit-form.php?id=<?php echo $data['id']; ?>">Edit</a>
+                                <?php
+                            }
+                            ?>
+                            </td>
                         </tr>
                     <?php
                         }
@@ -115,7 +127,7 @@ if (isset($_SESSION['useremail']) && $_SESSION['username'] == "admin") {
             margin-left: auto;
             margin-right: auto;
             margin-top: 10px !important;
-            width: 180vh !important;
+            width: 200% !important;
             border: 1px solid black !important;
         }
     </style>

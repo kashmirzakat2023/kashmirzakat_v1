@@ -24,11 +24,11 @@ include 'assets/nav-links.php'; ?>
 
         while ($data = mysqli_fetch_array($result)) {
             // $today = time();
-            $_SESSION['id'] = $data['id'];
+            // $_SESSION['id'] = $data['id'];
             $id = $data['id'];
         ?>
             <title>Edit</title>
-            <form method="post" enctype="multipart/form-data" action="save-accept-edit-form.php">
+            <form method="post" enctype="multipart/form-data" action="save-accept-edit-form.php?id=<?php echo $data['id']; ?>">
 
                 <div class="row row-cols-1 mt-5 mx-lg-3 mx-md-3 mx-2 mb-5" style="margin-right: 0 !important;">
                     <div class="col col-10 mx-auto">
@@ -65,6 +65,11 @@ include 'assets/nav-links.php'; ?>
                                 <div class="form-floating mb-3">
                                     <input type="number" class="form-control" name="amount" value="<?php echo $data['amount']; ?>" id="floatingInput" placeholder="" required>
                                     <label for="floatingInput">Amount Required(in ₹)</label>
+                                </div>
+
+                                <div class="form-floating mb-3">
+                                    <input type="date" class="form-control" name="date" value="<?php date('Y-m-d',strtotime($data['date']));?>" id="floatingInput" placeholder="" required>
+                                    <label for="floatingInput">Date</label>
                                 </div>
 
                                 <div class="form-floating mb-3">
@@ -342,7 +347,7 @@ include 'assets/nav-links.php'; ?>
                                 <textarea id="editor" name="cause_explain" ><?php echo $data['cause_explain']; ?></textarea>
                                 <div class="mb-3"></div>
                                 <div class="form-floating mb-3">
-                                    <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" name="" style="height: 100px" required></textarea>
+                                    <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" name="cause_summary" style="height: 100px" required><?php echo $data['cause_summary']; ?></textarea>
                                     <label for="floatingTextarea2">Summary</label>
                                 </div>
                             </div>
