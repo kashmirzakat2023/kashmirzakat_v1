@@ -76,9 +76,9 @@
                                 <li>
                                     <a class="dropdown-item" href="admin-dashboard.php">Dashboard</a>
                                 </li>
-                                <li>
-                                    <a class="dropdown-item" href="users.php?username=<?php echo $_SESSION['username']; ?>">Users</a>
-                                </li>
+                                <!-- <li>
+                                    <a class="dropdown-item" href="users.php?useremail=admin@admin.com">Users</a>
+                                </li> -->
                                 <li>
                                     <a class="dropdown-item" href="logout.php">logout</a>
                                 </li>
