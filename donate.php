@@ -34,7 +34,7 @@ include 'assets/nav-links.php'; ?>
             <div class="col col-lg-7 col-md-7 col-12 mr-0 mx-lg-5 mx-md-3">
                 <div class="card border-0 ">
                     <div class="contact-form">
-                        <form method="post" action="payment.php?id=<?php echo $id; ?>">
+                        <form method="POST" action="payment.php?id=<?php echo $id; ?>">
                             <label class="control-label form-floating " for="fname">Donation Type</label>
                             <select class="form-select mb-3" aria-label="Default select example" id="select" name="type" required>
                                 <option value="none" selected>Select</option>
@@ -81,62 +81,10 @@ include 'assets/nav-links.php'; ?>
                                 <div class="custom-tip" style="display:none;">
                                     <div class="form-group mb-3 col-6 fw-bold">
                                         <label class="control-label " for="city">Custom tip:</label>
-                                        <input type="number" class="form-control " value="" id="camount" placeholder="Custom Tip Amount" name="other" required>
+                                        <input type="number" class="form-control " value="" id="camount" placeholder="Custom Tip Amount" name="other">
                                     </div>
                                 </div>
                             </div>
-                            <script>
-                                $(document).ready(function() {
-                                    $("#amount").keyup(function() {
-                                        var amt = parseInt(document.getElementById('amount').value);
-                                        var selectedval = $("select#select1").children("option:selected").val();
-                                        if (selectedval == 'other') {
-                                            if (camt >= 0)
-                                                camt = parseInt($('#camount').val());
-                                            else {
-                                                camt = 0;
-                                            }
-                                            tamt = amt + camt;
-                                            document.getElementById('tamount').value = tamt;
-                                        } else {
-                                            var tip = (selectedval * amt / 100);
-                                            var tamt = tip + amt;
-                                            document.getElementById('tamount').value = tamt;
-                                        }
-                                    });
-
-                                    $("select#select1").change(function() {
-                                        var selectedval = parseInt($(this).children("option:selected").val());
-                                        var amt = parseInt(document.getElementById('amount').value);
-                                        var tip = (selectedval * amt / 100);
-                                        var tamt = tip + amt;
-                                        document.getElementById('tamount').value = tamt;
-                                    });
-
-                                    $(".custom-tip").keyup(function() {
-                                        if (camt >= 0)
-                                            camt = parseInt($('#camount').val());
-                                        else
-                                            camt = 0;
-                                        var amt = parseInt(document.getElementById('amount').value);
-                                        tamt = amt + camt;
-                                        document.getElementById('tamount').value = tamt;
-                                    });
-
-                                    $("select#select1").change(function() {
-                                        var selectedval = ($(this).children("option:selected").val());
-                                        if (selectedval == 'other') {
-                                            $(".custom-tip").show();
-                                            var amt = parseInt(document.getElementById('amount').value);
-                                            camt = parseInt($('#camount').val());
-                                            tamt = amt + camt;
-                                            document.getElementById('tamount').value = tamt;
-                                        }
-                                        if (selectedval == '2' || selectedval == '5' || selectedval == '8' || selectedval == '12' || selectedval == '15' || selectedval == '20') $(".custom-tip").hide();
-
-                                    });
-                                });
-                            </script>
                             <?php
                             if (isset($_SESSION['username'])) {
                                 $useremail = $_SESSION['useremail'];
@@ -802,6 +750,58 @@ include 'assets/nav-links.php'; ?>
 
 </html>
 <script>
+    $(document).ready(function() {
+        $("#amount").keyup(function() {
+            var amt = parseInt(document.getElementById('amount').value);
+            var selectedval = $("select#select1").children("option:selected").val();
+            if (selectedval == 'other') {
+                if (camt >= 0)
+                    camt = parseInt($('#camount').val());
+                else {
+                    camt = 0;
+                }
+                tamt = amt + camt;
+                document.getElementById('tamount').value = tamt;
+            } else {
+                var tip = (selectedval * amt / 100);
+                var tamt = tip + amt;
+                document.getElementById('tamount').value = tamt;
+            }
+        });
+
+        $("select#select1").change(function() {
+            var selectedval = parseInt($(this).children("option:selected").val());
+            var amt = parseInt(document.getElementById('amount').value);
+            var tip = (selectedval * amt / 100);
+            var tamt = tip + amt;
+            document.getElementById('tamount').value = tamt;
+        });
+
+        $(".custom-tip").keyup(function() {
+            if (camt >= 0)
+                camt = parseInt($('#camount').val());
+            else
+                camt = 0;
+            var amt = parseInt(document.getElementById('amount').value);
+            tamt = amt + camt;
+            document.getElementById('tamount').value = tamt;
+        });
+
+        $("select#select1").change(function() {
+            var selectedval = ($(this).children("option:selected").val());
+            if (selectedval == 'other') {
+                $(".custom-tip").show();
+                var amt = parseInt(document.getElementById('amount').value);
+                camt = parseInt($('#camount').val());
+                tamt = amt + camt;
+                document.getElementById('tamount').value = tamt;
+            }
+            if (selectedval == '2' || selectedval == '5' || selectedval == '8' || selectedval == '12' || selectedval == '15' || selectedval == '20') $(".custom-tip").hide();
+
+        });
+    });
+
+
     function GetSelectedTextValue(select) {
         if (select.value == 1) {
             document.getElementById('bank').style.display = 'block';

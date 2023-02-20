@@ -25,7 +25,7 @@ if (isset($_SESSION['username'])) {
                 $('#body-pd').attr('class', 'body-pd');
             }
         </script>
-        <div class="height-100">
+        <div class="">
             <h1> Pending Causes</h1>
             <p class="p-2 text-danger">* Funds has been applied commissions payment processor's site:</p>
             <div class="table-responsive w-100 ">

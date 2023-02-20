@@ -1,8 +1,8 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat&display=swap");
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300&display=swap");
 
 :root {
-  --bg_dark_blue: #4247C9;
+  --bg_dark_blue: #4247c9;
   --bg_light_blue: #a7aafc;
 }
 
@@ -10,7 +10,7 @@
   padding: 0;
   margin: 0;
   box-sizing: border-box;
-  font-family: 'Inter', sans-serif;
+  font-family: "Inter", sans-serif;
 }
 
 body {
@@ -38,7 +38,7 @@ body {
 
 .btn-primary,
 .nav-pills .nav-link.active,
-.nav-pills .show>.nav-link {
+.nav-pills .show > .nav-link {
   background-color: var(--bg_dark_blue) !important;
 }
 
@@ -54,7 +54,6 @@ textarea:focus {
   outline: none !important;
   box-shadow: 0 0 0.5px 3px var(--bg_light_blue) !important;
 }
-
 
 .main-nav .nav-item {
   padding-top: 0 !important;
@@ -74,23 +73,25 @@ textarea:focus {
   color: white !important;
 }
 
-.main-nav .dropdown:hover .dropdown-menu {
-  display: block;
+.dropdown:hover .dropdown-menu {
+  // display: block;
+  // top: 36px;
 }
 
-.main-nav .dropdown-menu {
+.main-nav .dropdown-menu .show{
   position: relative;
-  top: 35px;
+  /* top: 35px; */
   z-index: 100;
   background-color: #fff !important;
-  height: 210px;
-  width: max-content;
-  border: none;
+  /* height: 210px; */
+  outline: none;
+  border: none !important;
 }
 
 .main-nav .dropdown-menu a:hover {
   border: none;
   background-color: var(--bg_dark_blue);
+  width: fit-content;
 }
 
 .main-nav .raise-btn :hover,
@@ -118,13 +119,21 @@ textarea:focus {
 }
 
 @media (min-width: 993px) {
+  .dropdown-menu {
+    min-width: 0rem !important;
+    box-shadow: 0px 0px 5px var(--bg_light_blue), 0px 0px 5px var(--bg_light_blue);
+    padding: 10px;
+  }
+  .main-nav .dropdown-menu a:hover {
+    width: 100%;
+  }
   body {
     overflow-x: hidden;
   }
 
   .main-nav .dropdown-menu {
     margin-left: -30px !important;
-    height: 190px;
+    /* height: 190px; */
   }
 
   .main-nav .nav-item {
@@ -135,15 +144,12 @@ textarea:focus {
     /*width: 200px !important;*/
     height: 45px;
   }
-
 }
-
 
 .main-nav .navbar-brand img {
   /*width: 200px !important;*/
   height: 35px;
 }
-
 
 nav {
   margin-top: 0px !important;
@@ -179,7 +185,9 @@ footer .row {
   text-decoration: underline;
 }
 
-@media(max-width: 500px) {
+@media (max-width: 500px) {
+
+
   .search_result {
     padding-top: 5px;
   }
@@ -196,10 +204,15 @@ footer .row {
   }
 }
 
+@media (max-width: 1010px) {
+  .dropdown-menu {
+    border: none !important;
+  }
+}
+
 .search {
   cursor: pointer;
 }
-
 
 .Short {
   width: 100%;

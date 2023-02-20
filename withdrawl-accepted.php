@@ -9,13 +9,14 @@
 <script src="js/nav-dash.js"></script>
 <?php
 $useremail = $_GET['useremail'];
+$status = $_GET['status'];
 include 'assets/connection.php';
 if (isset($_SESSION['username']) && $_SESSION['username'] == 'admin') {
 ?>
 
     <body id="body-pd">
         <?php
-        include 'assets/admin-navbar-dash.php';
+        include 'assets/navbar-dash.php';
         ?>
         <script>
             window.onload = (event) => {
@@ -25,61 +26,42 @@ if (isset($_SESSION['username']) && $_SESSION['username'] == 'admin') {
             }
         </script>
         <!--Container Main start-->
-        <div class="height-100 ">
-            <h1> Withdrawl Updated</h1>
-            <div class="table-responsive w-100 ">
-                <table class="table border">
-                    <thead>
-                        <tr>
-                            <th scope="col">ID</th>
-                            <th scope="col">Name</th>
-                            <th scope="col">Cause</th>
-                            <th scope="col">Requested</th>
-                            <th scope="col">Date&Time</th>
-                            <th scope="col">Status</th>
-                            <th scope="col">Actions</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?php
-                        $query = mysqli_query($db, "SELECT * FROM withdrawl_pending where status='accepted'");
-                        while ($row1 = mysqli_fetch_array($query)) {
-                            $id = $row1['raiseid'];
-                            $wid = $row1['wid'];
-                        ?>
-                            <tr>
-                                <td><?php echo $row1['raiseid']; ?></td>
-                                <td><?php echo $row1['name']; ?></td>
+        <div class=" ">
+            <h3> Withdrawl Updated</h3>
+            <script>
+                let column_fields = ['ID', 'Name', 'cause', 'Requested', 'Date & Time', 'Status'];
+                const columnDefs = [];
+                column_fields.forEach(element => {
+                    columnDefs.push({
+                        field: element
+                    });
+                })
+                columnDefs.push({
+                    field: 'wid',
+                    hide: true
+                });
 
-                                <?php
-                                $result1 = mysqli_query($db, "SELECT * FROM form_data where id='$id'  and status='Accepted' ");
-                                while ($rows = mysqli_fetch_array($result1)) {
-                                ?>
-                                    <td>
-                                        <a href="raise-detail.php?campaign=<?php echo $rows['cause_title']; ?>">
-                                            <img src="<?php echo "images/" . $rows['profile_pic']; ?>" width="40px" alt="" srcset=""> <?php echo $rows['cause_title']; ?>
-                                            <i class="fas fa-external-link"></i>
-                                        </a>
-                                    </td>
-                                    <td>₹ <?php echo $row1['samount']; ?></td>
-                                    <td><?php
-                                        $datetime  = date_format(date_create($row1['date']), "M d,Y h:m:s a");
-                                        echo $datetime; ?></td>
-                                    <td class=" text-success fw-bolder"><?php echo $row1['status']; ?></td>
-                                    <td>
-                                        <a class="btn btn-primary p-1" href="withdrawl-invoice.php?wid=<?php echo $wid; ?>">view</a>
-                                    </td>
-                            </tr>
-                    <?php
-                                }
-                            }
-                    ?>
-
-                    </tbody>
-                </table>
-            </div>
+                <?php
+                if($status == 'accepted')
+                    $result = mysqli_query($db, "SELECT * FROM withdrawl_pending as wp join form_data as f on f.id=wp.raiseid  and f.status='Accepted'  and wp.status='accepted'");
+                else if($status == 'pending')
+                    $result = mysqli_query($db, "SELECT * FROM withdrawl_request as wp join form_data as f on f.id=wp.raiseid  and f.status='Accepted'  and wp.status='accepted'");
+                else
+                    $result = mysqli_query($db, "SELECT * FROM withdrawl_pending as wp join form_data as f on f.id=wp.raiseid  and f.status='Accepted'  and wp.status='rejected'");
+                $column_data_fields = ['id', 'name', 'cause_title', 'samount', 'date', 'status', 'wid'];
+                $column_fields = ['ID', 'Name', 'cause', 'Requested', 'Date & Time', 'Status', 'Wid'];
+                ?>
+                columnDefs.push({
+                    field: 'View',
+                    cellRenderer: function(params) {
+                        return '<a class="btn btn-outline-primary p-1" href="withdrawl-invoice.php?wid=' + params.data.Wid + '">view</a>';
+                    }
+                })
+            </script>
+            <?php
+            include 'assets/grid-system.php'
+            ?>
             <?php include 'assets/footer-dash.php'; ?>
-
     </body>
 <?php
 } else {

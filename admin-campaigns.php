@@ -17,7 +17,7 @@ if (isset($_SESSION['username']) && $_SESSION['username'] == 'admin') {
 
     <body id="body-pd">
         <?php
-        include 'assets/admin-navbar-dash.php';
+        include 'assets/navbar-dash.php';
         ?>
         <script>
             window.onload = (event) => {
@@ -29,8 +29,8 @@ if (isset($_SESSION['username']) && $_SESSION['username'] == 'admin') {
         <!--Container Main start-->
 
         <br>
-        <div class="height-100">
-            <h1>Causes</h1>
+        <div class="">
+            <h3>Causes</h1>
             <div class="row">
 
                 <div class="col-lg-4 col-md-6 col-12 mb-4">
@@ -52,7 +52,7 @@ if (isset($_SESSION['username']) && $_SESSION['username'] == 'admin') {
                                 </div>
                             </div>
                         </div>
-                        <a href="accepted-forms.php?useremail=<?php echo $useremail; ?>">
+                        <a href="rejected-forms.php?useremail=<?php echo $useremail; ?>&status=Accepted">
                             <div class=" text-light text-center p-1 mb-0 " style="background-color: rgba(0,0,0,0.3);">
                                 <small>view....</small><i class="fas fa-arrow-circle-right text-light"></i>
                             </div>
@@ -78,7 +78,7 @@ if (isset($_SESSION['username']) && $_SESSION['username'] == 'admin') {
                                 </div>
                             </div>
                         </div>
-                        <a href="pending-forms.php?useremail=<?php echo $useremail; ?>">
+                        <a href="rejected-forms.php?useremail=<?php echo $useremail; ?>&status=Pending">
                             <div class=" text-light text-center p-1 mb-0 " style="background-color: rgba(0,0,0,0.3);">
                                 <small>view....</small><i class="fas fa-arrow-circle-right text-light"></i>
                             </div>
@@ -104,7 +104,7 @@ if (isset($_SESSION['username']) && $_SESSION['username'] == 'admin') {
                                 </div>
                             </div>
                         </div>
-                        <a href="rejected-forms.php?useremail=<?php echo $useremail; ?>">
+                        <a href="rejected-forms.php?useremail=<?php echo $useremail;?>&status=Rejected">
                             <div class=" text-light text-center p-1 mb-0 " style="background-color: rgba(0,0,0,0.3);">
                                 <small>view....</small><i class="fas fa-arrow-circle-right text-light"></i>
                             </div>

@@ -138,9 +138,9 @@ a {
   background-color: var(--white-color);
 }
 
-.height-100 {
+/* . {
   height: 100vh;
-}
+} */
 
 @media screen and (min-width: 768px) {
   body {
@@ -175,6 +175,6 @@ a {
   text-overflow: ellipsis;
 }
 
-.height-100 td {
+.td {
   width: max-content;
 }

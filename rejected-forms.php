@@ -1,5 +1,5 @@
 <?php session_start(); ?>
-<title>Rejected Forms</title>
+<title><?= $_GET['status'] ?> Forms</title>
 
 <head>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
@@ -10,72 +10,88 @@
     <script src="js/nav-dash.js"></script>
 </head>
 <?php
+$status = $_GET['status'];
 $_SESSION['useremail'] = $_GET['useremail'];
 $useremail = $_SESSION['useremail'];
-if (isset($_SESSION['username']) && $_SESSION['username'] == "admin") {
+if (isset($_SESSION['username'])) {
     include 'assets/connection.php';
-    $result = mysqli_query($db, "SELECT * FROM form_data where status='Rejected'");
-    // if (mysqli_num_rows($result) > 0) {
 ?>
     <script>
         window.onload = (event) => {
             $('#campaign').addClass("nav_link active");
-            // $('#nav-bar').attr('class', 'l-navbar show');
             $('#body-pd').attr('class', 'body-pd');
         }
     </script>
 
     <body id="body-pd">
-        <?php include 'assets/admin-navbar-dash.php'; ?>
-        <h1>Rejected Causes</h1>
-        <div class="table-responsive">
-            <table class="table table-striped table-responsive w-100">
-                <thead>
-                    <tr>
-                        <th scope="col">ID</th>
-                        <th scope="col">Cause Title</th>
-                        <th scope="col">Purpose</th>
-                        <th scope="col">Amount</th>
-                        <th scope="col">CM Name</th>
-                        <th scope="col">Know More</th>
-                        <th scope="col">Accept</th>
-                    </tr>
-                </thead>
-                <tbody><?php
-                        while ($data = mysqli_fetch_array($result)) {
-                        ?>
-                        <tr>
-                            <th scope="row"><?php echo $data['id']; ?></th>
-                            <td><?php echo $data['cause_title']; ?></td>
-                            <td><?php echo $data['purpose']; ?></td>
-                            <td><?php echo $data['amount']; ?></td>
-                            <td>
-                                <?php
-                                if ($_SESSION['useremail'] == 'causemanager@causemanager.com') {
-                                    echo $data['cause_manager'];
-                                } else {
-                                ?>
-                                    <div class="input-group mb-3">
-                                        <input type="text" class="form-control save" name="cmname" placeholder="CM Name" id="<?php echo $data['id']; ?>" value="<?php echo $data['cause_manager']; ?>" aria-label="CM Name" aria-describedby="button-addon2">
-                                        <!--<button class="btn btn-outline-secondary save"  type="button" id="<?php echo $data['id']; ?>" >save</button>-->
-                                    </div>
-                                <?php
-                                }
-                                ?>
-                            </td>
-                            <td><a class="btn btn-outline-primary m-2" href="rejected-fetch.php?id=<?php echo $data['id']; ?>">View</a></td>
-                            <td><a class="btn btn-outline-success m-2" href="rejected-accept.php?id=<?php echo $data['id']; ?>">Accept</a></td>
-                        </tr>
-                    <?php
-                        }
-                    ?>
-                </tbody>
-            </table>
-        </div>
-        <p class=" bg-success text-light px-3 rounded-1 saved fs-4" style="width:fit-content; display:none; position:absolute; right:60px; bottom:50px; ">saved...</p>
-        <p class=" bg-danger text-light px-3 rounded-1 nsaved fs-4" style="width:fit-content; display:none; position:absolute; right:60px; bottom:50px; ">Not saved...</p>
+        <?php include 'assets/navbar-dash.php';
+        ?>
+        <h2><?= $status ?> Causes</h3>
+            <script>
+                let column_fields;
+                if ("<?= $_SESSION['username'] ?>" == "admin") {
+                    if ('<?= $status ?>' == 'Rejected')
+                        column_fields = ['ID', 'Cause', 'Purpose', 'Goal', 'Date', 'CM'];
+                    else if ('<?= $status ?>' == 'Accepted')
+                        column_fields = ['ID', 'Cause', 'Purpose', 'Goal', 'Date', 'CM'];
+                    else
+                        column_fields = ['ID', 'Cause', 'Purpose', 'Goal', 'Date', 'CM'];
+                } else {
+                    if ('<?= $status ?>' == 'Rejected')
+                        column_fields = ['ID', 'Cause', 'Purpose', 'Goal', 'Date'];
+                    else if ('<?= $status ?>' == 'Accepted')
+                        column_fields = ['ID', 'Cause', 'Purpose', 'Goal', 'Date'];
+                    else
+                        column_fields = ['ID', 'Cause', 'Purpose', 'Goal', 'Date'];
+                }
+                const columnDefs = [];
+                column_fields.forEach(element => {
+                    columnDefs.push({
+                        field: element,
+                        editable: (element == 'CM') ? true : false,
+                    });
+                })
 
-        <?php include 'assets/footer-dash.php'; ?>
+                <?php
+                $result = mysqli_query($db, "SELECT * FROM form_data where status = '$status'");
+                if ($_SESSION['username'] == "admin") {
+                    $column_data_fields = ['id', 'cause_title', 'purpose', 'amount', 'date', 'cause_manager'];
+                    $column_fields = ['ID', 'Cause', 'Purpose', 'Goal', 'Date', 'CM'];
+                } else {
+                    $result = mysqli_query($db, "SELECT * FROM form_data where status = '$status' and email= '$useremail'");
+                    $column_data_fields = ['id', 'cause_title', 'purpose', 'amount', 'date'];
+                    $column_fields = ['ID', 'Cause', 'Purpose', 'Goal', 'Date'];
+                }
+                ?>
+                columnDefs.push({
+                    field: 'Actions',
+                    minWidth: 280,
+                    cellRenderer: function(params) {
+                        if ("<?= $_SESSION['username'] ?>" == "admin") {
+                            if ('<?= $status ?>' == 'Rejected')
+                                return '<a class="btn btn-outline-primary me-2" href="rejected-fetch.php?id=' + params.data.ID + '">View</a><a class="btn btn-outline-success" href="rejected-accept.php?id=' + params.data.ID + '">Accept</a>';
+                            else if ('<?= $status ?>' == 'Accepted')
+                                return '<a class="btn btn-outline-primary me-2" href="raise-detail.php?campaign=' + params.data.ID + '">View</a><a class="btn btn-outline-success me-2" href="admin-accept-edit-form.php?id=' + params.data.ID + '">Edit</a><a class="btn btn-outline-danger" href="accepted-reject.php?id=' + params.data.ID + '">Reject</a>';
+                            else
+                                return '<a class="btn btn-outline-primary me-2" href="pending-fetch.php?id=' + params.data.ID + '">View</a><a class="btn btn-outline-success me-2" href="accept.php?id=' + params.data.ID + '">Accept</a><a class="btn btn-outline-danger" href="reject.php?id=' + params.data.ID + '">Reject</a>';
+                        } else {
+                            if ('<?= $status ?>' == 'Rejected')
+                                return '<a class="btn btn-outline-primary me-2" href="rejected-fetch.php?id=' + params.data.ID + '">View</a><a class="btn btn-outline-success" href="user-reject-edit-form.php?id=' + params.data.ID + '" >Edit</a>';
+                            else if ('<?= $status ?>' == 'Accepted')
+                                return '<a class="btn btn-outline-primary me-2" href="raise-detail.php?campaign=' + params.data.ID + '">View</a><a class="btn btn-outline-success" href="withdrawl-request.php?id=' + params.data.ID + '" >Make Withdrawl</a>';
+                            else
+                                return '<a class="btn btn-outline-primary me-2" href="pending-fetch.php?id=' + params.data.ID + '">View</a><a class="btn btn-outline-success" href="user-reject-edit-form.php?id=' + params.data.ID + '" >Edit</a>';
+                        }
+                    }
+                })
+            </script>
+            <?php
+            include 'assets/grid-system.php'
+            ?>
+            <p class=" bg-success text-light px-3 rounded-1 saved fs-4" style="width:fit-content; display:none; position:absolute; right:60px; bottom:50px; ">saved...</p>
+            <p class=" bg-danger text-light px-3 rounded-1 nsaved fs-4" style="width:fit-content; display:none; position:absolute; right:60px; bottom:50px; ">Not saved...</p>
+
+            <?php include 'assets/footer-dash.php'; ?>
     </body>
     <script>
         $(document).ready(function() {
@@ -106,17 +122,7 @@ if (isset($_SESSION['username']) && $_SESSION['username'] == "admin") {
 
         });
     </script>
-    <style>
-        table {
-            margin-left: auto;
-            margin-right: auto;
-            margin-top: 10px !important;
-            width: 180vh !important;
-            border: 1px solid black !important;
-        }
-    </style>
 <?php
-    // }
 } else {
     echo '<script>alert("Unauthentic User");</script>';
     echo '<script>window.location = "index.php"</script>';

@@ -25,7 +25,7 @@ if (isset($_SESSION['username'])) {
             }
         </script>
         <!--Container Main start-->
-        <div class="height-100 ">
+        <div class=" ">
             <br>
             <h1>Withdrawls</h1>
             <div class=" mt-2 row ">

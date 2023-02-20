@@ -1,6 +1,6 @@
 <?php
 include 'assets/connection.php';
-$name = $_POST['email'];
+$name = $_POST['name'];
 $id = $_POST['id'];
 
 $query = "UPDATE form_data SET 

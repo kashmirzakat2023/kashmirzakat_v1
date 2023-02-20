@@ -386,8 +386,8 @@ include 'assets/nav-links.php'; ?>
                                 $query1 = mysqli_query($db, "select * from `like` where raiseid='" . $_SESSION['id'] . "' and username='" . $_SESSION['username'] . "'");
                                 if (mysqli_num_rows($query1) > 0) {
                             ?>
-                                    <p class="card-text rounded-1 mb-3 border border-danger w-45" style=" font-size: 40px;   padding: 0px; color: red;">
-                                        <i class="fas fa-heart " value=""></i>
+                                    <p class="card-text rounded-1 mb-3 border border-danger w-45" style=" font-size: 40px;   padding: 0px; color: red; ">
+                                        <i class="fas fa-heart " value="" style="cursor:pointer;"></i>
                                         <span id="likes">
                                             <?php
                                             echo mysqli_num_rows($query3);

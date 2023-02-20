@@ -12,13 +12,15 @@ session_start(); ?>
 $useremail = $_GET['useremail'];
 
 include 'assets/connection.php';
-if (isset($_SESSION['username']) && $_SESSION['username'] == 'admin') {
-    $result = mysqli_query($db, "SELECT * FROM form_data  where status='Accepted'");
+if (isset($_SESSION['username'])) {
 ?>
 
     <body id="body-pd">
         <?php
-        include 'assets/admin-navbar-dash.php';
+        if ($_SESSION['username'] == 'admin')
+            include 'assets/navbar-dash.php';
+        else
+            include 'assets/navbar-dash.php';
         ?>
         <script>
             window.onload = (event) => {
@@ -30,66 +32,32 @@ if (isset($_SESSION['username']) && $_SESSION['username'] == 'admin') {
         <!--Container Main start-->
 
         <br>
-        <div class="height-100 ">
-            <h1> Funds Raised</h1>
-            <div class="table-responsive w-100 ">
-                <table class="table border">
-                    <thead>
-                        <tr>
-                            <th scope="col">ID</th>
-                            <th scope="col">Name</th>
-                            <th scope="col">Cause</th>
-                            <th scope="col">Donated</th>
-                            <th scope="col">Tip</th>
-                            <th scope="col">Date</th>
-                            <th scope="col">Action</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?php
-                        while ($row = mysqli_fetch_array($result)) {
-                            $id = $row['id'];
-                            $query = mysqli_query($db, "SELECT * FROM payments where raiseid='$id'and status='complete' ");
-                            while ($row1 = mysqli_fetch_array($query)) {
-                        ?>
-                                <tr>
-                                    <td><?php echo $row1['raiseid']; ?></td>
-                                    <td>Admin</td>
+        <!-- <div class=" "> -->
+        <h3> Funds Raised</h3>
+        <script>
+            let column_fields = ['ID', 'Name', 'Cause', 'Date', 'Donated', 'Tip', 'Transaction_Id'];
+            <?php
+            $column_data_fields = ['id', 'name', 'cause_title', 'date', 'amount', 'tip', 'tran_id'];
+            $column_fields = ['ID', 'Name', 'Cause', 'Date', 'Donated', 'Tip', 'Transaction_Id'];
+            $result = mysqli_query($db, "SELECT * FROM payments as p join form_data as f on f.id = p.raiseid and p.status='complete'");
+            ?>
+            const columnDefs = [];
+            column_fields.forEach(element => {
+                columnDefs.push({
+                    field: element
+                })
+            })
+            columnDefs.push({
+                field: 'Actions',
+                cellRenderer: function(params) {
+                    return '<a href="payment-details.php?tid=' + params.data.Transaction_Id + '" class="btn btn-outline-success p-1">View</a>';
+                }
+            })
+        </script>
 
-                                    <?php
-                                    $result1 = mysqli_query($db, "SELECT * FROM form_data where id='$id' and status='Accepted' ");
-                                    while ($rows = mysqli_fetch_array($result1)) {
-                                    ?>
-                                        <td class="w-50">
-                                            <a href="raise-detail.php?campaign=<?php echo $rows['id']; ?>" class="">
-                                                <img src="<?php echo "images/" . $rows['profile_pic']; ?>" width="40px" alt="" srcset=""> <?php echo $rows['cause_title']; ?>
-                                                <i class="fas fa-external-link"></i>
-                                            </a>
-                                        </td>
-                                        <td>₹ <?php echo $row1['amount']; ?></td>
-                                        <td>₹ <?php echo $row1['tip']; ?></td>
-                                        <td><?php
-                                            $month  = date_format(date_create($row1['date']), "M d,Y");
-                                            echo $month; ?></td>
-                                        <td>
-                                            <a href="payment-details.php?tid=<?php echo $row1['tran_id']; ?>" class="btn btn-success p-1">View</a>
-                                        </td>
-                                </tr>
-
-                        <?php
-                                    }
-                                }
-                        ?>
-                    <?php
-                        }
-                    ?>
-
-                    </tbody>
-                </table>
-
-            </div>
-        </div>
-        <?php include 'assets/footer-dash.php'; ?>
+        <?php
+        include 'assets/grid-system.php';
+        include 'assets/footer-dash.php'; ?>
 
     </body>
 <?php

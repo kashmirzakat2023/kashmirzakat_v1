@@ -11,6 +11,12 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav ms-auto ">
+                <li class="nav-item search">
+                    <a class="nav-link " data-bs-toggle="modal" autocomplete="off" data-bs-target="#searchModal">
+                        <i class="fa fa-search" aria-hidden="true"></i>&nbsp; Search
+                    </a>
+                </li>
+
                 <li class="nav-item">
                     <a class="nav-link" aria-current="page" href="index.php">Home</a>
                 </li>
@@ -18,7 +24,7 @@
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                         Discover
                     </a>
-                    <ul class="dropdown-menu shadow" aria-labelledby="navbarDropdownMenuLink">
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                         <li>
                             <a class="dropdown-item" href="education.php">Education</a>
                         </li>
@@ -42,14 +48,9 @@
                 <li class="nav-item">
                     <a class="nav-link" href="about-us.php">About Us</a>
                 </li>
-                <li class="nav-item search">
-                    <a class="nav-link " data-bs-toggle="modal" autocomplete="off" data-bs-target="#searchModal">
-                        <i class="fa fa-search" aria-hidden="true"></i>&nbsp; Search
-                    </a>
-                </li>
                 <?php
                 if (!isset($_SESSION['username'])) {
-                    ?>
+                ?>
                     <li class="nav-item">
                         <a class="nav-link" href="contact-us.php">Contact</a>
                     </li>
@@ -64,14 +65,14 @@
                     $useremail = $_SESSION['useremail'];
                     if ($_SESSION['username'] == "admin") {
                     ?>
-                             <li class="nav-item">
-                        <a class="nav-link" href="admin-contactlist.php">Contact List</a>
-                    </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="admin-contactlist.php">Contact List</a>
+                        </li>
                         <li class="nav-item dropdown ">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 Admin
                             </a>
-                            <ul class="dropdown-menu shadow" aria-labelledby="navbarDropdownMenuLink">
+                            <ul class="dropdown-menu                                                                                                                                                                                                                                                                                                                                                                                                                                                                            " aria-labelledby="navbarDropdownMenuLink">
                                 <li>
                                     <a class="dropdown-item" href="admin-dashboard.php">Dashboard</a>
                                 </li>

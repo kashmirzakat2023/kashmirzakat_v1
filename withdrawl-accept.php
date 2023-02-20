@@ -15,7 +15,7 @@ if (isset($_SESSION['username']) && $_SESSION['username'] == 'admin') {
 
     <body id="body-pd">
                 <?php
-        include 'assets/admin-navbar-dash.php';
+        include 'assets/navbar-dash.php';
         ?>
         <script>
             window.onload = (event) => {
@@ -27,7 +27,7 @@ if (isset($_SESSION['username']) && $_SESSION['username'] == 'admin') {
         <!--Container Main start-->
 
         <br>
-        <div class="height-100 p-3">
+        <div class=" p-3">
             <h1> Withdrawl Requested Invoice</h1>
             <form action="" method="post" class=" border border-2 p-3 rounded-1">
                 <label class="control-label form-floating " for="fname">Enter withdrawl amount in rupees</label>

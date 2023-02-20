@@ -20,7 +20,7 @@ if (isset($_SESSION['username']) && $_SESSION['username'] == 'admin') {
 
     <body id="body-pd" class="body-pd">
         <?php
-        include 'assets/admin-navbar-dash.php';
+        include 'assets/navbar-dash.php';
         ?>
         <script>
             window.onload = (event) => {
@@ -30,7 +30,7 @@ if (isset($_SESSION['username']) && $_SESSION['username'] == 'admin') {
             }
         </script>
         <!--Container Main start-->
-        <div class="height-100">
+        <div class="">
             <h1> Dashboard</h1>
             <div class="row">
                 <div class="col-lg-3 col-md-6 col-12 mb-4 ">

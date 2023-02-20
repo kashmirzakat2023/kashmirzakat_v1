@@ -16,7 +16,7 @@ if (isset($_SESSION['username']) && $_SESSION['username'] == 'admin') {
 
     <body id="body-pd">
                 <?php
-        include 'assets/admin-navbar-dash.php';
+        include 'assets/navbar-dash.php';
         ?>
         <script>
             window.onload = (event) => {
@@ -26,7 +26,7 @@ if (isset($_SESSION['username']) && $_SESSION['username'] == 'admin') {
             }
         </script>
         <!--Container Main start-->
-        <div class="height-100 ">
+        <div class=" ">
             <br>
             <h1>Withdrawls</h1>
             <div class=" mt-2 row ">
@@ -49,7 +49,7 @@ if (isset($_SESSION['username']) && $_SESSION['username'] == 'admin') {
                                 </div>
                             </div>
                         </div>
-                        <a href="withdrawl-accepted.php?useremail=<?php echo $useremail; ?>">
+                        <a href="withdrawl-accepted.php?useremail=<?php echo $useremail; ?>&status=accepted">
                             <div class=" text-light text-center p-1 mb-0 " style="background-color: rgba(0,0,0,0.3);">
                                 <small>view....</small><i class="fas fa-arrow-circle-right text-light"></i>
                             </div>
@@ -75,7 +75,7 @@ if (isset($_SESSION['username']) && $_SESSION['username'] == 'admin') {
                                 </div>
                             </div>
                         </div>
-                        <a href="withdrawl-pending.php?useremail=<?php echo $useremail; ?>">
+                        <a href="withdrawl-accepted.php?useremail=<?php echo $useremail; ?>&status=pending">
                             <div class=" text-light text-center p-1 mb-0 " style="background-color: rgba(0,0,0,0.3);">
                                 <small>view....</small><i class="fas fa-arrow-circle-right text-light"></i>
                             </div>
@@ -101,7 +101,7 @@ if (isset($_SESSION['username']) && $_SESSION['username'] == 'admin') {
                                 </div>
                             </div>
                         </div>
-                        <a href="withdrawl-rejected.php?useremail=<?php echo $useremail; ?>">
+                        <a href="withdrawl-accepted.php?useremail=<?php echo $useremail; ?>&status=rejected">
                             <div class=" text-light text-center p-1 mb-0 " style="background-color: rgba(0,0,0,0.3);">
                                 <small>view....</small><i class="fas fa-arrow-circle-right text-light"></i>
                             </div>

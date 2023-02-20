@@ -29,7 +29,7 @@ if (isset($_SESSION['username'])) {
         <!--Container Main start-->
 
         <br>
-        <div class="height-100">
+        <div class="">
             <h1> Scholarship</h1>
             <div class="table-responsive w-100 ">
                 <table class="table">

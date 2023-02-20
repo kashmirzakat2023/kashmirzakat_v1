@@ -17,7 +17,7 @@ if (isset($_SESSION['useremail']) && $_SESSION['useremail'] == 'admin@admin.com'
 
     <body id="body-pd">
         <?php
-        include 'assets/admin-navbar-dash.php';
+        include 'assets/navbar-dash.php';
         ?>
         <script>
             window.onload = (event) => {
@@ -29,7 +29,7 @@ if (isset($_SESSION['useremail']) && $_SESSION['useremail'] == 'admin@admin.com'
         <!--Container Main start-->
 
         <br>
-        <div class="height-100 ">
+        <div class=" ">
             <h1> Withdrawl Invoice</h1>
             <div class="table-responsive w-100">
                 <table class="table table-borderless d-flex align-self-centre">
@@ -113,7 +113,7 @@ if (isset($_SESSION['useremail']) && $_SESSION['useremail'] == 'admin@admin.com'
         <!--Container Main start-->
 
         <br>
-        <div class="height-100 ">
+        <div class=" ">
             <h1> Funds Raised</h1>
             <div class="table-responsive w-100">
                 <table class="table table-borderless d-flex align-self-centre">

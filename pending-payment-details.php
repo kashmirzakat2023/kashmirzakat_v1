@@ -19,7 +19,7 @@ if (isset($_SESSION['username']) and $_SESSION['username'] == 'admin') {
 
     <body id="body-pd">
                 <?php
-        include 'assets/admin-navbar-dash.php';
+        include 'assets/navbar-dash.php';
         ?>
         <script>
             window.onload = (event) => {
@@ -31,7 +31,7 @@ if (isset($_SESSION['username']) and $_SESSION['username'] == 'admin') {
         <!--Container Main start-->
 
         <br>
-        <div class="height-100 ">
+        <div class=" ">
             <h1> Funds Raised</h1>
             <div class="table-responsive w-100">
                 <table class="table table-borderless d-flex align-self-centre">
@@ -88,12 +88,12 @@ if (isset($_SESSION['username']) and $_SESSION['username'] == 'admin') {
                                     <?php echo $row1['date']; ?>
                                 </td>
                             </tr>
-                            <tr>
+                            <!-- <tr>
                                 <th class=" text-end" scope="col">Time : </th>
                                 <td>
                                     <?php echo $row1['time']; ?>
                                 </td>
-                            </tr>
+                            </tr> -->
                             <tr>
                                 <th class=" text-end" scope="col">Ananymous : </th>
                                 <td>
@@ -136,7 +136,7 @@ if (isset($_SESSION['username']) and $_SESSION['username'] == 'admin') {
         <!--Container Main start-->
 
         <br>
-        <div class="height-100 ">
+        <div class=" ">
             <h1> Funds Raised</h1>
             <div class="table-responsive w-100">
                 <table class="table table-borderless d-flex align-self-centre">

@@ -25,7 +25,7 @@ if (isset($_SESSION['username']) ) {
             }
         </script>
         <!--Container Main start-->
-        <div class="height-100 ">
+        <div class=" ">
             <h1> Withdrawl Updated</h1>
             <div class="table-responsive w-100 ">
                 <table class="table border">

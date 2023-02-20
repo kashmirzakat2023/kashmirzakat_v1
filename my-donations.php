@@ -10,13 +10,15 @@
 <?php
 include 'assets/connection.php';
 $useremail = $_SESSION['useremail'];
-$result = mysqli_query($db, "SELECT * FROM payments where email='$useremail'and status='complete' ");
 if (isset($_SESSION['username'])) {
 ?>
 
     <body id="body-pd">
         <?php
-        include 'assets/navbar-dash.php';
+        if ($_SESSION['username'] == 'admin')
+            include 'assets/navbar-dash.php';
+        else
+            include 'assets/navbar-dash.php';
         ?>
         <script>
             window.onload = (event) => {
@@ -25,56 +27,30 @@ if (isset($_SESSION['username'])) {
                 $('#body-pd').attr('class', 'body-pd');
             }
         </script>
-        <!--Container Main start-->
+        <h3>My Donations</h3>
+        <script>
+            let column_fields = ['ID', 'Cause', 'Date', 'Donated', 'Tip', 'Transaction_Id'];
+            <?php
+            $column_data_fields = ['id', 'cause_title', 'date', 'amount', 'tip', 'tran_id'];
+            $column_fields = ['ID', 'Cause', 'Date', 'Donated', 'Tip', 'Transaction_Id'];
+            $result = mysqli_query($db, "SELECT * FROM payments as p join form_data as f on f.id = p.raiseid and p.status='complete' and p.email='$useremail'");
+            ?>
+            const columnDefs = [];
+            column_fields.forEach(element => {
+                columnDefs.push({
+                    field: element
+                })
+            })
+            columnDefs.push({
+                field: 'Actions',
+                cellRenderer: function(params) {
+                    return '<a href="payment-details.php?tid=' + params.data.Transaction_Id + '" class="btn btn-success p-1">View</a>';
+                }
+            })
+        </script>
 
-        <br>
-        <div class="height-100">
-            <h1> My Donations</h1>
-            <div class="table-responsive w-100 ">
-                <table class="table border">
-                    <thead>
-                        <tr>
-                            <th scope="col">ID</th>
-                            <th scope="col">Title</th>
-                            <th scope="col">User</th>
-                            <th scope="col">Amount</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <?php
-                            while ($row = mysqli_fetch_array($result)) {
-                            ?>
-                        <tr>
-                            <?php
-                                $id = $row['raiseid'];
-                                $query = mysqli_query($db, "SELECT * FROM form_data where id='$id' and status='Accepted' ");
-                                while ($row1 = mysqli_fetch_array($query)) {
-                            ?>
-                                <td><?php echo $row['raiseid']; ?></td>
-                                <td>
-                                    <a href="raise-detail.php?campaign=<?php echo $row1['id']; ?>" class=" d-flex justify-content-start align-items-start">
-                                        <img src="<?php echo "images/" . $row1['profile_pic']; ?>" width="50px" alt="" srcset="">
-                                        <p class=" text-truncate wrapper text-break" style="  -webkit-line-clamp: 2; height: 40px;"><?php echo $row1['cause_title']; ?></p>...&nbsp;
-                                        <i class="fas fa-external-link"></i>
-                                    </a>
-                                </td>
-                            <?php
-                                }
-                            ?>
-                            <td><?php echo $row['name']; ?></td>
-                            <td><?php echo $row['amount']; ?></td>
-                        </tr>
-                    <?php
-                            }
-                    ?>
-                    </tr>
-                    </tbody>
-                </table>
-            </div>
-
-        </div>
         <?php
+        include 'assets/grid-system.php';
         include 'assets/footer-dash.php';
         ?>
     </body>

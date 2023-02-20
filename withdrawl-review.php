@@ -36,10 +36,10 @@ $query = mysqli_query($db, "SELECT * FROM withdrawl_request where wid = '$wid' "
 
         <body id="body-pd">
             <?php
-            include 'assets/admin-navbar-dash.php';
+            include 'assets/navbar-dash.php';
             ?>
             <!--Container Main start-->
-            <div class="height-100 p-3">
+            <div class=" p-3">
 
                 <h1> Withdrawl Invoice</h1>
                 <?php

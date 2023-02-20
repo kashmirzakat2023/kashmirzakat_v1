@@ -26,10 +26,10 @@ if (isset($_SESSION['useremail']) && $_SESSION['username'] == "admin") {
     </script>
 
     <body id="body-pd">
-        <?php include 'assets/admin-navbar-dash.php'; ?>
+        <?php include 'assets/navbar-dash.php'; ?>
         <h1>Accepted Causes</h1>
         <div class="table-responsive">
-            <table class="table table-striped w-100">
+            <table class="table table-striped" id="dtBasicExample">
                 <thead>
                     <tr>
                         <th scope="col">ID</th>
@@ -53,7 +53,7 @@ if (isset($_SESSION['useremail']) && $_SESSION['username'] == "admin") {
                             <td><?php echo $data['cause_title']; ?></td>
                             <td><?php echo $data['amount']; ?></td>
                             <td><?php echo $donations; ?></td>
-                            <td><?php
+                            <td nowrap="nowrap"><?php
                                 echo date('d-m-Y', strtotime($data['date']))
                                 // echo date( 'Y-m-d',$data['date']); 
                                 ?></td>
@@ -71,15 +71,16 @@ if (isset($_SESSION['useremail']) && $_SESSION['username'] == "admin") {
                                 }
                                 ?>
                             </td>
-                            <td><a class="btn btn-outline-success m-2" href="raise-detail.php?campaign=<?php echo $data['id']; ?>">View</a>
-                            <a class="btn btn-outline-danger m-2" href="accepted-reject.php?id=<?php echo $data['id']; ?>">Reject</a>
-                            <?php
-                            if ($useremail == 'admin@admin.com') {
-                            ?>
-                                <a class="btn btn-outline-primary m-2" href="admin-accept-edit-form.php?id=<?php echo $data['id']; ?>">Edit</a>
+                            <td nowrap="nowrap">
+                                <a class="btn btn-outline-success my-2" href="raise-detail.php?campaign=<?php echo $data['id']; ?>">View</a>
                                 <?php
-                            }
-                            ?>
+                                if ($useremail == 'admin@admin.com') {
+                                ?>
+                                <a class="btn btn-outline-danger my-2" href="accepted-reject.php?id=<?php echo $data['id']; ?>">Reject</a>
+                                    <a class="btn btn-outline-primary my-2" href="admin-accept-edit-form.php?id=<?php echo $data['id']; ?>">Edit</a>
+                                <?php
+                                }
+                                ?>
                             </td>
                         </tr>
                     <?php
@@ -121,15 +122,31 @@ if (isset($_SESSION['useremail']) && $_SESSION['username'] == "admin") {
             });
 
         });
+        $(document).ready(function () {
+  $('#dtBasicExample').DataTable();
+  $('.dataTables_length').addClass('bs-select');
+});
     </script>
     <style>
-        table {
+        /* table {
             margin-left: auto;
             margin-right: auto;
             margin-top: 10px !important;
             width: 200% !important;
             border: 1px solid black !important;
-        }
+        } */
+        table.dataTable thead .sorting:after,
+table.dataTable thead .sorting:before,
+table.dataTable thead .sorting_asc:after,
+table.dataTable thead .sorting_asc:before,
+table.dataTable thead .sorting_asc_disabled:after,
+table.dataTable thead .sorting_asc_disabled:before,
+table.dataTable thead .sorting_desc:after,
+table.dataTable thead .sorting_desc:before,
+table.dataTable thead .sorting_desc_disabled:after,
+table.dataTable thead .sorting_desc_disabled:before {
+  bottom: .5em;
+}
     </style>
 <?php
 } else {

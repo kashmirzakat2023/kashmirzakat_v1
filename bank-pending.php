@@ -1,4 +1,4 @@
-<?php 
+<?php
 session_start(); ?>
 <html>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
@@ -16,77 +16,42 @@ if (isset($_SESSION['username']) && $_SESSION['username'] == 'admin') {
 ?>
 
     <body id="body-pd">
-                <?php
-        include 'assets/admin-navbar-dash.php';
-        ?>
         <script>
             window.onload = (event) => {
-                // $('#nav-bar').attr('class', 'l-navbar show');
+                $('#campaign').addClass("nav_link active");
                 $('#body-pd').attr('class', 'body-pd');
-                $('#bank_pending').addClass("nav_link active");
             }
         </script>
-        <!--Container Main start-->
+        <?php
+        include 'assets/navbar-dash.php';
+        ?>
+        <h3>Bank pending Donations</h3>
+        <script>
+            let column_fields = ['ID', 'Name', 'Cause', 'Date', 'Transaction_Id'];
+            <?php
+            $column_data_fields = ['id', 'name', 'cause_title', 'tran_date', 'tran_id'];
+            $column_fields = ['ID', 'Name', 'Cause', 'Date', 'Transaction_Id'];
+            $result = mysqli_query($db, "SELECT * FROM `bank_pending` as b join form_data as f on f.id = b.raiseid");
+            ?>
+            const columnDefs = [];
+            column_fields.forEach(element => {
+                columnDefs.push({
+                    field: element
+                })
+            })
 
-        <br>
-        <div class="height-100 ">
-            <h1> Pending Bank transaction</h1>
-            <div class="table-responsive w-100 ">
-                <table class="table border">
-                    <thead>
-                        <tr>
-                            <th scope="col">ID</th>
-                            <th scope="col">Name</th>
-                            <th scope="col">Cause</th>
-                            <th scope="col">Donated</th>
-                            <th scope="col">Trans date</th>
-                            <th scope="col">Trans id</th>
-                            <th scope="col">Actions</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?php
-                            $query = mysqli_query($db, "SELECT * FROM bank_pending ");
-                            while ($row1 = mysqli_fetch_array($query)) {
-                                $id = $row1['raiseid'];
-                        ?>
-                                <tr>
-                                    <td><?php echo $row1['raiseid']; ?></td>
-                                    <td><?php echo $row1['name']; ?></td>
+            columnDefs.push({
+                field: 'Actions',
+                cellRenderer: function(params) {
+                    return '<a href="pending-payment-details.php?tid=' + params.data.Transaction_Id + '" class="btn btn-outline-primary p-1 me-1">View</a><a href="bank-accept.php?tid=' + params.data.Transaction_Id + '" class="btn btn-outline-success p-1 me-1">Accept</a><a href="bank-reject.php?tid=' + params.data.Transaction_Id + '" class="btn btn-outline-danger p-1">Reject</a>';
+                }
+            })
+        </script>
 
-                                    <?php
-                                    $result1 = mysqli_query($db, "SELECT * FROM form_data where id='$id' and status='Accepted' ");
-                                    while ($rows = mysqli_fetch_array($result1)) {
-                                    ?>
-                                        <td>
-                                            <a href="raise-detail.php?campaign=<?php echo $rows['cause_title']; ?>">
-                                                <img src="<?php echo "images/" . $rows['profile_pic']; ?>" width="40px" alt="" srcset=""> <?php echo $rows['cause_title']; ?>
-                                                <i class="fas fa-external-link"></i>
-                                            </a>
-                                        </td>
-                                        <td>₹ <?php echo $row1['amount']; ?></td>
-                                        <td><?php
-                                            $month  = date_format(date_create($row1['tran_date']), "M d,Y");
-                                            echo $month; ?></td>
-                                            <td><?php echo $row1['tran_id']; ?></td>
-                                        <td>
-                                            <a href="pending-payment-details.php?tid=<?php echo $row1['tran_id']; ?>" class="btn btn-primary p-1">View</a>
-                                            <a href="bank-accept.php?tid=<?php echo $row1['tran_id']; ?>" class="btn btn-success p-1">Accept</a>
-                                            <a href="bank-reject.php?tid=<?php echo $row1['tran_id']; ?>" class="btn btn-danger p-1">Reject</a>
-                                        </td>
-                                </tr>
+        <?php
+        include 'assets/grid-system.php'
+        ?>
 
-                        <?php
-                                    }
-                                }
-                        ?>
-
-                    </tbody>
-                </table>
-
-            </div>
-
-        </div>
         <?php include 'assets/footer-dash.php'; ?>
 
     </body>

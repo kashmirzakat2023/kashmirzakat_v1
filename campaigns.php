@@ -32,7 +32,7 @@ if (isset($_SESSION['username'])) {
         <!--Container Main start-->
 
         <br>
-        <div class="height-100">
+        <div class="">
             <h1>Causes</h1>
             <div class="row">
 
@@ -55,7 +55,7 @@ if (isset($_SESSION['username'])) {
                                 </div>
                             </div>
                         </div>
-                        <a href="accepted-forms-user.php?useremail=<?php echo $useremail; ?>">
+                        <a href="rejected-forms.php?useremail=<?php echo $useremail; ?>&status=Accepted">
                             <div class=" text-light text-center p-1 mb-0 " style="background-color: rgba(0,0,0,0.3);">
                                 <small>view....</small><i class="fas fa-arrow-circle-right text-light"></i>
                             </div>
@@ -81,7 +81,7 @@ if (isset($_SESSION['username'])) {
                                 </div>
                             </div>
                         </div>
-                        <a href="pending-forms-user.php?useremail=<?php echo $useremail; ?>">
+                        <a href="rejected-forms.php?useremail=<?php echo $useremail; ?>&status=Pending">
                             <div class=" text-light text-center p-1 mb-0 " style="background-color: rgba(0,0,0,0.3);">
                                 <small>view....</small><i class="fas fa-arrow-circle-right text-light"></i>
                             </div>
@@ -107,7 +107,7 @@ if (isset($_SESSION['username'])) {
                                 </div>
                             </div>
                         </div>
-                        <a href="rejected-forms-user.php?useremail=<?php echo $useremail; ?>">
+                        <a href="rejected-forms.php?useremail=<?php echo $useremail; ?>&status=Rejected">
                             <div class=" text-light text-center p-1 mb-0 " style="background-color: rgba(0,0,0,0.3);">
                                 <small>view....</small><i class="fas fa-arrow-circle-right text-light"></i>
                             </div>

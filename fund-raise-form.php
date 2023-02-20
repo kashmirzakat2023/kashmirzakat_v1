@@ -8,9 +8,7 @@ include 'assets/nav-links.php'; ?>
     <script src="js/drag-drop.js" defer></script>
     <script>
         window.addEventListener('beforeunload', function(e) {
-            // Cancel the event
-            e.preventDefault(); // If you prevent default behavior in Mozilla Firefox prompt will always be shown
-            // Chrome requires returnValue to be set
+            e.preventDefault();
             e.returnValue = '';
         });
     </script>
@@ -25,7 +23,7 @@ include 'assets/nav-links.php'; ?>
     ?>
 
         <form class="col-8 col-sm-9 mb-5 fund-raise " method="post" enctype="multipart/form-data" action="funds-store.php">
-            <h1 class="text-center fw-bolder py-2">Basic Information</h1>
+            <h2 class="text-center fw-bolder py-2">Basic Information</h2>
 
             <label for="img" class=" text-danger mb-1" style="display: none;" id="size"> *Image size must be less than 2 MB</label>
             <label for="img" class=" text-danger mb-1" style="display: none;" id="reso"> *Image Image resolution must be more than 800*400 px</label>
@@ -354,14 +352,11 @@ include 'assets/nav-links.php'; ?>
             <div class="form-floating mb-3">
                 <input accept="image/png,image/jpeg,image/jpg" type="file" class="form-control" id="file2" onchange="Filevalidation(this.id)" placeholder="" name="doc2" style="padding-left: 30px; padding-top: 16px ;">
             </div>
-            <!--<div class="form-floating mb-1">-->
-            <!--    <input accept="image/png,image/jpeg,image/jpg" type="file" class="form-control" id="file3" onchange="Filevalidation(this.id)" placeholder="" name="doc3" style="padding-left: 30px; padding-top: 16px ;">-->
-            <!--</div>-->
             <small class=" mb-1">Max file size is 2 MB. Allowed file types : JPEG, PNG and JPG</small>
             <small class=" mb-3">Documents to be uploaded can be medical records, school marksheet, college fee structure etc.</small>
             <hr>
             <center>
-                <h1>Beneficiary Bank Details</h1>
+                <h2>Beneficiary Bank Details</h2>
             </center>
             <div class="mb-3 ">
                 <label for="e"> Raising this cause for: &nbsp;&nbsp;&nbsp;</label>
@@ -412,7 +407,7 @@ include 'assets/nav-links.php'; ?>
             <!--<small class=" mb-3">Max file size is 2 MB. Allowed file types : JPEG, PNG and JPG</small>-->
             <hr>
             <center>
-                <h1>KYC Details</h1>
+                <h2>KYC Details</h2>
             </center>
             <div class="form-floating mb-3">
                 <input type="text" class="form-control" name="pan_num" id="floatingInput" placeholder="pan">
@@ -454,12 +449,15 @@ include 'assets/nav-links.php'; ?>
 
 </html>
 <style>
-    label,
-    small,
-    body,
-    input,
-    select {
-        font-size: 80%;
+    @media (max-width: 800px) {
+
+        label,
+        small,
+        body,
+        input,
+        select {
+            font-size: 80%;
+        }
     }
 </style>
 <script>

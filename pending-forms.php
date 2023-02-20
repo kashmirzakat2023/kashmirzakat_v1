@@ -27,7 +27,7 @@ if (isset($_SESSION['username']) && $_SESSION['username'] == "admin") {
     </script>
 
     <body id="body-pd">
-        <?php include 'assets/admin-navbar-dash.php'; ?>
+        <?php include 'assets/navbar-dash.php'; ?>
         <h1>Pending Causes</h1>
         <div class=" table-responsive">
             <table class="table table-striped w-100">
@@ -38,9 +38,7 @@ if (isset($_SESSION['username']) && $_SESSION['username'] == "admin") {
                         <th scope="col">Amount</th>
                         <th scope="col">Date</th>
                         <th scope="col">Cause Manager</th>
-                        <th scope="col">Know More</th>
-                        <th scope="col">Accept</th>
-                        <th scope="col">Reject</th>
+                        <th scope="col">Actions</th>
                     </tr>
                 </thead>
                 <tbody><?php
@@ -50,7 +48,9 @@ if (isset($_SESSION['username']) && $_SESSION['username'] == "admin") {
                             <th scope="row"><?php echo $data['id']; ?></th>
                             <td><?php echo $data['cause_title']; ?></td>
                             <td><?php echo $data['amount']; ?></td>
-                            <td><?php echo $data['date']; ?></td>
+                            <td nowrap="nowrap">
+                                <?php 
+                                echo date('d-m-Y', strtotime($data['date']));?></td>
                             <td>
                                 <?php
                                 if ($useremail == 'causemanager@causemanager.com') {
@@ -59,15 +59,15 @@ if (isset($_SESSION['username']) && $_SESSION['username'] == "admin") {
                                 ?>
                                     <div class="input-group mb-3">
                                         <input type="text" class="form-control save" name="cmname" placeholder="CM Name" id="<?php echo $data['id']; ?>" value="<?php echo $data['cause_manager']; ?>" aria-label="CM Name" aria-describedby="button-addon2">
-                                        <!--<button class="btn btn-outline-secondary save"  type="button" id="<?php echo $data['id']; ?>" >save</button>-->
                                     </div>
                                 <?php
                                 }
                                 ?>
                             </td>
-                            <td><a class="btn btn-outline-primary m-2" href="pending-fetch.php?id=<?php echo $data['id']; ?>">View</a></td>
-                            <td><a class="btn btn-outline-success m-2" href="accept.php?id=<?php echo $data['id']; ?>">Accept</a></td>
-                            <td><a class="btn btn-outline-danger m-2" href="reject.php?id=<?php echo $data['id']; ?>">Reject</a></td>
+                            <td nowrap="nowrap">
+                            <a class="btn btn-outline-primary m-2" href="pending-fetch.php?id=<?php echo $data['id']; ?>">View</a>
+                            <a class="btn btn-outline-success m-2" href="accept.php?id=<?php echo $data['id']; ?>">Accept</a>
+                            <a class="btn btn-outline-danger m-2" href="reject.php?id=<?php echo $data['id']; ?>">Reject</a></td>
                         </tr>
                     <?php
                         }
