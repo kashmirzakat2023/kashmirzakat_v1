@@ -568,7 +568,7 @@ include 'assets/nav-links.php'; ?>
     }
 
     table {
-        width: min-content;
+        width: fit-content;
         border-collapse: collapse;
     }
 
