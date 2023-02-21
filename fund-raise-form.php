@@ -29,7 +29,7 @@ include 'assets/nav-links.php'; ?>
             <label for="img" class=" text-danger mb-1" style="display: none;" id="reso"> *Image Image resolution must be more than 800*400 px</label>
             <div id="drop-zone" class="mb-4" style="cursor: pointer;">
                 <img src="" id="img" alt="profile image">
-                <p class=" text-center card-text p-5" id="para">
+                <p class=" text-center card-text p-5" style="opacity: 0.6;" id="para">
                     <i class="fas fa-cloud-upload text-secondary" style="font-size: 150px;"></i> <br><br>
                     <b> Drag and Drop an image / Click to Select an image</b> <br><br>
                     Max file size is 2 MB. Allowed file types : JPEG, PNG and JPG <br> Minimum size 800*400
@@ -38,7 +38,7 @@ include 'assets/nav-links.php'; ?>
             </div>
 
             <div class="form-floating mb-3">
-                <input type="text" class="form-control" id="floatingInput" name="cause_title" placeholder="Enter cause title(max-250 letters)">
+                <input type="text" class="form-control" id="floatingInput" name="cause_title" placeholder="Enter cause title(max-250 letters)" title="Enter cause title" required>
                 <label for="floatingInput">Title of cause <label class=" fw-bold text-danger">*</label></label>
             </div>
 
@@ -54,7 +54,7 @@ include 'assets/nav-links.php'; ?>
                 <label for="floatingSelect">Select <label class=" fw-bold text-danger">*</label></label>
             </div>
             <div class="form-floating mb-3">
-                <input type="number" class="form-control" name="amount" id="floatingInput" placeholder="amount">
+                <input type="number" class="form-control" name="amount" id="floatingInput" placeholder="amount" title="Enter amount" required>
                 <label for="floatingInput">Amount (in ₹) <label class=" fw-bold text-danger">*</label></label>
             </div>
 
@@ -324,7 +324,7 @@ include 'assets/nav-links.php'; ?>
             </div>
 
             <div class="form-floating mb-3">
-                <select class="form-select" id="floatingSelect" name="eligible" aria-label="Floating label select example">
+                <select class="form-select" id="floatingSelect" name="eligible" aria-label="Floating label select example" required>
                     <option selected>Is the cause zakat eligible</option>
                     <option value="Yes">Yes</option>
                     <option value="No">No</option>
@@ -385,46 +385,41 @@ include 'assets/nav-links.php'; ?>
                 </div>
             </div>
             <div class="form-floating mb-3">
-                <input type="text" class="form-control" name="acc_name" id="floatingInput" placeholder="bank">
+                <input type="text" class="form-control" name="acc_name" id="floatingInput" placeholder="bank" required>
                 <label for="floatingInput">Account Holder Name <label class=" fw-bold text-danger">*</label></label>
             </div>
             <div class="form-floating mb-3">
-                <input type="text" class="form-control" name="acc_num" id="floatingInput" placeholder="bank">
+                <input type="text" class="form-control" name="acc_num" id="floatingInput" placeholder="bank" required>
                 <label for="floatingInput">Beneficiary Account Number <label class=" fw-bold text-danger">*</label></label>
             </div>
             <div class="form-floating mb-3">
-                <input type="text" class="form-control" name="bank_name" id="floatingInput" placeholder="bank">
+                <input type="text" class="form-control" name="bank_name" id="floatingInput" placeholder="bank" required>
                 <label for="floatingInput">Bank Name <label class=" fw-bold text-danger">*</label></label>
             </div>
             <div class="form-floating mb-3">
-                <input type="text" class="form-control" name="ifsc" id="floatingInput" placeholder="bank">
+                <input type="text" class="form-control" name="ifsc" id="floatingInput" placeholder="bank" required>
                 <label for="floatingInput">IFSC Code <label class=" fw-bold text-danger">*</label></label>
             </div>
-            <!--<label for="exmp">Upload Bank Passbook/Cheque leaf(Optional)</label>-->
-            <!--<div class="form-floating">-->
-            <!--    <input accept="image/png,image/jpeg,image/jpg" type="file" class="form-control mb-1" id="file4" onchange="Filevalidation(this.id)" placeholder="" name="passbook" style="padding-left: 30px; padding-top: 16px ;">-->
-            <!--</div>-->
-            <!--<small class=" mb-3">Max file size is 2 MB. Allowed file types : JPEG, PNG and JPG</small>-->
             <hr>
             <center>
                 <h2>KYC Details</h2>
             </center>
             <div class="form-floating mb-3">
-                <input type="text" class="form-control" name="pan_num" id="floatingInput" placeholder="pan">
+                <input type="text" class="form-control" name="pan_num" id="floatingInput" placeholder="pan" required>
                 <label for="floatingInput">PAN Card Number <label class=" fw-bold text-danger">*</label></label>
             </div>
             <label for="exmp">Upload PAN Card Copy <label class=" fw-bold text-danger">*</label></label>
             <div class="form-floating">
-                <input accept="image/png,image/jpeg,image/jpg" type="file" class="form-control mb-1" id="file5" onchange="Filevalidation(this.id)" placeholder="" name="pan_copy" style="padding-left: 30px; padding-top: 16px ;">
+                <input accept="image/png,image/jpeg,image/jpg" type="file" class="form-control mb-1" id="file5" onchange="Filevalidation(this.id)" placeholder="" name="pan_copy" style="padding-left: 30px; padding-top: 16px ;" required>
             </div>
             <small class=" mb-3">Max file size is 2 MB. Allowed file types : JPEG, PNG and JPG</small>
             <div class="form-floating mb-3">
-                <input type="text" class="form-control mb-1" name="adhaar_num" id="floatingInput" placeholder="adhaar">
+                <input type="text" class="form-control mb-1" name="adhaar_num" id="floatingInput" placeholder="adhaar" required>
                 <label for="floatingInput">Aadhaar Card Number <label class=" fw-bold text-danger">*</label></label>
             </div>
             <label for="exmp">Upload Adhaar Card Copy <label class=" fw-bold text-danger">*</label></label>
             <div class="form-floating ">
-                <input accept="image/png,image/jpeg,image/jpg" type="file" class="form-control mb-1" id="file6" onchange="Filevalidation(this.id)" placeholder="" name="adhaar_copy" style="padding-left: 30px; padding-top: 16px ;">
+                <input accept="image/png,image/jpeg,image/jpg" type="file" class="form-control mb-1" id="file6" onchange="Filevalidation(this.id)" placeholder="" name="adhaar_copy" style="padding-left: 30px; padding-top: 16px ;" required>
             </div>
             <small class=" mb-3">Max file size is 2 MB. Allowed file types : JPEG, PNG and JPG</small>
 
@@ -436,11 +431,11 @@ include 'assets/nav-links.php'; ?>
             </div>
 
             <div class="mb-3 form-check">
-                <input type="checkbox" class="form-check-input" id="exampleCheck1" name="checkbox">
+                <input type="checkbox" class="form-check-input" id="exampleCheck1" name="checkbox" required>
                 <label class="form-check-label" for="exampleCheck1">I Agree to share aadhar details with Kashmir Zakat for
                     verfication <label class=" fw-bold text-danger">*</label></label>
             </div>
-            <label for="s"><label class=" fw-bold text-danger mb-3">* </label> are mandatory fields</label>
+            <label for="s"><label class=" fw-bold text-danger mb-3">* fields are mandatory</label></label>
 
             <button type="submit" id="submit" name="submit" class="btn btn-primary mb-3 fs-4">Submit</button>
         </form>
