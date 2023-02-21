@@ -106,64 +106,18 @@ include 'assets/nav-links.php'; ?>
                                 </a>
                             </li>
                         </ul>
-                        <style>
-                            .nav-tabs-items {
-                                color: black !important;
-                            }
-
-                            @media (max-width:600px) {
-                                .nav-tabs-items {
-                                    padding: 5px;
-                                }
-
-                                .cause_title {
-                                    font-size: 18px;
-                                }
-
-                                .container {
-                                    padding: 0 !important;
-                                }
-
-                                .profile_img {
-                                    width: 50vw;
-                                    height: 50vw;
-                                }
-                            }
-
-                            table {
-                                width: 100%;
-                                border-collapse: collapse;
-                            }
-
-                            table,
-                            td {
-                                border: 2px solid black;
-                                padding: 8px 2px;
-                            }
-
-                            .w-45 {
-                                width: 49%;
-                            }
-                        </style>
-
                         <!-- Tab panes -->
                         <div class="tab-content">
                             <div id="home" class="container tab-pane active"><br>
                                 <p>
                                     <label class=" fw-bold" for="d">My Story : </label><br>
-
-                                    <?
-                                    $data1 = '';
-                                    $data1 = str_replace('&', '&amp;', $data['cause_explain']);
+                                    <?php
+                                    // $data1 = str_replace('&', '&amp;', $data['cause_explain']);
+                                    echo $data['cause_explain'] ?>
+                                    <label class=" fw-bold" for="d">Cause Summary : </label><br>
+                                    <?php
+                                    echo ($data['cause_summary']);
                                     ?>
-                                <div>
-                                    <?php echo $data1 ?>
-                                </div>
-
-                                <label class=" fw-bold" for="d">Cause Summary : </label><br>
-                                <?php
-                                echo ($data['cause_summary']);
-                                ?>
                                 </p>
                                 <!-- ----- -->
                                 <h4>Supporting documents</h4>
@@ -302,10 +256,11 @@ include 'assets/nav-links.php'; ?>
                                                 <div class=" d-flex justify-content-between">
                                                     <b class="text-success">₹<?php echo $row2['samount']; ?></b>
                                                     <!--<small class=" text-muted">~ <?php echo $days; ?> days ago</small>-->
-                                                    <small class=" text-muted">~ <?php
-                                                                                    $month  = date_format(date_create($row2['tran_date']), "d M,Y");
-                                                                                    echo $month;
-                                                                                    ?></small>
+                                                    <small class=" text-muted">~
+                                                        <?php
+                                                        $month  = date_format(date_create($row2['tran_date']), "d M,Y");
+                                                        echo $month;
+                                                        ?></small>
                                                 </div>
                                             </div>
                                         </div>
@@ -504,82 +459,15 @@ include 'assets/nav-links.php'; ?>
                     <button class="btn btn-secondary border input-group-text fw-bold" id="button" onclick="copyToClipboard('#text')">copy</button>
                 </div>
                 <div class="text-center mt-3 d-flex flex-column mx-auto justify-content-center align-items-center">
-                    <h3 class="fw-bold">Scan QR Code</h1>
-                        <img src="" class="qr-code img-thumbnail img-responsive w-50" />
+                    <h3 class="fw-bold">Scan QR Code</h3>
+                    <img src="" class="qr-code img-thumbnail img-responsive w-50" />
                 </div>
 
                 <!-- --------------------- -->
 
             </div>
         </div>
-        
-        <script>
-            function htmlEncode(value) {
-                return $('<div/>').text(value)
-                    .html();
-            }
 
-            function copyToClipboard(element) {
-                var $temp = $("<input>");
-                $("body").append($temp);
-                $temp.val($(element).text()).select();
-                document.execCommand("copy");
-                document.getElementById('button').innerHTML = 'Copied';
-                document.getElementById('button').style.backgroundColor = '#5cb85c';
-                $temp.remove();
-            }
-
-            window.onload = function() {
-                let finalURL = 'https://chart.googleapis.com/chart?cht=qr&chl=' + htmlEncode(location.href) + '&chs=160x160&chld=L|0'
-                // Replace the src of the image with
-                // the QR code image
-                $('.qr-code').attr('src', finalURL);
-                document.getElementById('text').innerHTML = location.href;
-            }
-            setShareLinks();
-
-            function socialWindow1(url) {
-                window.open(url, "_self");
-
-            }
-
-            function socialWindow(url) {
-                var left = (screen.width - 570) / 2;
-                var top = (screen.height - 570) / 2;
-                var params = "menubar=no,toolbar=no,status=no,width=570,height=570,top=" + top + ",left=" + left;
-                window.open(url, "NewWindow", params);
-            }
-
-            function setShareLinks() {
-                var pageUrl = encodeURIComponent(document.URL);
-                var tweet = encodeURIComponent(jQuery("meta[property='og:description']").attr("content"));
-
-                jQuery(".social-share.facebook").on("click", function() {
-                    url = "https://www.facebook.com/sharer/sharer.php?u=" + pageUrl + "&quote = *<?php echo $data['cause_title']; ?>*" + "%0D%0A %0D%0A" + "<?php echo $data['cause_summary']; ?>" + " %0D%0A %0D%0A Read more - " + pageUrl + " %0D%0A %0D%0A Donate - " + " <?php echo 'https://kashmirzakat.com/donate.php?id=' . $id; ?>";
-                    socialWindow(url);
-                });
-
-                jQuery(".social-share.twitter").on("click", function() {
-                    url = "https://twitter.com/intent/tweet?url=" + pageUrl + "&text= *<?php echo $data['cause_title']; ?>*" + "%0D%0A %0D%0A" + "<?php echo $data['cause_summary']; ?>" + " %0D%0A %0D%0A Read more - " + pageUrl + " %0D%0A %0D%0A Donate - " + " <?php echo 'https://kashmirzakat.com/donate.php?id=' . $id; ?>";;
-                    socialWindow(url);
-                });
-
-                jQuery(".social-share.linkedin").on("click", function() {
-                    url = "https://www.linkedin.com/shareArticle?mini=true&url=" + pageUrl;
-                    socialWindow(url);
-                });
-
-                jQuery(".social-share.mail").on("click", function(e) {
-                    e.preventDefault();
-                    location.href = "mailto:?subject=<?php echo $data['cause_title']; ?>&body=" + "<?php echo $data['cause_title']; ?> %0D%0A %0D%0A <?php echo $data['cause_summary']; ?> %0D%0A %0D%0A Read more - " + pageUrl + "%0D%0A %0D%0A";
-                });
-
-                jQuery(".social-share.whatsapp").on("click", function() {
-                    url = "whatsapp://send?text=" + "*<?php echo $data['cause_title']; ?>*" + "%0D%0A %0D%0A" + "<?php echo $data['cause_summary']; ?>" + " %0D%0A %0D%0A Read more - " + pageUrl + " %0D%0A %0D%0A Donate - " + " <?php echo 'https://kashmirzakat.com/donate.php?id=' . $id; ?>";
-                    socialWindow1(url);
-                });
-            }
-        </script>
     <?php
     }
     include 'assets/footer.php';
@@ -588,3 +476,109 @@ include 'assets/nav-links.php'; ?>
 </body>
 
 </html>
+<script>
+    function htmlEncode(value) {
+        return $('<div/>').text(value)
+            .html();
+    }
+
+    function copyToClipboard(element) {
+        var $temp = $("<input>");
+        $("body").append($temp);
+        $temp.val($(element).text()).select();
+        document.execCommand("copy");
+        document.getElementById('button').innerHTML = 'Copied';
+        document.getElementById('button').style.backgroundColor = '#5cb85c';
+        $temp.remove();
+    }
+
+    window.onload = function() {
+        let finalURL = 'https://chart.googleapis.com/chart?cht=qr&chl=' + htmlEncode(location.href) + '&chs=160x160&chld=L|0'
+        // Replace the src of the image with
+        // the QR code image
+        $('.qr-code').attr('src', finalURL);
+        document.getElementById('text').innerHTML = location.href;
+    }
+    setShareLinks();
+
+    function socialWindow1(url) {
+        window.open(url, "_self");
+
+    }
+
+    function socialWindow(url) {
+        var left = (screen.width - 570) / 2;
+        var top = (screen.height - 570) / 2;
+        var params = "menubar=no,toolbar=no,status=no,width=570,height=570,top=" + top + ",left=" + left;
+        window.open(url, "NewWindow", params);
+    }
+
+    function setShareLinks() {
+        var pageUrl = encodeURIComponent(document.URL);
+        var tweet = encodeURIComponent(jQuery("meta[property='og:description']").attr("content"));
+
+        jQuery(".social-share.facebook").on("click", function() {
+            url = "https://www.facebook.com/sharer/sharer.php?u=" + pageUrl + "&quote = *<?php echo $data['cause_title']; ?>*" + "%0D%0A %0D%0A" + "<?php echo $data['cause_summary']; ?>" + " %0D%0A %0D%0A Read more - " + pageUrl + " %0D%0A %0D%0A Donate - " + " <?php echo 'https://kashmirzakat.com/donate.php?id=' . $id; ?>";
+            socialWindow(url);
+        });
+
+        jQuery(".social-share.twitter").on("click", function() {
+            url = "https://twitter.com/intent/tweet?url=" + pageUrl + "&text= *<?php echo $data['cause_title']; ?>*" + "%0D%0A %0D%0A" + "<?php echo $data['cause_summary']; ?>" + " %0D%0A %0D%0A Read more - " + pageUrl + " %0D%0A %0D%0A Donate - " + " <?php echo 'https://kashmirzakat.com/donate.php?id=' . $id; ?>";;
+            socialWindow(url);
+        });
+
+        jQuery(".social-share.linkedin").on("click", function() {
+            url = "https://www.linkedin.com/shareArticle?mini=true&url=" + pageUrl;
+            socialWindow(url);
+        });
+
+        jQuery(".social-share.mail").on("click", function(e) {
+            e.preventDefault();
+            location.href = "mailto:?subject=<?php echo $data['cause_title']; ?>&body=" + "<?php echo $data['cause_title']; ?> %0D%0A %0D%0A <?php echo $data['cause_summary']; ?> %0D%0A %0D%0A Read more - " + pageUrl + "%0D%0A %0D%0A";
+        });
+
+        jQuery(".social-share.whatsapp").on("click", function() {
+            url = "whatsapp://send?text=" + "*<?php echo $data['cause_title']; ?>*" + "%0D%0A %0D%0A" + "<?php echo $data['cause_summary']; ?>" + " %0D%0A %0D%0A Read more - " + pageUrl + " %0D%0A %0D%0A Donate - " + " <?php echo 'https://kashmirzakat.com/donate.php?id=' . $id; ?>";
+            socialWindow1(url);
+        });
+    }
+</script>
+<style>
+    .nav-tabs-items {
+        color: black !important;
+    }
+
+    @media (max-width:600px) {
+        .nav-tabs-items {
+            padding: 5px;
+        }
+
+        .cause_title {
+            font-size: 18px;
+        }
+
+        .container {
+            padding: 0 !important;
+        }
+
+        .profile_img {
+            width: 50vw;
+            height: 50vw;
+        }
+    }
+
+    table {
+        width: min-content;
+        border-collapse: collapse;
+    }
+
+    table,
+    td {
+        border: 2px solid black;
+        padding: 8px 2px;
+    }
+
+    .w-45 {
+        width: 49%;
+    }
+</style>
