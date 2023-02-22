@@ -111,13 +111,15 @@ include 'assets/nav-links.php'; ?>
                             <div id="home" class="container tab-pane active"><br>
                                 <p>
                                     <label class=" fw-bold" for="d">My Story : </label><br>
+                                <div class="cause_explain">
                                     <?php
                                     // $data1 = str_replace('&', '&amp;', $data['cause_explain']);
                                     echo $data['cause_explain'] ?>
-                                    <label class=" fw-bold" for="d">Cause Summary : </label><br>
-                                    <?php
-                                    echo ($data['cause_summary']);
-                                    ?>
+                                </div>
+                                <label class=" fw-bold" for="d">Cause Summary : </label><br>
+                                <?php
+                                echo ($data['cause_summary']);
+                                ?>
                                 </p>
                                 <!-- ----- -->
                                 <h4>Supporting documents</h4>
@@ -544,6 +546,10 @@ include 'assets/nav-links.php'; ?>
     }
 </script>
 <style>
+    .cause_explain {
+        overflow-x: auto;
+    }
+
     .nav-tabs-items {
         color: black !important;
     }
