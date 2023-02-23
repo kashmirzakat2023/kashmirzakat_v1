@@ -1,5 +1,4 @@
 <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
-
 <header class="header d-flex justify-content-between body-pd mb-3" id="header">
     <div class="header_toggle"> <i class='bx bx-menu bx-x' id="header-toggle"></i> </div>
     <div class="header_toggle d-flex flex-row align-content-center">
@@ -35,10 +34,10 @@ if ($useremail !== "admin@admin.com") {
                     <a href="campaigns.php?useremail=<?php echo $useremail; ?>" class="nav_link" title="Causes" data-bs-toggle="tooltip" data-bs-placement="right" id="campaign">
                         <i class='bx bxs-megaphone nav_icon '></i>
                         <span class="nav_name">Causes</span> </a>
-                    <a href="admin-donations.php?useremail=<?php echo $useremail; ?>" class="nav_link" title="Donations" data-bs-toggle="tooltip" data-bs-placement="right" id="donations">
+                    <a href="payments-history.php?useremail=<?php echo $useremail; ?>&type=ot" class="nav_link" title="Donations" data-bs-toggle="tooltip" data-bs-placement="right" id="donations">
                         <i class='bx bx-money nav_icon'></i>
                         <span class="nav_name">Donations</span> </a>
-                    <a href="my-donations.php?useremail=<?php echo $useremail; ?>" class="nav_link" title="My Donations" data-bs-toggle="tooltip" data-bs-placement="right" id="my_donations">
+                    <a href="payments-history.php?useremail=<?php echo $useremail; ?>&type=my" class="nav_link" title="My Donations" data-bs-toggle="tooltip" data-bs-placement="right" id="my_donations">
                         <i class='bx bx-donate-heart nav_icon'></i>
                         <span class="nav_name">My Donations</span> </a>
                     <a href="withdrawls.php?useremail=<?php echo $useremail; ?>" class="nav_link" title="Withdrawls" data-bs-toggle="tooltip" data-bs-placement="right" id="withdrawls">
@@ -64,19 +63,22 @@ if ($useremail !== "admin@admin.com") {
                     <a href="admin-dashboard.php?useremail=<?php echo $useremail; ?>" class="nav_link " data-bs-toggle="tooltip" data-bs-placement="right" title="dashboard" id="dashboard">
                         <i class='bx bx-grid-alt nav_icon'></i>
                         <span class="nav_name">Dashboard</span> </a>
-                    <a href="admin-campaigns.php?useremail=<?php echo $useremail; ?>" class="nav_link " title="Causes" data-bs-toggle="tooltip" data-bs-placement="right" id="campaign">
+                    <a href="campaigns.php?useremail=<?php echo $useremail; ?>" class="nav_link " title="Causes" data-bs-toggle="tooltip" data-bs-placement="right" id="campaign">
                         <i class='bx bxs-megaphone nav_icon '></i>
                         <span class="nav_name">Causes</span> </a>
-                    <a href="admin-donations.php?useremail=<?php echo $useremail; ?>" class="nav_link " title="Donations" data-bs-toggle="tooltip" data-bs-placement="right" id="donations">
+                    <a href="payments-history.php?useremail=<?php echo $useremail; ?>&type=ot" class="nav_link " title="Donations" data-bs-toggle="tooltip" data-bs-placement="right" id="donations">
                         <i class='bx bx-money nav_icon'></i>
                         <span class="nav_name">Donations</span> </a>
-                    <a href="users.php?useremail=<?php echo $useremail; ?>" class="nav_link" title="My Donations" data-bs-toggle="tooltip" data-bs-placement="right" id="users">
+                    <a href="payments-history.php?useremail=<?php echo $useremail; ?>&type=my" class="nav_link" title="My Donations" data-bs-toggle="tooltip" data-bs-placement="right" id="my_donations">
+                        <i class='bx bx-donate-heart nav_icon'></i>
+                        <span class="nav_name">My Donations</span> </a>
+                    <a href="users-list.php?useremail=<?php echo $useremail; ?>" class="nav_link" title="My Donations" data-bs-toggle="tooltip" data-bs-placement="right" id="users">
                         <i class='bx bxs-user nav_icon'></i>
                         <span class="nav_name">Users</span> </a>
                     <a href="bank-pending.php?useremail=<?php echo $useremail; ?>" class="nav_link " title="Withdrawls" data-bs-toggle="tooltip" data-bs-placement="right" id="bank_pending">
                         <i class='bx bx-time-five nav_icon'></i>
                         <span class="nav_name">Bank Pending</span> </a>
-                    <a href="admin-withdrawls.php?useremail=<?php echo $useremail; ?>" class="nav_link " title="Withdrawls" data-bs-toggle="tooltip" data-bs-placement="right" id="withdrawls">
+                    <a href="withdrawls.php?useremail=<?php echo $useremail; ?>" class="nav_link " title="Withdrawls" data-bs-toggle="tooltip" data-bs-placement="right" id="withdrawls">
                         <i class='bx bx-money-withdraw nav_icon'></i>
                         <span class="nav_name">Withdrawls</span> </a>
                     <!-- <a href="dashboard-scholarship.php?useremail=<?php echo $useremail; ?>" class="nav_link" title="Scholaarship" data-bs-toggle="tooltip" data-bs-placement="right" id="scholarship">

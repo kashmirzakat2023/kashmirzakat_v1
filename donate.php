@@ -27,7 +27,7 @@ include 'assets/nav-links.php'; ?>
     ?>
         <title><?php echo $data['cause_title']; ?></title>
         <div class="donate-head text-center p-4 text-light " style="background-color: var(--bg_dark_blue);">
-            <h1 class=" fw-bolder">Donate</h1>
+            <h2 class=" fw-bolder">Donate</h2>
             <h3><?php echo $data['cause_title']; ?></h3>
         </div>
         <div class="row row-cols-1 row-cols-md-2 row-cols-lg-2 mt-5 mx-lg-3 mx-md-3 mx-2 mb-5" style="margin-right: 0 !important;">

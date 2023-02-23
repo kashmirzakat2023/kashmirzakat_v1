@@ -30,7 +30,7 @@ if (isset($_SESSION['username'])) {
         </script>
         <!--Container Main start-->
         <div class=" ">
-            <h1> Dashboard</h1>
+            <h2> Dashboard</h2>
             <div class="row">
 
                 <div class="col-lg-4 col-md-6 col-12 mb-4">
@@ -38,7 +38,7 @@ if (isset($_SESSION['username'])) {
                         <div class="card-body ">
                             <div class="row no-gutters align-items-center">
                                 <div class="col mr-2">
-                                    <h1 class="mb-3 fw-bolder text-light" style="font-size: 50px !important;">
+                                    <h2 class="mb-3 fw-bolder text-light" style="font-size: 50px !important;">
                                         <?php
                                         $quer1 = mysqli_query($db, "SELECT * FROM form_data where email='$useremail' and status='Accepted'");
                                         $sum = 0;
@@ -50,7 +50,7 @@ if (isset($_SESSION['username'])) {
                                         echo $sum;
 
                                         ?>
-                                    </h1>
+                                    </h2>
                                     <div class="text-xs font-weight-bold text-light mb-1">
                                         Donations</div>
                                 </div>
@@ -59,7 +59,7 @@ if (isset($_SESSION['username'])) {
                                 </div>
                             </div>
                         </div>
-                        <a href="donations.php?useremail=<?php echo $useremail; ?>">
+                        <a href="payments-history.php?useremail=<?php echo $useremail; ?>&type=ot">
                             <div class=" text-light text-center p-1 mb-0 " style="background-color: rgba(0,0,0,0.3);">
                                 <small>view....</small><i class="fas fa-arrow-circle-right text-light"></i>
                             </div>
@@ -71,14 +71,14 @@ if (isset($_SESSION['username'])) {
                         <div class="card-body ">
                             <div class="row no-gutters align-items-center">
                                 <div class="col mr-2">
-                                    <h1 class="mb-3 fw-bolder text-light" style="font-size: 50px !important;">₹
+                                    <h2 class="mb-3 fw-bolder text-light" style="font-size: 50px !important;">₹
                                         <?php
                                         $donations = 0;
-                                        $quer = mysqli_query($db, "SELECT * FROM payments where email='$useremail'and status='complete'");
+                                        $quer = mysqli_query($db, "SELECT * FROM payments as p join form_data as f on f.id = p.raiseid and f.email='$useremail'and p.status='complete'");
                                         while ($row = mysqli_fetch_array($quer))
                                             $donations += $row['amount'];
                                         echo $donations;
-                                        ?></h1>
+                                        ?></h2>
                                     <div class="text-xs font-weight-bold text-light mb-1">
                                         Funds Raised</div>
                                 </div>
@@ -98,11 +98,11 @@ if (isset($_SESSION['username'])) {
                         <div class="card-body ">
                             <div class="row no-gutters align-items-center">
                                 <div class="col mr-2">
-                                    <h1 class="mb-3 fw-bolder text-light" style="font-size: 50px !important;">
+                                    <h2 class="mb-3 fw-bolder text-light" style="font-size: 50px !important;">
                                         <?php
                                         echo mysqli_num_rows($result);
                                         ?>
-                                    </h1>
+                                    </h2>
                                     <div class="text-xs font-weight-bold text-light mb-1">
                                         Causes</div>
                                 </div>

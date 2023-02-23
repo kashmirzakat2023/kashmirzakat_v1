@@ -28,7 +28,7 @@ if (isset($_SESSION['username'])) {
         <!--Container Main start-->
 
         <div class=" p-3">
-            <h1> Withdrawl Requested</h1>
+            <h2> Withdrawl Requested</h2>
             <form action="withdrawl-request-process.php?id=<?php echo $id;?>" method="post" class=" border border-2 p-3 rounded-1">
                 <label class="control-label form-floating mt-2" for="fname">Enter withdrawl amount in rupees</label>
                 <div class="input-group mb-3 flex-nowrap">

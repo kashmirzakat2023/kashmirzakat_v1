@@ -4,7 +4,7 @@ if (isset($_POST['email'])) {
     $six_digit_number = random_int(100000, 999999);
 
     $mailBody = '<div style="text-center: center; width: 60%; margin: auto; max-width: 100%; font-family: Arial;  ">
-    <div><h1>Forget Password</h1><h2>OTP Verification Number</h2></div>
+    <div><h2>Forget Password</h2><h2>OTP Verification Number</h2></div>
     <div style="margin: 20px 0px;"><span style=" padding: 10px;  ">' . $six_digit_number . '</span></div>
     <div>Please use the above OTP to complete registration</div>
     </div>';

@@ -18,7 +18,7 @@ if (isset($_SESSION['username']) && $_SESSION['username'] == 'admin') {
     <body id="body-pd">
         <script>
             window.onload = (event) => {
-                $('#campaign').addClass("nav_link active");
+                $('#bank_pending').addClass("nav_link active");
                 $('#body-pd').attr('class', 'body-pd');
             }
         </script>

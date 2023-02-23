@@ -60,7 +60,7 @@ include 'assets/nav-links.php'
         </button>
     </div>
 
-    <h1 class="fw-bolder text-center mt-5 ">Discover</h1>
+    <h2 class="fw-bolder text-center mt-5 ">Discover</h2>
     <div class="row row-cols-2 row-cols-md-3 row-cols-lg-6 justify-content-center justify-content-lg-evenly justify-content-md-evenly g-4 m-3 mb-3 fontawesome">
         <div class="col d-flex justify-content-center">
             <div class="card">
@@ -97,7 +97,7 @@ include 'assets/nav-links.php'
     <div class="kashmir_banner1 py-3 my-5">
         <div class=" bg-aubergine mb-3 py-5 jumbtron mt-5">
             <div class=" mb-2">
-                <h1 class=" text-center mb-5 mt-3">Why <b class="bg-blue rounded-2 p-2 fw-bolder">Kashmirzakat</b> ?</h1>
+                <h2 class=" text-center mb-5 mt-3">Why <b class="bg-blue rounded-2 p-2 fw-bolder">Kashmirzakat</b> ?</h2>
                 <div class=" row row-cols-1 row-cols-lg-3  d-flex flex-row justify-content-around mt-5">
                     <div class=" d-flex justify-content-center  align-items-center col-7 col-lg-3 col-md-3 feat">
                         <h6 class=" d-flex justify-content-center align-content-center"><i class="fas fa-book fs-1 feature-list"></i>
@@ -126,17 +126,17 @@ include 'assets/nav-links.php'
         <div class="count row row-cols-1 row-cols-lg-3 row-cols-md-3 d-flex justify-content-around mr-0">
             <div class="counter col-11 col-md-4 mt-1 col-lg-4 w-25 w-sm-100 ">
                 <p class="counter-logo"><i class="fa-2x fa fa-user fs-1"></i></p>
-                <h1 class="timer count-title count-number" data-to="<?php echo mysqli_num_rows($query); ?>" data-speed="1500"><?php echo mysqli_num_rows($query); ?></h1>
+                <h2 class="timer count-title count-number" data-to="<?php echo mysqli_num_rows($query); ?>" data-speed="1500"><?php echo mysqli_num_rows($query); ?></h2>
                 <h3 class="count-text">Donars</h3>
             </div>
             <div class="counter col-11 col-md-4 mt-1 col-lg-4 w-25 w-sm-100 ">
                 <p class="counter-logo"><i class="fa-2x bx bxs-megaphone fs-1"></i></p>
-                <h1 class="timer count-title count-number" data-to="<?php echo mysqli_num_rows($result); ?>" data-speed="1500"><?php echo mysqli_num_rows($result); ?></h1>
+                <h2 class="timer count-title count-number" data-to="<?php echo mysqli_num_rows($result); ?>" data-speed="1500"><?php echo mysqli_num_rows($result); ?></h2>
                 <h3 class="count-text">Causes</h3>
             </div>
             <div class="counter col-11 col-md-4 mt-1 col-lg-4 w-sm-100 ">
                 <p class="counter-logo"><i class="fa-2x bx bx-rupee fs-1"></i></p>
-                <h1 class="timer count-title count-number" data-to="<?php echo $donations; ?>" data-speed="1500">₹ <?php echo $donations; ?></h1>
+                <h2 class="timer count-title count-number" data-to="<?php echo $donations; ?>" data-speed="1500">₹ <?php echo $donations; ?></h2>
                 <h3 class="count-text">Donations</h3>
             </div>
         </div>
@@ -163,7 +163,7 @@ include 'assets/nav-links.php'
     // }
     // if ($percent >= 30 and $percent < 100) {
     ?>
-    <h1 class=" text-center fw-bold mt-5 mt-5 mb-3">&nbsp&nbsp Featured Cause</h1>
+    <h2 class=" text-center fw-bold mt-5 mt-5 mb-3">&nbsp&nbsp Featured Cause</h2>
     <div class="row row-cols-1 row-cols-md-3 row-cols-lg-4 row-cols-sm-2 g-4 mr-3 m-2 mb-5">
         <?php
         while ($data = mysqli_fetch_array($result7)) {
@@ -196,7 +196,7 @@ include 'assets/nav-links.php'
 
     //     if ($amount > 0 and $ramount >= $amount) {
     ?>
-    <h1 class=" text-center fw-bold mt-5 mb-3">&nbsp&nbsp Successful Cause</h1>
+    <h2 class=" text-center fw-bold mt-5 mb-3">&nbsp&nbsp Successful Cause</h2>
     <div class="row row-cols-1 row-cols-md-3 row-cols-lg-4 row-cols-sm-2 g-4 mr-3 m-2 mb-5">
         <?php
         while ($data = mysqli_fetch_array($result8)) {
@@ -221,7 +221,7 @@ include 'assets/nav-links.php'
     $result1 = mysqli_query($db, "SELECT  * FROM form_data where purpose='Education' and status='Accepted' LIMIT 4");
     if (mysqli_num_rows($result1) > 0) {
     ?>
-        <h1 class=" text-center fw-bold mt-5 mb-3">&nbsp&nbsp Education Cause</h1>
+        <h2 class=" text-center fw-bold mt-5 mb-3">&nbsp&nbsp Education Cause</h2>
         <div class="row row-cols-1 row-cols-md-3 row-cols-lg-4 row-cols-sm-2 g-4 mr-3 m-2 mb-5">
             <?php
             while ($data = mysqli_fetch_array($result1)) {
@@ -242,7 +242,7 @@ include 'assets/nav-links.php'
     $result2 = mysqli_query($db, "SELECT  * FROM form_data where purpose='Health' and status='Accepted' LIMIT 4");
     if (mysqli_num_rows($result2) > 0) {
     ?>
-        <h1 class=" text-center fw-bold mt-5 mb-3">&nbsp&nbsp Healthcare Cause</h1>
+        <h2 class=" text-center fw-bold mt-5 mb-3">&nbsp&nbsp Healthcare Cause</h2>
         <div class="row row-cols-1 row-cols-md-3 row-cols-lg-4 row-cols-sm-2 g-4 mr-3 m-2 mb-5">
             <?php
             while ($data = mysqli_fetch_array($result2)) {
@@ -263,7 +263,7 @@ include 'assets/nav-links.php'
     $result3 = mysqli_query($db, "SELECT  * FROM form_data where purpose='Livelihood' and status='Accepted' LIMIT 4");
     if (mysqli_num_rows($result3) > 0) {
     ?>
-        <h1 class=" text-center fw-bold mt-5 mb-3">&nbsp&nbsp Livelihood Cause</h1>
+        <h2 class=" text-center fw-bold mt-5 mb-3">&nbsp&nbsp Livelihood Cause</h2>
         <div class="row row-cols-1 row-cols-md-3 row-cols-lg-4 row-cols-sm-2 g-4 mr-3 m-2 mb-5">
             <?php
             while ($data = mysqli_fetch_array($result3)) {
@@ -284,7 +284,7 @@ include 'assets/nav-links.php'
     $result4 = mysqli_query($db, "SELECT  * FROM form_data where purpose='Scholarship' and status='Accepted' LIMIT 4");
     if (mysqli_num_rows($result4) > 0) {
     ?>
-        <h1 class=" text-center fw-bold mt-5 mb-3">&nbsp&nbsp Scholarship Cause</h1>
+        <h2 class=" text-center fw-bold mt-5 mb-3">&nbsp&nbsp Scholarship Cause</h2>
         <div class="row row-cols-1 row-cols-md-3 row-cols-lg-4 row-cols-sm-2 g-4 mr-3 m-2 mb-5">
             <?php
             while ($data = mysqli_fetch_array($result4)) {
@@ -305,7 +305,7 @@ include 'assets/nav-links.php'
     $result5 = mysqli_query($db, "SELECT  * FROM form_data where purpose='Others' and status='Accepted' LIMIT 4");
     if (mysqli_num_rows($result5) > 0) {
     ?>
-        <h1 class=" text-center fw-bold mt-5 mb-3">&nbsp&nbsp Others Cause</h1>
+        <h2 class=" text-center fw-bold mt-5 mb-3">&nbsp&nbsp Others Cause</h2>
         <div class="row row-cols-1 row-cols-md-3 row-cols-lg-4 row-cols-sm-2 g-4 mr-3 m-2 mb-5">
             <?php
             while ($data = mysqli_fetch_array($result5)) {

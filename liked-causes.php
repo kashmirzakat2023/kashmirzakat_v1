@@ -13,7 +13,7 @@ $username = $_GET['username'];
     ?>
     <center>
 
-        <h1 class="mt-3"> Liked Causes</h1>
+        <h2 class="mt-3"> Liked Causes</h2>
     </center>
     <?php
     include 'assets/connection.php';

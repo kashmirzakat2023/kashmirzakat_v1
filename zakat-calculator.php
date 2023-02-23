@@ -15,7 +15,7 @@
 <body>
     <?php include 'assets/navbar.php'; ?>
     <div class="main-calci d-flex align-items-center flex-column w-75 me-auto mx-auto mt-4 mb-4 rounded-3 ">
-        <h1 class=" text-center">Zakat calculator</h1>
+        <h2 class=" text-center">Zakat calculator</h2>
         <div class=" table-responsive ">
             <table class="table table-borderless d-flex me-auto mx-auto mt-4">
                 <tbody>

@@ -15,7 +15,7 @@ include 'assets/nav-links.php'; ?>
 <body>
 
     <center>
-        <h1 class="mt-3"> Forget Password</h1>
+        <h2 class="mt-3"> Forget Password</h2>
     </center>
     <div class="col-8 mb-5 fund-raise">
         <div>
@@ -221,7 +221,7 @@ include 'assets/nav-links.php'; ?>
             font-size: 80%;
         }
 
-        h1 {
+        h2 {
             font-size: 180%;
         }
     }

@@ -28,7 +28,7 @@
                 <div class="row row-cols-1 mt-5 mx-lg-3 mx-md-3 mx-2 mb-5 " style="margin-right: 0 !important;">
                     <div class="col col-10 mx-auto">
                         <center>
-                            <h1>Beneficiary Bank Details</h1>
+                            <h2>Beneficiary Bank Details</h2>
                         </center>
                         <div class="form-floating mb-3">
                             <input type="text" class="form-control" name="acc_name" value="<?php echo $data['acc_name']; ?>" id="floatingInput" placeholder="bank" required>

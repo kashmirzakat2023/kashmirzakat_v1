@@ -41,7 +41,7 @@ $query = mysqli_query($db, "SELECT * FROM withdrawl_request where wid = '$wid' "
             <!--Container Main start-->
             <div class=" p-3">
 
-                <h1> Withdrawl Invoice</h1>
+                <h2> Withdrawl Invoice</h2>
                 <?php
                 while ($row1 = mysqli_fetch_array($query)) {
                 ?>

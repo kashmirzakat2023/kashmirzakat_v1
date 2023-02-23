@@ -31,18 +31,18 @@ if (isset($_SESSION['username']) && $_SESSION['username'] == 'admin') {
         </script>
         <!--Container Main start-->
         <div class="">
-            <h1> Dashboard</h1>
+            <h2> Dashboard</h2>
             <div class="row">
                 <div class="col-lg-3 col-md-6 col-12 mb-4 ">
                     <div class="card bg-warning shadow h-100 " style="box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px !important;">
                         <div class="card-body ">
                             <div class="row no-gutters align-items-center">
                                 <div class="col mr-2">
-                                    <h1 class="mb-3 fw-bolder text-light" style="font-size: 40px !important;">
+                                    <h2 class="mb-3 fw-bolder text-light" style="font-size: 40px !important;">
                                         <?php
                                         echo mysqli_num_rows($query);
                                         ?>
-                                    </h1>
+                                    </h2>
                                     <div class="text-xs font-weight-bold text-light mb-1">
                                         Donations</div>
                                 </div>
@@ -51,7 +51,7 @@ if (isset($_SESSION['username']) && $_SESSION['username'] == 'admin') {
                                 </div>
                             </div>
                         </div>
-                        <a href="admin-donations.php?useremail=<?php echo $useremail; ?>">
+                        <a href="payments-history.php?useremail=<?php echo $useremail; ?>&type=ot">
                             <div class=" text-light text-center p-1 mb-0 " style="background-color: rgba(0,0,0,0.3);">
                                 <small>view....</small><i class="fas fa-arrow-circle-right text-light"></i>
                             </div>
@@ -63,14 +63,14 @@ if (isset($_SESSION['username']) && $_SESSION['username'] == 'admin') {
                         <div class="card-body ">
                             <div class="row no-gutters align-items-center">
                                 <div class="col mr-2">
-                                    <h1 class="mb-3 fw-bolder text-light" style="font-size: 30px !important;">₹
+                                    <h2 class="mb-3 fw-bolder text-light" style="font-size: 30px !important;">₹
                                         <?php
                                         $donations = 0;
                                         while ($row = mysqli_fetch_array($query))
                                             $donations += $row['amount'];
                                         echo $donations;
                                         ?>
-                                    </h1>
+                                    </h2>
                                     <div class="text-xs font-weight-bold text-light mb-1">
                                         Funds Raised</div>
                                 </div>
@@ -89,12 +89,12 @@ if (isset($_SESSION['username']) && $_SESSION['username'] == 'admin') {
                         <div class="card-body ">
                             <div class="row no-gutters align-items-center">
                                 <div class="col mr-2">
-                                    <h1 class="mb-3 fw-bolder text-light" style="font-size: 30px !important;">
+                                    <h2 class="mb-3 fw-bolder text-light" style="font-size: 30px !important;">
                                         <?php
 
                                         echo mysqli_num_rows($result);
                                         ?>
-                                    </h1>
+                                    </h2>
                                     <div class="text-xs font-weight-bold text-light mb-1">
                                         Causes</div>
                                 </div>
@@ -103,7 +103,7 @@ if (isset($_SESSION['username']) && $_SESSION['username'] == 'admin') {
                                 </div>
                             </div>
                         </div>
-                        <a href="admin-campaigns.php?useremail=<?php echo $useremail; ?>">
+                        <a href="campaigns.php?useremail=<?php echo $useremail; ?>">
                             <div class="text-light text-center p-1 mb-0 " style="background-color: rgba(0,0,0,0.3);">
                                 <small>view....</small><i class="fas fa-arrow-circle-right text-light"></i>
                             </div>
@@ -115,7 +115,7 @@ if (isset($_SESSION['username']) && $_SESSION['username'] == 'admin') {
                         <div class="card-body ">
                             <div class="row no-gutters align-items-center">
                                 <div class="col mr-2">
-                                    <h1 class="mb-3 fw-bolder text-light" style="font-size: 30px !important;">₹
+                                    <h2 class="mb-3 fw-bolder text-light" style="font-size: 30px !important;">₹
                                         <?php
                                         $query = mysqli_query($db, "SELECT * FROM payments  where status='complete'");
                                         $donations = 0;
@@ -124,7 +124,7 @@ if (isset($_SESSION['username']) && $_SESSION['username'] == 'admin') {
                                             $tip += $row['tip'];
                                         echo $tip;
                                         ?>
-                                    </h1>
+                                    </h2>
                                     <div class="text-xs font-weight-bold text-light mb-1">
                                         Tips Raised</div>
                                 </div>

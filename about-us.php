@@ -13,7 +13,7 @@ include 'assets/nav-links.php'; ?>
     include 'assets/navbar.php';
     ?>
 
-    <h1 class="mt-3 fw-bolder text-center" style="font-family:roboto !important; ">About Us</h1>
+    <h2 class="mt-3 fw-bolder text-center" style="font-family:roboto !important; ">About Us</h2>
     <div class="card m-lg-5 m-2 mt-4 p-4 shadow bg-light">
         <div class="row row-cols-1 row-cols-lg-2 ">
             <div class="col-lg-4 d-flex align-items-center">

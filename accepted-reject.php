@@ -71,7 +71,7 @@ if (isset($_POST['submit'])) {
             font-size: 80%;
         }
 
-        h1 {
+        h2 {
             font-size: 180%;
         }
     }

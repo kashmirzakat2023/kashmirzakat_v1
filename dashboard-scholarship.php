@@ -30,7 +30,7 @@ if (isset($_SESSION['username'])) {
 
         <br>
         <div class="">
-            <h1> Scholarship</h1>
+            <h2> Scholarship</h2>
             <div class="table-responsive w-100 ">
                 <table class="table">
                     <thead>

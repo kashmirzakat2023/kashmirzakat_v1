@@ -9,7 +9,7 @@ include 'assets/nav-links.php'; ?>
 <?php if (isset($_SESSION['username']) and $_SESSION['username'] == 'admin') { ?>
 
     <body>
-        <h1 class=" text-center mt-5 fw-bold mb-3">Reported list</h1>
+        <h2 class=" text-center mt-5 fw-bold mb-3">Reported list</h2>
         <div class="table-responsive">
             
         <table class="table table-striped ">

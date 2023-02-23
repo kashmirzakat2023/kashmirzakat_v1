@@ -17,7 +17,7 @@
         font-size: 70px !important;
     }
 
-    h1 {
+    h2 {
         font-size: 180% !important;
     }
 }
@@ -28,7 +28,7 @@
     box-shadow: 0 0 0.5px 3px var(--bg_light_blue)  !important;
   }
 
-center h1 {
+center h2 {
     padding: 10px;
     border-radius: 20px;
     font-weight: bolder;

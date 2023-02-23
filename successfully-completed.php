@@ -11,7 +11,7 @@ include 'assets/nav-links.php'; ?>
     include 'assets/navbar.php';
     ?>
     <center>
-        <h1 class="mt-3"> Successfully Completed</h1>
+        <h2 class="mt-3"> Successfully Completed</h2>
     </center>
 
     <title>Causes</title>

@@ -380,7 +380,7 @@ include 'assets/nav-links.php'; ?>
                       <div class="sa-fix"></div>
                     </div>
                   </div>
-                  <h1>Thanks</h3>
+                  <h2>Thanks</h3>
                     <p>Submitted Successfully</p>
                 </div>
                 <button type="button" class="btn btn-success text-center mb-3 px-4" data-bs-dismiss="modal">OK</button>

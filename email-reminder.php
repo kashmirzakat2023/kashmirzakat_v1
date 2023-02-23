@@ -24,7 +24,7 @@ while ($data = mysqli_fetch_array($result)) {
             <div style="text-center: center; width: 60%; margin: auto; max-width: 100%; font-family: Arial;  ">
             <div>Hi, User</div>
             <div style="margin: 20px 0px;"><h2 style=" padding: 10px; font-size:40px; color:#E8582E;">Your Cause is Ending Soon</h2></div>
-            <div><h1>Try to complete it before time</h1></div>
+            <div><h2>Try to complete it before time</h2></div>
             <div>You can contact <b>admin</b> or mail at <b>kashmirzakat@gmail.com</b> for date increment</div>
             </div>
             </div>

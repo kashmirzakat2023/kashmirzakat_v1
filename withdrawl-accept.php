@@ -28,7 +28,7 @@ if (isset($_SESSION['username']) && $_SESSION['username'] == 'admin') {
 
         <br>
         <div class=" p-3">
-            <h1> Withdrawl Requested Invoice</h1>
+            <h2> Withdrawl Requested Invoice</h2>
             <form action="" method="post" class=" border border-2 p-3 rounded-1">
                 <label class="control-label form-floating " for="fname">Enter withdrawl amount in rupees</label>
                 <div class="input-group mb-3 flex-nowrap">

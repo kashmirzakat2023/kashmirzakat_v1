@@ -15,7 +15,7 @@ include 'assets/nav-links.php'; ?>
     ?>
     <center>
 
-        <h1 class="mt-3"> Others</h1>
+        <h2 class="mt-3"> Others</h2>
     </center>
 
     <title>Causes</title>

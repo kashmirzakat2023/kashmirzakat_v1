@@ -11,9 +11,14 @@
 <?php
 include 'assets/connection.php';
 $useremail = $_GET['useremail'];
-$result = mysqli_query($db, "SELECT * FROM form_data where email='$useremail' and status='Accepted'");
-$result1 = mysqli_query($db, "SELECT * FROM form_data where email='$useremail' and status='Pending'");
-$result2 = mysqli_query($db, "SELECT * FROM form_data where email='$useremail' and status='Rejected'");
+$acc = mysqli_query($db, "SELECT * FROM form_data where email='$useremail' and status='Accepted'");
+$pen = mysqli_query($db, "SELECT * FROM form_data where email='$useremail' and status='Pending'");
+$rej = mysqli_query($db, "SELECT * FROM form_data where email='$useremail' and status='Rejected'");
+if($useremail == 'admin@admin.com'){
+    $acc = mysqli_query($db, "SELECT * FROM form_data where status='Accepted'");
+    $pen = mysqli_query($db, "SELECT * FROM form_data where status='Pending'");
+    $rej = mysqli_query($db, "SELECT * FROM form_data where status='Rejected'");
+}
 if (isset($_SESSION['username'])) {
 ?>
 
@@ -30,10 +35,8 @@ if (isset($_SESSION['username'])) {
         </script>
 
         <!--Container Main start-->
-
-        <br>
         <div class="">
-            <h1>Causes</h1>
+            <h2>Causes</h2>
             <div class="row">
 
                 <div class="col-lg-4 col-md-6 col-12 mb-4">
@@ -41,12 +44,12 @@ if (isset($_SESSION['username'])) {
                         <div class="card-body ">
                             <div class="row no-gutters align-items-center">
                                 <div class="col mr-2">
-                                    <h1 class="mb-3 fw-bolder text-light" style="font-size: 50px !important;">
+                                    <h2 class="mb-3 fw-bolder text-light" style="font-size: 50px !important;">
                                         <?php
-                                        $acc = mysqli_query($db, "SELECT * FROM form_data  where email='$useremail' and status='Accepted'");
+                                        // $acc = mysqli_query($db, "SELECT * FROM form_data where email='$useremail' and status='Accepted'");
                                         echo mysqli_num_rows($acc);
                                         ?>
-                                    </h1>
+                                    </h2>
                                     <div class="text-xs font-weight-bold text-light mb-1">
                                         Accepted Causes</div>
                                 </div>
@@ -55,7 +58,7 @@ if (isset($_SESSION['username'])) {
                                 </div>
                             </div>
                         </div>
-                        <a href="rejected-forms.php?useremail=<?php echo $useremail; ?>&status=Accepted">
+                        <a href="causes-list.php?useremail=<?php echo $useremail; ?>&status=Accepted">
                             <div class=" text-light text-center p-1 mb-0 " style="background-color: rgba(0,0,0,0.3);">
                                 <small>view....</small><i class="fas fa-arrow-circle-right text-light"></i>
                             </div>
@@ -67,12 +70,12 @@ if (isset($_SESSION['username'])) {
                         <div class="card-body ">
                             <div class="row no-gutters align-items-center">
                                 <div class="col mr-2">
-                                    <h1 class="mb-3 fw-bolder text-light" style="font-size: 50px !important;">
+                                    <h2 class="mb-3 fw-bolder text-light" style="font-size: 50px !important;">
                                         <?php
-                                        $pen = mysqli_query($db, "SELECT * FROM form_data where status='Pending' and email='$useremail'");
+                                        // $pen = mysqli_query($db, "SELECT * FROM form_data where status='Pending' and email='$useremail'");
                                         echo mysqli_num_rows($pen);
                                         ?>
-                                    </h1>
+                                    </h2>
                                     <div class="text-xs font-weight-bold text-light mb-1">
                                         Pending Causes</div>
                                 </div>
@@ -81,7 +84,7 @@ if (isset($_SESSION['username'])) {
                                 </div>
                             </div>
                         </div>
-                        <a href="rejected-forms.php?useremail=<?php echo $useremail; ?>&status=Pending">
+                        <a href="causes-list.php?useremail=<?php echo $useremail; ?>&status=Pending">
                             <div class=" text-light text-center p-1 mb-0 " style="background-color: rgba(0,0,0,0.3);">
                                 <small>view....</small><i class="fas fa-arrow-circle-right text-light"></i>
                             </div>
@@ -93,12 +96,12 @@ if (isset($_SESSION['username'])) {
                         <div class="card-body ">
                             <div class="row no-gutters align-items-center">
                                 <div class="col mr-2">
-                                    <h1 class="mb-3 fw-bolder text-light" style="font-size: 50px !important;">
+                                    <h2 class="mb-3 fw-bolder text-light" style="font-size: 50px !important;">
                                         <?php
-                                        $rej = mysqli_query($db, "SELECT * FROM form_data  where email='$useremail' and status='Rejected'");
+                                        // $rej = mysqli_query($db, "SELECT * FROM form_data  where email='$useremail' and status='Rejected'");
                                         echo mysqli_num_rows($rej);
                                         ?>
-                                    </h1>
+                                    </h2>
                                     <div class="text-xs font-weight-bold text-light mb-1">
                                         Rejected Causes</div>
                                 </div>
@@ -107,7 +110,7 @@ if (isset($_SESSION['username'])) {
                                 </div>
                             </div>
                         </div>
-                        <a href="rejected-forms.php?useremail=<?php echo $useremail; ?>&status=Rejected">
+                        <a href="causes-list.php?useremail=<?php echo $useremail; ?>&status=Rejected">
                             <div class=" text-light text-center p-1 mb-0 " style="background-color: rgba(0,0,0,0.3);">
                                 <small>view....</small><i class="fas fa-arrow-circle-right text-light"></i>
                             </div>

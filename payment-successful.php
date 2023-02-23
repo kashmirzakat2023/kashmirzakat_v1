@@ -20,7 +20,7 @@ include 'assets/navbar.php';
                         <div class="sa-fix"></div>
                     </div>
                 </div>
-                <h1 class="card-title fw-bolder" style=" font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; letter-spacing:4px;">Thank You</h1>
+                <h2 class="card-title fw-bolder" style=" font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; letter-spacing:4px;">Thank You</h2>
                 <h5>Your donation has been received successfully, thanks for your support.</h5>
                 <a class="btn btn-success mt-3 fs-4" href="index.php">Go to Home →</a>
             </div>

@@ -13,7 +13,7 @@ include 'assets/nav-links.php'; ?>
     include 'assets/navbar.php';
     ?>
     <center>
-        <h1 class="mt-2"> Healthcare</h1>
+        <h2 class="mt-2"> Healthcare</h2>
     </center>
 
     <title>Causes</title>

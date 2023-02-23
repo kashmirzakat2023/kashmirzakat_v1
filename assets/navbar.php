@@ -13,7 +13,7 @@
             <ul class="navbar-nav ms-auto ">
                 <li class="nav-item search">
                     <a class="nav-link " data-bs-toggle="modal" autocomplete="off" data-bs-target="#searchModal">
-                        <i class="fa fa-search" aria-hidden="true"></i>&nbsp; Search
+                        <i class="fa fa-search" style="font-weight: 100;" aria-hidden="true"></i>&nbsp; Search
                     </a>
                 </li>
 
@@ -77,7 +77,7 @@
                                     <a class="dropdown-item" href="admin-dashboard.php">Dashboard</a>
                                 </li>
                                 <!-- <li>
-                                    <a class="dropdown-item" href="users.php?useremail=admin@admin.com">Users</a>
+                                    <a class="dropdown-item" href="users-list.php?useremail=admin@admin.com">Users</a>
                                 </li> -->
                                 <li>
                                     <a class="dropdown-item" href="logout.php">logout</a>

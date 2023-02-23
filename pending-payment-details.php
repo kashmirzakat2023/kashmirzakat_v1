@@ -32,7 +32,7 @@ if (isset($_SESSION['username']) and $_SESSION['username'] == 'admin') {
 
         <br>
         <div class=" ">
-            <h1> Funds Raised</h1>
+            <h2> Funds Raised</h2>
             <div class="table-responsive w-100">
                 <table class="table table-borderless d-flex align-self-centre">
                     <tbody>
@@ -137,7 +137,7 @@ if (isset($_SESSION['username']) and $_SESSION['username'] == 'admin') {
 
         <br>
         <div class=" ">
-            <h1> Funds Raised</h1>
+            <h2> Funds Raised</h2>
             <div class="table-responsive w-100">
                 <table class="table table-borderless d-flex align-self-centre">
                     <tbody>

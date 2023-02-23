@@ -29,7 +29,7 @@ if (isset($_SESSION['username'])) {
 
         <br>
         <div class=" ">
-            <h1> Withdrawl Invoice</h1>
+            <h2> Withdrawl Invoice</h2>
             <div class="table-responsive w-100">
                 <table class="table table-borderless d-flex align-self-centre">
                     <tbody>
@@ -113,7 +113,7 @@ if (isset($_SESSION['username'])) {
 
         <br>
         <div class=" ">
-            <h1> Funds Raised</h1>
+            <h2> Funds Raised</h2>
             <div class="table-responsive w-100">
                 <table class="table table-borderless d-flex align-self-centre">
                     <tbody>

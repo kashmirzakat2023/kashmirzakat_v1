@@ -13,7 +13,7 @@ include 'assets/nav-links.php'; ?>
     ?>
     <center>
 
-        <h1 class="mt-2"> Scholarship</h1>
+        <h2 class="mt-2"> Scholarship</h2>
     </center>
 
     <title>Causes</title>

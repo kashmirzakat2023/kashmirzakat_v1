@@ -30,7 +30,7 @@ if (isset($_SESSION['username']) and $_SESSION['username'] == 'admin') {
 
         <br>
         <div class=" ">
-            <h1> Funds Raised</h1>
+            <h3>Payment Invoice</h3>
             <div class="table-responsive w-100">
                 <table class="table table-borderless d-flex align-self-centre">
                     <tbody>
@@ -153,7 +153,7 @@ if (isset($_SESSION['username']) and $_SESSION['username'] == 'admin') {
 
         <br>
         <div class=" ">
-            <h1> Funds Raised</h1>
+            <h3>Payment Invoice</h3>
             <div class="table-responsive w-100">
                 <table class="table table-borderless d-flex align-self-centre">
                     <tbody>

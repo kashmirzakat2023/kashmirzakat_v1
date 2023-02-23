@@ -13,7 +13,7 @@ if (isset($_POST['email'])) {
 
   $mailBody = '<html><body>
   <div style="text-center: center; width: 60%; margin: auto; max-width: 100%; font-family: Arial;  ">
-    <div><h1>OTP Verification Number</h1></div>
+    <div><h2>OTP Verification Number</h2></div>
     <div>Hi, ' . $name . '</div>
     <div style="margin: 20px 0px;"><h2 style=" padding: 10px; font-size:30px; color:#E8582E;">' . $six_digit_number . '</h2></div>
     <div>Please use the above OTP to complete registration</div>
