@@ -525,7 +525,7 @@ include 'assets/nav-links.php'; ?>
         });
 
         jQuery(".social-share.twitter").on("click", function() {
-            url = "https://twitter.com/intent/tweet?url=" + pageUrl + "&text= *<?= $data['cause_title']; ?>*" + "%0D%0A %0D%0A" + "<?= $data['cause_summary']; ?>" + " %0D%0A %0D%0A Read more - " + pageUrl + " %0D%0A %0D%0A Donate - " + " <?= 'https://kashmirzakat.com/donate.php?id=' . $id; ?>";;
+            url = "https://twitter.com/intent/tweet?url=" + pageUrl + "&text= * <?= $data['cause_title']; ?>*" + "%0D%0A %0D%0A" + "<?= $data['cause_summary']; ?>" + " %0D%0A %0D%0A Read more - " + pageUrl + " %0D%0A %0D%0A Donate - " + " <?= 'https://kashmirzakat.com/donate.php?id=' . $id; ?>";;
             socialWindow(url);
         });
 
@@ -540,7 +540,7 @@ include 'assets/nav-links.php'; ?>
         });
 
         jQuery(".social-share.whatsapp").on("click", function() {
-            url = "whatsapp://send?text=" + "*"+"<?= $data['cause_title']; ?>+"*" + "%0D%0A %0D%0A" + "<?= $data['cause_summary']; ?>" + " %0D%0A %0D%0A Read more - " + pageUrl + " %0D%0A %0D%0A Donate - " + " <?= 'https://kashmirzakat.com/donate.php?id=' . $id; ?>";
+            url = "whatsapp://send?text=" + "*<?= $data['cause_title']; ?>*" + "%0D%0A %0D%0A" + "<?= $data['cause_summary']; ?>" + " %0D%0A %0D%0A Read more - " + pageUrl + " %0D%0A %0D%0A Donate - " + " <?= 'https://kashmirzakat.com/donate.php?id=' . $id; ?>";
             socialWindow1(url);
         });
     }
