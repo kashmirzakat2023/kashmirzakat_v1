@@ -56,7 +56,7 @@ if (isset($_SESSION['username'])) {
                                     $id = $row1['raiseid'];
                                     $result = mysqli_query($db, "SELECT * FROM form_data where id='$id' and status='Accepted' ");
                                     while ($row = mysqli_fetch_array($result)) { ?>
-                                        <a href="campaign-details.php.php?campaign=<?php echo $row['id']; ?>">
+                                        <a href="campaign-details.php?campaign=<?php echo $row['id']; ?>">
                                             <?php echo $row['cause_title']; ?>
                                             <i class="fas fa-external-link"></i>
                                         </a>
@@ -136,7 +136,7 @@ if (isset($_SESSION['username'])) {
                                     $id = $row1['raiseid'];
                                     $result = mysqli_query($db, "SELECT * FROM form_data where id='$id' and status='Accepted' ");
                                     while ($row = mysqli_fetch_array($result)) { ?>
-                                        <a href="campaign-details.php.php?campaign=<?php echo $row['id']; ?>">
+                                        <a href="campaign-details.php?campaign=<?php echo $row['id']; ?>">
                                             <?php echo $row['cause_title']; ?>
                                             <i class="fas fa-external-link"></i>
                                         </a>

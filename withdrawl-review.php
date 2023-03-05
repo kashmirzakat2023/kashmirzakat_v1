@@ -61,7 +61,7 @@ $query = mysqli_query($db, "SELECT * FROM withdrawl_request where wid = '$wid' "
                         ?>
                             <label for="">Cause Title</label>
                             <div class="form-group mb-3 border border-1 p-2 rounded-1">
-                                <a href="campaign-details.php.php?campaign=<?php echo $rows['cause_title']; ?>">
+                                <a href="campaign-details.php?campaign=<?php echo $rows['cause_title']; ?>">
                                     <img src="<?php echo "images/" . $rows['profile_pic']; ?>" width="40px" alt="" srcset=""> <?php echo $rows['cause_title']; ?>
                                     <i class="fas fa-external-link"></i>
                                 </a>
