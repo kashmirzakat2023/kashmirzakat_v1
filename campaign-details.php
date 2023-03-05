@@ -520,12 +520,12 @@ include 'assets/nav-links.php'; ?>
         var tweet = encodeURIComponent(jQuery("meta[property='og:description']").attr("content"));
 
         jQuery(".social-share.facebook").on("click", function() {
-            url = "https://www.facebook.com/sharer/sharer.php?u=" + pageUrl + "&quote = *<?php echo $data['cause_title']; ?>*" + "%0D%0A %0D%0A" + "<?php echo $data['cause_summary']; ?>" + " %0D%0A %0D%0A Read more - " + pageUrl + " %0D%0A %0D%0A Donate - " + " <?php echo 'https://kashmirzakat.com/donate.php?id=' . $id; ?>";
+            url = "https://www.facebook.com/sharer/sharer.php?u=" + pageUrl + "&quote = *<?= $data['cause_title']; ?>*" + "%0D%0A %0D%0A" + "<?= $data['cause_summary']; ?>" + " %0D%0A %0D%0A Read more - " + pageUrl + " %0D%0A %0D%0A Donate - " + " <?= 'https://kashmirzakat.com/donate.php?id=' . $id; ?>";
             socialWindow(url);
         });
 
         jQuery(".social-share.twitter").on("click", function() {
-            url = "https://twitter.com/intent/tweet?url=" + pageUrl + "&text= *<?php echo $data['cause_title']; ?>*" + "%0D%0A %0D%0A" + "<?php echo $data['cause_summary']; ?>" + " %0D%0A %0D%0A Read more - " + pageUrl + " %0D%0A %0D%0A Donate - " + " <?php echo 'https://kashmirzakat.com/donate.php?id=' . $id; ?>";;
+            url = "https://twitter.com/intent/tweet?url=" + pageUrl + "&text= *<?= $data['cause_title']; ?>*" + "%0D%0A %0D%0A" + "<?= $data['cause_summary']; ?>" + " %0D%0A %0D%0A Read more - " + pageUrl + " %0D%0A %0D%0A Donate - " + " <?= 'https://kashmirzakat.com/donate.php?id=' . $id; ?>";;
             socialWindow(url);
         });
 
@@ -536,11 +536,11 @@ include 'assets/nav-links.php'; ?>
 
         jQuery(".social-share.mail").on("click", function(e) {
             e.preventDefault();
-            location.href = "mailto:?subject=<?php echo $data['cause_title']; ?>&body=" + "<?php echo $data['cause_title']; ?> %0D%0A %0D%0A <?php echo $data['cause_summary']; ?> %0D%0A %0D%0A Read more - " + pageUrl + "%0D%0A %0D%0A";
+            location.href = "mailto:?subject=<?= $data['cause_title']; ?>&body=" + "<?= $data['cause_title']; ?> %0D%0A %0D%0A <?= $data['cause_summary']; ?> %0D%0A %0D%0A Read more - " + pageUrl + "%0D%0A %0D%0A";
         });
 
         jQuery(".social-share.whatsapp").on("click", function() {
-            url = "whatsapp://send?text=" + "*<?php echo $data['cause_title']; ?>*" + "%0D%0A %0D%0A" + "<?php echo $data['cause_summary']; ?>" + " %0D%0A %0D%0A Read more - " + pageUrl + " %0D%0A %0D%0A Donate - " + " <?php echo 'https://kashmirzakat.com/donate.php?id=' . $id; ?>";
+            url = "whatsapp://send?text=" + "*"+"<?= $data['cause_title']; ?>+"*" + "%0D%0A %0D%0A" + "<?= $data['cause_summary']; ?>" + " %0D%0A %0D%0A Read more - " + pageUrl + " %0D%0A %0D%0A Donate - " + " <?= 'https://kashmirzakat.com/donate.php?id=' . $id; ?>";
             socialWindow1(url);
         });
     }

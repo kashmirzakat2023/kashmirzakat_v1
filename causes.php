@@ -1,4 +1,4 @@
-<a class="col ht cause_card text-decoration-none text-dark" data-bs-toggle="tooltip" href="cause-details.php?campaign=<?php echo $data['id']; ?>" data-bs-placement="bottom" title="<?php echo $data['cause_title']; ?>">
+<a class="col ht cause_card text-decoration-none text-dark" data-bs-toggle="tooltip" href="campaign-details.php.php?campaign=<?php echo $data['id']; ?>" data-bs-placement="bottom" title="<?php echo $data['cause_title']; ?>">
     <div class="card shadow">
         <?php
         $email = $data['email'];

@@ -30,7 +30,7 @@ include 'assets/nav-links.php'; ?>
                 columnDefs.push({
                     field: 'Reply',
                     cellRenderer: function(params) {
-                        return '<a class="btn btn-outline-primary me-1 p-1" href="cause-details.php?campaign=' + params.data.Cause_Id + '">View Cause</a>';
+                        return '<a class="btn btn-outline-primary me-1 p-1" href="campaign-details.php.php?campaign=' + params.data.Cause_Id + '">View Cause</a>';
                     }
                 })
             </script>

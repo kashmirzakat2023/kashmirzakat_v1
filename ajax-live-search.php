@@ -6,7 +6,7 @@
     if (mysqli_num_rows($result) > 0) {
         while ($res = mysqli_fetch_array($result)) {
             $cause = $res["id"] ;
-        echo "<a href='cause-details.php?campaign=$cause'>". $res['cause_title']."</a>". "<hr/>";
+        echo "<a href='campaign-details.php.php?campaign=$cause'>". $res['cause_title']."</a>". "<hr/>";
       }
     } else {
       echo "No causes found";
