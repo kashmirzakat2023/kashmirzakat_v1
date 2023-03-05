@@ -207,7 +207,7 @@ include 'assets/nav-links.php'; ?>
         body,
         input,
         select {
-            /* font-size: 80%; */
+            font-size: 90%;
         }
     }
 </style>

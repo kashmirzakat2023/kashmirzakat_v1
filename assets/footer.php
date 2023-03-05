@@ -59,7 +59,9 @@
     </section>
     <div class="text-center p-3 d-flex justify-content-around" style="background-color: rgba(0, 0, 0, 0.7)">
         <div>
-            © 2022 :
+            © <?php
+            $year = date("Y"); 
+            echo $year;?> :
             <a class="text-white" href="https://kashmirzakat.com/">Kashmir Zakat</a>
         </div>
         <div>
