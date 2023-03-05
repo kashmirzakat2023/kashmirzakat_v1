@@ -21,20 +21,6 @@
                         Sahuliyat Kashmir Voluntary Trust  is a registered society under the Indian Trust Act 1882, Jammu and Kashmir (Reg. No. 3159/12/18). Also Registered Under   NITI Aayog Under UID No: JK/2019/0235671.
                     </p>
                 </div>
-
-                <!--<div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">-->
-                <!--    <h6 class="text-uppercase fw-bold">Products</h6>-->
-                <!--    <hr class="mb-4 mt-0 d-inline-block mx-auto" style="width: 60px; background-color: #7c4dff; height: 2px" />-->
-                <!--    <p>-->
-                <!--        <a href="#!" class="text-white">MDBootstrap</a>-->
-                <!--    </p>-->
-                <!--    <p>-->
-                <!--        <a href="#!" class="text-white">MDWordPress</a>-->
-                <!--    </p>-->
-                <!--    <p>-->
-                <!--        <a href="#!" class="text-white">BrandFlow</a>-->
-                <!--    </p>-->
-                <!--</div>-->
                 <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-3">
                     <h6 class="text-uppercase fw-bold">Useful links</h6>
                     <hr class="mb-4 mt-0 d-inline-block mx-auto" style="width: 60px; background-color: #7c4dff; height: 2px" />
@@ -82,8 +68,3 @@
         </div>
     </div>
 </footer>
-<script>
-    $(window).on('load', function() {
-        $('#loading').hide();
-    })
-</script>

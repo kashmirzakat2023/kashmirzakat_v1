@@ -8,7 +8,7 @@
 <link rel="stylesheet" href="css/nav-dash.css">
 <script src="js/nav-dash.js"></script>
 <?php
-$useremail = $_GET['useremail'];
+$useremail = $_SESSION['useremail'];
 $status = $_GET['status'];
 include 'assets/connection.php';
 if (isset($_SESSION['username'])) {
@@ -83,7 +83,7 @@ if (isset($_SESSION['username'])) {
             <?php
             include 'assets/grid-system.php'
             ?>
-            <?php include 'assets/footer-dash.php'; ?>
+            
     </body>
 <?php
 } else {

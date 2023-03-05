@@ -62,7 +62,7 @@ include 'assets/nav-links.php'; ?>
         // }
     } else {
         echo '<script>alert("Unauthenticated Access")</script>';
-        echo '<script>window.location = "index.php"</script>';
+        header($_SESSION['currentUrl']);
     }
         ?>
 </body>

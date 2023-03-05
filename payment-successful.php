@@ -1,17 +1,16 @@
-<?php 
+<?php
 include 'assets/nav-links.php'; ?>
 <html>
-<!-- <link href="https://allfont.net/allfont.css?fonts=kaushan-script" rel="stylesheet" type="text/css" /> -->
 <link rel="stylesheet" href="css/success.css">
 <script src="js/success.js"></script>
 <?php
 include 'assets/navbar.php';
 ?>
-<body>
 
+<body>
     <center>
-    <div class="card m-5 " style="height: 60vh; width:70%; box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;">
-        <div class="card-body">
+        <div class="card m-5 " style="height: 60vh; width:70%; box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;">
+            <div class="card-body">
                 <div class="check_mark">
                     <div class="sa-icon sa-success animate">
                         <span class="sa-line sa-tip animateSuccessTip"></span>
@@ -27,8 +26,8 @@ include 'assets/navbar.php';
         </div>
     </center>
     <?php
-include 'assets/footer.php';
-?>
+    include 'assets/footer.php';
+    ?>
 </body>
 
 </html>

@@ -1,4 +1,4 @@
-<?php 
+<?php
 include 'assets/nav-links.php'; ?>
 <html>
 

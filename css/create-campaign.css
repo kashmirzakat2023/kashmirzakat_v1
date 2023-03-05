@@ -4,7 +4,7 @@
         width: 80% !important;
     }
 
-    form {
+    .fund-raise {
         width: 90% !important;
         padding: 10px !important;
     }
@@ -24,9 +24,9 @@
 
 
 .fund-raise button:focus {
-    outline:  none !important;
-    box-shadow: 0 0 0.5px 3px var(--bg_light_blue)  !important;
-  }
+    outline: none !important;
+    box-shadow: 0 0 0.5px 3px var(--bg_light_blue) !important;
+}
 
 center h2 {
     padding: 10px;
@@ -44,7 +44,7 @@ center h2 {
     border: 1px;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
     padding: 20px 100px;
-    margin-top: 30px ;
+    margin-top: 30px;
     border-radius: 10px;
 }
 
@@ -65,9 +65,6 @@ center h2 {
     width: 100%;
     display: none;
 }
-
-
-@media (max-width:550px) {}
 
 label {
     font-weight: 500;

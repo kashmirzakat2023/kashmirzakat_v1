@@ -22,8 +22,8 @@ if (mysqli_query($db, "UPDATE form_data set status = 'Accepted' where id= '$id' 
             </html>';
     $headers = 'From: Kashmirzakat ' . "\r\n". 'Reply-To: ' . $to . "\r\n".'MIME-Version: 1.0' . "\r\n". "Content-type:text/html;charset=iso-8859-1" . "\r\n" . 'X-Mailer: PHP/' . phpversion();
     // mail($to, $subject, $mailBody, $headers);
-    echo '<script>alrt("Cause accepted successfully");</script>';
+    echo '<script>alert("Cause accepted successfully");</script>';
     echo '<script>window.location = "index.php"</script>';
 } else {
-    echo '<script>alrt("Error in accepting cause");</script>';
+    echo '<script>alert("Error in accepting cause");</script>';
 }

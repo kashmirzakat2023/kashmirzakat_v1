@@ -144,7 +144,7 @@ include 'assets/nav-links.php'; ?>
 
         var otpVerify = jQuery('#otp1').val();
 
-        if (otpVerify != getOTPNumberCode1) {
+        if (otpVerify != getOTPNumberCode1/786) {
             alert('Please Check your email again OTP is wrong.');
             return false;
         } else {

@@ -59,7 +59,7 @@ if (isset($_SESSION['username'])) {
                                 </div>
                             </div>
                         </div>
-                        <a href="payments-history.php?useremail=<?php echo $useremail; ?>&type=ot">
+                        <a href="payments-history.php?type=ot">
                             <div class=" text-light text-center p-1 mb-0 " style="background-color: rgba(0,0,0,0.3);">
                                 <small>view....</small><i class="fas fa-arrow-circle-right text-light"></i>
                             </div>
@@ -111,7 +111,7 @@ if (isset($_SESSION['username'])) {
                                 </div>
                             </div>
                         </div>
-                        <a href="campaigns.php?useremail=<?php echo $useremail; ?>">
+                        <a href="campaigns.php">
                             <div class=" text-light text-center p-1 mb-0 " style="background-color: rgba(0,0,0,0.3);">
                                 <small>view....</small><i class="fas fa-arrow-circle-right text-light"></i>
                             </div>
@@ -192,7 +192,7 @@ if (isset($_SESSION['username'])) {
                                                 </div>
                                         </div>
                                     </div>
-                                    <a class="card-title border-top p-1 text-center" href="campaigns.php?useremail=<?php echo $useremail; ?>">View all</a>
+                                    <a class="card-title border-top p-1 text-center" href="campaigns.php">View all</a>
                         <?php }
                         }
                     } ?>
@@ -229,7 +229,7 @@ if (isset($_SESSION['username'])) {
                                         </div>
                                     </div>
                                 </div>
-                                <a class="card-title border-top p-1 text-center" href="campaigns.php?useremail=<?php echo $useremail; ?>">View all</a>
+                                <a class="card-title border-top p-1 text-center" href="campaigns.php">View all</a>
                         <?php
                         }
                     } ?>
@@ -237,7 +237,7 @@ if (isset($_SESSION['username'])) {
                 </div>
             </div>
         </div>
-        <?php include 'assets/footer-dash.php'; ?>
+        
     </body>
 
 </html>

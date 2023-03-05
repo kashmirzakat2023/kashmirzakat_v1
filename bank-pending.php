@@ -9,7 +9,7 @@ session_start(); ?>
 <link rel="stylesheet" href="css/nav-dash.css">
 <script src="js/nav-dash.js"></script>
 <?php
-$useremail = $_GET['useremail'];
+$useremail = $_SESSION['useremail'];
 
 include 'assets/connection.php';
 if (isset($_SESSION['username']) && $_SESSION['username'] == 'admin') {
@@ -52,7 +52,7 @@ if (isset($_SESSION['username']) && $_SESSION['username'] == 'admin') {
         include 'assets/grid-system.php'
         ?>
 
-        <?php include 'assets/footer-dash.php'; ?>
+        
 
     </body>
 <?php

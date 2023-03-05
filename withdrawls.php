@@ -9,12 +9,12 @@
 <script src="js/nav-dash.js"></script>
 <?php
 include 'assets/connection.php';
-$useremail = $_GET['useremail'];
+$useremail = $_SESSION['useremail'];
 if (isset($_SESSION['username'])) {
     $pen = mysqli_query($db, "SELECT * FROM  withdrawl_request where email='$useremail'");
     $acc = mysqli_query($db, "SELECT * FROM withdrawl_pending where status='accepted'  and email='$useremail'");
     $rej = mysqli_query($db, "SELECT * FROM withdrawl_pending where status='rejected' and email='$useremail'  ");
-    if ($_GET['useremail'] == 'admin@admin.com') {
+    if ($_SESSION['useremail'] == 'admin@admin.com') {
         $pen = mysqli_query($db, "SELECT * FROM  withdrawl_request where status='pending'");
         $acc = mysqli_query($db, "SELECT * FROM withdrawl_pending where status='accepted'");
         $rej = mysqli_query($db, "SELECT * FROM withdrawl_pending where status='rejected'");
@@ -54,7 +54,7 @@ if (isset($_SESSION['username'])) {
                                 </div>
                             </div>
                         </div>
-                        <a href="withdrawls-list.php?useremail=<?php echo $useremail; ?>&status=Accepted">
+                        <a href="withdrawls-list.php?status=Accepted">
                             <div class=" text-light text-center p-1 mb-0 " style="background-color: rgba(0,0,0,0.3);">
                                 <small>view....</small><i class="fas fa-arrow-circle-right text-light"></i>
                             </div>
@@ -79,7 +79,7 @@ if (isset($_SESSION['username'])) {
                                 </div>
                             </div>
                         </div>
-                        <a href="withdrawls-list.php?useremail=<?php echo $useremail; ?>&status=Pending">
+                        <a href="withdrawls-list.php?status=Pending">
                             <div class=" text-light text-center p-1 mb-0 " style="background-color: rgba(0,0,0,0.3);">
                                 <small>view....</small><i class="fas fa-arrow-circle-right text-light"></i>
                             </div>
@@ -104,7 +104,7 @@ if (isset($_SESSION['username'])) {
                                 </div>
                             </div>
                         </div>
-                        <a href="withdrawls-list.php?useremail=<?php echo $useremail; ?>&status=Rejected">
+                        <a href="withdrawls-list.php?status=Rejected">
                             <div class=" text-light text-center p-1 mb-0 " style="background-color: rgba(0,0,0,0.3);">
                                 <small>view....</small><i class="fas fa-arrow-circle-right text-light"></i>
                             </div>
@@ -113,7 +113,7 @@ if (isset($_SESSION['username'])) {
                 </div>
             </div>
         </div>
-        <?php include 'assets/footer-dash.php'; ?>
+        
 
     </body>
 <?php

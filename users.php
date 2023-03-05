@@ -9,8 +9,7 @@
     <script src="js/nav-dash.js"></script>
 </head>
 <?php
-$useremail = $_GET['useremail'];
-if (isset($_SESSION['username']) && $_SESSION['username'] == 'admin') {
+if (isset($_SESSION['useremail']) && $_SESSION['useremail'] == 'admin@admin.com') {
     include 'assets/connection.php';
     $result = mysqli_query($db, "SELECT * FROM users");
 ?>
@@ -50,7 +49,7 @@ if (isset($_SESSION['username']) && $_SESSION['username'] == 'admin') {
         <?php
         include 'assets/grid-system.php'
         ?>
-        <?php include 'assets/footer-dash.php'; ?>
+        
 
     </body>
 <?php

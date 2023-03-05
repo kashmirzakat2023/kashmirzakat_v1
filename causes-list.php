@@ -11,7 +11,7 @@
 </head>
 <?php
 $status = $_GET['status'];
-$_SESSION['useremail'] = $_GET['useremail'];
+$_SESSION['useremail'] = $_SESSION['useremail'];
 $useremail = $_SESSION['useremail'];
 if (isset($_SESSION['username'])) {
     include 'assets/connection.php';
@@ -71,14 +71,14 @@ if (isset($_SESSION['username'])) {
                             if ('<?= $status ?>' == 'Rejected')
                                 return '<a class="btn btn-outline-primary me-2" href="rejected-fetch.php?id=' + params.data.ID + '">View</a><a class="btn btn-outline-success" href="rejected-accept.php?id=' + params.data.ID + '">Accept</a>';
                             else if ('<?= $status ?>' == 'Accepted')
-                                return '<a class="btn btn-outline-primary me-2" href="raise-detail.php?campaign=' + params.data.ID + '">View</a><a class="btn btn-outline-success me-2" href="admin-accept-edit-form.php?id=' + params.data.ID + '">Edit</a><a class="btn btn-outline-danger" href="accepted-reject.php?id=' + params.data.ID + '">Reject</a>';
+                                return '<a class="btn btn-outline-primary me-2" href="cause-details.php?campaign=' + params.data.ID + '">View</a><a class="btn btn-outline-success me-2" href="admin-accept-edit-form.php?id=' + params.data.ID + '">Edit</a><a class="btn btn-outline-danger" href="accepted-reject.php?id=' + params.data.ID + '">Reject</a>';
                             else
                                 return '<a class="btn btn-outline-primary me-2" href="pending-fetch.php?id=' + params.data.ID + '">View</a><a class="btn btn-outline-success me-2" href="accept.php?id=' + params.data.ID + '">Accept</a><a class="btn btn-outline-danger" href="reject.php?id=' + params.data.ID + '">Reject</a>';
                         } else {
                             if ('<?= $status ?>' == 'Rejected')
                                 return '<a class="btn btn-outline-primary me-2" href="rejected-fetch.php?id=' + params.data.ID + '">View</a><a class="btn btn-outline-success" href="user-pending-edit-form.php?id=' + params.data.ID + '" >Edit</a>';
                             else if ('<?= $status ?>' == 'Accepted')
-                                return '<a class="btn btn-outline-primary me-2" href="raise-detail.php?campaign=' + params.data.ID + '">View</a><a class="btn btn-outline-success" href="withdrawl-request.php?id=' + params.data.ID + '" >Make Withdrawl</a>';
+                                return '<a class="btn btn-outline-primary me-2" href="cause-details.php?campaign=' + params.data.ID + '">View</a><a class="btn btn-outline-success" href="withdrawl-request.php?id=' + params.data.ID + '" >Make Withdrawl</a>';
                             else
                                 return '<a class="btn btn-outline-primary me-2" href="pending-fetch.php?id=' + params.data.ID + '">View</a><a class="btn btn-outline-success" href="user-pending-edit-form.php?id=' + params.data.ID + '" >Edit</a>';
                         }
@@ -91,37 +91,8 @@ if (isset($_SESSION['username'])) {
             <p class=" bg-success text-light px-3 rounded-1 saved fs-4" style="width:fit-content; display:none; position:absolute; right:60px; bottom:50px; ">saved...</p>
             <p class=" bg-danger text-light px-3 rounded-1 nsaved fs-4" style="width:fit-content; display:none; position:absolute; right:60px; bottom:50px; ">Not saved...</p>
 
-            <?php include 'assets/footer-dash.php'; ?>
+            
     </body>
-    <script>
-        $(document).ready(function() {
-            $(".save").keyup(function() {
-                var email = $(this).val();
-                var ids = $(this).closest("input").attr('id');
-                $.ajax({
-                    url: 'cm-add-rejected.php',
-                    type: 'post',
-                    data: {
-                        email: email,
-                        id: ids
-                    },
-                    success: function(response) {
-                        if (response)
-                            $('.saved').show(1).fadeIn().animate({
-                                right: 10,
-                                opacity: "show"
-                            }, 1500).delay(1000).hide(0.3);
-                        else
-                            $('.nsaved').show(1).fadeIn().animate({
-                                right: 10,
-                                opacity: "show"
-                            }, 1500).delay(1000).hide(0.3);
-                    }
-                });
-            });
-
-        });
-    </script>
 <?php
 } else {
     echo '<script>alert("Unauthentic User");</script>';

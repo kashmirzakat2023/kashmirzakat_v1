@@ -10,16 +10,16 @@
 
 <?php
 include 'assets/connection.php';
-$useremail = $_GET['useremail'];
-$acc = mysqli_query($db, "SELECT * FROM form_data where email='$useremail' and status='Accepted'");
-$pen = mysqli_query($db, "SELECT * FROM form_data where email='$useremail' and status='Pending'");
-$rej = mysqli_query($db, "SELECT * FROM form_data where email='$useremail' and status='Rejected'");
-if($useremail == 'admin@admin.com'){
-    $acc = mysqli_query($db, "SELECT * FROM form_data where status='Accepted'");
-    $pen = mysqli_query($db, "SELECT * FROM form_data where status='Pending'");
-    $rej = mysqli_query($db, "SELECT * FROM form_data where status='Rejected'");
-}
 if (isset($_SESSION['username'])) {
+    $useremail = $_SESSION['useremail'];
+    $acc = mysqli_query($db, "SELECT * FROM form_data where email='$useremail' and status='Accepted'");
+    $pen = mysqli_query($db, "SELECT * FROM form_data where email='$useremail' and status='Pending'");
+    $rej = mysqli_query($db, "SELECT * FROM form_data where email='$useremail' and status='Rejected'");
+    if($useremail == 'admin@admin.com'){
+        $acc = mysqli_query($db, "SELECT * FROM form_data where status='Accepted'");
+        $pen = mysqli_query($db, "SELECT * FROM form_data where status='Pending'");
+        $rej = mysqli_query($db, "SELECT * FROM form_data where status='Rejected'");
+    }
 ?>
 
     <body id="body-pd" class="">
@@ -58,7 +58,7 @@ if (isset($_SESSION['username'])) {
                                 </div>
                             </div>
                         </div>
-                        <a href="causes-list.php?useremail=<?php echo $useremail; ?>&status=Accepted">
+                        <a href="causes-list.php?status=Accepted">
                             <div class=" text-light text-center p-1 mb-0 " style="background-color: rgba(0,0,0,0.3);">
                                 <small>view....</small><i class="fas fa-arrow-circle-right text-light"></i>
                             </div>
@@ -84,7 +84,7 @@ if (isset($_SESSION['username'])) {
                                 </div>
                             </div>
                         </div>
-                        <a href="causes-list.php?useremail=<?php echo $useremail; ?>&status=Pending">
+                        <a href="causes-list.php?status=Pending">
                             <div class=" text-light text-center p-1 mb-0 " style="background-color: rgba(0,0,0,0.3);">
                                 <small>view....</small><i class="fas fa-arrow-circle-right text-light"></i>
                             </div>
@@ -110,7 +110,7 @@ if (isset($_SESSION['username'])) {
                                 </div>
                             </div>
                         </div>
-                        <a href="causes-list.php?useremail=<?php echo $useremail; ?>&status=Rejected">
+                        <a href="causes-list.php?status=Rejected">
                             <div class=" text-light text-center p-1 mb-0 " style="background-color: rgba(0,0,0,0.3);">
                                 <small>view....</small><i class="fas fa-arrow-circle-right text-light"></i>
                             </div>
@@ -120,7 +120,7 @@ if (isset($_SESSION['username'])) {
             </div>
         </div>
 
-        <?php include 'assets/footer-dash.php'; ?>
+        
 
     </body>
 <?php

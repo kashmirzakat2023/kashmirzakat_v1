@@ -4,13 +4,12 @@ include 'assets/nav-links.php'; ?>
 
 <head>
   <link rel="stylesheet" href="css/success.css">
-  <!--<script src="js/success.js"></script>-->
+</head>
   <?php
   $id = $_GET['id'];
   include 'assets/connection.php';
   $result = mysqli_query($db, " SELECT * FROM form_data where id = '$id' and status='Accepted'");
   ?>
-</head>
 
 <body>
   <?php

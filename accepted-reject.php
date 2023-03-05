@@ -13,11 +13,7 @@ $id=$_GET['id'];
         <button type="submit" id="submit" name="submit" class="btn btn-primary mb-3 fs-4">Submit</button>
     </form>
 </body>
-<script>
-    $(window).on('load', function() {
-        $('#loading').hide();
-    })
-</script>
+
 <?php include 'assets/footer.php' ?>
 <?php
 $id = $_GET['id'];

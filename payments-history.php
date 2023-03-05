@@ -89,7 +89,6 @@ if (isset($_SESSION['username'])) {
         ?>
         <?php
         include 'assets/grid-system.php';
-        include 'assets/footer-dash.php';
         ?>
     </body>
 <?php

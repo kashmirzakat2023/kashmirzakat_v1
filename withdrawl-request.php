@@ -42,7 +42,7 @@ if (isset($_SESSION['username'])) {
                 <button type="submit" class=" btn btn-primary mx-auto me-auto d-flex fs-5"  name="submit">Submit</button>
             </form>
         </div>
-                    <?php include 'assets/footer-dash.php'; ?>
+                    
 
 
     </body>

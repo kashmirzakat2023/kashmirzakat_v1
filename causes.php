@@ -1,4 +1,4 @@
-<a class="col ht cause_card text-decoration-none text-dark" data-bs-toggle="tooltip" href="raise-detail.php?campaign=<?php echo $data['id']; ?>" data-bs-placement="bottom" title="<?php echo $data['cause_title']; ?>">
+<a class="col ht cause_card text-decoration-none text-dark" data-bs-toggle="tooltip" href="cause-details.php?campaign=<?php echo $data['id']; ?>" data-bs-placement="bottom" title="<?php echo $data['cause_title']; ?>">
     <div class="card shadow">
         <?php
         $email = $data['email'];
@@ -23,7 +23,7 @@
             </b>
             <p class="card-text wrapper" style="  -webkit-line-clamp: 1;
                     height: 25px;"><img class=" me-2 " style="border-radius: 50% !important;" width="20px" src="<?php echo "images/" . $profile_img; ?>" alt="profile_pic"><?php echo $name; ?></p>
-            <small class="card-text wrapper mb-2" style="  -webkit-line-clamp: 3;
+            <small class="card-text wrapper mb-23" style="  -webkit-line-clamp: 3;
                     height: 70px;"> <?php echo $data['cause_summary']; ?></small>
 
             <div class=" d-flex justify-content-between " style="margin-bottom: -20px;">

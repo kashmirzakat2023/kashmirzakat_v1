@@ -9,7 +9,7 @@ session_start(); ?>
 <link rel="stylesheet" href="css/nav-dash.css">
 <script src="js/nav-dash.js"></script>
 <?php
-$useremail = $_GET['useremail'];
+$useremail = $_SESSION['useremail'];
 
 include 'assets/connection.php';
 if (isset($_SESSION['username'])) {
@@ -62,7 +62,7 @@ if (isset($_SESSION['username'])) {
                                     while ($rows = mysqli_fetch_array($result1)) {
                                     ?>
                                         <td>
-                                            <a href="raise-detail.php?campaign=<?php echo $rows['id']; ?>" class=" d-flex justify-content-start align-items-start">
+                                            <a href="cause-details.php?campaign=<?php echo $rows['id']; ?>" class=" d-flex justify-content-start align-items-start">
                                                 <img src="<?php echo "images/" . $rows['profile_pic']; ?>" width="50px" alt="" srcset="">
                                                 <p class=" text-truncate wrapper text-break" style="  -webkit-line-clamp: 2; height: 40px;"><?php echo $rows['cause_title']; ?></p>...&nbsp;
                                                 <i class="fas fa-external-link"></i>
@@ -91,9 +91,6 @@ if (isset($_SESSION['username'])) {
 
             </div>
         </div>
-        <?php
-        include 'assets/footer-dash.php';
-        ?>
     </body>
 <?php
 } else {

@@ -1,4 +1,4 @@
-<?php 
+<?php
 include 'assets/nav-links.php'; ?>
 
 <!DOCTYPE html>
@@ -6,6 +6,9 @@ include 'assets/nav-links.php'; ?>
 
 <head>
     <title>Contact Us</title>
+    <link rel="stylesheet" href="css/contact-us.css">
+</head>
+
 <body>
     <?php
     include 'assets/navbar.php';
@@ -43,29 +46,29 @@ include 'assets/nav-links.php'; ?>
                         <label class="control-label col-sm-2" for="comment">Comment:</label>
                         <div class="col-sm-10">
                             <textarea class="form-control" rows="3" name="comment" placeholder="Write brief reason for contact" id="comment" required></textarea>
+                        </div>
                     </div>
-                     </div>
                     <div class="g-recaptcha" style="overflow:hidden;" data-sitekey="6LewkakgAAAAABdcyzp8zqq_MkWU4tMlCJwZrBO6"></div>
-                    
+
                     <div class="form-group mb-3 mt-3">
                         <div class="col-sm-offset-2 col-sm-10">
                             <button type="submit" class="btn btn-primary" name="submit">Submit</button>
                         </div>
                     </div>
-                    
-                    
+
+
                 </form>
             </div>
+        </div>
     </div>
-    </div>
-    
+
     <style>
-    @media (max-width:500px){
-        
-        .rc-anchor-normal {
-            width:65vw !important;
+        @media (max-width:500px) {
+
+            .rc-anchor-normal {
+                width: 65vw !important;
+            }
         }
-    }
     </style>
 
     <script src="https://www.google.com/recaptcha/api.js" defer> </script>
@@ -73,50 +76,47 @@ include 'assets/nav-links.php'; ?>
 
     include 'assets/footer.php';
     if (isset($_POST['submit']) && isset($_POST['g-recaptcha-response'])) {
-      $captcha = $_POST['g-recaptcha-response'];
-      $ip = $_SERVER['REMOTE_ADDR'];
-      $key = '6LewkakgAAAAAMUmYkL0qS3MNTAt6H98pXgxYg3E';
-      $url = 'https://www.google.com/recaptcha/api/siteverify';
-    
-      // RECAPTCH RESPONSE
-      $recaptcha_response = file_get_contents($url.'?secret='.$key.'&response='.$captcha.'&remoteip='.$ip);
-      $data = json_decode($recaptcha_response);
-    
+        $captcha = $_POST['g-recaptcha-response'];
+        $ip = $_SERVER['REMOTE_ADDR'];
+        $key = '6LewkakgAAAAAMUmYkL0qS3MNTAt6H98pXgxYg3E';
+        $url = 'https://www.google.com/recaptcha/api/siteverify';
+
+        // RECAPTCH RESPONSE
+        $recaptcha_response = file_get_contents($url . '?secret=' . $key . '&response=' . $captcha . '&remoteip=' . $ip);
+        $data = json_decode($recaptcha_response);
+
         $fname = $_POST['fname'];
         $lname = $_POST['lname'];
         $email = $_POST['email'];
         $comment = $_POST['comment'];
         $sql = "INSERT into `user_contact` (fname,lname,email,comment) values ('$fname','$lname', '$email','$comment')";
         include 'assets/connection.php';
-        if( isset($data->success) &&  $data->success === true){
-        if (mysqli_query($db, $sql)) {
-            echo '<script>alert("Your form is successfully submitted. Our team will contact you shortly.")</script>';
-            $email = "kashmirzakat@gmail.com";
+        if (isset($data->success) &&  $data->success === true) {
+            if (mysqli_query($db, $sql)) {
+                echo '<script>alert("Your form is successfully submitted. Our team will contact you shortly.")</script>';
 
-            $mailBody = '<div style="text-center: center; width: 60%; margin: auto; max-width: 100%; font-family: Arial;  ">
-            <div><h3>Contact Us form filles</h3>
-            <h5>Mr. '. $fname .' filled the form</h5>
-            <p>Name: '.$fname .' '. $lname.'</p>
-            <p>Email: '.$email .'</p>
-            <p>Comment: '.$comment .'</p>
-            </div>
-            <div>Please use the above details and contact him as required.</div>
-            </div>';
-            $subject = "Contact Us";
-            $to = $email;
-            // $emailFrom = 'Roshan Hussain';
-            // $headers = 'From: ' . $emailFrom . "\r\n";
-            $headers .= 'Reply-To: ' . $to . "\r\n";
-            $headers .= 'MIME-Version: 1.0' . "\r\n";
-            $headers .= "Content-type:text/html;charset=iso-8859-1" . "\r\n" . 'X-Mailer: PHP/' . phpversion();
-            mail($email, $subject, $mailBody, $headers);
-        }else {
-            echo '<script>alert("Error in sending message. Please try again")</script>';
-        } 
-        }else {
+                $mailBody = '<div style="text-center: center; width: 60%; margin: auto; max-width: 100%; font-family: Arial;">
+                                <div>
+                                    <h3>Contact Us form filles</h3>
+                                    <h5>Mr. ' . $fname . ' filled the form</h5>
+                                    <p>Name: ' . $fname . ' ' . $lname . '</p>
+                                    <p>Email: ' . $email . '</p>
+                                    <p>Comment: ' . $comment . '</p>
+                                </div>
+                                <div>Please use the above details and contact him as required.</div>
+                            </div>';
+                $subject = "Contact Us";
+                $to = $email;
+                $headers .= 'Reply-To: ' . $to . "\r\n";
+                $headers .= 'MIME-Version: 1.0' . "\r\n";
+                $headers .= "Content-type:text/html;charset=iso-8859-1" . "\r\n" . 'X-Mailer: PHP/' . phpversion();
+                mail($email, $subject, $mailBody, $headers);
+            } else {
+                echo '<script>alert("Error in sending message. Please try again")</script>';
+            }
+        } else {
             echo '<script>alert("Please check \" I\'m not robot \" ")</script>';
         }
-        
     }
     ?>
 

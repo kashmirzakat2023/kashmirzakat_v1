@@ -129,7 +129,7 @@ if (isset($_POST['submit'])) {
         echo '<script>window.location = "index.php"</script>';
     } else {
         echo '<script>alert("Error in uploading data")</script>';
-        echo '<script>window.location = "fund-raise-form.php"</script>';
+        echo '<script>window.location = "create-campaign.php"</script>';
     }
 
     mysqli_close($db);

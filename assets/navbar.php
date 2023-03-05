@@ -1,6 +1,3 @@
-<script>
-    localStorage.setItem("curr_address", window.location.href)
-</script>
 <nav class="navbar main-nav navbar-expand-lg navbar-light bg-light fixed-top mb-5 " id="">
     <div class="container-fluid">
         <a class="navbar-brand" href="index.php">
@@ -26,23 +23,27 @@
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                         <li>
-                            <a class="dropdown-item" href="education.php">Education</a>
+                            <a class="dropdown-item" href="cause-category.php?purpose=Education">Education</a>
                         </li>
                         <li>
-                            <a class="dropdown-item" href="healthcare.php">Healthcare</a>
+                            <a class="dropdown-item" href="cause-category.php?purpose=Healthcare">Healthcare</a>
                         </li>
                         <li>
-                            <a class="dropdown-item" href="livelihood.php">Livelihood</a>
+                            <a class="dropdown-item" href="cause-category.php?purpose=Livelihood">Livelihood</a>
                         </li>
                         <!-- <li>
                             <a class="dropdown-item" href="scholarship.php">Scholarship</a>
                         </li> -->
-                        <li><a class="dropdown-item" href="others.php">Others</a></li>
-                        <li><a class="dropdown-item" href="successfully-completed.php">Completed</a></li>
+                        <li>
+                            <a class="dropdown-item" href="cause-category.php?purpose=Others">Others</a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="cause-category.php?purpose=Completed">Completed</a>
+                        </li>
                     </ul>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link raise-btn btn btn-danger" href="fund-raise-form.php"><i class="fas fa-user-edit"></i>
+                    <a class="nav-link raise-btn btn btn-danger" href="create-campaign.php"><i class="fas fa-user-edit"></i>
                         Raise Cause</a>
                 </li>
                 <li class="nav-item">
@@ -79,6 +80,9 @@
                                 <!-- <li>
                                     <a class="dropdown-item" href="users-list.php?useremail=admin@admin.com">Users</a>
                                 </li> -->
+                                <li>
+                                    <a class="dropdown-item" href="reportslist.php">Reports List</a>
+                                </li>
                                 <li>
                                     <a class="dropdown-item" href="logout.php">logout</a>
                                 </li>
@@ -476,7 +480,7 @@ if (!isset($_SESSION['username'])) {
                         </div>
                         <div class="mb-3 justify-content-between">
                             <div>
-                                <label class="form-check-label">Don't an account?
+                                <label class="form-check-label">Create account
                                     <a class="text-decoration-underline" data-bs-toggle="modal" data-bs-target="#signup" onclick="close_in()">Register Now</a></label>
                             </div>
                             <div>

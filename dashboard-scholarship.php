@@ -10,7 +10,7 @@ session_start(); ?>
 <script src="js/nav-dash.js"></script>
 <?php
 include 'assets/connection.php';
-$useremail = $_GET['useremail'];
+$useremail = $_SESSION['useremail'];
 $result = mysqli_query($db, "SELECT * FROM form_data where email='$useremail' and status='Accepted'");
 if (isset($_SESSION['username'])) {
 ?>
@@ -56,7 +56,7 @@ if (isset($_SESSION['username'])) {
                 </table>
             </div>
         </div>
-        <?php include 'assets/footer-dash.php'; ?>
+        
 
     </body>
 <?php

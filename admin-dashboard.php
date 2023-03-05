@@ -51,7 +51,7 @@ if (isset($_SESSION['username']) && $_SESSION['username'] == 'admin') {
                                 </div>
                             </div>
                         </div>
-                        <a href="payments-history.php?useremail=<?php echo $useremail; ?>&type=ot">
+                        <a href="payments-history.php?type=ot">
                             <div class=" text-light text-center p-1 mb-0 " style="background-color: rgba(0,0,0,0.3);">
                                 <small>view....</small><i class="fas fa-arrow-circle-right text-light"></i>
                             </div>
@@ -103,7 +103,7 @@ if (isset($_SESSION['username']) && $_SESSION['username'] == 'admin') {
                                 </div>
                             </div>
                         </div>
-                        <a href="campaigns.php?useremail=<?php echo $useremail; ?>">
+                        <a href="campaigns.php">
                             <div class="text-light text-center p-1 mb-0 " style="background-color: rgba(0,0,0,0.3);">
                                 <small>view....</small><i class="fas fa-arrow-circle-right text-light"></i>
                             </div>
@@ -163,9 +163,6 @@ if (isset($_SESSION['username']) && $_SESSION['username'] == 'admin') {
                 <?php
                 } ?>
             </div>
-            <?php
-            include 'assets/footer-dash.php';
-            ?>
     </body>
 
 </html>
