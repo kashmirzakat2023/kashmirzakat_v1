@@ -69,14 +69,14 @@ if (isset($_SESSION['username'])) {
                     cellRenderer: function(params) {
                         if ("<?= $_SESSION['username'] ?>" == "admin") {
                             if ('<?= $status ?>' == 'Rejected')
-                                return '<a class="btn btn-outline-primary me-2" href="rejected-fetch.php?id=' + params.data.ID + '">View</a><a class="btn btn-outline-success" href="rejected-accept.php?id=' + params.data.ID + '">Accept</a>';
+                                return '<a class="btn btn-outline-primary me-2" href="pending-fetch.php?id=' + params.data.ID + '">View</a><a class="btn btn-outline-success" href="rejected-accept.php?id=' + params.data.ID + '">Accept</a>';
                             else if ('<?= $status ?>' == 'Accepted')
                                 return '<a class="btn btn-outline-primary me-2" href="campaign-details.php?campaign=' + params.data.ID + '">View</a><a class="btn btn-outline-success me-2" href="admin-accept-edit-form.php?id=' + params.data.ID + '">Edit</a><a class="btn btn-outline-danger" href="accepted-reject.php?id=' + params.data.ID + '">Reject</a>';
                             else
                                 return '<a class="btn btn-outline-primary me-2" href="pending-fetch.php?id=' + params.data.ID + '">View</a><a class="btn btn-outline-success me-2" href="accept.php?id=' + params.data.ID + '">Accept</a><a class="btn btn-outline-danger" href="reject.php?id=' + params.data.ID + '">Reject</a>';
                         } else {
                             if ('<?= $status ?>' == 'Rejected')
-                                return '<a class="btn btn-outline-primary me-2" href="rejected-fetch.php?id=' + params.data.ID + '">View</a><a class="btn btn-outline-success" href="user-pending-edit-form.php?id=' + params.data.ID + '" >Edit</a>';
+                                return '<a class="btn btn-outline-primary me-2" href="pending-fetch.php?id=' + params.data.ID + '">View</a><a class="btn btn-outline-success" href="user-pending-edit-form.php?id=' + params.data.ID + '" >Edit</a>';
                             else if ('<?= $status ?>' == 'Accepted')
                                 return '<a class="btn btn-outline-primary me-2" href="campaign-details.php?campaign=' + params.data.ID + '">View</a><a class="btn btn-outline-success" href="withdrawl-request.php?id=' + params.data.ID + '" >Make Withdrawl</a>';
                             else

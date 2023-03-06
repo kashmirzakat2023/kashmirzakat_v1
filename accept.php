@@ -23,7 +23,7 @@ if (mysqli_query($db, "UPDATE form_data set status = 'Accepted' where id= '$id' 
     $headers = 'From: Kashmirzakat ' . "\r\n". 'Reply-To: ' . $to . "\r\n".'MIME-Version: 1.0' . "\r\n". "Content-type:text/html;charset=iso-8859-1" . "\r\n" . 'X-Mailer: PHP/' . phpversion();
     mail($to, $subject, $mailBody, $headers);
     echo '<script>alert("Cause accepted successfully");</script>';
-    echo '<script>window.location = "causes-list.php?status=Accepted"</script>';
+    echo '<script>window.location = "campaigns-list.php?status=Accepted"</script>';
 } else {
     echo '<script>alert("Error in accepting cause! Try Again.");</script>';
 }

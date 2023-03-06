@@ -10,6 +10,7 @@
         </div>
         <button type="submit" id="submit" name="submit" class="btn btn-primary mb-3 fs-4">Submit</button>
     </form>
+    <?php include 'assets/footer.php' ?>
 </body>
 <style>
     #drop-zone {
@@ -62,7 +63,6 @@
         font-size: 11px;
     }
 </style>
-<?php include 'assets/footer.php' ?>
 <?php
 $id = $_GET['id'];
 if (isset($_POST['submit'])) {
@@ -90,7 +90,7 @@ if (isset($_POST['submit'])) {
         mail($to, $subject, $mailBody, $headers);
         $result = mysqli_query($db, "DELETE FROM form_data where id= '$id' and status='Pending' ");
         echo '<script>alert("Cause rejected successfully");</script>';
-        echo '<script>window.location = "causes-list.php?status=Rejected"</script>';
+        echo '<script>window.location = "campaigns-list.php?status=Rejected"</script>';
     } else {
         echo '<script>alert("Error in rejecting data! Try again");</script>';
     }
