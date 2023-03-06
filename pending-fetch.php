@@ -73,12 +73,12 @@ include 'assets/nav-links.php'; ?>
                                     <img src="<?php echo "images/" . $data['doc3']; ?>" style="height: 15vh; width:90%;" class="cursor rounded-2 p-1 border border-dark">
                                 </a>
                             <?php }
-                            if ($data['passbook'] != '') { ?>
+                            if ($data['pan_copy'] != '') { ?>
                                 <a type="button" class="rounded-2" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                    <img src="<?php echo "images/" . $data['passbook']; ?>" style="height: 15vh; width:90%;" class="cursor rounded-2 p-1 border border-dark">
+                                    <img src="<?php echo "images/" . $data['pan_copy']; ?>" style="height: 15vh; width:90%;" class="cursor rounded-2 p-1 border border-dark">
                                 </a>
                             <?php }
-                            if ($data['pan_copy'] != '') { ?>
+                            if ($data['adhaar_copy'] != '') { ?>
                                 <a type="button" class="rounded-2" data-bs-toggle="modal" data-bs-target="#exampleModal">
                                     <img src="<?php echo "images/" . $data['adhaar_copy']; ?>" style="height: 15vh; width:90%;" class="cursor rounded-2 p-1 border border-dark">
                                 </a>

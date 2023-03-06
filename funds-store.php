@@ -1,13 +1,9 @@
-<?php session_start(); ?>
-<?php
+<?php session_start();
 include 'assets/connection.php';
 $username = $_SESSION['username'];
 $email = $_SESSION['useremail'];
 
-// If upload button is clicked ...
 if (isset($_POST['submit'])) {
-    // Get image name
-
     $cause_title = $_POST['cause_title'];
     $purpose = $_POST['purpose'];
     $person = $_POST['person'];
@@ -30,13 +26,13 @@ if (isset($_POST['submit'])) {
     $folder3 = "images/" . $doc2;
 
     $pan_copy = $_FILES["pan_copy"]["name"];
-    $tempname5 = $_FILES["pan_copy"]["tmp_name"];
-    $folder5 = "images/" . $pan_copy;
+    $tempname4 = $_FILES["pan_copy"]["tmp_name"];
+    $folder4 = "images/" . $pan_copy;
 
 
     $adhaar_copy = $_FILES["adhaar_copy"]["name"];
-    $tempname6 = $_FILES["adhaar_copy"]["tmp_name"];
-    $folder6 = "images/" . $adhaar_copy;
+    $tempname5 = $_FILES["adhaar_copy"]["tmp_name"];
+    $folder5 = "images/" . $adhaar_copy;
 
     $person = $_POST['person'];
     $acc_name = $_POST['acc_name'];
@@ -105,11 +101,13 @@ if (isset($_POST['submit'])) {
         '$email',
         'Pending') ";
 
-
-    if (!move_uploaded_file($tempname1, $folder1) || !move_uploaded_file($tempname2, $folder2) || !move_uploaded_file($tempname3, $folder3) || !move_uploaded_file($tempname5, $folder5) || !move_uploaded_file($tempname6, $folder6))
-        echo ("");
-    if (mysqli_query($db, $sql)) {
-        $mailBody = '<div style="text-center: center; width: 60%; margin: auto; max-width: 100%; font-family: Arial;  ">
+if (mysqli_query($db, $sql)) {
+        move_uploaded_file($tempname1, $folder1);
+        move_uploaded_file($tempname2, $folder2);
+        move_uploaded_file($tempname3, $folder3);
+        move_uploaded_file($tempname4, $folder4);
+        move_uploaded_file($tempname5, $folder5);
+        $mailBody = '<div style="text-center: center; width: 60%; margin: auto; max-width: 100%; font-family: Arial;">
         <div>Hi, ' . $_SESSION['username'] . '</div>
         <div><h4>You have successfully raised a form </h4></div>
         <div><h3>' . $cause_title . '</h3></div>
