@@ -3,6 +3,15 @@ include 'assets/connection.php';
 $username = $_SESSION['username'];
 $email = $_SESSION['useremail'];
 
+function generateFileName()
+{
+    $chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ123456789_";
+    $name = "";
+    for ($i = 0; $i < 20; $i++)
+        $name .= $chars[rand(0, strlen($chars)-1)];
+    return $name;
+}
+
 if (isset($_POST['submit'])) {
     $cause_title = $_POST['cause_title'];
     $purpose = $_POST['purpose'];
@@ -13,24 +22,29 @@ if (isset($_POST['submit'])) {
     $cause_explain = $_POST['cause_explain'];
     $cause_summary = $_POST['cause_summary'];
 
-    $profile_pic = $_FILES["profile_pic"]["name"];
+    $profile_pic = generateFileName() . '.' . pathinfo($_FILES["profile_pic"]["name"], PATHINFO_EXTENSION);
     $tempname1 = $_FILES["profile_pic"]["tmp_name"];
     $folder1 = "images/" . $profile_pic;
 
-    $doc1 = $_FILES["doc1"]["name"];
+    $doc1 = generateFileName() . '.' . pathinfo($_FILES["doc1"]["name"], PATHINFO_EXTENSION);
     $tempname2 = $_FILES["doc1"]["tmp_name"];
     $folder2 = "images/" . $doc1;
+    if ($_FILES["doc2"]["name"] != '') {
+        $doc2 = generateFileName() . '.' . pathinfo($_FILES["doc2"]["name"], PATHINFO_EXTENSION);
+        $tempname3 = $_FILES["doc2"]["tmp_name"];
+        $folder3 = "images/" . $doc2;
+    } else {
+        $doc2 = '';
+        $tempname3 = '';
+        $folder3 = '';
+    }
 
-    $doc2 = $_FILES["doc2"]["name"];
-    $tempname3 = $_FILES["doc2"]["tmp_name"];
-    $folder3 = "images/" . $doc2;
-
-    $pan_copy = $_FILES["pan_copy"]["name"];
+    $pan_copy = generateFileName() . '.' . pathinfo($_FILES["pan_copy"]["name"], PATHINFO_EXTENSION);
     $tempname4 = $_FILES["pan_copy"]["tmp_name"];
     $folder4 = "images/" . $pan_copy;
 
 
-    $adhaar_copy = $_FILES["adhaar_copy"]["name"];
+    $adhaar_copy = generateFileName() . '.' . pathinfo($_FILES["adhaar_copy"]["name"], PATHINFO_EXTENSION);
     $tempname5 = $_FILES["adhaar_copy"]["tmp_name"];
     $folder5 = "images/" . $adhaar_copy;
 
@@ -101,7 +115,7 @@ if (isset($_POST['submit'])) {
         '$email',
         'Pending') ";
 
-if (mysqli_query($db, $sql)) {
+    if (mysqli_query($db, $sql)) {
         move_uploaded_file($tempname1, $folder1);
         move_uploaded_file($tempname2, $folder2);
         move_uploaded_file($tempname3, $folder3);
