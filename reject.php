@@ -12,64 +12,63 @@
     </form>
 </body>
 <style>
-        #drop-zone {
-            max-width: 450vw;
-            width: 100%;
-            height: 60vh;
-            border: 2px dashed grey;
-            border-radius: 10px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
+    #drop-zone {
+        max-width: 450vw;
+        width: 100%;
+        height: 60vh;
+        border: 2px dashed grey;
+        border-radius: 10px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    #drop-zone img {
+        object-fit: contain;
+        /* object-position: center; */
+        height: 100%;
+        width: 100%;
+        display: none;
+    }
+
+    .fund-raise {
+        display: flex;
+        justify-content: center;
+        margin-left: auto;
+        margin-right: auto;
+        flex-direction: column;
+    }
+
+    @media (max-width:450px) {
+
+        label,
+        small,
+        body,
+        input,
+        select {
+            font-size: 80%;
         }
 
-        #drop-zone img {
-            object-fit: contain;
-            /* object-position: center; */
-            height: 100%;
-            width: 100%;
-            display: none;
+        h2 {
+            font-size: 180%;
         }
+    }
 
-        .fund-raise {
-            display: flex;
-            justify-content: center;
-            margin-left: auto;
-            margin-right: auto;
-            flex-direction: column;
-        }
+    label {
+        font-weight: 500;
+    }
 
-        @media (max-width:450px) {
-
-            label,
-            small,
-            body,
-            input,
-            select {
-                font-size: 80%;
-            }
-
-            h2 {
-                font-size: 180%;
-            }
-        }
-
-        label {
-            font-weight: 500;
-        }
-
-        small {
-            font-size: 11px;
-        }
-    </style>
+    small {
+        font-size: 11px;
+    }
+</style>
 <?php include 'assets/footer.php' ?>
 <?php
 $id = $_GET['id'];
 if (isset($_POST['submit'])) {
-include 'assets/connection.php';
-    $reject_reason=$_POST['reject_reason'];
-        if(mysqli_query( $db, "UPDATE form_data set status='Rejected' , reason = '$reject_reason' where id= '$id' ")
-    ) {
+    include 'assets/connection.php';
+    $reject_reason = $_POST['reject_reason'];
+    if (mysqli_query($db, "UPDATE form_data set status='Rejected' , reason = '$reject_reason' where id= '$id' ")) {
         $subject = "Cause Rejected by kashmirzakat team";
         $result = mysqli_query($db, " SELECT * FROM form_data where id = '$id' ");
         while ($data = mysqli_fetch_array($result)) {
@@ -79,20 +78,20 @@ include 'assets/connection.php';
             <body>
                 <div style="text-center: center; width: 60%; margin: auto; max-width: 100%; font-family: Arial;  ">
                 <div>Hi, ' . $_SESSION['username'] . '</div>
-                <div><h4>Your cause ' . $cause_title. ' is rejected by team due to <b>'.$reject_reason.'</b> </h4></div>
+                <div><h4>Your cause ' . $cause_title . ' is rejected by team due to <b>' . $reject_reason . '</b> </h4></div>
                 <div>Contact : info@kashmirzakat.com , kashmirzakat@gmail.com </div>
                 </div>
             </body>
             </html>';
-        $headers = 'From: Kashmirzakat ' . "\r\n" ;
-        $headers=  'Reply-To: '.$to . "\r\n" ;
+        $headers = 'From: Kashmirzakat ' . "\r\n";
+        $headers =  'Reply-To: ' . $to . "\r\n";
         $headers .= 'MIME-Version: 1.0' . "\r\n";
         $headers .= "Content-type:text/html;charset=iso-8859-1" . "\r\n" . 'X-Mailer: PHP/' . phpversion();
         mail($to, $subject, $mailBody, $headers);
         $result = mysqli_query($db, "DELETE FROM form_data where id= '$id' and status='Pending' ");
         echo '<script>alert("Cause rejected successfully");</script>';
-        echo '<script>window.location = "index.php"</script>';
+        echo '<script>window.location = "causes-list.php?status=Rejected"</script>';
     } else {
-        echo '<script>alert("Error in rejecting data");</script>';
+        echo '<script>alert("Error in rejecting data! Try again");</script>';
     }
 }

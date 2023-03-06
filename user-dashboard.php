@@ -176,7 +176,7 @@ if (isset($_SESSION['username'])) {
                                             }
                                             $days = 1;
                                         } else { ?>
-                                            <img src="images/profile.png" height="64px" width="64px" class="rounded-circle " alt="...">
+                                            <img src="kz_images/profile.png" height="64px" width="64px" class="rounded-circle " alt="...">
                                         <?php
                                         } ?>
                                         <div class="media-body card-body w-75">

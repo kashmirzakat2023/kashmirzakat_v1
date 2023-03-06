@@ -1,7 +1,7 @@
 <nav class="navbar main-nav navbar-expand-lg navbar-light bg-light fixed-top mb-5 " id="">
     <div class="container-fluid">
         <a class="navbar-brand" href="index.php">
-            <img src="images/logo-croped2.png" alt="">
+            <img src="kz_images/nav_logo.png" alt="">
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>

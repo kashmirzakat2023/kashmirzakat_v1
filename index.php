@@ -7,7 +7,7 @@ include 'assets/nav-links.php'
 <head>
     <title>Home | Kashmirzakat.com</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
-    <meta property="og:image" content="https://kashmirzakat.com/images/logo.jpeg">
+    <meta property="og:image" content="https://kashmirzakat.com/kz_images/logo.jpeg">
     <script src="js/index.js"></script>
     <meta property="og:image:type" content="image/jpeg">
     <link rel="stylesheet" href="css/index1.css">
@@ -34,19 +34,19 @@ include 'assets/nav-links.php'
             <div class="carousel-inner car-img" style="height: 93vh; width:100%;">
 
                 <div class="carousel-item main_carousel active " data-bs-interval="4000">
-                    <img src="images/c1.png" class="d-block car-img" alt="...">
+                    <img src="kz_images/c1.png" class="d-block car-img" alt="...">
                 </div>
                 <div class="carousel-item main_carousel" data-bs-interval="4000">
-                    <img src="images/c2.png" class="d-block car-img" alt="...">
+                    <img src="kz_images/c2.png" class="d-block car-img" alt="...">
                 </div>
                 <div class="carousel-item main_carousel" data-bs-interval="4000">
-                    <img src="images/c3.png" class="d-block car-img" alt="...">
+                    <img src="kz_images/c3.png" class="d-block car-img" alt="...">
                 </div>
                 <div class="carousel-item main_carousel" data-bs-interval="4000">
-                    <img src="images/c4.png" class="d-block car-img" alt="...">
+                    <img src="kz_images/c4.png" class="d-block car-img" alt="...">
                 </div>
                 <div class="carousel-item main_carousel" data-bs-interval="4000">
-                    <img src="images/c5.png" class="d-block car-img" alt="...">
+                    <img src="kz_images/c5.png" class="d-block car-img" alt="...">
                 </div>
             </div>
         </div>
@@ -64,31 +64,31 @@ include 'assets/nav-links.php'
     <div class="row row-cols-2 row-cols-md-3 row-cols-lg-6 justify-content-center justify-content-lg-evenly justify-content-md-evenly g-4 m-3 mb-3 fontawesome">
         <div class="col d-flex justify-content-center">
             <div class="card">
-                <img src="images/education.png" class="card-img-top" alt="images/helping-hands.jpg">
+                <img src="kz_images/education.png" class="card-img-top" alt="kz_images/helping-hands.jpg">
                 <a class="btn btn-outline-success m-2 fw-bold" href="education.php" >Education</a>
             </div>
         </div>
         <div class="col d-flex justify-content-center">
             <div class="card">
-                <img src="images/healthcare.png" class="card-img-top" alt="images/helping-hands.jpg">
+                <img src="kz_images/healthcare.png" class="card-img-top" alt="kz_images/helping-hands.jpg">
                 <a class="btn btn-outline-success m-2 fw-bold" href="healthcare.php">Healthcare</a>
             </div>
         </div>
         <div class="col d-flex justify-content-center">
             <div class="card">
-                <img src="images/livelihood.png" class="card-img-top" alt="images/helping-hands.jpg">
+                <img src="kz_images/livelihood.png" class="card-img-top" alt="kz_images/helping-hands.jpg">
                 <a class="btn btn-outline-success m-2 fw-bold" href="livelihood.php">Livelihood</a>
             </div>
         </div>
         <!-- <div class="col">
             <div class="card">
-                <img src="images/scholarship.png" height="200px" class="card-img-top" alt="images/helping-hands.jpg">
+                <img src="kz_images/scholarship.png" height="200px" class="card-img-top" alt="kz_images/helping-hands.jpg">
                 <a class="btn btn-outline-success m-2 fw-bold" href="scholarship.php">Scholarship</a>
             </div>
         </div> -->
         <div class="col d-flex justify-content-center">
             <div class="card">
-                <img src="images/others.png" class="card-img-top" alt="images/helping-hands.jpg">
+                <img src="kz_images/others.png" class="card-img-top" alt="kz_images/helping-hands.jpg">
                 <a class="btn btn-outline-success m-2 fw-bold" href="others.php">Others</a>
             </div>
         </div>

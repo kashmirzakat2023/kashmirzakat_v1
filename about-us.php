@@ -17,7 +17,7 @@ include 'assets/nav-links.php'; ?>
     <div class="card m-lg-5 m-2 mt-4 p-4 shadow bg-light">
         <div class="row row-cols-1 row-cols-lg-2 ">
             <div class="col-lg-4 d-flex align-items-center">
-                <img src="images/about.svg" class="mb-3" width="90%">
+                <img src="kz_images/about.svg" class="mb-3" width="90%">
             </div>
             <div class="col-lg-8">
                 <h2 class="text-decoration-underline" style="font-family:Arial, Helvetica, sans-serif !important;">Who we are -</h2>

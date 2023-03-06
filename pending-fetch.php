@@ -165,7 +165,7 @@ include 'assets/nav-links.php'; ?>
                             <img src="<?php echo "images/" . $user1['profile_pic']; ?>" class=" mt-3 rounded-circle mx-auto" width="200vh" height="200vh" alt="profile">
                         <?php } else {
                         ?>
-                            <img src=" images/evenly.jpg" class=" mt-3 rounded-circle mx-auto" width="200vh" height="200vh" alt="profile">
+                            <img src="kz_images/evenly.jpg" class=" mt-3 rounded-circle mx-auto" width="200vh" height="200vh" alt="profile">
                         <?php
                         } ?>
                         <div class="card-body text-center">

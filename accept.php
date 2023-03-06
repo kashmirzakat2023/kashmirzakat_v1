@@ -4,7 +4,7 @@ include 'assets/connection.php';
 $date = date("Y-m-d");
 if (mysqli_query($db, "UPDATE form_data set status = 'Accepted' where id= '$id' ")) {
     $result = mysqli_query($db, " SELECT * FROM form_data where id = '$id' ");
-    $to = '';
+    $to = $_SESSION['useremail'];
     $cause_title = '';
     while ($data = mysqli_fetch_array($result)) {
         $to = $data['email'];
@@ -21,9 +21,9 @@ if (mysqli_query($db, "UPDATE form_data set status = 'Accepted' where id= '$id' 
             </body>
             </html>';
     $headers = 'From: Kashmirzakat ' . "\r\n". 'Reply-To: ' . $to . "\r\n".'MIME-Version: 1.0' . "\r\n". "Content-type:text/html;charset=iso-8859-1" . "\r\n" . 'X-Mailer: PHP/' . phpversion();
-    // mail($to, $subject, $mailBody, $headers);
+    mail($to, $subject, $mailBody, $headers);
     echo '<script>alert("Cause accepted successfully");</script>';
-    echo '<script>window.location = "index.php"</script>';
+    echo '<script>window.location = "causes-list.php?status=Accepted"</script>';
 } else {
-    echo '<script>alert("Error in accepting cause");</script>';
+    echo '<script>alert("Error in accepting cause! Try Again.");</script>';
 }
