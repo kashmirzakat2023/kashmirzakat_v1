@@ -11,7 +11,7 @@
     </style>
     <?php include 'assets/navbar.php'; ?>
     <h2 class=" text-center mt-2">How it works</h2>
-    <img src="images/How It Works[192].png" class=" shadow d-flex mx-auto img-fluid img-thumbnail"  >
+    <img src="kz_images/How It Works[192].png" class=" shadow d-flex mx-auto img-fluid img-thumbnail"  >
     <h2 class=" text-center mt-2">FAQ's</h2>
     <div class="accordion shadow accordion-flush mx-auto border w-75 w-sm-100 m-5 rounded-1" id="accordionFlushExample">
         <div class="accordion-item">

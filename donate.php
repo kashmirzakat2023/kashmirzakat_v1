@@ -385,7 +385,7 @@ include 'assets/nav-links.php'; ?>
                             "amount": (totalAmount * 100), // 2000 paise = INR 20
                             "name": "Kashmirzakat",
                             "description": "Payment",
-                            "image": "images/logo.jpeg",
+                            "image": "kz_images/logo.jpeg",
                             "prefill ": {
                                 "name": fname,
                                 "email": email,

@@ -219,7 +219,7 @@ include 'assets/nav-links.php'; ?>
                                                     $donar = $row2['name'];
                                                 }
                                             ?>
-                                                <img src="images/profile.png" height="64px" width="64px" class="rounded-circle " alt="anonymous">
+                                                <img src="kz_images/profile.png" height="64px" width="64px" class="rounded-circle " alt="anonymous">
                                             <?php
                                             } ?>
                                             <div class="media-body w-75">
@@ -303,7 +303,7 @@ include 'assets/nav-links.php'; ?>
                         <?php
                         } else {
                         ?>
-                            <img src=" images/evenly.jpg" class=" mt-3 profile_img rounded-circle mx-auto" width="200vh" height="200vh" alt="profile">
+                            <img src="kz_images/evenly.jpg" class=" mt-3 profile_img rounded-circle mx-auto" width="200vh" height="200vh" alt="profile">
                         <?php
                         } ?>
                         <div class="card-body text-center">
