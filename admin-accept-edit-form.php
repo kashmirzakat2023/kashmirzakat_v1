@@ -1,36 +1,32 @@
 <?php
-include 'assets/nav-links.php'; ?>
-<html>
+include 'assets/nav-links.php';
+if (isset($_SESSION['useremail'])) {
+?>
+    <html>
 
-<head>
-    <link rel="stylesheet" href="css/success.css">
-    <script src="js/success.js" defer></script>
-    <script src="https://cdn.ckeditor.com/ckeditor5/35.0.1/classic/ckeditor.js"></script>
-    <?php
-    $id = $_GET['id'];
-    include 'assets/connection.php';
-    include 'countries.php';
-    $result = mysqli_query($db, " SELECT * FROM form_data where id = '$id' and status='Accepted'");
-    ?>
-</head>
-
-<body>
-    <?php
-    if (isset($_SESSION['useremail'])) {
-
-    ?> <script src="js/like.js" defer></script>
+    <head>
+        <link rel="stylesheet" href="css/success.css">
+        <script src="js/success.js"></script>
+        <script src="https://cdn.ckeditor.com/ckeditor5/35.0.1/classic/ckeditor.js"></script>
         <?php
-    }
-    include 'assets/navbar.php';
-    if (isset($_SESSION['useremail'])) {
+        $id = $_GET['id'];
+        include 'assets/connection.php';
+        include 'countries.php';
+        $result = mysqli_query($db, " SELECT * FROM form_data where id = '$id' and status='Accepted'");
+        ?>
+    </head>
+
+    <body>
+        <script src="js/like.js" defer></script>
+        <?php
+        include 'assets/navbar.php';
 
         while ($data = mysqli_fetch_array($result)) {
-            // $today = time();
-            // $_SESSION['id'] = $data['id'];
+            $_SESSION['id'] = $data['id'];
             $id = $data['id'];
         ?>
             <title>Edit</title>
-            <form method="post" enctype="multipart/form-data" action="save-accept-edit-form.php?id=<?php echo $data['id']; ?>">
+            <form method="post" enctype="multipart/form-data" action="save-edit-form.php?id=<?php echo $data['id']; ?>">
 
                 <div class="row row-cols-1 mt-5 mx-lg-3 mx-md-3 mx-2 mb-5" style="margin-right: 0 !important;">
                     <div class="col col-10 mx-auto">
@@ -125,91 +121,91 @@ include 'assets/nav-links.php'; ?>
         echo '<script>window.location = "index.php"</script>';
     }
         ?>
-</body>
+    </body>
 
-</html>
+    </html>
 
 
-<style>
-    .container1 {
-        /* width: 200px; */
-        margin: 50px auto;
-        font-family: sans-serif;
-    }
-
-    .hidden {
-        display: none;
-    }
-
-    #file {
-        display: none;
-        margin: 0 auto;
-    }
-
-    #upload {
-        display: block;
-        padding: 10px 25px;
-        border: 0;
-        margin: 0 auto;
-        font-size: 15px;
-        letter-spacing: 0.05em;
-        cursor: pointer;
-        background: #216e69;
-        color: #fff;
-        outline: none;
-        transition: .3s ease-in-out;
-    }
-
-    img {
-        display: block;
-        margin: 0 auto 15px;
-    }
-</style>
-
-<script>
-    $(function() {
-        var container1 = $('.container1'),
-            inputFile = $('#file'),
-            img, btn, txt = 'Edit Picture',
-            txtAfter = 'Change';
-
-        if (!container1.find('#upload').length) {
-            container1.find('.input').append('<input type="button" class="rounded-2 mt-2" value="' + txt + '" id="upload">');
-            btn = $('#upload');
-            container1.prepend('<img src="<?php echo $pic; ?>" class="rounded-1" class="hidden" alt="Uploaded file" id="uploadImg" width="100%" height="400px">');
-            img = $('#uploadImg');
+    <style>
+        .container1 {
+            /* width: 200px; */
+            margin: 50px auto;
+            font-family: sans-serif;
         }
 
-        btn.on('click', function() {
-            img.animate({
-                opacity: 0
-            }, 300);
-            inputFile.click();
-        });
+        .hidden {
+            display: none;
+        }
 
-        inputFile.on('change', function(e) {
-            container1.find('label').html(inputFile.val());
+        #file {
+            display: none;
+            margin: 0 auto;
+        }
 
-            var i = 0;
-            for (i; i < e.originalEvent.srcElement.files.length; i++) {
-                var file = e.originalEvent.srcElement.files[i],
-                    reader = new FileReader();
+        #upload {
+            display: block;
+            padding: 10px 25px;
+            border: 0;
+            margin: 0 auto;
+            font-size: 15px;
+            letter-spacing: 0.05em;
+            cursor: pointer;
+            background: #216e69;
+            color: #fff;
+            outline: none;
+            transition: .3s ease-in-out;
+        }
 
-                reader.onloadend = function() {
-                    img.attr('src', reader.result).animate({
-                        opacity: 1
-                    }, 700);
-                }
-                reader.readAsDataURL(file);
-                img.removeClass('hidden');
+        img {
+            display: block;
+            margin: 0 auto 15px;
+        }
+    </style>
+
+    <script>
+        $(function() {
+            var container1 = $('.container1'),
+                inputFile = $('#file'),
+                img, btn, txt = 'Edit Picture',
+                txtAfter = 'Change';
+
+            if (!container1.find('#upload').length) {
+                container1.find('.input').append('<input type="button" class="rounded-2 mt-2" value="' + txt + '" id="upload">');
+                btn = $('#upload');
+                container1.prepend('<img src="<?php echo $pic; ?>" class="rounded-1" class="hidden" alt="Uploaded file" id="uploadImg" width="100%" height="400px">');
+                img = $('#uploadImg');
             }
 
-            btn.val(txtAfter);
+            btn.on('click', function() {
+                img.animate({
+                    opacity: 0
+                }, 300);
+                inputFile.click();
+            });
+
+            inputFile.on('change', function(e) {
+                container1.find('label').html(inputFile.val());
+
+                var i = 0;
+                for (i; i < e.originalEvent.srcElement.files.length; i++) {
+                    var file = e.originalEvent.srcElement.files[i],
+                        reader = new FileReader();
+
+                    reader.onloadend = function() {
+                        img.attr('src', reader.result).animate({
+                            opacity: 1
+                        }, 700);
+                    }
+                    reader.readAsDataURL(file);
+                    img.removeClass('hidden');
+                }
+
+                btn.val(txtAfter);
+            });
         });
-    });
-    ClassicEditor
-        .create(document.querySelector('#editor'))
-        .catch(error => {
-            console.error(error);
-        });
-</script>
+        ClassicEditor
+            .create(document.querySelector('#editor'))
+            .catch(error => {
+                console.error(error);
+            });
+    </script>

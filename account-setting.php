@@ -61,7 +61,7 @@ if (isset($_SESSION['username'])) {
                                                         <?php
                                                         for ($i = 0; $i < sizeof($countries); $i++) {
                                                         ?>
-                                                            <option <?php if($data['country'] == $countries[$i]) echo 'selected';?> value="<?= $countries[$i] ?>"><?= $countries[$i] ?></option>
+                                                            <option <?php if ($data['country'] == $countries[$i]) echo 'selected'; ?> value="<?= $countries[$i] ?>"><?= $countries[$i] ?></option>
                                                         <?php
                                                         }
                                                         ?>

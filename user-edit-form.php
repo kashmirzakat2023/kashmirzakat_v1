@@ -10,6 +10,7 @@ if (isset($_SESSION['useremail'])) {
         <?php
         $id = $_GET['id'];
         include 'assets/connection.php';
+        include 'countries.php';
         $result = mysqli_query($db, " SELECT * FROM form_data where id = '$id'");
         ?>
     </head>
@@ -17,13 +18,12 @@ if (isset($_SESSION['useremail'])) {
     <body>
         <?php
         include 'assets/navbar.php';
-        include 'countries.php';
         while ($data = mysqli_fetch_array($result)) {
             $_SESSION['id'] = $data['id'];
             $id = $data['id'];
         ?>
             <title>Edit</title>
-            <form method="post" class="fund-raise shadow w-75 d-flex mx-auto me-auto mt-5 flex-column mb-3" enctype="multipart/form-data" action="save-pending-edit-form.php?id=<?php echo $id; ?>">
+            <form method="post" class="fund-raise shadow w-75 d-flex mx-auto me-auto mt-5 flex-column mb-3" enctype="multipart/form-data" action="save-edit-form.php?id=<?php echo $id; ?>">
                 <h3 class=" text-center fw-bold">Edit Form</h3>
                 <div class="row row-cols-1 mt-5 mx-lg-3 mx-md-3 mx-2 mb-5 w-100 " style="margin-right: 0 !important;">
                     <div class="col col-12 mx-auto">
@@ -97,7 +97,6 @@ if (isset($_SESSION['useremail'])) {
                                 <textarea class="form-floating mb-5" id="editor" name="cause_explain" rows="50">
 		                        <?= $data1 ?>
 		                        </textarea>
-                                <script src="https://cdn.ckeditor.com/ckeditor5/35.0.1/classic/ckeditor.js"></script>
                                 <script>
                                     ClassicEditor
                                         .create(document.querySelector('#editor'))

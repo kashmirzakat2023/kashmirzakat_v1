@@ -108,7 +108,7 @@
                                     <a class="dropdown-item" href="campaigns.php?useremail=<?php echo $_SESSION['useremail']; ?>">Causes</a>
                                 </li>
                                 <li>
-                                    <a class="dropdown-item" href="liked-causes.php?username=<?php echo $_SESSION['username']; ?>">Liked</a>
+                                    <a class="dropdown-item" href="liked-campaign-card-view.php?username=<?php echo $_SESSION['username']; ?>">Liked</a>
                                 </li>
                                 <li>
                                     <a class="dropdown-item" href="logout.php">logout</a>

@@ -65,8 +65,9 @@ if (isset($_SESSION['username'])) {
                 });
 
                 <?php
-                $column_data_fields = ['id', 'name', 'cause_title', 'samount', 'date', 'status', 'wid'];
+                $column_data_fields = ['id', 'name', 'cause_title', 'amount', 'date', 'status', 'wid'];
                 $column_fields = ['ID', 'Name', 'cause', 'Requested', 'Date & Time', 'Status', 'Wid'];
+                if($_SESSION['username'] == 'admin@admin.com'){
                 ?>
                 columnDefs.push({
                     field: 'View',
@@ -79,6 +80,9 @@ if (isset($_SESSION['username'])) {
                         // return '<a class="btn btn-outline-primary p-1" href="withdrawl-invoice.php?wid=' + params.data.Wid + '">view</a>';
                     }
                 })
+                <?php
+                }
+                ?>
             </script>
             <?php
             include 'assets/grid-system.php'

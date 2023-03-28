@@ -48,7 +48,7 @@ if (isset($_SESSION['useremail']) && $_SESSION['useremail'] == 'admin@admin.com'
                             </tr>
                             <tr>
                                 <th class=" text-end" scope="col">Amount issued : </th>
-                                <td><?php echo $row1['samount']; ?></td>
+                                <td><?php echo $row1['amount']; ?></td>
                             </tr>
                             <tr>
                                 <th class=" text-end" scope="col">Cause : </th>
@@ -92,11 +92,11 @@ if (isset($_SESSION['useremail']) && $_SESSION['useremail'] == 'admin@admin.com'
                 </table>
             </div>
         </div>
-        
+
 
     </body>
 <?php
-} else if (isset($_SESSION['username']) and $_SESSION['username'] != 'admin') {
+} else if (isset($_SESSION['username'])) {
 ?>
 
     <body id="body-pd">
@@ -111,7 +111,6 @@ if (isset($_SESSION['useremail']) && $_SESSION['useremail'] == 'admin@admin.com'
             }
         </script>
         <!--Container Main start-->
-
         <br>
         <div class=" ">
             <h2> Funds Raised</h2>
@@ -119,7 +118,7 @@ if (isset($_SESSION['useremail']) && $_SESSION['useremail'] == 'admin@admin.com'
                 <table class="table table-borderless d-flex align-self-centre">
                     <tbody>
                         <?php
-                        $query = mysqli_query($db, "SELECT * FROM payments where wid='$wid'and status='complete' ");
+                        $query = mysqli_query($db, "SELECT * FROM withdrawl_pending where wid='$wid'and status='accepted'");
                         while ($row1 = mysqli_fetch_array($query)) {
                         ?>
                             <tr>
@@ -149,7 +148,7 @@ if (isset($_SESSION['useremail']) && $_SESSION['useremail'] == 'admin@admin.com'
                                 <th class=" text-end" scope="col">Donation : </th>
                                 <td>₹ <?php echo $row1['amount']; ?></td>
                             </tr>
-                            <tr>
+                            <!-- <tr>
                                 <th class=" text-end" scope="col">Payment Gateway : </th>
                                 <td>
                                     <?php
@@ -157,25 +156,25 @@ if (isset($_SESSION['useremail']) && $_SESSION['useremail'] == 'admin@admin.com'
                                         echo 'Bank';
                                     else echo 'Razorpay';
                                     ?></td>
-                            </tr>
-                            <tr>
+                            </tr> -->
+                            <!-- <tr>
                                 <th class=" text-end" scope="col">Comment : </th>
                                 <td>
                                     <?php echo $row1['comment']; ?>
                                 </td>
-                            </tr>
+                            </tr> -->
                             <tr>
                                 <th class=" text-end" scope="col">Date : </th>
                                 <td>
                                     <?php echo $row1['date']; ?>
                                 </td>
                             </tr>
-                            <tr>
+                            <!-- <tr>
                                 <th class=" text-end" scope="col">Ananymous : </th>
                                 <td>
                                     <?php echo $row1['checked']; ?>
                                 </td>
-                            </tr>
+                            </tr> -->
                             <tr>
                                 <th class=" text-end" scope="col">Reward : </th>
                                 <td>-</td>

@@ -34,7 +34,7 @@ $username = $_GET['username'];
                 }
                 $percent = floor(($ramount / $amount) * 100);
                 $days = 30;
-                include 'causes.php';
+                include 'campaign-card-view.php';
             }
         }
         ?>

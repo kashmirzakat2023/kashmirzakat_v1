@@ -144,10 +144,10 @@ include 'assets/nav-links.php'; ?>
                     </div>
                 </div>
                 <div class=" d-flex justify-content-around p-2 bg-light">
-                    <a class="btn btn-success m-2 col-3 px-12 fs-5" href="accept.php?id=<?php echo $data['id']; ?>" name="submit" type="submit">Accept</a>
-                    <a class="btn btn-danger m-2 col-3 px-12 fs-5" href="reject.php?id=<?php echo $data['id']; ?>" name="submit" type="submit">Reject</a>
-                    <a class="btn btn-primary m-2 col-3 px-12 fs-5" href="user-pending-edit-form.php?id=<?php echo $data['id']; ?>" name="submit" type="submit">Edit</a>
-                    <a class="btn btn-primary m-2 col-3 px-12 fs-5" href="pending-edit-user-form-kyc.php?id=<?php echo $data['id']; ?>" name="submit" type="submit">Edit Kyc</a>
+                    <a class="btn btn-success m-2 col-3 px-12 fs-5" href="change-campaign-status.php?id=<?php echo $data['id']; ?>&status=accept" name="submit" type="submit">Accept</a>
+                    <a class="btn btn-danger m-2 col-3 px-12 fs-5" href="change-campaign-status.php?id=<?php echo $data['id']; ?>&status=reject" name="submit" type="submit">Reject</a>
+                    <a class="btn btn-primary m-2 col-3 px-12 fs-5" href="user-edit-form.php?id=<?php echo $data['id']; ?>" name="submit" type="submit">Edit</a>
+                    <a class="btn btn-primary m-2 col-3 px-12 fs-5" href="edit-user-form-kyc.php?id=<?php echo $data['id']; ?>" name="submit" type="submit">Edit Kyc</a>
 
                 </div>
             </div>

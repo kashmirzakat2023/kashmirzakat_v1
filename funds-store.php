@@ -3,16 +3,16 @@ include 'assets/connection.php';
 $username = $_SESSION['username'];
 $email = $_SESSION['useremail'];
 
-function generateFileName()
-{
-    $chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ123456789_";
-    $name = "";
-    for ($i = 0; $i < 20; $i++)
-        $name .= $chars[rand(0, strlen($chars)-1)];
-    return $name;
-}
-
 if (isset($_POST['submit'])) {
+    function generateFileName()
+    {
+        $chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ123456789_";
+        $name = "";
+        for ($i = 0; $i < 20; $i++)
+            $name .= $chars[rand(0, strlen($chars) - 1)];
+        return $name;
+    }
+
     $cause_title = $_POST['cause_title'];
     $purpose = $_POST['purpose'];
     $person = $_POST['person'];

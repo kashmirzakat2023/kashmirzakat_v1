@@ -16,7 +16,9 @@
         }
     ?>
         rowData.push(<?= json_encode($row_data) ?>);
-    <?php } ?>
+    <?php
+    }
+    ?>
 
     function onFilterTextBoxChanged() {
         gridOptions.api.setQuickFilter(

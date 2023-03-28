@@ -25,7 +25,7 @@ while($row = mysqli_fetch_array($query2)){
 }
 $amt=0;
 while($row = mysqli_fetch_array($query1)){
-    $amt+=$row['samount'];
+    $amt+=$row['amount'];
 }
 $query = mysqli_query($db, "SELECT * FROM withdrawl_request where wid = '$wid' ");
 // if ($amt >= $tamt) {
@@ -110,7 +110,7 @@ $query = mysqli_query($db, "SELECT * FROM withdrawl_request where wid = '$wid' "
             $status = 'accepted';
             $total_amount = $amt+$amount;
             $sql = "INSERT INTO withdrawl_pending(
-                name,raiseid,samount,tran_date,bank_name,tran_id,others,status,wid, email ) values
+                name,raiseid,amount,tran_date,bank_name,tran_id,others,status,wid, email ) values
                 ('$name','$raiseid','$amount','$tran_date','$bank_name','$tran_id','$optional','$status','$wid', '$email') ";
             $sql2="update form_data set withdrawl_amount='$total_amount' where id='$id'";
             if (mysqli_query($db, $sql) && mysqli_query($db,$sql2)) {
@@ -135,7 +135,7 @@ $query = mysqli_query($db, "SELECT * FROM withdrawl_request where wid = '$wid' "
                     $headers .= "Content-type:text/html;charset=iso-8859-1" . "\r\n" . 'X-Mailer: PHP/' . phpversion();
                     mail($to, $subject, $mailBody, $headers);
                 echo '<script>alert("Withdrawl Requested accepted by Admin")</script>';
-                echo '<script>window.location = "index.php"</script>';
+                echo '<script>history.back()</script>';
             } else {
                 echo '<script>alert("Error in uploading data.Try again")</script>';
             }
@@ -147,7 +147,7 @@ $query = mysqli_query($db, "SELECT * FROM withdrawl_request where wid = '$wid' "
             $optional = $_POST['optional'];
             $status = 'rejected';
             $sql = "INSERT INTO withdrawl_pending(
-                name,raiseid,samount,others,status,wid,email ) values
+                name,raiseid,amount,others,status,wid,email ) values
                 ('$name','$raiseid','$amount','$optional','$status','$wid', '$email') ";
 
             if (mysqli_query($db, $sql)) {
@@ -171,7 +171,7 @@ $query = mysqli_query($db, "SELECT * FROM withdrawl_request where wid = '$wid' "
                     $headers .= "Content-type:text/html;charset=iso-8859-1" . "\r\n" . 'X-Mailer: PHP/' . phpversion();
                     mail($to, $subject, $mailBody, $headers);
                 echo '<script>alert("Withdrawl request Rejected by Admin")</script>';
-                echo '<script>window.location = "index.php"</script>';
+                echo '<script>history.back()</script>';
             } else {
                 echo '<script>alert("Error in uploading data.Try again")</script>';
             }
@@ -184,11 +184,6 @@ $query = mysqli_query($db, "SELECT * FROM withdrawl_request where wid = '$wid' "
         echo '<script>alert("Action Not Allowed")</script>';
         echo '<script>window.location = "index.php"</script>';
     }
-// } 
-// else {
-    
-    // echo '<script>window.location = "index.php"</script>';
-// }
 ?>
 
 </html>

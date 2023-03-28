@@ -109,8 +109,8 @@ include 'assets/nav-links.php'; ?>
               <?php
               if ($_SESSION['username'] == "admin") {
               ?>
-                <a class="btn btn-Success m-2 col-3 fs-5" href="accept.php?id=<?php echo $data['id']; ?>">Accept</a>
-                <a class="btn btn-danger m-2 col-3 fs-5" href="reject.php?id=<?php echo $data['id']; ?>">Reject</a>
+                <a class="btn btn-Success m-2 col-3 fs-5" href="change-campaign-status.php?id=<?php echo $data['id']; ?>&status=accept">Accept</a>
+                <a class="btn btn-danger m-2 col-3 fs-5" href="change-campaign-status.php?id=<?php echo $data['id']; ?>&status=reject">Reject</a>
               <?php
               }
               ?>

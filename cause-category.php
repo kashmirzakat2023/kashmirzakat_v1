@@ -36,7 +36,7 @@ else
             $ramount += $data1['amount'];
         }
         $percent = floor(($ramount / $amount) * 100);
-        include 'causes.php';
+        include 'campaign-card-view.php';
     } ?>
 </div>
 

@@ -37,7 +37,7 @@ if (isset($_SESSION['username']) and $_SESSION['username'] == 'admin') {
                 <table class="table table-borderless d-flex align-self-centre">
                     <tbody>
                         <?php
-                        $query = mysqli_query($db, "SELECT * FROM bank_pending where  tran_id='$tid' ");
+                        $query = mysqli_query($db, "SELECT * FROM bankPayments where  tran_id='$tid' ");
                         while ($row1 = mysqli_fetch_array($query)) {
                         ?>
                             <tr>

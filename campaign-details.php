@@ -256,7 +256,7 @@ include 'assets/nav-links.php'; ?>
                                             <div class="media-body w-75">
                                                 <h5 class="mt-0">Amount transfered to Account</h5>
                                                 <div class=" d-flex justify-content-between">
-                                                    <b class="text-success">₹<?php echo $row2['samount']; ?></b>
+                                                    <b class="text-success">₹<?php echo $row2['amount']; ?></b>
                                                     <!--<small class=" text-muted">~ <?php echo $days; ?> days ago</small>-->
                                                     <small class=" text-muted">~
                                                         <?php
@@ -280,7 +280,7 @@ include 'assets/nav-links.php'; ?>
                 if (isset($_SESSION['username']) and $_SESSION['username'] == 'admin') {
                 ?>
                     <div class=" d-flex justify-content-around p-2 bg-light">
-                        <a class="btn btn-danger m-2 col-3 px-12 fs-5" href="accepted-reject.php?id=<?php echo $data['id']; ?>" name="submit" type="submit">Reject</a>
+                        <a class="btn btn-danger m-2 col-3 px-12 fs-5" href="change-campaign-status.php?id=<?php echo $data['id']; ?>&status=reject" name="submit" type="submit">Reject</a>
                         <a class="btn btn-primary m-2 col-3 px-12 fs-5" href="admin-accept-edit-form.php?id=<?php echo $data['id']; ?>" name="submit" type="submit">Edit</a>
                         <a class="btn btn-primary m-2 col-3 px-12 fs-5" href="edit-user-form-kyc.php?id=<?php echo $data['id']; ?>" name="submit" type="submit">Edit Kyc</a>
                     </div>

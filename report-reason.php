@@ -40,7 +40,7 @@ if (isset($_POST['submit'])) {
     if (!mysqli_num_rows($query) > 0) {
         if (mysqli_query($db, "INSERT INTO `report` (name,cause_title,raiseid,comment) values ('$username', '$cause','$id','$comment')")) {
             echo '<script>alert("Reported successfully")</script>';
-            echo '<script>window.location = "index.php"</script>';
+            echo '<script>history.back()</script>';
         }
         else{
             echo '<script>alert("Error in Reporting.Please try again")</script>';

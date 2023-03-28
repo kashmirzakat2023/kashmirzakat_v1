@@ -47,7 +47,7 @@ if (isset($_SESSION['username'])) {
                             </tr>
                             <tr>
                                 <th class=" text-end" scope="col">Amount issued : </th>
-                                <td><?php echo $row1['samount']; ?></td>
+                                <td><?php echo $row1['amount']; ?></td>
                             </tr>
                             <tr>
                                 <th class=" text-end" scope="col">Cause : </th>

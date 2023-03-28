@@ -25,6 +25,5 @@ if (isset($_POST['email'])) {
         echo $six_digit_number*786;
     } else {
         echo ("mail send faild");
-        // echo '<script>window.location = "index.php"</script>';
     }
 }

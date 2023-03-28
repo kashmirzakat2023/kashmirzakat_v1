@@ -63,7 +63,7 @@ if (isset($_SESSION['username']) && $_SESSION['username'] == 'admin') {
                 $tran_id = $_POST['tran_id'];
                 $optional = $_POST['optional'];
                 $sql = "INSERT INTO withdrawl_pending(
-                samount,tran_date,bank_name,tran_id,optional, email ) values
+                amount,tran_date,bank_name,tran_id,optional, email ) values
                 ('$amount','$tran_date','$bank_name','$tran_id','$optional', '$useremail')";
 
                 if (mysqli_query($db, $sql)) {
@@ -90,7 +90,6 @@ if (isset($_SESSION['username']) && $_SESSION['username'] == 'admin') {
                     // header('location:index.php');
                 } else {
                     echo '<script>alert("Error in uploading data")</script>';
-                    // echo '<script>window.location = "index.php"</script>';
                 }
             }
         }

@@ -27,9 +27,9 @@ if (isset($_POST['submit'])) {
     $tran_date = $_POST['tran_date'];
     $bank_name = $_POST['bank_name'];
     $tran_id = $_POST['tran_id'];
-    $sql = "INSERT INTO bank_pending(
+    $sql = "INSERT INTO bankPayments(
         raiseid,type,amount,name,email,phone,city,country,comment,method,tran_date,bank_name,tran_id,optional,checked,status,tip )values
-    ('$id','$type','$amt','$name','$email','$phone','$city','$country','$comment','$method','$tran_date','$bank_name','$tran_id','$optional','$checked','complete','$tip')";
+    ('$id','$type','$amt','$name','$email','$phone','$city','$country','$comment','$method','$tran_date','$bank_name','$tran_id','$optional','$checked','pending','$tip')";
 
     if (mysqli_query($db, $sql)) {
         $mailBody = '<div style="text-center: center; width: 60%; margin: auto; max-width: 100%; font-family: Arial;  ">
@@ -40,8 +40,9 @@ if (isset($_POST['submit'])) {
         </div>';
         
         $subject = "Kashmir Zakat - Donations";
-        $from = 'kashmirzakat@gmail.com';
-        $to = $_SESSION['useremail'];
+        $to = $email;            
+        if(isset($_SESSION['useremail']))
+            $to = $_SESSION['useremail'];            
         $emailFrom = 'Kashmir zakat';
         $headers = 'From: ' . $emailFrom . "\r\n";
         $headers .= 'Reply-To: ' . $to . "\r\n";

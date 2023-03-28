@@ -31,7 +31,7 @@ if (isset($_SESSION['username']) && $_SESSION['username'] == 'admin') {
             <?php
             $column_data_fields = ['id', 'name', 'cause_title', 'tran_date', 'tran_id'];
             $column_fields = ['ID', 'Name', 'Cause', 'Date', 'Transaction_Id'];
-            $result = mysqli_query($db, "SELECT * FROM `bank_pending` as b join form_data as f on f.id = b.raiseid");
+            $result = mysqli_query($db, "SELECT * FROM `bankPayments` as b join form_data as f on f.id = b.raiseid and b.status='pending'");
             ?>
             const columnDefs = [];
             column_fields.forEach(element => {
@@ -43,7 +43,7 @@ if (isset($_SESSION['username']) && $_SESSION['username'] == 'admin') {
             columnDefs.push({
                 field: 'Actions',
                 cellRenderer: function(params) {
-                    return '<a href="pending-payment-details.php?tid=' + params.data.Transaction_Id + '" class="btn btn-outline-primary p-1 me-1">View</a><a href="bank-accept.php?tid=' + params.data.Transaction_Id + '" class="btn btn-outline-success p-1 me-1">Accept</a><a href="bank-reject.php?tid=' + params.data.Transaction_Id + '" class="btn btn-outline-danger p-1">Reject</a>';
+                    return '<a href="pending-payment-details.php?tid=' + params.data.Transaction_Id + '" class="btn btn-outline-primary p-1 me-1">View</a><a href="bank-accept.php?tid=' + params.data.Transaction_Id + '&status=Accept" class="btn btn-outline-success p-1 me-1">Accept</a><a href="bank-accept.php?tid=' + params.data.Transaction_Id + '&status=Rejected" class="btn btn-outline-danger p-1">Reject</a>';
                 }
             })
         </script>
@@ -52,7 +52,7 @@ if (isset($_SESSION['username']) && $_SESSION['username'] == 'admin') {
         include 'assets/grid-system.php'
         ?>
 
-        
+
 
     </body>
 <?php

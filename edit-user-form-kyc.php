@@ -9,7 +9,7 @@ include 'assets/nav-links.php'; ?>
     $id = $_GET['id'];
 
     include 'assets/connection.php';
-    $result = mysqli_query($db, " SELECT * FROM form_data where id = '$id' ");
+    $result = mysqli_query($db, " SELECT * FROM form_data where id = '$id'");
     ?>
 </head>
 
@@ -44,7 +44,7 @@ include 'assets/nav-links.php'; ?>
                             <label for="floatingInput">Bank Name <label class=" fw-bold text-danger">*</label></label>
                         </div>
                         <div class="form-floating mb-3">
-                            <input type="text" class="form-control" name="ifsc" id="floatingInput" value="<?php echo $data['ifsc']; ?>" placeholder="bank" required>
+                            <input type="text" class="form-control" name="ifsc" id="floatingInput" value="<?php echo $data['ifsc'];?>" placeholder="bank" required>
                             <label for="floatingInput">IFSC Code <label class=" fw-bold text-danger">*</label></label>
                         </div>
 
@@ -62,7 +62,7 @@ include 'assets/nav-links.php'; ?>
         // }
     } else {
         echo '<script>alert("Unauthenticated Access")</script>';
-        header($_SESSION['currentUrl']);
+        echo '<script>window.location = "index.php"</script>';
     }
         ?>
 </body>
@@ -118,11 +118,12 @@ if (isset($_POST['submit'])) {
         bank_name='$bank_name',
         acc_num='$acc_num',
         acc_name='$acc_name'
-        where id='$id' and status = 'Accepted' ");
+        where id='$id'");
 
     if ($result) {
         echo '<script>alert("Kyc details Updated Successfully")</script>';
     } else {
         echo '<script>alert("Error in updating data")</script>';
     }
+    echo '<script>history.back()</script>';
 }
