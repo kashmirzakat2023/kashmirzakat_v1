@@ -50,8 +50,8 @@
                     <!-- Links -->
                     <h6 class="text-uppercase fw-bold">Contact</h6>
                     <hr class="mb-4 mt-0 d-inline-block mx-auto" style="width: 60px; background-color: #7c4dff; height: 2px" />
-                    <p><i class="fas fa-home mr-3"></i> Prince Complex, Buchpora Srinagar Kashmir Srinagar, JK 190020</p>
-                    <p><i class="fas fa-envelope mr-3"></i> info@kashmirzakat.com</p>
+                    <p><i class="fa fa-home mr-3"></i> MD Complex, Karan Nagar, Srinagar Kashmir JK , 190020.</p>
+                    <p><i class="fas fa-envelope mr-3"></i> Kashmirzakat@gmail.com,<br> info@kashmirzakat.com</p>
                     <p><i class="fas fa-phone mr-3"></i> +917006975843</p>
                 </div>
             </div>
