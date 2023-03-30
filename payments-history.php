@@ -59,16 +59,16 @@ if (isset($_SESSION['username'])) {
                     $('#donations').addClass("nav_link active");
                     $('#body-pd').attr('class', 'body-pd');
                 }
-                </script>
+            </script>
             <h3>Funds Raised</h3>
             <script>
                 column_fields = ['ID', 'Name', 'Cause', 'Date', 'Donated', 'Tip', 'Transaction_Id'];
                 <?php
                 $column_data_fields = ['id', 'name', 'cause_title', 'date', 'amount', 'tip', 'tran_id'];
                 $column_fields = ['ID', 'Name', 'Cause', 'Date', 'Donated', 'Tip', 'Transaction_Id'];
-                $result = mysqli_query($db, "SELECT * FROM payments as p join form_data as f on f.id = p.raiseid and p.status='complete'");
-                if($_SESSION['useremail'] == 'admin@admin.com')
-                    $result = mysqli_query($db, "SELECT * FROM payments where status = 'complete");
+                $result = mysqli_query($db, "SELECT * FROM payments as p join form_data as f on f.id = p.raiseid and p.status='complete' and f.email='$useremail'");
+                if ($_SESSION['useremail'] == 'admin@admin.com')
+                    $result = mysqli_query($db, "SELECT * FROM payments as p join form_data as f on f.id = p.raiseid and p.status='complete'");
                 ?>
                 columnDefs = [];
                 column_fields.forEach(element => {

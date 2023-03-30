@@ -38,9 +38,9 @@ if (isset($_SESSION['username'])) {
         ?>
             <h3>Pending Withdrawls</h3>
         <?php
-            $result = mysqli_query($db, "SELECT * FROM withdrawl_request as wp join form_data as f on f.id=wp.raiseid and f.status='Accepted' and wp.email = '$useremail'");
+            $result = mysqli_query($db, "SELECT * FROM withdrawl_request as wp join form_data as f on f.id=wp.raiseid and wp.status='pending' and f.status='Accepted' and wp.email = '$useremail'");
             if ($useremail == 'admin@admin.com')
-                $result = mysqli_query($db, "SELECT * FROM withdrawl_request as wp join form_data as f on f.id=wp.raiseid  and f.status='Accepted'");
+                $result = mysqli_query($db, "SELECT * FROM withdrawl_request as wp join form_data as f on f.id=wp.raiseid and f.status='Accepted'");
         } else {
         ?>
             <h3>Rejected Withdrawls</h3>
@@ -67,19 +67,19 @@ if (isset($_SESSION['username'])) {
                 <?php
                 $column_data_fields = ['id', 'name', 'cause_title', 'amount', 'date', 'status', 'wid'];
                 $column_fields = ['ID', 'Name', 'cause', 'Requested', 'Date & Time', 'Status', 'Wid'];
-                if($_SESSION['username'] == 'admin@admin.com'){
+                if ($_SESSION['username'] == 'admin@admin.com') {
                 ?>
-                columnDefs.push({
-                    field: 'View',
-                    cellRenderer: function(params) {
-                        if ('<?= $status ?>' == 'Pending')
-                            return '<a class="btn btn-outline-primary p-1" href="withdrawl-review.php?wid=' + params.data.Wid + '&id=' + params.data.ID + '">Review</a>';
-                        else if ('<?= $status ?>' == 'Accepted')
-                            return '<a class="btn btn-outline-primary p-1" href="withdrawl-invoice.php?wid=' + params.data.Wid + '">view</a>';
-                        // else
-                        // return '<a class="btn btn-outline-primary p-1" href="withdrawl-invoice.php?wid=' + params.data.Wid + '">view</a>';
-                    }
-                })
+                    columnDefs.push({
+                        field: 'View',
+                        cellRenderer: function(params) {
+                            if ('<?= $status ?>' == 'Pending')
+                                return '<a class="btn btn-outline-primary p-1" href="withdrawl-review.php?wid=' + params.data.Wid + '&id=' + params.data.ID + '">Review</a>';
+                            else if ('<?= $status ?>' == 'Accepted')
+                                return '<a class="btn btn-outline-primary p-1" href="withdrawl-invoice.php?wid=' + params.data.Wid + '">view</a>';
+                            // else
+                            // return '<a class="btn btn-outline-primary p-1" href="withdrawl-invoice.php?wid=' + params.data.Wid + '">view</a>';
+                        }
+                    })
                 <?php
                 }
                 ?>
@@ -87,7 +87,7 @@ if (isset($_SESSION['username'])) {
             <?php
             include 'assets/grid-system.php'
             ?>
-            
+
     </body>
 <?php
 } else {

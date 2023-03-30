@@ -9,7 +9,7 @@ if (isset($_POST['submit'])) {
     $count = 0;
     while ($row = mysqli_fetch_array($result)) {
         if (($useremail == $row['email']) && ($userpass == $row['PASSWORD'])) {
-        echo '<script>window.location = localStorage.getItem("curr_address")</script>';
+        echo '<script>history.back()</script>';
             $res = mysqli_query($db, "SELECT * FROM users where email='$useremail'");
             $_SESSION['useremail'] = $useremail;
             while ($row1 = mysqli_fetch_array($res)) {
@@ -21,7 +21,7 @@ if (isset($_POST['submit'])) {
     }
     if ($count == 0) {
         echo '<script>alert("Incorrect credentials")</script>';
-        echo '<script>window.location = localStorage.getItem("curr_address")</script>';
+        echo '<script>history.back()</script>';
     }
     mysqli_close($db);
 }
