@@ -39,7 +39,7 @@ include 'assets/nav-links.php'; ?>
     <?php }
     include 'assets/navbar.php';
 
-    $result = mysqli_query($db, " SELECT * FROM form_data where id = '$id' and status='Accepted'");
+    $result = mysqli_query($db, " SELECT * FROM form_data where id = '$id'");
     while ($data = mysqli_fetch_array($result)) {
         // $today = time();
         $_SESSION['id'] = $data['id'];
@@ -53,91 +53,147 @@ include 'assets/nav-links.php'; ?>
         $percent = floor(($ramount / $amount) * 100);
 
         $_SESSION['cause'] = $data['cause_title'];
-        $CurPageURL = "https://" . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
         $useremail1 = $data['email'];
-
     ?>
 
         <div class="row row-cols-1 mt-5 mx-lg-3 mx-md-3 mx-2 mb-5" style="margin-right: 0 !important;">
             <div class="col col-lg-7 col-md-7 col-12 mr-0 mx-lg-5 mx-md-3">
                 <div class="card border-0">
-                    <img src="<?php echo "images/" . $data['profile_pic']; ?>" height="70%" class="img-responsive mx-auto border card-img-top" alt="...">
+                    <img src="<?php echo "images/" . $data['profile_pic']; ?>" height="70%" class="img-responsive mx-auto border card-img-top" alt="cause_image">
                     <div class="card-body">
-                        <h3 class="card-title fw-bold py-2 cause_title"><?php echo $data['cause_title']; ?></h3>
+                        <h4 class="card-title fw-bold py-2 cause_title"><?php echo $data['cause_title']; ?></h4>
                         <hr>
-                        <div class="row mb-3 mb-sm-1">
-                            <div class="col-lg-8 col-sm-4 buttons-group w-100  p-0">
-                                <div class="links">
-                                    <ul>
-                                        <li class=" fw-bold social-share whatsapp btn btn-success mb-2 px-4 "><i class="fab fa-whatsapp"></i> Whatsapp</li>
-                                        <li id="ml_share" class=" fw-bold social-share mail btn btn-secondary mb-2 px-4 "><i class="fas fa-at"></i> Mail</li>
-                                        <li class="fw-bold social-share facebook btn btn-primary mb-2 px-4 "><i class="fab fa-facebook-f"></i> Facebook</li>
-                                        <li class="fw-bold social-share twitter btn btn-info mb-2 px-4 text-light "><i class="fab fa-twitter "></i> Twitter</li>
-                                        <li class="fw-bold social-share linkedin btn btn-light mb-2 px-4 border"><i class="fab fa-linkedin text-primary "></i> LinkedIn</li>
-                                    </ul>
-                                </div>
+                        <?php
+                        if (strtolower($data['status']) == 'accepted') {
+                        ?>
+                            <div class="row mb-3 mb-sm-1">
+                                <div class="col-lg-8 col-sm-4 buttons-group w-100  p-0">
+                                    <div class="links">
+                                        <ul>
+                                            <li class=" fw-bold social-share whatsapp btn btn-success mb-2 px-4 "><i class="fab fa-whatsapp"></i> Whatsapp</li>
+                                            <li id="ml_share" class=" fw-bold social-share mail btn btn-secondary mb-2 px-4 "><i class="fas fa-at"></i> Mail</li>
+                                            <li class="fw-bold social-share facebook btn btn-primary mb-2 px-4 "><i class="fab fa-facebook-f"></i> Facebook</li>
+                                            <li class="fw-bold social-share twitter btn btn-info mb-2 px-4 text-light "><i class="fab fa-twitter "></i> Twitter</li>
+                                            <li class="fw-bold social-share linkedin btn btn-light mb-2 px-4 border"><i class="fab fa-linkedin text-primary "></i> LinkedIn</li>
+                                        </ul>
+                                    </div>
 
+                                </div>
                             </div>
-                        </div>
+                        <?php
+                        }
+                        ?>
                         <ul class="nav nav-tabs nav-tabs-items" role="tablist">
                             <li class="nav-item text-center col-4 ">
                                 <a class="nav-link active nav-tabs-items" data-bs-toggle="tab" href="#home">Story
                                 </a>
                             </li>
-                            <li class="nav-item  text-center col-4">
-                                <a class="nav-link nav-tabs-items position-relative" data-bs-toggle="tab" href="#menu1">
-                                    Donations
-                                    <span class="position-absolute top-50 translate-middle badge rounded-pill" style="margin-left: 15px !important; background: var(--bg_dark_blue);">
-                                        <?php
-                                        $res = mysqli_query($db, "SELECT * FROM payments where raiseid='$id' and status='complete'");
-                                        echo mysqli_num_rows($res);
-                                        ?>
-                                    </span>
-                                </a>
-                            </li>
-                            <li class="nav-item  text-center  col-4 ">
-                                <a class="nav-link nav-tabs-items position-relative" data-bs-toggle="tab" href="#menu2">Updates
-                                    <span class="position-absolute top-50 translate-middle badge rounded-pill" style="margin-left: 15px !important; background: var(--bg_dark_blue);">
-                                        <?php
-                                        $res = mysqli_query($db, "SELECT * FROM withdrawl_pending where raiseid='$id' and status='accepted'");
-                                        echo mysqli_num_rows($res);
-                                        ?>
-                                    </span>
-                                </a>
-                            </li>
+                            <?php
+                            if (strtolower($data['status']) == 'accepted') {
+                            ?>
+                                <li class="nav-item  text-center col-4">
+                                    <a class="nav-link nav-tabs-items position-relative" data-bs-toggle="tab" href="#menu1">
+                                        Donations
+                                        <span class="position-absolute top-50 translate-middle badge rounded-pill" style="margin-left: 15px !important; background: var(--bg_dark_blue);">
+                                            <?php
+                                            $res = mysqli_query($db, "SELECT * FROM payments where raiseid='$id' and status='complete'");
+                                            echo mysqli_num_rows($res);
+                                            ?>
+                                        </span>
+                                    </a>
+                                </li>
+                                <li class="nav-item  text-center  col-4 ">
+                                    <a class="nav-link nav-tabs-items position-relative" data-bs-toggle="tab" href="#menu2">Updates
+                                        <span class="position-absolute top-50 translate-middle badge rounded-pill" style="margin-left: 15px !important; background: var(--bg_dark_blue);">
+                                            <?php
+                                            $res = mysqli_query($db, "SELECT * FROM withdrawl_pending where raiseid='$id' and status='accepted'");
+                                            echo mysqli_num_rows($res);
+                                            ?>
+                                        </span>
+                                    </a>
+                                </li>
+                            <?php
+                            }
+                            ?>
                         </ul>
                         <!-- Tab panes -->
                         <div class="tab-content">
                             <div id="home" class="container tab-pane active"><br>
-                                <p>
-                                    <label class=" fw-bold" for="d">My Story : </label><br>
-                                <div class="cause_explain">
+                                <div class="story-details">
+                                    <div class="cause_explain">
+                                        <label class=" fw-bold" for="d">My Story : </label>
+                                        <?= $data['cause_explain'] ?>
+                                    </div>
+                                    <div>
+                                        <label class=" fw-bold" for="d">Cause Summary : </label>
+                                        <?= $data['cause_summary']; ?>
+                                    </div>
                                     <?php
-                                    // $data1 = str_replace('&', '&amp;', $data['cause_explain']);
-                                    echo $data['cause_explain'] ?>
+                                    if ($_SESSION['useremail'] == 'admin@admin.com' || $_SESSION['useremail'] == $useremail1) {
+                                    ?>
+                                        <div>
+                                            <label class=" fw-bold" for="d">Pan Number : </label>
+                                            <?= $data['pan_num']; ?>
+                                        </div>
+                                        <div>
+                                            <label class=" fw-bold" for="d">Adhaar Number : </label>
+                                            <?= $data['adhaar_num']; ?>
+                                        </div>
+                                        <div>
+                                            <label class=" fw-bold" for="d">Account Number : </label>
+                                            <?= $data['acc_num']; ?>
+                                        </div>
+                                        <div>
+                                            <label class=" fw-bold" for="d">Bank Name : </label>
+                                            <?= $data['bank_name']; ?>
+                                        </div>
+                                        <div>
+                                            <label class=" fw-bold" for="d">Account Holder Name : </label>
+                                            <?= $data['acc_name']; ?>
+                                        </div>
+                                        <div>
+                                            <label class=" fw-bold" for="d">IFSC : </label>
+                                            <?= $data['ifsc']; ?>
+                                        </div>
+                                        <div>
+                                            <label class=" fw-bold" for="d">Raised By : </label>
+                                            <?= $data['person']; ?>
+                                        </div>
+                                    <?php
+                                    }
+                                    ?>
                                 </div>
-                                <label class=" fw-bold" for="d">Cause Summary : </label><br>
-                                <?php
-                                echo ($data['cause_summary']);
-                                ?>
-                                </p>
+
                                 <!-- ----- -->
-                                <h4>Supporting documents</h4>
+                                <b>Supporting documents</b>
                                 <!--<div class="row-cols-1 w-100 row-cols-md-3 row-cols-lg-3">-->
-                                <div class="d-flex row supporting">
-                                    <a type="button" class="rounded-2 col-4" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                        <img src="<?php echo "images/" . $data['doc1']; ?>" width="50%" class="cursor rounded-2 p-1 border border-dark">
+                                <div class="d-flex">
+                                    <a type="button" class="rounded-2" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                        <img src="<?php echo "images/" . $data['doc1']; ?>" style="height: 15vh; width:90%;" class="cursor rounded-2 p-1 border border-dark">
                                     </a>
-                                    <?php if ($data['doc2'] != '') { ?>
-                                        <a type="button" class="rounded-2 col-4" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                            <img src="<?php echo "images/" . $data['doc2']; ?>" width="50%" class="cursor rounded-2 p-1 border border-dark">
+                                    <?php
+                                    if ($data['doc2'] != '') { ?>
+                                        <a type="button" class="rounded-2" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                            <img src="<?php echo "images/" . $data['doc2']; ?>" style="height: 15vh; width:90%;" class="cursor rounded-2 p-1 border border-dark">
                                         </a>
                                     <?php }
                                     if ($data['doc3'] != '') { ?>
-                                        <a type="button" class="rounded-2 col-4" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                            <img src="<?php echo "images/" . $data['doc3']; ?>" width="50%" class="cursor rounded-2 p-1 border border-dark">
+                                        <a type="button" class="rounded-2" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                            <img src="<?php echo "images/" . $data['doc3']; ?>" style="height: 15vh; width:90%;" class="cursor rounded-2 p-1 border border-dark">
                                         </a>
-                                    <?php } ?>
+                                        <?php }
+                                    if (strtolower($data['status']) !== 'accepted') {
+                                        if ($data['pan_copy'] != '') { ?>
+                                            <a type="button" class="rounded-2" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                                <img src="<?php echo "images/" . $data['pan_copy']; ?>" style="height: 15vh; width:90%;" class="cursor rounded-2 p-1 border border-dark">
+                                            </a>
+                                        <?php }
+                                        if ($data['adhaar_copy'] != '') { ?>
+                                            <a type="button" class="rounded-2" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                                <img src="<?php echo "images/" . $data['adhaar_copy']; ?>" style="height: 15vh; width:90%;" class="cursor rounded-2 p-1 border border-dark">
+                                            </a>
+                                    <?php }
+                                    } ?>
                                 </div>
                                 <!--</div>-->
 
@@ -160,9 +216,19 @@ include 'assets/nav-links.php'; ?>
                                                                 <img src="<?php echo "images/" . $data['doc2']; ?>" class="d-flex mx-auto me-auto h-100" alt="attachment1">
                                                             </div>
                                                         <?php }
-                                                        if ($data['doc3'] != '') { ?>
+                                                        if ($data['passbook'] != '') { ?>
                                                             <div class="carousel-item">
-                                                                <img src="<?php echo "images/" . $data['doc3']; ?>" class="d-flex mx-auto me-auto h-100" alt="attachment1">
+                                                                <img src="<?php echo "images/" . $data['passbook']; ?>" class="d-block w-100" alt="...">
+                                                            </div>
+                                                        <?php }
+                                                        if ($data['pan_copy'] != '') { ?>
+                                                            <div class="carousel-item">
+                                                                <img src="<?php echo "images/" . $data['pan_copy']; ?>" class="d-block w-100" alt="...">
+                                                            </div>
+                                                        <?php }
+                                                        if ($data['adhaar_copy'] != '') { ?>
+                                                            <div class="carousel-item">
+                                                                <img src="<?php echo "images/" . $data['adhaar_copy']; ?>" class="d-block w-100" alt="...">
                                                             </div>
                                                         <?php } ?>
                                                     </div>
@@ -183,7 +249,7 @@ include 'assets/nav-links.php'; ?>
                                 <!-- ---- -->
                                 <hr>
                             </div>
-                            <div id="menu1" class="container tab-pane "><br>
+                            <div id="menu1" class="container tab-pane"><br>
                                 <h3>Donations</h3>
                                 <?php
                                 $res = mysqli_query($db, "SELECT * FROM payments where raiseid='$id' and status='complete'");
@@ -227,10 +293,12 @@ include 'assets/nav-links.php'; ?>
                                                 <div class=" d-flex justify-content-between">
                                                     <b class="text-success">₹<?php echo $row2['amount']; ?></b>
                                                     <!--<small class=" text-muted">~ <?php echo $days; ?> days ago</small>-->
-                                                    <small class=" text-muted">~ <?php
-                                                                                    $month  = date_format(date_create($row2['tran_date']), "d M,Y");
-                                                                                    echo $month;
-                                                                                    ?></small>
+                                                    <small class=" text-muted">~
+                                                        <?php
+                                                        $month  = date_format(date_create($row2['tran_date']), "d M,Y");
+                                                        echo $month;
+                                                        ?>
+                                                    </small>
                                                 </div>
                                             </div>
                                         </div>
@@ -246,23 +314,20 @@ include 'assets/nav-links.php'; ?>
                                 $res = mysqli_query($db, "SELECT * FROM withdrawl_pending where raiseid='$id' and status='accepted'");
                                 if (mysqli_num_rows($res) > 0) {
                                     while ($row2 = mysqli_fetch_array($res)) {
-                                        // $date = strtotime($row2['tran_date']);
-                                        // $now = time();
-                                        // $timeleft = $now - $date;
-                                        // $days = round($timeleft / (60 * 60 * 24));
                                         $name = $row2['name'];
                                 ?>
                                         <div class="media d-flex justify-content-around border mb-1" style=" padding:10px;">
                                             <div class="media-body w-75">
                                                 <h5 class="mt-0">Amount transfered to Account</h5>
                                                 <div class=" d-flex justify-content-between">
-                                                    <b class="text-success">₹<?php echo $row2['amount']; ?></b>
+                                                    <b class="text-success">₹<?php echo $row2['samount']; ?></b>
                                                     <!--<small class=" text-muted">~ <?php echo $days; ?> days ago</small>-->
                                                     <small class=" text-muted">~
                                                         <?php
                                                         $month  = date_format(date_create($row2['tran_date']), "d M,Y");
                                                         echo $month;
-                                                        ?></small>
+                                                        ?>
+                                                    </small>
                                                 </div>
                                             </div>
                                         </div>
@@ -273,16 +338,31 @@ include 'assets/nav-links.php'; ?>
                                 <hr>
                             </div>
                         </div>
-
                     </div>
                 </div>
                 <?php
-                if (isset($_SESSION['username']) and $_SESSION['username'] == 'admin') {
+                if (isset($_SESSION['username']) && ($_SESSION['useremail'] == 'admin@admin.com' || ($_SESSION['useremail'] == $useremail1 && strtolower($data['status']) == 'pending'))) {
                 ?>
-                    <div class=" d-flex justify-content-around p-2 bg-light">
-                        <a class="btn btn-danger m-2 col-3 px-12 fs-5" href="change-campaign-status.php?id=<?php echo $data['id']; ?>&status=reject" name="submit" type="submit">Reject</a>
-                        <a class="btn btn-primary m-2 col-3 px-12 fs-5" href="admin-accept-edit-form.php?id=<?php echo $data['id']; ?>" name="submit" type="submit">Edit</a>
-                        <a class="btn btn-primary m-2 col-3 px-12 fs-5" href="edit-user-form-kyc.php?id=<?php echo $data['id']; ?>" name="submit" type="submit">Edit Kyc</a>
+                    <div class="d-flex justify-content-center p-2 bg-light">
+                        <?php if ($_SESSION['useremail'] == 'admin@admin.com') { ?>
+                            <a class="btn btn-success m-2 col-2 px-12 fs-5" href="change-campaign-status.php?id=<?= $data['id']; ?>&status=accept" name="submit" type="submit">Accept</a>
+                            <?php
+                            if (strtolower($data['status']) != 'rejected') {
+                            ?>
+                                <a class="btn btn-danger m-2  col-2 px-12 fs-5" href="change-campaign-status.php?id=<?= $data['id']; ?>&status=reject" name="submit" type="submit">Reject</a>
+                            <?php
+                            }
+                            ?>
+                            <a class="btn btn-primary m-2 col-2 px-12 fs-5" href="admin-accept-edit-form.php?id=<?= $data['id']; ?>" name="submit" type="submit">Edit</a>
+                            <a class="btn btn-primary m-2 col-2 px-12 fs-5" href="edit-user-form-kyc.php?id=<?= $data['id']; ?>" name="submit" type="submit">Edit Kyc</a>
+                        <?php }
+                        if ($_SESSION['useremail'] == $useremail1 && $_SESSION['useremail'] != 'admin@admin.com') {
+                        ?>
+                            <a class="btn btn-primary m-2 col-2 px-12 fs-5" href="user-edit-form.php?id=<?= $data['id']; ?>" name="submit" type="submit">Edit</a>
+                            <a class="btn btn-primary m-2 col-2 px-12 fs-5" href="edit-user-form-kyc.php?id=<?= $data['id']; ?>" name="submit" type="submit">Edit Kyc</a>
+                        <?php
+                        }
+                        ?>
                     </div>
                 <?php
                 }
@@ -294,9 +374,11 @@ include 'assets/nav-links.php'; ?>
             <div class="col col-lg-4 col-md-4 col-12 mx-lg-0 mx-md-0 ">
                 <div class="card " style="width:100%;">
                     <?php
+                    $createrName = '';
                     $email = $data['email'];
                     $query1 = mysqli_query($db, "SELECT * FROM users where email = '$email' ");
                     while ($user1 = mysqli_fetch_array($query1)) {
+                        $createrName = $user1['name'];
                         if (!empty($user1['profile_pic'])) {
                     ?>
                             <img src="<?php echo "images/" . $user1['profile_pic']; ?>" class=" mt-3 profile_img rounded-circle mx-auto" width="200vh" height="200vh" alt="profile">
@@ -304,114 +386,125 @@ include 'assets/nav-links.php'; ?>
                         } else {
                         ?>
                             <img src="kz_images/evenly.jpg" class=" mt-3 profile_img rounded-circle mx-auto" width="200vh" height="200vh" alt="profile">
+                    <?php
+                        }
+                    } ?>
+                    <div class="card-body text-center">
+                        <h5 class="card-title">
+                            <?= $createrName; ?>
+                            <!-- <a href="mailto:<?php echo $user1['email']; ?>"><i class="fas fa-envelope text-info cursor"></i></a> -->
+                        </h5>
                         <?php
-                        } ?>
-                        <div class="card-body text-center">
-                            <h5 class="card-title"><?php echo $user1['name']; ?>
-                                <a href="mailto:<?php echo $user1['email']; ?>"><i class="fas fa-envelope text-info cursor"></i></a>
-                            </h5>
-                        <?php
-                    }
                         ?>
                         <p class="card-text">Created: <?php echo $data['date']; ?></p>
                         <p class="card-text text-uppercase"><i class="fas fa-map-marker-alt"></i> <?php echo $data['location']; ?></p>
                         <?php
-                        $date = strtotime($data['date']);
-                        $now = time();
-                        $timeleft = $now - $date;
-                        $days = 30 - round($timeleft / (60 * 60 * 24));
-                        if ($days < 0) {
-                        ?>
-                            <a href="#" class="btn btn-secondary donate  btn-lg box-shadow--8dp w-100 mb-3 " style="padding: 10px; cursor:not-allowed;" disabled>
-                                <small class="fs-5"><i class="fas fa-lock"></i> Cause Ended</small>
-                            </a>
-                        <?php
-                        } else if (!($ramount >= $amount)) { ?>
-                            <a href="donate.php?id=<?php echo $data['id']; ?>" class="btn btn-success donate  btn-lg box-shadow--8dp w-100 mb-3 fs-5 " style="padding: 10px; ">Donate</a>
-                        <?php } else { ?>
-                            <a href="#" class="btn btn-secondary donate  btn-lg box-shadow--8dp w-100 mb-3 fs-5 " style="padding: 10px; cursor:not-allowed;" disabled>
-                                <small><i class="fas fa-lock"></i> Successfully Completed</small>
-                            </a>
-                        <?php
-                        }
-                        ?>
-                        <div class=" mb-0 d-flex justify-content-between flex-row">
-
-                            <?php
-                            $query3 = mysqli_query($db, "select * from `like` where raiseid='" . $_SESSION['id'] . "'");
-                            if (isset($_SESSION['username'])) {
-                                $query1 = mysqli_query($db, "select * from `like` where raiseid='" . $_SESSION['id'] . "' and username='" . $_SESSION['username'] . "'");
-                                if (mysqli_num_rows($query1) > 0) {
-                            ?>
-                                    <p class="card-text rounded-1 mb-3 border border-danger w-45" style=" font-size: 40px;   padding: 0px; color: red; ">
-                                        <i class="fas fa-heart " value="" style="cursor:pointer;"></i>
-                                        <span id="likes">
-                                            <?php
-                                            echo mysqli_num_rows($query3);
-                                            ?>
-                                        </span>
-                                    </p>
-                                <?php
-                                } else {
-                                ?>
-                                    <p class="card-text rounded-1 mb-3 border border-danger w-45" style=" font-size: 40px;padding: 0px; color: red;">
-                                        <i class="far fa-heart " value="" style="cursor:pointer;"></i>
-                                        <span id="likes">
-                                            <?php
-                                            echo mysqli_num_rows($query3);
-                                            ?>
-                                        </span>
-                                    </p>
-
-                                <?php
-                                }
-                            } else {
-                                ?>
-                                <p class="card-text rounded-1 mb-3 border border-danger w-45" style=" font-size: 40px;  padding: 0px; color: red;">
-                                    <i class="far fa-heart " style="cursor:not-allowed;"></i>
-                                    <span id="show_like">
-                                        <?php
-                                        echo mysqli_num_rows($query3);
-                                        ?>
-                                    </span>
-                                </p>
-                            <?php
-                            }
+                        if (strtolower($data['status']) == 'accepted') {
                             $date = strtotime($data['date']);
                             $now = time();
                             $timeleft = $now - $date;
                             $days = 30 - round($timeleft / (60 * 60 * 24));
-                            ?>
-
-                            <p class="card-text rounded-1 w-45 mb-3 d-flex justify-content-center align-items-center" style="border: 1px solid black; padding: 0px;">
-                                <b><i class="fas fa-hourglass-half"></i>
-                                    <?php
-                                    if ($days > 0 and !($ramount >= $amount)) {
-                                        echo $days;
-                                    } else echo 0;
-                                    ?> days left</b>
-                            </p>
-                        </div>
-                        <div class="card-text rounded-1" style="border: 1px solid black; padding: 10px 10px;">
-                            <p>
-                                <strong class="fs-5 text-success">₹<?php echo $ramount; ?></strong> of ₹<?php echo $amount; ?> goal
-                            </p>
-                            <?php if (!($ramount >= $amount) and $days > 0) { ?>
-                                <div class="progress">
-                                    <div class="progress-bar bg-success progress-bar-striped progress-bar-animated" role="progressbar" style="width: <?php echo $percent; ?>%" aria-valuemin="0" aria-valuemax="100"><?php echo $percent; ?>%</div>
-                                </div>
+                            if ($days < 0) {
+                        ?>
+                                <a href="#" class="btn btn-secondary donate  btn-lg box-shadow--8dp w-100 mb-3 " style="padding: 10px; cursor:not-allowed;" disabled>
+                                    <small class="fs-5"><i class="fas fa-lock"></i> Cause Ended</small>
+                                </a>
                             <?php
-                            } else {
-                            ?>
-                                <div class="progress">
-                                    <div class="progress-bar bg-success " role="progressbar" style="width: <?php echo $percent; ?>%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"><?php echo $percent; ?>%</div>
-                                </div>
-                            <?php
+                            } else if (!($ramount >= $amount)) { ?>
+                                <a href="donate.php?id=<?php echo $data['id']; ?>" class="btn btn-success donate  btn-lg box-shadow--8dp w-100 mb-3 fs-5 " style="padding: 10px; ">Donate</a>
+                            <?php } else { ?>
+                                <a href="#" class="btn btn-secondary donate  btn-lg box-shadow--8dp w-100 mb-3 fs-5 " style="padding: 10px; cursor:not-allowed;" disabled>
+                                    <small><i class="fas fa-lock"></i> Successfully Completed</small>
+                                </a>
+                        <?php
                             }
-                            ?>
-                            <p class="card-text mt-2"> Raised by <b class=" text-success"><?php echo mysqli_num_rows($result1); ?></b> donors</p>
-                        </div>
-                        </div>
+                        }
+                        ?>
+                        <?php
+                        if (strtolower($data['status']) == 'accepted') {
+                        ?>
+                            <div class="mb-0 d-flex justify-content-between flex-row">
+                                <?php
+                                $query3 = mysqli_query($db, "select * from `like` where raiseid='" . $_SESSION['id'] . "'");
+                                if (isset($_SESSION['username'])) {
+                                    $query1 = mysqli_query($db, "select * from `like` where raiseid='" . $_SESSION['id'] . "' and username='" . $_SESSION['username'] . "'");
+                                    if (mysqli_num_rows($query1) > 0) {
+                                ?>
+                                        <p class="card-text rounded-1 mb-3 border border-danger w-45" style=" font-size: 40px;   padding: 0px; color: red; ">
+                                            <i class="fas fa-heart " value="" style="cursor:pointer;"></i>
+                                            <span id="likes">
+                                                <?php
+                                                echo mysqli_num_rows($query3);
+                                                ?>
+                                            </span>
+                                        </p>
+                                    <?php
+                                    } else {
+                                    ?>
+                                        <p class="card-text rounded-1 mb-3 border border-danger w-45" style=" font-size: 40px;padding: 0px; color: red;">
+                                            <i class="far fa-heart " value="" style="cursor:pointer;"></i>
+                                            <span id="likes">
+                                                <?php
+                                                echo mysqli_num_rows($query3);
+                                                ?>
+                                            </span>
+                                        </p>
+
+                                    <?php
+                                    }
+                                } else {
+                                    ?>
+                                    <p class="card-text rounded-1 mb-3 border border-danger w-45" style=" font-size: 40px;  padding: 0px; color: red;">
+                                        <i class="far fa-heart " style="cursor:not-allowed;"></i>
+                                        <span id="show_like">
+                                            <?php
+                                            echo mysqli_num_rows($query3);
+                                            ?>
+                                        </span>
+                                    </p>
+                                <?php
+                                }
+                                $date = strtotime($data['date']);
+                                $now = time();
+                                $timeleft = $now - $date;
+                                $days = 30 - round($timeleft / (60 * 60 * 24));
+                                ?>
+
+                                <p class="card-text rounded-1 w-45 mb-3 d-flex justify-content-center align-items-center" style="border: 1px solid black; padding: 0px;">
+                                    <b><i class="fas fa-hourglass-half"></i>
+                                        <?php
+                                        if ($days > 0 and !($ramount >= $amount)) {
+                                            echo $days;
+                                        } else echo 0;
+                                        ?> days left</b>
+                                </p>
+                            </div>
+                            <div class="card-text rounded-1" style="border: 1px solid black; padding: 10px 10px;">
+                                <p>
+                                    <strong class="fs-5 text-success">₹<?php echo $ramount; ?></strong> of ₹<?php echo $amount; ?> goal
+                                </p>
+                                <?php if (!($ramount >= $amount) and $days > 0) { ?>
+                                    <div class="progress">
+                                        <div class="progress-bar bg-success progress-bar-striped progress-bar-animated" role="progressbar" style="width: <?php echo $percent; ?>%" aria-valuemin="0" aria-valuemax="100"><?php echo $percent; ?>%</div>
+                                    </div>
+                                <?php
+                                } else {
+                                ?>
+                                    <div class="progress">
+                                        <div class="progress-bar bg-success " role="progressbar" style="width: <?php echo $percent; ?>%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"><?php echo $percent; ?>%</div>
+                                    </div>
+                                <?php
+                                }
+                                ?>
+                                <p class="card-text mt-2"> Raised by <b class=" text-success"><?php echo mysqli_num_rows($result1); ?></b> donors</p>
+                            </div>
+                        <?php
+                        }
+                        ?>
+                    </div>
+                    <?php
+                    if (strtolower($data['status']) == 'accepted') {
+                    ?>
                         <div class=" d-flex justify-content-between mx-4 mt-2 mb-1">
                             <p class="rounded-1 card-text" style="color: red;"><small> <?php echo $data['purpose']; ?></small> <i class="fas fa-tag"></i></p>
                             <p class="rounded-1 card-text">
@@ -438,37 +531,75 @@ include 'assets/nav-links.php'; ?>
 
                             </p>
                         </div>
+                    <?php
+                    }
+                    ?>
                 </div>
                 <?php
-                if (isset($_SESSION['username'])) {
-                    $query2 = mysqli_query($db, "select * from `report` where raiseid='" . $_SESSION['id'] . "' and name='" . $_SESSION['username'] . "'");
-                    if (!mysqli_num_rows($query2) > 0) {
+                // }
+                if (strtolower($data['status']) == 'accepted') {
+                    if (isset($_SESSION['username'])) {
+                        $query2 = mysqli_query($db, "select * from `report` where raiseid='" . $_SESSION['id'] . "' and name='" . $_SESSION['username'] . "'");
+                        if (!mysqli_num_rows($query2) > 0) {
                 ?>
-                        <!-- <p type="submit" class="btn btn-outline-danger border border-danger text-center p-2 mt-2 rounded-1 w-100 fw-bold report" id="report" onclick="report();" data-bs-toggle="modal" data-bs-target="#exampleModal1">
+                            <!-- <p type="submit" class="btn btn-outline-danger border border-danger text-center p-2 mt-2 rounded-1 w-100 fw-bold report" id="report" onclick="report();" data-bs-toggle="modal" data-bs-target="#exampleModal1">
                             <i class="fal fa-exclamation-triangle fw-bold" value="" style="cursor:pointer;"></i> Report
                         </p> -->
-                        <a href="report-reason.php?id=<?php echo $id; ?>" class="btn btn-outline-danger border border-danger text-center p-2 mt-2 rounded-1 w-100 fw-bold report" id="report">
-                            <i class="fal fa-exclamation-triangle fw-bold" value="" style="cursor:pointer;"></i> Report
-                        </a>
+                            <a href="report-reason.php?id=<?php echo $id; ?>" class="btn btn-outline-danger border border-danger text-center p-2 mt-2 rounded-1 w-100 fw-bold report" id="report">
+                                <i class="fal fa-exclamation-triangle fw-bold" value="" style="cursor:pointer;"></i> Report
+                            </a>
 
-                <?php
+                    <?php
+                        }
                     }
+                    ?>
+
+                    <div class="input-group mt-3">
+                        <span type="text" id="text" class="form-control text-truncate" placeholder="link" value="" readonly></span>
+                        <button class="btn btn-secondary border input-group-text fw-bold" id="button" onclick="copyToClipboard('#text')">copy</button>
+                    </div>
+                    <div class="text-center mt-3 d-flex flex-column mx-auto justify-content-center align-items-center">
+                        <h3 class="fw-bold">Scan QR Code</h3>
+                        <img src="" class="qr-code img-thumbnail img-responsive w-50" />
+                    </div>
+                <?php
                 }
                 ?>
-
-                <div class="input-group mt-3">
-                    <span type="text" id="text" class="form-control text-truncate" placeholder="link" value="" readonly></span>
-                    <button class="btn btn-secondary border input-group-text fw-bold" id="button" onclick="copyToClipboard('#text')">copy</button>
-                </div>
-                <div class="text-center mt-3 d-flex flex-column mx-auto justify-content-center align-items-center">
-                    <h3 class="fw-bold">Scan QR Code</h3>
-                    <img src="" class="qr-code img-thumbnail img-responsive w-50" />
-                </div>
-
                 <!-- --------------------- -->
 
             </div>
         </div>
+        <script>
+            function setShareLinks() {
+                var pageUrl = encodeURIComponent(document.URL);
+                var tweet = encodeURIComponent(jQuery("meta[property='og:description']").attr("content"));
+
+                jQuery(".social-share.facebook").on("click", function() {
+                    url = "https://www.facebook.com/sharer/sharer.php?u=" + pageUrl + "&quote = *<?= $data['cause_title']; ?>* %0D%0A %0D%0A <?= $data['cause_summary']; ?> %0D%0A %0D%0A Read more - " + pageUrl + " %0D%0A %0D%0A Donate - <?= 'https://kashmirzakat.com/donate.php?id=' . $id; ?>";
+                    socialWindow(url);
+                });
+
+                jQuery(".social-share.twitter").on("click", function() {
+                    url = "https://twitter.com/intent/tweet?url=" + pageUrl + "&text= * <?= $data['cause_title']; ?>*%0D%0A %0D%0A<?= $data['cause_summary']; ?> %0D%0A %0D%0A Read more - " + pageUrl + " %0D%0A %0D%0A Donate - <?= 'https://kashmirzakat.com/donate.php?id=' . $id; ?>";;
+                    socialWindow(url);
+                });
+
+                jQuery(".social-share.linkedin").on("click", function() {
+                    url = "https://www.linkedin.com/shareArticle?mini=true&url=" + pageUrl;
+                    socialWindow(url);
+                });
+
+                jQuery(".social-share.mail").on("click", function(e) {
+                    e.preventDefault();
+                    location.href = "mailto:?subject=<?= $data['cause_title']; ?>&body=<?= $data['cause_title']; ?> %0D%0A %0D%0A <?= $data['cause_summary']; ?> %0D%0A %0D%0A Read more - " + pageUrl + "%0D%0A %0D%0A";
+                });
+
+                jQuery(".social-share.whatsapp").on("click", function() {
+                    url = "whatsapp://send?text=*<?= $data['cause_title']; ?>* %0D%0A %0D%0A <?= $data['cause_summary']; ?> %0D%0A %0D%0A Read more - " + pageUrl + " %0D%0A %0D%0A Donate -  <?= 'https://kashmirzakat.com/donate.php?id=' . $id; ?>";
+                    socialWindow1(url);
+                });
+            }
+        </script>
 
     <?php
     }
@@ -513,36 +644,6 @@ include 'assets/nav-links.php'; ?>
         var top = (screen.height - 570) / 2;
         var params = "menubar=no,toolbar=no,status=no,width=570,height=570,top=" + top + ",left=" + left;
         window.open(url, "NewWindow", params);
-    }
-
-    function setShareLinks() {
-        var pageUrl = encodeURIComponent(document.URL);
-        var tweet = encodeURIComponent(jQuery("meta[property='og:description']").attr("content"));
-
-        jQuery(".social-share.facebook").on("click", function() {
-            url = "https://www.facebook.com/sharer/sharer.php?u=" + pageUrl + "&quote = *<?= $data['cause_title']; ?>*" + "%0D%0A %0D%0A" + "<?= $data['cause_summary']; ?>" + " %0D%0A %0D%0A Read more - " + pageUrl + " %0D%0A %0D%0A Donate - " + " <?= 'https://kashmirzakat.com/donate.php?id=' . $id; ?>";
-            socialWindow(url);
-        });
-
-        jQuery(".social-share.twitter").on("click", function() {
-            url = "https://twitter.com/intent/tweet?url=" + pageUrl + "&text= * <?= $data['cause_title']; ?>*" + "%0D%0A %0D%0A" + "<?= $data['cause_summary']; ?>" + " %0D%0A %0D%0A Read more - " + pageUrl + " %0D%0A %0D%0A Donate - " + " <?= 'https://kashmirzakat.com/donate.php?id=' . $id; ?>";;
-            socialWindow(url);
-        });
-
-        jQuery(".social-share.linkedin").on("click", function() {
-            url = "https://www.linkedin.com/shareArticle?mini=true&url=" + pageUrl;
-            socialWindow(url);
-        });
-
-        jQuery(".social-share.mail").on("click", function(e) {
-            e.preventDefault();
-            location.href = "mailto:?subject=<?= $data['cause_title']; ?>&body=" + "<?= $data['cause_title']; ?> %0D%0A %0D%0A <?= $data['cause_summary']; ?> %0D%0A %0D%0A Read more - " + pageUrl + "%0D%0A %0D%0A";
-        });
-
-        jQuery(".social-share.whatsapp").on("click", function() {
-            url = "whatsapp://send?text=" + "*<?= $data['cause_title']; ?>*" + "%0D%0A %0D%0A" + "<?= $data['cause_summary']; ?>" + " %0D%0A %0D%0A Read more - " + pageUrl + " %0D%0A %0D%0A Donate - " + " <?= 'https://kashmirzakat.com/donate.php?id=' . $id; ?>";
-            socialWindow1(url);
-        });
     }
 </script>
 <style>

@@ -113,7 +113,7 @@ if (isset($_SESSION['useremail'])) {
                                 </div>
                             </div>
                             <div class=" d-flex justify-content-around p-2 bg-light">
-                                <button class="btn btn-primary m-2 col-3 px-12 fs-5 w-100" id="submit" name="submit" type="submit">Save</button>
+                                <button class="btn btn-primary m-2 col-3 px-12 fs-5" id="submit" name="submit" type="submit">Save</button>
                             </div>
                         </div>
 

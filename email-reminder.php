@@ -1,8 +1,8 @@
 <?php
 include 'assets/connection.php';
-$result = mysqli_query($db, " SELECT * FROM form_data where status='Accepted' and counter='0' ");
+$result = mysqli_query($db, " SELECT * FROM form_data where status='Accepted' and counter <= 2 ");
 while ($data = mysqli_fetch_array($result)) {
-    $date = strtotime($data['date']);
+    $date = strtotime($data['approved_date']);
     $now = time();
     $id = $data['id'];
     $timeleft = $now - $date;
@@ -16,7 +16,7 @@ while ($data = mysqli_fetch_array($result)) {
         $ramount += $data1['amount'];
     }
     $amount = $data['amount'];
-    if ($days <= 2 and $days > 0 and $ramount < $amount and $data['counter'] == '0') {
+    if ($days <= 2 and $days > 0 and $ramount <= $amount and $data['counter'] <= 2) {
         $to      = $data['email'];
         $subject = 'Reminder⌚ 2days left ';
 
@@ -34,8 +34,9 @@ while ($data = mysqli_fetch_array($result)) {
         $headers =  'Reply-To: ' . $email . "\r\n";
         $headers .= 'MIME-Version: 1.0' . "\r\n";
         $headers .= "Content-type:text/html;charset=iso-8859-1" . "\r\n" . 'X-Mailer: PHP/' . phpversion();
+        $counterCount = $data['counter'];
         if (mail($to, $subject, $mailBody, $headers)) {
-            $query = "UPDATE form_data set counter='1' where id='$uraiseid' ";
+            $query = "UPDATE form_data set counter= '$counterCount'+1 where id='$uraiseid' ";
             if (mysqli_query($db, $query))
                 echo 'true';
             else echo 'db';

@@ -65,22 +65,22 @@ if (isset($_SESSION['username'])) {
                 ?>
                 columnDefs.push({
                     field: 'Actions',
-                    minWidth: 280,
+                    minWidth: 420,
                     cellRenderer: function(params) {
                         if ("<?= $_SESSION['username'] ?>" == "admin") {
                             if ('<?= $status ?>' == 'Rejected')
-                                return '<a class="btn btn-outline-primary me-2" href="pending-fetch.php?id=' + params.data.ID + '">View</a><a class="btn btn-outline-success" href="change-campaign-status.php?id=' + params.data.ID + '&status=accept">Accept</a>';
+                                return '<a class="btn btn-outline-primary me-2" href="campaign-details.php?campaign=' + params.data.ID + '">View</a><a class="btn btn-outline-success me-2" href="change-campaign-status.php?id=' + params.data.ID + '&status=accept">Accept</a><a class="btn btn-outline-success me-2" href="admin-accept-edit-form.php?id=' + params.data.ID + '">Edit</a><a class="btn btn-outline-success" href="edit-user-form-kyc.php?id=' + params.data.ID + '" name="submit" type="submit">Edit Kyc</a>';
                             else if ('<?= $status ?>' == 'Accepted')
-                                return '<a class="btn btn-outline-primary me-2" href="campaign-details.php?campaign=' + params.data.ID + '">View</a><a class="btn btn-outline-success me-2" href="admin-accept-edit-form.php?id=' + params.data.ID + '">Edit</a><a class="btn btn-outline-danger" href="change-campaign-status.php?id=' + params.data.ID + '&status=reject">Reject</a>';
+                                return '<a class="btn btn-outline-primary me-2" href="campaign-details.php?campaign=' + params.data.ID + '">View</a><a class="btn btn-outline-danger me-2" href="change-campaign-status.php?id=' + params.data.ID + '&status=reject">Reject</a><a class="btn btn-outline-success me-2" href="admin-accept-edit-form.php?id=' + params.data.ID + '">Edit</a><a class="btn btn-outline-success" href="edit-user-form-kyc.php?id=' + params.data.ID + '" name="submit" type="submit">Edit Kyc</a>';
                             else
-                                return '<a class="btn btn-outline-primary me-2" href="pending-fetch.php?id=' + params.data.ID + '">View</a><a class="btn btn-outline-success me-2" href="change-campaign-status.php?id=' + params.data.ID + '&status=accept">Accept</a><a class="btn btn-outline-danger" href="change-campaign-status.php?id=' + params.data.ID + '&status=reject">Reject</a>';
+                                return '<a class="btn btn-outline-primary me-2" href="campaign-details.php?campaign=' + params.data.ID + '">View</a><a class="btn btn-outline-success me-2" href="change-campaign-status.php?id=' + params.data.ID + '&status=accept">Accept</a><a class="btn btn-outline-danger me-2" href="change-campaign-status.php?id=' + params.data.ID + '&status=reject">Reject</a><a class="btn btn-outline-success me-2" href="admin-accept-edit-form.php?id=' + params.data.ID + '">Edit</a><a class="btn btn-outline-success" href="edit-user-form-kyc.php?id=' + params.data.ID + '" name="submit" type="submit">Edit Kyc</a>';
                         } else {
                             if ('<?= $status ?>' == 'Rejected')
-                                return '<a class="btn btn-outline-primary me-2" href="pending-fetch.php?id=' + params.data.ID + '">View</a><a class="btn btn-outline-success" href="user-edit-form.php?id=' + params.data.ID + '" >Edit</a>';
+                                return '<a class="btn btn-outline-primary me-2" href="campaign-details.php?campaign=' + params.data.ID + '">View</a><a class="btn btn-outline-success" href="user-edit-form.php?id=' + params.data.ID + '" >Edit</a>';
                             else if ('<?= $status ?>' == 'Accepted')
                                 return '<a class="btn btn-outline-primary me-2" href="campaign-details.php?campaign=' + params.data.ID + '">View</a><a class="btn btn-outline-success" href="withdrawl-request.php?id=' + params.data.ID + '" >Make Withdrawl</a>';
                             else
-                                return '<a class="btn btn-outline-primary me-2" href="pending-fetch.php?id=' + params.data.ID + '">View</a><a class="btn btn-outline-success" href="user-edit-form.php?id=' + params.data.ID + '" >Edit</a>';
+                                return '<a class="btn btn-outline-primary me-2" href="campaign-details.php?campaign=' + params.data.ID + '">View</a><a class="btn btn-outline-success me-2" href="user-edit-form.php?id=' + params.data.ID + '" >Edit</a><a class="btn btn-outline-success" href="edit-user-form-kyc.php?id=' + params.data.ID + '" name="submit" type="submit">Edit Kyc</a>';
                         }
                     }
                 })

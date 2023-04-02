@@ -62,7 +62,7 @@
             © <?php
             $year = date("Y"); 
             echo $year;?> :
-            <a class="text-white" href="https://kashmirzakat.com/">Kashmir Zakat</a>
+            <a class="text-white" href="https://kashmirzakat.com/">Kashmir Zakat V1.0</a>
         </div>
         <div>
             Developed by :

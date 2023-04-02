@@ -2,8 +2,8 @@
 $id = $_GET['id'];
 $status = $_GET['status'];
 include 'assets/connection.php';
-include 'assets/nav-links.php' ;
-if (strtolower($status) == 'accept') {
+include 'assets/nav-links.php';
+if (strtolower($status) == 'reject') {
 ?>
 
     <body>
@@ -22,16 +22,8 @@ if (strtolower($status) == 'accept') {
     if (isset($_POST['submit'])) {
         $reject_reason = $_POST['reject_reason'];
         if (mysqli_query($db, "UPDATE form_data SET status = 'Rejected', reason = '$reject_reason' where id='$id'")) {
-            echo '<script>alert("Cause rejected successfully");</script>';
-        } else {
-            echo '<script>alert("Error in rejecting data");</script>';
-        }
-    }
-} else if (strtolower($status) == 'reject') {
-    if (isset($_POST['submit'])) {
-        if (mysqli_query($db, "UPDATE form_data set status = 'Accepted' where id= '$id' ")) {
             $result = mysqli_query($db, " SELECT * FROM form_data where id = '$id' ");
-            $to = $_SESSION['useremail'];
+            $to = '';
             $cause_title = '';
             while ($data = mysqli_fetch_array($result)) {
                 $to = $data['email'];
@@ -42,7 +34,35 @@ if (strtolower($status) == 'accept') {
             <body>
                 <div style="text-center: center; width: 60%; margin: auto; max-width: 100%; font-family: Arial;  ">
                 <div>Hi, ' . 'User' . '</div>
-                <div><h4>Your cause <h3>' . $cause_title . '</h3> has been successfully accepted by our team </h4></div>
+                <div><h4>Your cause <h3>' . $cause_title . '</h3> has been <span class="text-danger">Rejected</span> by our team </h4></div>
+                <div>Reason: ' . $reject_reason . '</div>
+                <div>Please contact for more details.</div>
+                </div>
+            </body>
+            </html>';
+            $headers = 'From: Kashmirzakat ' . "\r\n" . 'Reply-To: ' . $to . "\r\n" . 'MIME-Version: 1.0' . "\r\n" . "Content-type:text/html;charset=iso-8859-1" . "\r\n" . 'X-Mailer: PHP/' . phpversion();
+            mail($to, $subject, $mailBody, $headers);
+            echo '<script>alert("Cause rejected successfully");</script>';
+        } else {
+            echo '<script>alert("Error in rejecting data");</script>';
+        }
+    }
+} else if (strtolower($status) == 'accept') {
+    if (isset($_POST['submit'])) {
+        if (mysqli_query($db, "UPDATE form_data set status = 'Accepted', approved_date = date('Y-m-d') where id= '$id' ")) {
+            $result = mysqli_query($db, " SELECT * FROM form_data where id = '$id' ");
+            $to = '';
+            $cause_title = '';
+            while ($data = mysqli_fetch_array($result)) {
+                $to = $data['email'];
+                $cause_title = $data['cause_title'];
+            }
+            $subject = "Cause Accepted by kashmirzakat team";
+            $mailBody = '<html>
+            <body>
+                <div style="text-center: center; width: 60%; margin: auto; max-width: 100%; font-family: Arial;  ">
+                <div>Hi, ' . 'User' . '</div>
+                <div><h4>Your cause <h3>' . $cause_title . '</h3> has been successfully <span class="text-success">Accepted</span> by our team </h4></div>
                 <div>Our team wish your cause to complete before time</div>
                 </div>
             </body>

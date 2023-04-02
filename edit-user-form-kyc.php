@@ -35,6 +35,10 @@ include 'assets/nav-links.php'; ?>
                             <input type="text" class="form-control" name="acc_name" value="<?php echo $data['acc_name']; ?>" id="floatingInput" placeholder="bank" required>
                             <label for="floatingInput">Account Holder Name <label class=" fw-bold text-danger">*</label></label>
                         </div>
+                        <!-- <div class="form-floating mb-3">
+                            <input accept="image/png,image/jpeg,image/jpg" type="file" class="form-control" name="pan_copy" id="floatingInput" placeholder="bank" required>
+                            <label for="floatingInput">Upload PAN Card Copy</label>
+                        </div> -->
                         <div class="form-floating mb-3">
                             <input type="text" class="form-control" name="acc_num" value="<?php echo $data['acc_num']; ?>" id="floatingInput" placeholder="bank" required>
                             <label for="floatingInput">Beneficiary Account Number <label class=" fw-bold text-danger">*</label></label>
@@ -44,12 +48,12 @@ include 'assets/nav-links.php'; ?>
                             <label for="floatingInput">Bank Name <label class=" fw-bold text-danger">*</label></label>
                         </div>
                         <div class="form-floating mb-3">
-                            <input type="text" class="form-control" name="ifsc" id="floatingInput" value="<?php echo $data['ifsc'];?>" placeholder="bank" required>
+                            <input type="text" class="form-control" name="ifsc" id="floatingInput" value="<?php echo $data['ifsc']; ?>" placeholder="bank" required>
                             <label for="floatingInput">IFSC Code <label class=" fw-bold text-danger">*</label></label>
                         </div>
 
                         <div class=" d-flex justify-content-around p-2 bg-light">
-                            <button class="btn btn-primary m-2 col-3 px-12 fs-5" name="submit" type="submit">Save</button>
+                            <button class="btn btn-primary m-2 col-2 px-12 fs-5" name="submit" type="submit">Save</button>
                         </div>
                     </div>
                 <?php } ?>
@@ -99,7 +103,6 @@ include 'assets/nav-links.php'; ?>
         outline: none;
         transition: .3s ease-in-out;
     }
-
 </style>
 
 <?php

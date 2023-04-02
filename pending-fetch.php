@@ -39,23 +39,23 @@ include 'assets/nav-links.php'; ?>
                         <hr>
                         <p>
                             <label class=" fw-bold" for="d">My Story : </label><br>
-                            <?php echo $data['cause_explain']; ?> <br>
-                            <label class=" fw-bold" for="d">Cause Summary : </label><br>
-                            <?php echo $data['cause_summary']; ?><br>
-                            <label class=" fw-bold" for="d">Pan Number : </label><br>
-                            <?php echo $data['pan_num']; ?><br>
-                            <label class=" fw-bold" for="d">Adhaar Number : </label><br>
-                            <?php echo $data['adhaar_num']; ?><br>
-                            <label class=" fw-bold" for="d">Account Number : </label><br>
-                            <?php echo $data['acc_num']; ?><br>
-                            <label class=" fw-bold" for="d">Bank Name : </label><br>
-                            <?php echo $data['bank_name']; ?><br>
-                            <label class=" fw-bold" for="d">Account Holder Name : </label><br>
-                            <?php echo $data['acc_name']; ?><br>
-                            <label class=" fw-bold" for="d">IFSC : </label><br>
-                            <?php echo $data['ifsc']; ?><br>
-                            <label class=" fw-bold" for="d">Raised By : </label><br>
-                            <?php echo $data['person']; ?><br>
+                        <div><?= $data['cause_explain']; ?> </div><br>
+                        <label class=" fw-bold" for="d">Cause Summary : </label><br>
+                        <div><?= $data['cause_summary']; ?></div><br>
+                        <label class=" fw-bold" for="d">Pan Number : </label><br>
+                        <div><?= $data['pan_num']; ?></div><br>
+                        <label class=" fw-bold" for="d">Adhaar Number : </label><br>
+                        <div><?= $data['adhaar_num']; ?></div><br>
+                        <label class=" fw-bold" for="d">Account Number : </label><br>
+                        <div><?= $data['acc_num']; ?></div><br>
+                        <label class=" fw-bold" for="d">Bank Name : </label><br>
+                        <div><?= $data['bank_name']; ?></div><br>
+                        <label class=" fw-bold" for="d">Account Holder Name : </label><br>
+                        <div><?= $data['acc_name']; ?></div><br>
+                        <label class=" fw-bold" for="d">IFSC : </label><br>
+                        <div><?= $data['ifsc']; ?></div><br>
+                        <label class=" fw-bold" for="d">Raised By : </label><br>
+                        <div><?= $data['person']; ?></div><br>
                         </p>
                         <!-- ----- -->
                         <h4>Supporting documents</h4>
@@ -143,12 +143,11 @@ include 'assets/nav-links.php'; ?>
 
                     </div>
                 </div>
-                <div class=" d-flex justify-content-around p-2 bg-light">
+                <div class="d-flex justify-content-around p-2 bg-light">
                     <a class="btn btn-success m-2 col-3 px-12 fs-5" href="change-campaign-status.php?id=<?php echo $data['id']; ?>&status=accept" name="submit" type="submit">Accept</a>
                     <a class="btn btn-danger m-2 col-3 px-12 fs-5" href="change-campaign-status.php?id=<?php echo $data['id']; ?>&status=reject" name="submit" type="submit">Reject</a>
                     <a class="btn btn-primary m-2 col-3 px-12 fs-5" href="user-edit-form.php?id=<?php echo $data['id']; ?>" name="submit" type="submit">Edit</a>
                     <a class="btn btn-primary m-2 col-3 px-12 fs-5" href="edit-user-form-kyc.php?id=<?php echo $data['id']; ?>" name="submit" type="submit">Edit Kyc</a>
-
                 </div>
             </div>
 
