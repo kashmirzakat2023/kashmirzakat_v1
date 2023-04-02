@@ -4,11 +4,12 @@ include 'assets/nav-links.php'; ?>
 <html lang="en">
 
 <head>
-<link rel="stylesheet" href="css/create-campaign.css">
+    <link rel="stylesheet" href="css/create-campaign.css">
     <script src="js/drag-drop.js" defer></script>
     <script src="js/funds.js" defer></script>
     <script src="https://cdn.ckeditor.com/ckeditor5/35.0.1/classic/ckeditor.js"></script>
     <script>
+        var clicked = false
         window.addEventListener('beforeunload', function(e) {
             e.preventDefault();
             e.returnValue = '';

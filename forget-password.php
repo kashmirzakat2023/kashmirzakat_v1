@@ -170,7 +170,7 @@ include 'assets/nav-links.php'; ?>
             if (email != '') {
 
                 $.ajax({
-                    url: 'email-present.php',
+                    url: 'email-exists.php?type=email_present',
                     type: 'post',
                     data: {
                         email: email,

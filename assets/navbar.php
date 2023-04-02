@@ -292,7 +292,7 @@ if (!isset($_SESSION['username'])) {
                 if (email != '') {
 
                     $.ajax({
-                        url: 'email-exists.php',
+                        url: 'email-exists.php?type=email_exists',
                         type: 'post',
                         data: {
                             email: email
