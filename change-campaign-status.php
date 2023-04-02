@@ -8,12 +8,12 @@ if (strtolower($status) == 'reject') {
 
     <body>
         <?php include 'assets/navbar.php' ?>
-        <form action="" method="post" class="col-8 col-sm-9 mb-5 fund-raise">
+        <form action="" method="post" class="col-8 col-sm-9 mb-5 fund-raise d-flex justify-content-center flex-column mx-auto me-auto mt-5">
             <div class="form-floating mb-3 mt-3 h-50">
                 <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" name="reject_reason" style="height: 100px" required></textarea>
                 <label for="floatingTextarea2">Reason for rejecting Cause <label class=" fw-bold text-danger">*</label></label>
             </div>
-            <button type="submit" id="submit" name="submit" class="btn btn-primary mb-3 fs-4">Submit</button>
+            <button type="submit" id="submit" name="submit" class="btn btn-primary mb-3 fs-4 w-100">Submit</button>
         </form>
     </body>
 <?php
@@ -45,7 +45,7 @@ if (strtolower($status) == 'reject') {
         } else {
             echo '<script>alert("Error in rejecting data");</script>';
         }
-        echo '<script>history.back()</script>';
+        echo '<script>history.go(-2)</script>';
     }
 } else if (strtolower($status) == 'accept') {
     if (mysqli_query($db, "UPDATE form_data set status = 'Accepted', approved_date = date('Y-m-d') where id= '$id' ")) {
