@@ -178,8 +178,8 @@ include 'assets/nav-links.php'; ?>
                                 <div class=" bg-info p-3 mb-3 rounded-2">
                                     <h4 class=" fw-bolder"><i class="fas fa-university"></i> Make your payment directly to our bank account.</h4>
                                     <b> Bank</b>: HDFC Bank <br>
-                                    <b> Branch</b>: kashmir <br>
-                                    <b> Beneficiary Name</b>: SAHULIYAT KASHMIR KASHMIR ZAKAT <br>
+                                    <b> Branch</b>: Soura, Srinagar<br>
+                                    <b> Account Name: SAHULIYAT KASHMIR KASHMIR ZAKAT</b> <br>
                                     <b> Account Number</b>: 50200079623664 <br>
                                     <!-- <b> Type</b>: Savings Account <br> -->
                                     <b> Branch IFSC Code</b>: HDFC0002559 <br>
