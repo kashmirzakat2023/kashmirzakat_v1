@@ -381,7 +381,7 @@ include 'assets/nav-links.php'; ?>
 
                     success: function(result) {
                         let options = {
-                            "key": "rzp_test_jd35wgSgoguq1g", // secret key id
+                            "key": "rzp_live_9cbtZFPcUcseoE", // secret key id
                             "amount": (totalAmount * 100), // 2000 paise = INR 20
                             "name": "Kashmirzakat",
                             "description": "Payment",
