@@ -120,42 +120,50 @@ include 'assets/nav-links.php'; ?>
                         <div class="tab-content">
                             <div id="home" class="container tab-pane active"><br>
                                 <div class="story-details">
-                                    <div class="cause_explain">
+                                    <div class="cause_explain mb-3">
                                         <label class=" fw-bold" for="d">My Story : </label>
                                         <?= $data['cause_explain'] ?>
                                     </div>
-                                    <div>
+                                    <div class="mb-3">
                                         <label class=" fw-bold" for="d">Cause Summary : </label>
                                         <?= $data['cause_summary']; ?>
                                     </div>
                                     <?php
                                     if ($_SESSION['useremail'] == 'admin@admin.com' || $_SESSION['useremail'] == $useremail1) {
                                     ?>
-                                        <div>
+                                        <div class="mb-3">
+                                            <label class=" fw-bold" for="d">Phone Number : </label>
+                                            <?= $data['beneficiary_phone']; ?>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label class=" fw-bold" for="d">Email : </label>
+                                            <?= $data['beneficiary_email']; ?>
+                                        </div>
+                                        <div class="mb-3">
                                             <label class=" fw-bold" for="d">Pan Number : </label>
                                             <?= $data['pan_num']; ?>
                                         </div>
-                                        <div>
+                                        <div class="mb-3">
                                             <label class=" fw-bold" for="d">Adhaar Number : </label>
                                             <?= $data['adhaar_num']; ?>
                                         </div>
-                                        <div>
+                                        <div class="mb-3">
                                             <label class=" fw-bold" for="d">Account Number : </label>
                                             <?= $data['acc_num']; ?>
                                         </div>
-                                        <div>
+                                        <div class="mb-3">
                                             <label class=" fw-bold" for="d">Bank Name : </label>
                                             <?= $data['bank_name']; ?>
                                         </div>
-                                        <div>
+                                        <div class="mb-3">
                                             <label class=" fw-bold" for="d">Account Holder Name : </label>
                                             <?= $data['acc_name']; ?>
                                         </div>
-                                        <div>
+                                        <div class="mb-3">
                                             <label class=" fw-bold" for="d">IFSC : </label>
                                             <?= $data['ifsc']; ?>
                                         </div>
-                                        <div>
+                                        <div class="mb-3">
                                             <label class=" fw-bold" for="d">Raised By : </label>
                                             <?= $data['person']; ?>
                                         </div>
@@ -165,32 +173,17 @@ include 'assets/nav-links.php'; ?>
                                 </div>
 
                                 <!-- ----- -->
-                                <b>Supporting documents</b>
+                                <b class="mb-2">Supporting documents</b>
                                 <!--<div class="row-cols-1 w-100 row-cols-md-3 row-cols-lg-3">-->
                                 <div class="d-flex">
-                                    <a type="button" class="rounded-2" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                        <img src="<?php echo "images/" . $data['doc1']; ?>" style="height: 15vh; width:90%;" class="cursor rounded-2 p-1 border border-dark">
-                                    </a>
                                     <?php
-                                    if ($data['doc2'] != '') { ?>
-                                        <a type="button" class="rounded-2" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                            <img src="<?php echo "images/" . $data['doc2']; ?>" style="height: 15vh; width:90%;" class="cursor rounded-2 p-1 border border-dark">
-                                        </a>
-                                    <?php }
-                                    if ($data['doc3'] != '') { ?>
-                                        <a type="button" class="rounded-2" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                            <img src="<?php echo "images/" . $data['doc3']; ?>" style="height: 15vh; width:90%;" class="cursor rounded-2 p-1 border border-dark">
-                                        </a>
-                                        <?php }
-                                    if (strtolower($data['status']) !== 'accepted') {
-                                        if ($data['pan_copy'] != '') { ?>
+                                    $docs_list = ['doc1', 'doc2', 'doc3'];
+                                    if (strtolower($data['status']) !== 'accepted')
+                                        $docs_list = ['doc1', 'doc2', 'doc3', 'pan_copy', 'adhaar_copy'];
+                                    for ($i = 0; $i < sizeof($docs_list); $i++) {
+                                        if ($data[$docs_list[$i]] != '') { ?>
                                             <a type="button" class="rounded-2" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                                <img src="<?php echo "images/" . $data['pan_copy']; ?>" style="height: 15vh; width:90%;" class="cursor rounded-2 p-1 border border-dark">
-                                            </a>
-                                        <?php }
-                                        if ($data['adhaar_copy'] != '') { ?>
-                                            <a type="button" class="rounded-2" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                                <img src="<?php echo "images/" . $data['adhaar_copy']; ?>" style="height: 15vh; width:90%;" class="cursor rounded-2 p-1 border border-dark">
+                                                <img src="<?php echo "images/" . $data[$docs_list[$i]]; ?>" style="height: 15vh; width:90%;" class="cursor rounded-2 p-1 border border-dark" alt="<?= $docs_list[$i] ?>">
                                             </a>
                                     <?php }
                                     } ?>
@@ -202,35 +195,22 @@ include 'assets/nav-links.php'; ?>
                                     <div class="modal-dialog  modal-fullscreen ">
                                         <div class="modal-content">
                                             <div class="modal-header">
-                                                <h5 class="modal-title" id="exampleModalLabel">Attachments</h5>
+                                                <h5 class="modal-title" id="exampleModalLabel">Supporting Attachments</h5>
                                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                             </div>
                                             <div class="modal-body">
                                                 <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
-                                                    <div class="carousel-inner" style="overflow:auto">
-                                                        <div class="carousel-item active">
-                                                            <img src="<?php echo "images/" . $data['doc1']; ?>" class="d-flex mx-auto me-auto h-100" alt="attachment1">
-                                                        </div>
-                                                        <?php if ($data['doc2'] != '') { ?>
-                                                            <div class="carousel-item">
-                                                                <img src="<?php echo "images/" . $data['doc2']; ?>" class="d-flex mx-auto me-auto h-100" alt="attachment1">
-                                                            </div>
+                                                    <div class="carousel-inner">
+                                                        <?php
+                                                        for ($i = 0; $i < sizeof($docs_list); $i++) {
+                                                            if ($data[$docs_list[$i]] != '') {
+                                                        ?>
+                                                                <div class="carousel-item <?= $i == 0 ? 'active' : '' ?>">
+                                                                    <button type="button" class="btn btn-success mb-2 d-flex mx-auto" onclick="downloadSupportingDoc('<?= $data[$docs_list[$i]] ?>')">Download</button>
+                                                                    <img src="<?php echo "images/" . $data[$docs_list[$i]]; ?>" class="d-flex mx-auto me-auto h-100 supporting_docs_img" alt="<?= $docs_list[$i] ?>">
+                                                                </div>
                                                         <?php }
-                                                        if ($data['passbook'] != '') { ?>
-                                                            <div class="carousel-item">
-                                                                <img src="<?php echo "images/" . $data['passbook']; ?>" class="d-block w-100" alt="...">
-                                                            </div>
-                                                        <?php }
-                                                        if ($data['pan_copy'] != '') { ?>
-                                                            <div class="carousel-item">
-                                                                <img src="<?php echo "images/" . $data['pan_copy']; ?>" class="d-block w-100" alt="...">
-                                                            </div>
-                                                        <?php }
-                                                        if ($data['adhaar_copy'] != '') { ?>
-                                                            <div class="carousel-item">
-                                                                <img src="<?php echo "images/" . $data['adhaar_copy']; ?>" class="d-block w-100" alt="...">
-                                                            </div>
-                                                        <?php } ?>
+                                                        } ?>
                                                     </div>
                                                     <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
                                                         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -345,21 +325,21 @@ include 'assets/nav-links.php'; ?>
                 ?>
                     <div class="d-flex justify-content-center p-2 bg-light">
                         <?php if ($_SESSION['useremail'] == 'admin@admin.com') { ?>
-                            <a class="btn btn-success m-2 col-2 px-12 fs-5" href="change-campaign-status.php?id=<?= $data['id']; ?>&status=accept" name="submit" type="submit">Accept</a>
+                            <a class="btn btn-success m-2 col-2" href="change-campaign-status.php?id=<?= $data['id']; ?>&status=accept" name="submit" type="submit">Accept</a>
                             <?php
                             if (strtolower($data['status']) != 'rejected') {
                             ?>
-                                <a class="btn btn-danger m-2  col-2 px-12 fs-5" href="change-campaign-status.php?id=<?= $data['id']; ?>&status=reject" name="submit" type="submit">Reject</a>
+                                <a class="btn btn-danger m-2  col-2" href="change-campaign-status.php?id=<?= $data['id']; ?>&status=reject" name="submit" type="submit">Reject</a>
                             <?php
                             }
                             ?>
-                            <a class="btn btn-primary m-2 col-2 px-12 fs-5" href="admin-accept-edit-form.php?id=<?= $data['id']; ?>" name="submit" type="submit">Edit</a>
-                            <a class="btn btn-primary m-2 col-2 px-12 fs-5" href="edit-user-form-kyc.php?id=<?= $data['id']; ?>" name="submit" type="submit">Edit Kyc</a>
+                            <a class="btn btn-primary m-2 col-2" href="admin-accept-edit-form.php?id=<?= $data['id']; ?>" name="submit" type="submit">Edit</a>
+                            <a class="btn btn-primary m-2 col-2" href="edit-user-form-kyc.php?id=<?= $data['id']; ?>" name="submit" type="submit">Edit Kyc</a>
                         <?php }
                         if ($_SESSION['useremail'] == $useremail1 && $_SESSION['useremail'] != 'admin@admin.com') {
                         ?>
-                            <a class="btn btn-primary m-2 col-2 px-12 fs-5" href="user-edit-form.php?id=<?= $data['id']; ?>" name="submit" type="submit">Edit</a>
-                            <a class="btn btn-primary m-2 col-2 px-12 fs-5" href="edit-user-form-kyc.php?id=<?= $data['id']; ?>" name="submit" type="submit">Edit Kyc</a>
+                            <a class="btn btn-primary m-2 col-2" href="user-edit-form.php?id=<?= $data['id']; ?>" name="submit" type="submit">Edit</a>
+                            <a class="btn btn-primary m-2 col-2" href="edit-user-form-kyc.php?id=<?= $data['id']; ?>" name="submit" type="submit">Edit Kyc</a>
                         <?php
                         }
                         ?>
@@ -391,8 +371,11 @@ include 'assets/nav-links.php'; ?>
                     } ?>
                     <div class="card-body text-center">
                         <h5 class="card-title">
-                            <?= $createrName; ?>
-                            <!-- <a href="mailto:<?php echo $user1['email']; ?>"><i class="fas fa-envelope text-info cursor"></i></a> -->
+                            <?= $createrName;
+                            if ($_SESSION['useremail'] == 'admin@admin.com') { ?>
+                                <a href="mailto:<?php echo $data['beneficiary_email']; ?>"><i class="fas fa-envelope text-info cursor"></i></a>
+                            <?php
+                            } ?>
                         </h5>
                         <?php
                         ?>
@@ -575,12 +558,12 @@ include 'assets/nav-links.php'; ?>
                 var tweet = encodeURIComponent(jQuery("meta[property='og:description']").attr("content"));
 
                 jQuery(".social-share.facebook").on("click", function() {
-                    url = "https://www.facebook.com/sharer/sharer.php?u=" + pageUrl + "&quote = *<?= $data['cause_title']; ?>* %0D%0A %0D%0A <?= $data['cause_summary']; ?> %0D%0A %0D%0A Read more - " + pageUrl + " %0D%0A %0D%0A Donate - <?= 'https://kashmirzakat.com/donate.php?id=' . $id; ?>";
+                    url = "https://www.facebook.com/sharer/sharer.php?u=" + pageUrl + "&quote = *<?= $data['cause_title']; ?>* %0D%0A %0D%0A <?= $data['cause_summary']; ?> %0D%0A %0D%0A Read more - " + pageUrl + " %0D%0A %0D%0A Donate - <?= 'https://kashmirzakat.com/campaign-details.php?campaign=' . $id; ?>";
                     socialWindow(url);
                 });
 
                 jQuery(".social-share.twitter").on("click", function() {
-                    url = "https://twitter.com/intent/tweet?url=" + pageUrl + "&text= * <?= $data['cause_title']; ?>*%0D%0A %0D%0A<?= $data['cause_summary']; ?> %0D%0A %0D%0A Read more - " + pageUrl + " %0D%0A %0D%0A Donate - <?= 'https://kashmirzakat.com/donate.php?id=' . $id; ?>";;
+                    url = "https://twitter.com/intent/tweet?url=" + pageUrl + "&text= * <?= $data['cause_title']; ?>*%0D%0A %0D%0A<?= $data['cause_summary']; ?> %0D%0A %0D%0A Read more - " + pageUrl + " %0D%0A %0D%0A Donate - <?= 'https://kashmirzakat.com/campaign-details.php?campaign=' . $id; ?>";;
                     socialWindow(url);
                 });
 
@@ -595,9 +578,23 @@ include 'assets/nav-links.php'; ?>
                 });
 
                 jQuery(".social-share.whatsapp").on("click", function() {
-                    url = "whatsapp://send?text=*<?= $data['cause_title']; ?>* %0D%0A %0D%0A <?= $data['cause_summary']; ?> %0D%0A %0D%0A Read more - " + pageUrl + " %0D%0A %0D%0A Donate -  <?= 'https://kashmirzakat.com/donate.php?id=' . $id; ?>";
+                    url = "whatsapp://send?text=*<?= $data['cause_title']; ?>* %0D%0A %0D%0A <?= $data['cause_summary']; ?> %0D%0A %0D%0A Read more - " + pageUrl + " %0D%0A %0D%0A Donate -  <?= 'https://kashmirzakat.com/campaign-details.php?campaign=' . $id; ?>";
                     socialWindow1(url);
                 });
+            }
+
+            //Download image
+            async function downloadSupportingDoc(file_name) {
+                const image = await fetch('images/' + file_name)
+                const imageBlog = await image.blob()
+                const imageURL = URL.createObjectURL(imageBlog)
+
+                const link = document.createElement('a')
+                link.href = imageURL
+                link.download = file_name
+                document.body.appendChild(link)
+                link.click()
+                document.body.removeChild(link)
             }
         </script>
 
@@ -647,6 +644,19 @@ include 'assets/nav-links.php'; ?>
     }
 </script>
 <style>
+    .supporting_docs_img {
+        /* height: 100vh;
+        width: 100vw; */
+    }
+
+    .carousel-control-next-icon,
+    .carousel-control-prev-icon {
+        background-color: black;
+        border-radius: 50%;
+        color: white;
+        background-size: 50% 50%;
+    }
+
     .cause_explain {
         overflow-x: auto;
     }

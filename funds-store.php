@@ -21,6 +21,8 @@ if (isset($_POST['submit'])) {
     $eligible = $_POST['eligible'];
     $cause_explain = $_POST['cause_explain'];
     $cause_summary = $_POST['cause_summary'];
+    $beneficiary_email = $_POST['beneficiary_email'];
+    $beneficiary_phone = $_POST['beneficiary_phone'];
 
     $profile_pic = generateFileName() . '.' . pathinfo($_FILES["profile_pic"]["name"], PATHINFO_EXTENSION);
     $tempname1 = $_FILES["profile_pic"]["tmp_name"];
@@ -90,6 +92,8 @@ if (isset($_POST['submit'])) {
         person,
         cause_summary,
         email,
+        beneficiary_phone,
+        beneficiary_phone
         status)
         VALUES(
         '$profile_pic',
@@ -113,7 +117,9 @@ if (isset($_POST['submit'])) {
         '$person',
         '$cause_summary',
         '$email',
-        'Pending') ";
+        'Pending',
+        '$beneficiary_email',
+        '$beneficiary_phone') ";
 
     if (mysqli_query($db, $sql)) {
         move_uploaded_file($tempname1, $folder1);

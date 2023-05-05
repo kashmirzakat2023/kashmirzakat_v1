@@ -31,11 +31,11 @@ if (isset($_SESSION['username'])) {
                 let column_fields;
                 if ("<?= $_SESSION['username'] ?>" == "admin") {
                     if ('<?= $status ?>' == 'Rejected')
-                        column_fields = ['ID', 'Cause', 'Purpose', 'Goal', 'Date', 'CM'];
+                        column_fields = ['ID', 'Cause', 'Purpose', 'Goal', 'Date', 'CM', 'Email', 'Phone'];
                     else if ('<?= $status ?>' == 'Accepted')
-                        column_fields = ['ID', 'Cause', 'Purpose', 'Goal', 'Date', 'CM'];
+                        column_fields = ['ID', 'Cause', 'Purpose', 'Goal', 'Date', 'CM', 'Email', 'Phone'];
                     else
-                        column_fields = ['ID', 'Cause', 'Purpose', 'Goal', 'Date', 'CM'];
+                        column_fields = ['ID', 'Cause', 'Purpose', 'Goal', 'Date', 'CM', 'Email', 'Phone'];
                 } else {
                     if ('<?= $status ?>' == 'Rejected')
                         column_fields = ['ID', 'Cause', 'Purpose', 'Goal', 'Date'];
@@ -55,8 +55,8 @@ if (isset($_SESSION['username'])) {
                 <?php
                 $result = mysqli_query($db, "SELECT * FROM form_data where status = '$status'");
                 if ($_SESSION['username'] == "admin") {
-                    $column_data_fields = ['id', 'cause_title', 'purpose', 'amount', 'date', 'cause_manager'];
-                    $column_fields = ['ID', 'Cause', 'Purpose', 'Goal', 'Date', 'CM'];
+                    $column_data_fields = ['id', 'cause_title', 'purpose', 'amount', 'date', 'cause_manager', 'beneficiary_email', 'beneficiary_phone'];
+                    $column_fields = ['ID', 'Cause', 'Purpose', 'Goal', 'Date', 'CM', 'Email', 'Phone'];
                 } else {
                     $result = mysqli_query($db, "SELECT * FROM form_data where status = '$status' and email= '$useremail'");
                     $column_data_fields = ['id', 'cause_title', 'purpose', 'amount', 'date'];
