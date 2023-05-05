@@ -31,6 +31,20 @@ include 'assets/nav-links.php'; ?>
                         <center>
                             <h2>Beneficiary Bank Details</h2>
                         </center>
+                        <div class="row">
+                            <div class="col">
+                                <div class="form-floating mb-3">
+                                    <input type="text" class="form-control" name="beneficiary_phone" value="<?php echo $data['beneficiary_phone']; ?>" id="floatingInput" placeholder="+91 XXXXX XXXXX">
+                                    <label for="floatingInput">Beneficiary Phone<label class=" fw-bold text-danger">*</label></label>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="form-floating mb-3">
+                                    <input type="email" class="form-control" name="beneficiary_email" value="<?php echo $data['beneficiary_email']; ?>" id="floatingInput" placeholder="example@gmail.com">
+                                    <label for="floatingInput">Beneficiary Email<label class=" fw-bold text-danger">*</label></label>
+                                </div>
+                            </div>
+                        </div>
                         <div class="form-floating mb-3">
                             <input type="text" class="form-control" name="acc_name" value="<?php echo $data['acc_name']; ?>" id="floatingInput" placeholder="bank" required>
                             <label for="floatingInput">Account Holder Name <label class=" fw-bold text-danger">*</label></label>
@@ -111,12 +125,16 @@ $username = $_SESSION['username'];
 $useremail = $_SESSION['useremail'];
 if (isset($_POST['submit'])) {
 
+    $beneficiary_email = $_POST['beneficiary_email'];
+    $beneficiary_phone = $_POST['beneficiary_phone'];
     $ifsc = $_POST['ifsc'];
     $bank_name = $_POST['bank_name'];
     $acc_num = $_POST['acc_num'];
     $acc_name = $_POST['acc_name'];
 
-    $result = mysqli_query($db, "UPDATE form_data set 
+    $result = mysqli_query($db, "UPDATE form_data set
+        beneficiary_phone='$beneficiary_phone',
+        beneficiary_email='$beneficiary_email',
         ifsc='$ifsc',
         bank_name='$bank_name',
         acc_num='$acc_num',

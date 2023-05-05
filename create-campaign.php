@@ -115,100 +115,100 @@ include 'assets/nav-links.php'; ?>
             <center>
                 <h2>Beneficiary Details</h2>
             </center>
-            <div class="row mb-4">
+            <div class="row">
                 <div class="col">
-                <div class="form-floating mb-3">
+                    <div class="form-floating mb-3">
                         <input type="text" class="form-control" name="beneficiary_phone" id="floatingInput" placeholder="+91 XXXXX XXXXX">
                         <label for="floatingInput">Beneficiary Phone<label class=" fw-bold text-danger">*</label></label>
                     </div>
                 </div>
                 <div class="col">
-                <div class="form-floating mb-3">
+                    <div class="form-floating mb-3">
                         <input type="email" class="form-control" name="beneficiary_email" id="floatingInput" placeholder="example@gmail.com">
                         <label for="floatingInput">Beneficiary Email<label class=" fw-bold text-danger">*</label></label>
                     </div>
                 </div>
+            </div>
+            <div class="mb-3 ">
+                <label for="e"> Raising this cause for: <label class=" fw-bold text-danger">*</label>&nbsp;&nbsp;&nbsp;</label>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" id="self" name="person" value="Self">
+                    <label class="form-check-label" for="self">Self</label>
                 </div>
-                <div class="mb-3 ">
-                    <label for="e"> Raising this cause for: <label class=" fw-bold text-danger">*</label>&nbsp;&nbsp;&nbsp;</label>
-                    <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" id="self" name="person" value="Self">
-                        <label class="form-check-label" for="self">Self</label>
-                    </div>
-                    <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" id="ngo" name="person" value="NGO">
-                        <label class="form-check-label" for="ngo">NGO</label>
-                    </div>
-                    <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" id="others" name="person" value="others">
-                        <label class="form-check-label" for="others">Others</label>
-                    </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" id="ngo" name="person" value="NGO">
+                    <label class="form-check-label" for="ngo">NGO</label>
                 </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" id="others" name="person" value="others">
+                    <label class="form-check-label" for="others">Others</label>
                 </div>
-                <div class="ngo-list" style="display:none;">
-                    <div class="form-floating mb-3">
-                        <input type="text" class="form-control" name="ngo_name" id="floatingInput" placeholder="bank">
-                        <label for="floatingInput">NGO Name <label class=" fw-bold text-danger">*</label></label>
-                    </div>
-                    <div class="form-floating mb-3">
-                        <input type="text" class="form-control" name="ngo_num" id="floatingInput" placeholder="bank">
-                        <label for="floatingInput">NGO Registration Number <label class=" fw-bold text-danger">*</label></label>
-                    </div>
+            </div>
+            </div>
+            <div class="ngo-list" style="display:none;">
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control" name="ngo_name" id="floatingInput" placeholder="bank">
+                    <label for="floatingInput">NGO Name <label class=" fw-bold text-danger">*</label></label>
                 </div>
                 <div class="form-floating mb-3">
-                    <input type="text" class="form-control" name="acc_name" id="floatingInput" placeholder="bank" required>
-                    <label for="floatingInput">Account Holder Name <label class=" fw-bold text-danger">*</label></label>
+                    <input type="text" class="form-control" name="ngo_num" id="floatingInput" placeholder="bank">
+                    <label for="floatingInput">NGO Registration Number <label class=" fw-bold text-danger">*</label></label>
                 </div>
-                <div class="form-floating mb-3">
-                    <input type="text" class="form-control" name="acc_num" id="floatingInput" placeholder="bank" required>
-                    <label for="floatingInput">Beneficiary Account Number <label class=" fw-bold text-danger">*</label></label>
-                </div>
-                <div class="form-floating mb-3">
-                    <input type="text" class="form-control" name="bank_name" id="floatingInput" placeholder="bank" required>
-                    <label for="floatingInput">Bank Name <label class=" fw-bold text-danger">*</label></label>
-                </div>
-                <div class="form-floating mb-3">
-                    <input type="text" class="form-control" name="ifsc" id="floatingInput" placeholder="bank" required>
-                    <label for="floatingInput">IFSC Code <label class=" fw-bold text-danger">*</label></label>
-                </div>
-                <hr>
-                <center>
-                    <h2>KYC Details</h2>
-                </center>
-                <div class="form-floating mb-3">
-                    <input type="text" class="form-control" name="pan_num" id="floatingInput" placeholder="pan" required>
-                    <label for="floatingInput">PAN Card Number <label class=" fw-bold text-danger">*</label></label>
-                </div>
-                <label for="exmp">Upload PAN Card Copy <label class=" fw-bold text-danger">*</label></label>
-                <div class="form-floating">
-                    <input accept="image/png,image/jpeg,image/jpg" type="file" class="form-control mb-1" id="file5" onchange="Filevalidation(this.id)" placeholder="" name="pan_copy" style="padding-left: 30px; padding-top: 16px ;" required>
-                </div>
-                <small class=" mb-3">Max file size is 2 MB. Allowed file types : JPEG, PNG and JPG</small>
-                <div class="form-floating mb-3">
-                    <input type="text" class="form-control mb-1" name="adhaar_num" id="floatingInput" placeholder="adhaar" required>
-                    <label for="floatingInput">Aadhaar Card Number <label class=" fw-bold text-danger">*</label></label>
-                </div>
-                <label for="exmp">Upload Adhaar Card Copy <label class=" fw-bold text-danger">*</label></label>
-                <div class="form-floating ">
-                    <input accept="image/png,image/jpeg,image/jpg" type="file" class="form-control mb-1" id="file6" onchange="Filevalidation(this.id)" placeholder="" name="adhaar_copy" style="padding-left: 30px; padding-top: 16px ;" required>
-                </div>
-                <small class=" mb-3">Max file size is 2 MB. Allowed file types : JPEG, PNG and JPG</small>
+            </div>
+            <div class="form-floating mb-3">
+                <input type="text" class="form-control" name="acc_name" id="floatingInput" placeholder="bank" required>
+                <label for="floatingInput">Account Holder Name <label class=" fw-bold text-danger">*</label></label>
+            </div>
+            <div class="form-floating mb-3">
+                <input type="text" class="form-control" name="acc_num" id="floatingInput" placeholder="bank" required>
+                <label for="floatingInput">Beneficiary Account Number <label class=" fw-bold text-danger">*</label></label>
+            </div>
+            <div class="form-floating mb-3">
+                <input type="text" class="form-control" name="bank_name" id="floatingInput" placeholder="bank" required>
+                <label for="floatingInput">Bank Name <label class=" fw-bold text-danger">*</label></label>
+            </div>
+            <div class="form-floating mb-3">
+                <input type="text" class="form-control" name="ifsc" id="floatingInput" placeholder="bank" required>
+                <label for="floatingInput">IFSC Code <label class=" fw-bold text-danger">*</label></label>
+            </div>
+            <hr>
+            <center>
+                <h2>KYC Details</h2>
+            </center>
+            <div class="form-floating mb-3">
+                <input type="text" class="form-control" name="pan_num" id="floatingInput" placeholder="pan" required>
+                <label for="floatingInput">PAN Card Number <label class=" fw-bold text-danger">*</label></label>
+            </div>
+            <label for="exmp">Upload PAN Card Copy <label class=" fw-bold text-danger">*</label></label>
+            <div class="form-floating">
+                <input accept="image/png,image/jpeg,image/jpg" type="file" class="form-control mb-1" id="file5" onchange="Filevalidation(this.id)" placeholder="" name="pan_copy" style="padding-left: 30px; padding-top: 16px ;" required>
+            </div>
+            <small class=" mb-3">Max file size is 2 MB. Allowed file types : JPEG, PNG and JPG</small>
+            <div class="form-floating mb-3">
+                <input type="text" class="form-control mb-1" name="adhaar_num" id="floatingInput" placeholder="adhaar" required>
+                <label for="floatingInput">Aadhaar Card Number <label class=" fw-bold text-danger">*</label></label>
+            </div>
+            <label for="exmp">Upload Adhaar Card Copy <label class=" fw-bold text-danger">*</label></label>
+            <div class="form-floating ">
+                <input accept="image/png,image/jpeg,image/jpg" type="file" class="form-control mb-1" id="file6" onchange="Filevalidation(this.id)" placeholder="" name="adhaar_copy" style="padding-left: 30px; padding-top: 16px ;" required>
+            </div>
+            <small class=" mb-3">Max file size is 2 MB. Allowed file types : JPEG, PNG and JPG</small>
 
 
-                <label for="exmp">Additional details(Optional)</label>
-                <div class="form-floating mb-3">
-                    <input type="text" class="form-control" name="optional" id="floatingInput" placeholder="max of 250 chars">
-                    <label for="floatingInput">Enter any optional details</label>
-                </div>
+            <label for="exmp">Additional details(Optional)</label>
+            <div class="form-floating mb-3">
+                <input type="text" class="form-control" name="optional" id="floatingInput" placeholder="max of 250 chars">
+                <label for="floatingInput">Enter any optional details</label>
+            </div>
 
-                <div class="mb-3 form-check">
-                    <input type="checkbox" class="form-check-input" id="exampleCheck1" name="checkbox" required>
-                    <label class="form-check-label" for="exampleCheck1">I Agree to share aadhar details with Kashmir Zakat for
-                        verfication <label class=" fw-bold text-danger">*</label></label>
-                </div>
-                <label for="s"><label class=" fw-bold text-danger mb-3">* fields are mandatory</label></label>
+            <div class="mb-3 form-check">
+                <input type="checkbox" class="form-check-input" id="exampleCheck1" name="checkbox" required>
+                <label class="form-check-label" for="exampleCheck1">I Agree to share aadhar details with Kashmir Zakat for
+                    verfication <label class=" fw-bold text-danger">*</label></label>
+            </div>
+            <label for="s"><label class=" fw-bold text-danger mb-3">* fields are mandatory</label></label>
 
-                <button type="submit" id="submit" name="submit" class="btn btn-primary mb-3 fs-4">Submit</button>
+            <button type="submit" id="submit" name="submit" class="btn btn-primary mb-3 fs-4">Submit</button>
         </form>
         <?php include 'assets/footer.php'; ?>
 </body>
