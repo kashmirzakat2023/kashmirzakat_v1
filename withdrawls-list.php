@@ -32,21 +32,21 @@ if (isset($_SESSION['username'])) {
             <h3>Accepted Withdrawls</h3>
         <?php
             $result = mysqli_query($db, "SELECT * FROM withdrawl_pending as wp join form_data as f on f.id=wp.raiseid and f.status='Accepted' and wp.status='accepted' and wp.email = '$useremail'");
-            if ($useremail == 'admin@admin.com')
+            if ($_SESSION['user_type'] == 2 || $_SESSION['user_type'] == 1)
                 $result = mysqli_query($db, "SELECT * FROM withdrawl_pending as wp join form_data as f on f.id=wp.raiseid and f.status='Accepted'  and wp.status='accepted'");
         } else if ($status == 'Pending') {
         ?>
             <h3>Pending Withdrawls</h3>
         <?php
             $result = mysqli_query($db, "SELECT * FROM withdrawl_request as wp join form_data as f on f.id=wp.raiseid and wp.status='pending' and f.status='Accepted' and wp.email = '$useremail'");
-            if ($useremail == 'admin@admin.com')
+            if ($_SESSION['user_type'] == 2 || $_SESSION['user_type'] == 1)
                 $result = mysqli_query($db, "SELECT * FROM withdrawl_request as wp join form_data as f on f.id=wp.raiseid and f.status='Accepted'");
         } else {
         ?>
             <h3>Rejected Withdrawls</h3>
         <?php
             $result = mysqli_query($db, "SELECT * FROM withdrawl_pending as wp join form_data as f on f.id=wp.raiseid  and f.status='Accepted'  and wp.status='rejected' and wp.email = '$useremail'");
-            if ($useremail == 'admin@admin.com')
+            if ($_SESSION['user_type'] == 2 || $_SESSION['user_type'] == 1)
                 $result = mysqli_query($db, "SELECT * FROM withdrawl_pending as wp join form_data as f on f.id=wp.raiseid  and f.status='Accepted'  and wp.status='rejected'");
         }
         ?>
@@ -67,7 +67,7 @@ if (isset($_SESSION['username'])) {
                 <?php
                 $column_data_fields = ['id', 'name', 'cause_title', 'amount', 'date', 'status', 'wid'];
                 $column_fields = ['ID', 'Name', 'cause', 'Requested', 'Date & Time', 'Status', 'Wid'];
-                if ($_SESSION['username'] == 'admin@admin.com') {
+                if ($_SESSION['user_type'] == 2 || $_SESSION['user_type'] == 1) {
                 ?>
                     columnDefs.push({
                         field: 'View',

@@ -9,7 +9,7 @@ if (isset($_POST['submit'])) {
     $purpose = $_POST['purpose'];
     $eligible = $_POST['eligible'];
     $amount = $_POST['amount'];
-    if ($_SESSION['useremail'] == 'admin@admin.com')
+    if ($_SESSION['user_type'] == 2 || $_SESSION['user_type'] == 1)
         $date = $_POST['date'];
     $cause_explain = $_POST['cause_explain'];
     $cause_summary = $_POST['cause_summary'];
@@ -28,7 +28,7 @@ if (isset($_POST['submit'])) {
     $tempname9 = $_FILES["profile_pic"]["tmp_name"];
     $folder9 = "images/" . $profile_pic;
 
-    if ($_SESSION['useremail'] == 'admin@admin.com') {
+    if ($_SESSION['user_type'] == 2 || $_SESSION['user_type'] == 1) {
         if (!empty($profile_pic)) {
             $result = mysqli_query($db, "UPDATE form_data set cause_title='$cause_title',location='$location',eligible='$eligible',profile_pic='$profile_pic',amount='$amount',cause_explain='$cause_explain', cause_summary='$cause_summary', date = '$date' where id='$id'");
             if (!move_uploaded_file($tempname9, $folder9))

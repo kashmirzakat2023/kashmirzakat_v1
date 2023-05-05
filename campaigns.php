@@ -15,7 +15,7 @@ if (isset($_SESSION['username'])) {
     $acc = mysqli_query($db, "SELECT * FROM form_data where email='$useremail' and status='Accepted'");
     $pen = mysqli_query($db, "SELECT * FROM form_data where email='$useremail' and status='Pending'");
     $rej = mysqli_query($db, "SELECT * FROM form_data where email='$useremail' and status='Rejected'");
-    if($useremail == 'admin@admin.com'){
+    if($_SESSION['user_type'] == 1 || $_SESSION['user_type'] == 2){
         $acc = mysqli_query($db, "SELECT * FROM form_data where status='Accepted'");
         $pen = mysqli_query($db, "SELECT * FROM form_data where status='Pending'");
         $rej = mysqli_query($db, "SELECT * FROM form_data where status='Rejected'");

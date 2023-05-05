@@ -7,7 +7,7 @@ include 'assets/nav-links.php'; ?>
     <?php include 'assets/navbar.php'; ?>
     <title>Reported list</title>
 </head>
-<?php if ($_SESSION['useremail'] == 'admin@admin.com') {
+<?php if ($_SESSION['user_type'] == 2 || $_SESSION['user_type'] == 1) {
     include 'assets/connection.php';
 ?>
 

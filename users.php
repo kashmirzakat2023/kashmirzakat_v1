@@ -9,7 +9,7 @@
     <script src="js/nav-dash.js"></script>
 </head>
 <?php
-if (isset($_SESSION['useremail']) && $_SESSION['useremail'] == 'admin@admin.com') {
+if (isset($_SESSION['useremail']) && $_SESSION['user_type'] == 2 || $_SESSION['user_type'] == 1) {
     include 'assets/connection.php';
     $result = mysqli_query($db, "SELECT * FROM users");
 ?>

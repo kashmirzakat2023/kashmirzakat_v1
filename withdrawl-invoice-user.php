@@ -94,7 +94,7 @@ if (isset($_SESSION['username'])) {
         
     </body>
 <?php
-} else if (isset($_SESSION['username']) and $_SESSION['username'] != 'admin') {
+} else if (isset($_SESSION['username']) and ($_SESSION['user_type'] == 1 || $_SESSION['user_type'] == 2)) {
 ?>
 
     <body id="body-pd">

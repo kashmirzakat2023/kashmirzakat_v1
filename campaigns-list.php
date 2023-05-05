@@ -29,7 +29,7 @@ if (isset($_SESSION['username'])) {
         <h2><?= $status ?> Causes</h3>
             <script>
                 let column_fields;
-                if ("<?= $_SESSION['username'] ?>" == "admin") {
+                if (<?= $_SESSION['user_type'] ?> == 1 || <?= $_SESSION['user_type'] ?> == 2) {
                     if ('<?= $status ?>' == 'Rejected')
                         column_fields = ['ID', 'Cause', 'Purpose', 'Goal', 'Date', 'CM', 'Email', 'Phone'];
                     else if ('<?= $status ?>' == 'Accepted')
@@ -48,13 +48,13 @@ if (isset($_SESSION['username'])) {
                 column_fields.forEach(element => {
                     columnDefs.push({
                         field: element,
-                        editable: (element == 'CM') ? true : false,
+                        editable: (element == 'CM' && <?= $_SESSION['user_type']?> == 1) ? true : false,
                     });
                 })
 
                 <?php
                 $result = mysqli_query($db, "SELECT * FROM form_data where status = '$status'");
-                if ($_SESSION['username'] == "admin") {
+                if ($_SESSION['user_type'] == 1 || $_SESSION['user_type'] == 2) {
                     $column_data_fields = ['id', 'cause_title', 'purpose', 'amount', 'date', 'cause_manager', 'beneficiary_email', 'beneficiary_phone'];
                     $column_fields = ['ID', 'Cause', 'Purpose', 'Goal', 'Date', 'CM', 'Email', 'Phone'];
                 } else {
@@ -67,7 +67,7 @@ if (isset($_SESSION['username'])) {
                     field: 'Actions',
                     minWidth: 420,
                     cellRenderer: function(params) {
-                        if ("<?= $_SESSION['username'] ?>" == "admin") {
+                        if (<?= $_SESSION['user_type'] ?> == 2 || <?= $_SESSION['user_type'] ?> == 1) {
                             if ('<?= $status ?>' == 'Rejected')
                                 return '<a class="btn btn-outline-primary me-2" href="campaign-details.php?campaign=' + params.data.ID + '">View</a><a class="btn btn-outline-success me-2" href="change-campaign-status.php?id=' + params.data.ID + '&status=accept">Accept</a><a class="btn btn-outline-success me-2" href="admin-accept-edit-form.php?id=' + params.data.ID + '">Edit</a><a class="btn btn-outline-success" href="edit-user-form-kyc.php?id=' + params.data.ID + '" name="submit" type="submit">Edit Kyc</a>';
                             else if ('<?= $status ?>' == 'Accepted')
@@ -91,7 +91,7 @@ if (isset($_SESSION['username'])) {
             <p class=" bg-success text-light px-3 rounded-1 saved fs-4" style="width:fit-content; display:none; position:absolute; right:60px; bottom:50px; ">saved...</p>
             <p class=" bg-danger text-light px-3 rounded-1 nsaved fs-4" style="width:fit-content; display:none; position:absolute; right:60px; bottom:50px; ">Not saved...</p>
 
-            
+
     </body>
 <?php
 } else {

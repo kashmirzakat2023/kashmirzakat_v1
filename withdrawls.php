@@ -14,7 +14,7 @@ if (isset($_SESSION['username'])) {
     $pen = mysqli_query($db, "SELECT * FROM  withdrawl_request where email='$useremail'");
     $acc = mysqli_query($db, "SELECT * FROM withdrawl_pending where status='accepted'  and email='$useremail'");
     $rej = mysqli_query($db, "SELECT * FROM withdrawl_pending where status='rejected' and email='$useremail'  ");
-    if ($_SESSION['useremail'] == 'admin@admin.com') {
+    if ($_SESSION['user_type'] == 2 || $_SESSION['user_type'] == 1) {
         $pen = mysqli_query($db, "SELECT * FROM  withdrawl_request where status='pending'");
         $acc = mysqli_query($db, "SELECT * FROM withdrawl_pending where status='accepted'");
         $rej = mysqli_query($db, "SELECT * FROM withdrawl_pending where status='rejected'");

@@ -12,7 +12,7 @@ session_start(); ?>
 $useremail = $_SESSION['useremail'];
 
 include 'assets/connection.php';
-if (isset($_SESSION['username']) && $_SESSION['username'] == 'admin') {
+if (isset($_SESSION['username']) && ($_SESSION['user_type'] == 2 || $_SESSION['user_type'] == 1)) {
 ?>
 
     <body id="body-pd">

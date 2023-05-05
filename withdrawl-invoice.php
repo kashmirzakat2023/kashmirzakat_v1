@@ -12,7 +12,7 @@ $wid = $_GET['wid'];
 include 'assets/connection.php';
 
 $useremail = $_SESSION['useremail'];
-if (isset($_SESSION['useremail']) && $_SESSION['useremail'] == 'admin@admin.com') {
+if (isset($_SESSION['useremail']) && $_SESSION['user_type'] == 2 || $_SESSION['user_type'] == 1) {
 ?>
 
     <body id="body-pd">

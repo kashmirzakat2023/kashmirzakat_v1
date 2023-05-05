@@ -1,6 +1,6 @@
 <?php
 include 'assets/nav-links.php';
-if (isset($_SESSION['useremail']) && $_SESSION['useremail'] == 'admin@admin.com') {
+if (isset($_SESSION['useremail']) && ($_SESSION['user_type'] == 2 || $_SESSION['user_type'] == 1)) {
 ?>
     <html>
 

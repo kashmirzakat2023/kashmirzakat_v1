@@ -32,7 +32,7 @@ $query = mysqli_query($db, "SELECT * FROM withdrawl_request where wid = '$wid' "
     
 //     echo '<script>alert("User amount crossed its limit")</script>';
 // }
-    if (isset($_SESSION['username']) && $_SESSION['username'] == 'admin') { ?>
+    if (isset($_SESSION['username']) && $_SESSION['user_type'] == 2 || $_SESSION['user_type'] == 1) { ?>
 
         <body id="body-pd">
             <?php

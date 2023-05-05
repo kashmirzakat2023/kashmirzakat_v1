@@ -64,7 +64,7 @@
                     <?php
                 } else {
                     $useremail = $_SESSION['useremail'];
-                    if ($_SESSION['username'] == "admin") {
+                    if ($_SESSION['user_type'] == 2) {
                     ?>
                         <li class="nav-item">
                             <a class="nav-link" href="admin-contactlist.php">Contact List</a>

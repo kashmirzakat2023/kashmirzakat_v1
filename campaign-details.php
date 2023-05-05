@@ -129,7 +129,7 @@ include 'assets/nav-links.php'; ?>
                                         <?= $data['cause_summary']; ?>
                                     </div>
                                     <?php
-                                    if ($_SESSION['useremail'] == 'admin@admin.com' || $_SESSION['useremail'] == $useremail1) {
+                                    if ($_SESSION['user_type'] == 2 || $_SESSION['user_type'] == 1 || $_SESSION['useremail'] == $useremail1) {
                                     ?>
                                         <div class="mb-3">
                                             <label class=" fw-bold" for="d">Phone Number : </label>
@@ -321,10 +321,10 @@ include 'assets/nav-links.php'; ?>
                     </div>
                 </div>
                 <?php
-                if (isset($_SESSION['username']) && ($_SESSION['useremail'] == 'admin@admin.com' || ($_SESSION['useremail'] == $useremail1 && strtolower($data['status']) == 'pending'))) {
+                if (isset($_SESSION['username']) && (($_SESSION['user_type'] == 2 || $_SESSION['user_type'] == 1) || ($_SESSION['useremail'] == $useremail1 && strtolower($data['status']) == 'pending'))) {
                 ?>
                     <div class="d-flex justify-content-center p-2 bg-light">
-                        <?php if ($_SESSION['useremail'] == 'admin@admin.com') { ?>
+                        <?php if ($_SESSION['user_type'] == 2 || $_SESSION['user_type'] == 1) { ?>
                             <a class="btn btn-success m-2 col-2" href="change-campaign-status.php?id=<?= $data['id']; ?>&status=accept" name="submit" type="submit">Accept</a>
                             <?php
                             if (strtolower($data['status']) != 'rejected') {
@@ -336,7 +336,7 @@ include 'assets/nav-links.php'; ?>
                             <a class="btn btn-primary m-2 col-2" href="admin-accept-edit-form.php?id=<?= $data['id']; ?>" name="submit" type="submit">Edit</a>
                             <a class="btn btn-primary m-2 col-2" href="edit-user-form-kyc.php?id=<?= $data['id']; ?>" name="submit" type="submit">Edit Kyc</a>
                         <?php }
-                        if ($_SESSION['useremail'] == $useremail1 && $_SESSION['useremail'] != 'admin@admin.com') {
+                        if ($_SESSION['useremail'] == $useremail1 && ($_SESSION['user_type'] != 1 || $_SESSION['user_type'] != 2)) {
                         ?>
                             <a class="btn btn-primary m-2 col-2" href="user-edit-form.php?id=<?= $data['id']; ?>" name="submit" type="submit">Edit</a>
                             <a class="btn btn-primary m-2 col-2" href="edit-user-form-kyc.php?id=<?= $data['id']; ?>" name="submit" type="submit">Edit Kyc</a>
@@ -372,7 +372,7 @@ include 'assets/nav-links.php'; ?>
                     <div class="card-body text-center">
                         <h5 class="card-title">
                             <?= $createrName;
-                            if ($_SESSION['useremail'] == 'admin@admin.com') { ?>
+                            if ($_SESSION['user_type'] == 2 || $_SESSION['user_type'] == 1) { ?>
                                 <a href="mailto:<?php echo $data['beneficiary_email']; ?>"><i class="fas fa-envelope text-info cursor"></i></a>
                             <?php
                             } ?>
