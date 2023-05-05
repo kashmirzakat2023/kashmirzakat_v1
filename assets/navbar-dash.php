@@ -21,7 +21,7 @@
     </div>
 </header>
 <?php
-if ($_SESSION['user_type'] == 2 || $_SESSION['user_type'] == 1) {
+if ($_SESSION['user_type'] != 2 && $_SESSION['user_type'] != 1) {
 ?>
     <div class="l-navbar show" id="nav-bar">
         <nav class="nav" style="z-index: 100 !important;">
