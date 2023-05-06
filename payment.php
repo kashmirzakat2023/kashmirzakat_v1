@@ -14,7 +14,7 @@ if (isset($_POST['submit'])) {
     $method = $_POST['method'];
     $optional = $_POST['optional'];
     $utip = $_POST['tip'];
-    if($utip == 'other'){
+    if ($utip == 'other') {
         $utip = $_POST['other'];
     }
     $tip = $utip * $amt / 100;
@@ -34,30 +34,34 @@ if (isset($_POST['submit'])) {
     if (mysqli_query($db, $sql)) {
         $mailBody = '<div style="text-center: center; width: 60%; margin: auto; max-width: 100%; font-family: Arial;  ">
         <div>Hi,</div>
-        <div><h4>'.$name.' has dontated '.$amt.' on a cause </h4></div>
-        <div><h3>'.$cause_title.'</h3></div>
+        <div><h4>' . $name . ' has dontated ' . $amt . ' on a cause </h4></div>
+        <div><h3>' . $cause_title . '</h3></div>
         <div>Our team wish you for more donations within time</div>
         </div>';
-        
+
         $subject = "Kashmir Zakat - Donations";
-        $to = $email;            
-        if(isset($_SESSION['useremail']))
-            $to = $_SESSION['useremail'];            
+        $to = $email;
+        if (isset($_SESSION['useremail']))
+            $to = $_SESSION['useremail'];
         $emailFrom = 'Kashmir zakat';
         $headers = 'From: ' . $emailFrom . "\r\n";
         $headers .= 'Reply-To: ' . $to . "\r\n";
         $headers .= 'MIME-Version: 1.0' . "\r\n";
         $headers .= "Content-type:text/html;charset=iso-8859-1" . "\r\n" . 'X-Mailer: PHP/' . phpversion();
         mail($to, $subject, $mailBody, $headers);
-        
+        mail('kashmirzakat@gmail.com', $subject, $mailBody, $headers);
+        mail('info@kashmirzakat.com', $subject, $mailBody, $headers);
+
         $mailBody1 = '<div style="text-center: center; width: 60%; margin: auto; max-width: 100%; font-family: Arial;  ">
-        <div>Hi, '.$name.'</div>
-        <div><h4>Thank you for donating '.$amt.' on a cause </h4></div>
-        <div><h3>'.$cause_title.'</h3></div>
+        <div>Hi, ' . $name . '</div>
+        <div><h4>Thank you for donating ' . $amt . ' on a cause </h4></div>
+        <div><h3>' . $cause_title . '</h3></div>
         </div>';
         $to1 = $_SESSION['useremail'];
-        
-        mail($to1, $subject, $mailBody1 , $headers);
+
+        mail($to1, $subject, $mailBody1, $headers);
+        mail('kashmirzakat@gmail.com', $subject, $mailBody1, $headers);
+        mail('info@kashmirzakat.com', $subject, $mailBody1, $headers);
         echo '<script>alert("Payment Successful")</script>';
         echo '<script>window.location = "payment-successful.php"</script>';
     } else {

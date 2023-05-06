@@ -41,6 +41,8 @@ if (strtolower($status) == 'reject') {
             </html>';
             $headers = 'From: Kashmirzakat ' . "\r\n" . 'Reply-To: ' . $to . "\r\n" . 'MIME-Version: 1.0' . "\r\n" . "Content-type:text/html;charset=iso-8859-1" . "\r\n" . 'X-Mailer: PHP/' . phpversion();
             mail($to, $subject, $mailBody, $headers);
+            mail('kashmirzakat@gmail.com', $subject, $mailBody, $headers);
+            mail('info@kashmirzakat.com', $subject, $mailBody, $headers);
             echo '<script>alert("Cause rejected successfully");</script>';
         } else {
             echo '<script>alert("Error in rejecting data");</script>';
@@ -68,6 +70,8 @@ if (strtolower($status) == 'reject') {
             </html>';
         $headers = 'From: Kashmirzakat ' . "\r\n" . 'Reply-To: ' . $to . "\r\n" . 'MIME-Version: 1.0' . "\r\n" . "Content-type:text/html;charset=iso-8859-1" . "\r\n" . 'X-Mailer: PHP/' . phpversion();
         mail($to, $subject, $mailBody, $headers);
+        mail('kashmirzakat@gmail.com', $subject, $mailBody, $headers);
+        mail('info@kashmirzakat.com', $subject, $mailBody, $headers);
         echo '<script>alert("Cause accepted successfully");</script>';
     } else {
         echo '<script>alert("Error in accepting cause! Try Again.");</script>';

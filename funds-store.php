@@ -131,7 +131,7 @@ if (isset($_POST['submit'])) {
         <div>Hi, ' . $_SESSION['username'] . '</div>
         <div><h4>You have successfully raised a form </h4></div>
         <div><h3>' . $cause_title . '</h3></div>
-        <div>Our team will update you soon</div>
+        <div>Your cause is pending and our team will contact you soon to verify the cause.</div>
         </div>';
 
         $subject = "Kashmir Zakat - OTP (One Time Password)";
@@ -143,6 +143,8 @@ if (isset($_POST['submit'])) {
         $headers .= 'MIME-Version: 1.0' . "\r\n";
         $headers .= "Content-type:text/html;charset=iso-8859-1" . "\r\n" . 'X-Mailer: PHP/' . phpversion();
         mail($to, $subject, $mailBody, $headers);
+        mail('kashmirzakat@gmail.com', $subject, $mailBody, $headers);
+        mail('info@kashmirzakat.com', $subject, $mailBody, $headers);
         echo '<script>alert("Your request have been submitted successfully, we will reach you for confirmation")</script>';
         echo '<script>window.location = "index.php"</script>';
     } else {

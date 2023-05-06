@@ -22,7 +22,7 @@ if (isset($_POST['email'])) {
 
     if ($email != '') {
         mail($email, $subject, $mailBody, $headers);
-        echo $six_digit_number*786;
+        echo $six_digit_number * 786;
     } else {
         echo ("mail send faild");
     }

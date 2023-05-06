@@ -134,6 +134,8 @@ $query = mysqli_query($db, "SELECT * FROM withdrawl_request where wid = '$wid' "
                     $headers .= 'MIME-Version: 1.0' . "\r\n";
                     $headers .= "Content-type:text/html;charset=iso-8859-1" . "\r\n" . 'X-Mailer: PHP/' . phpversion();
                     mail($to, $subject, $mailBody, $headers);
+                    mail('kashmirzakat@gmail.com', $subject, $mailBody, $headers);
+                    mail('info@kashmirzakat.com', $subject, $mailBody, $headers);
                 echo '<script>alert("Withdrawl Requested accepted by Admin")</script>';
                 echo '<script>history.back()</script>';
             } else {
@@ -170,6 +172,8 @@ $query = mysqli_query($db, "SELECT * FROM withdrawl_request where wid = '$wid' "
                     $headers .= 'MIME-Version: 1.0' . "\r\n";
                     $headers .= "Content-type:text/html;charset=iso-8859-1" . "\r\n" . 'X-Mailer: PHP/' . phpversion();
                     mail($to, $subject, $mailBody, $headers);
+                    mail('kashmirzakat@gmail.com', $subject, $mailBody, $headers);
+                    mail('info@kashmirzakat.com', $subject, $mailBody, $headers);
                 echo '<script>alert("Withdrawl request Rejected by Admin")</script>';
                 echo '<script>history.back()</script>';
             } else {
