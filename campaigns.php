@@ -12,13 +12,13 @@
 include 'assets/connection.php';
 if (isset($_SESSION['username'])) {
     $useremail = $_SESSION['useremail'];
-    $acc = mysqli_query($db, "SELECT * FROM form_data where email='$useremail' and status='Accepted'");
-    $pen = mysqli_query($db, "SELECT * FROM form_data where email='$useremail' and status='Pending'");
-    $rej = mysqli_query($db, "SELECT * FROM form_data where email='$useremail' and status='Rejected'");
+    $acc = mysqli_query($db, "SELECT * FROM campaigns_data where email='$useremail' and status='Accepted'");
+    $pen = mysqli_query($db, "SELECT * FROM campaigns_data where email='$useremail' and status='Pending'");
+    $rej = mysqli_query($db, "SELECT * FROM campaigns_data where email='$useremail' and status='Rejected'");
     if($_SESSION['user_type'] == 1 || $_SESSION['user_type'] == 2){
-        $acc = mysqli_query($db, "SELECT * FROM form_data where status='Accepted'");
-        $pen = mysqli_query($db, "SELECT * FROM form_data where status='Pending'");
-        $rej = mysqli_query($db, "SELECT * FROM form_data where status='Rejected'");
+        $acc = mysqli_query($db, "SELECT * FROM campaigns_data where status='Accepted'");
+        $pen = mysqli_query($db, "SELECT * FROM campaigns_data where status='Pending'");
+        $rej = mysqli_query($db, "SELECT * FROM campaigns_data where status='Rejected'");
     }
 ?>
 
@@ -46,7 +46,7 @@ if (isset($_SESSION['username'])) {
                                 <div class="col mr-2">
                                     <h2 class="mb-3 fw-bolder text-light" style="font-size: 50px !important;">
                                         <?php
-                                        // $acc = mysqli_query($db, "SELECT * FROM form_data where email='$useremail' and status='Accepted'");
+                                        // $acc = mysqli_query($db, "SELECT * FROM campaigns_data where email='$useremail' and status='Accepted'");
                                         echo mysqli_num_rows($acc);
                                         ?>
                                     </h2>
@@ -72,7 +72,7 @@ if (isset($_SESSION['username'])) {
                                 <div class="col mr-2">
                                     <h2 class="mb-3 fw-bolder text-light" style="font-size: 50px !important;">
                                         <?php
-                                        // $pen = mysqli_query($db, "SELECT * FROM form_data where status='Pending' and email='$useremail'");
+                                        // $pen = mysqli_query($db, "SELECT * FROM campaigns_data where status='Pending' and email='$useremail'");
                                         echo mysqli_num_rows($pen);
                                         ?>
                                     </h2>
@@ -98,7 +98,7 @@ if (isset($_SESSION['username'])) {
                                 <div class="col mr-2">
                                     <h2 class="mb-3 fw-bolder text-light" style="font-size: 50px !important;">
                                         <?php
-                                        // $rej = mysqli_query($db, "SELECT * FROM form_data  where email='$useremail' and status='Rejected'");
+                                        // $rej = mysqli_query($db, "SELECT * FROM campaigns_data  where email='$useremail' and status='Rejected'");
                                         echo mysqli_num_rows($rej);
                                         ?>
                                     </h2>

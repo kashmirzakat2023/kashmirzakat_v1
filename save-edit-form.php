@@ -30,18 +30,18 @@ if (isset($_POST['submit'])) {
 
     if ($_SESSION['user_type'] == 2 || $_SESSION['user_type'] == 1) {
         if (!empty($profile_pic)) {
-            $result = mysqli_query($db, "UPDATE form_data set cause_title='$cause_title',location='$location',eligible='$eligible',profile_pic='$profile_pic',amount='$amount',cause_explain='$cause_explain', cause_summary='$cause_summary', date = '$date' where id='$id'");
+            $result = mysqli_query($db, "UPDATE campaigns_data set cause_title='$cause_title',location='$location',eligible='$eligible',profile_pic='$profile_pic',amount='$amount',cause_explain='$cause_explain', cause_summary='$cause_summary', date = '$date' where id='$id'");
             if (!move_uploaded_file($tempname9, $folder9))
                 echo ('<script>alert("Error in uploading Image")</script>');
         } else
-            $result = mysqli_query($db, "UPDATE form_data set cause_title='$cause_title',location='$location',eligible='$eligible',amount='$amount',cause_explain='$cause_explain',cause_summary='$cause_summary', date = '$date' where id='$id'");
+            $result = mysqli_query($db, "UPDATE campaigns_data set cause_title='$cause_title',location='$location',eligible='$eligible',amount='$amount',cause_explain='$cause_explain',cause_summary='$cause_summary', date = '$date' where id='$id'");
     } else {
         if (!empty($profile_pic)) {
-            $result = mysqli_query($db, "UPDATE form_data set cause_title='$cause_title',location='$location',eligible='$eligible',profile_pic='$profile_pic',amount='$amount',cause_explain='$cause_explain',cause_summary='$cause_summary' where id='$id'");
+            $result = mysqli_query($db, "UPDATE campaigns_data set cause_title='$cause_title',location='$location',eligible='$eligible',profile_pic='$profile_pic',amount='$amount',cause_explain='$cause_explain',cause_summary='$cause_summary' where id='$id'");
             if (!move_uploaded_file($tempname9, $folder9))
                 echo ('<script>alert("Error in uploading Image")</script>');
         } else
-            $result = mysqli_query($db, "UPDATE form_data set cause_title='$cause_title',location='$location',eligible='$eligible',amount='$amount',cause_explain='$cause_explain',cause_summary='$cause_summary' where id='$id'");
+            $result = mysqli_query($db, "UPDATE campaigns_data set cause_title='$cause_title',location='$location',eligible='$eligible',amount='$amount',cause_explain='$cause_explain',cause_summary='$cause_summary' where id='$id'");
     }
     if ($result) {
         echo '<script>alert("Data Updated Successfully")</script>';

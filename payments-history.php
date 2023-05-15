@@ -36,7 +36,7 @@ if (isset($_SESSION['username'])) {
                 <?php
                 $column_data_fields = ['id', 'cause_title', 'date', 'amount', 'tip', 'tran_id'];
                 $column_fields = ['ID', 'Cause', 'Date', 'Donated', 'Tip', 'Transaction_Id'];
-                $result = mysqli_query($db, "SELECT * FROM payments as p join form_data as f on f.id = p.raiseid and p.status='complete' and p.email='$useremail'");
+                $result = mysqli_query($db, "SELECT * FROM payments as p join campaigns_data as f on f.id = p.raiseid and p.status='complete' and p.email='$useremail'");
                 ?>
                 columnDefs = [];
                 column_fields.forEach(element => {
@@ -66,9 +66,9 @@ if (isset($_SESSION['username'])) {
                 <?php
                 $column_data_fields = ['id', 'name', 'cause_title', 'date', 'amount', 'tip', 'tran_id'];
                 $column_fields = ['ID', 'Name', 'Cause', 'Date', 'Donated', 'Tip', 'Transaction_Id'];
-                $result = mysqli_query($db, "SELECT * FROM payments as p join form_data as f on f.id = p.raiseid and p.status='complete' and f.email='$useremail'");
+                $result = mysqli_query($db, "SELECT * FROM payments as p join campaigns_data as f on f.id = p.raiseid and p.status='complete' and f.email='$useremail'");
                 if ($_SESSION['user_type'] == 2 || $_SESSION['user_type'] == 1)
-                    $result = mysqli_query($db, "SELECT * FROM payments as p join form_data as f on f.id = p.raiseid and p.status='complete'");
+                    $result = mysqli_query($db, "SELECT * FROM payments as p join campaigns_data as f on f.id = p.raiseid and p.status='complete'");
                 ?>
                 columnDefs = [];
                 column_fields.forEach(element => {

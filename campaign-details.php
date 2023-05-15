@@ -6,7 +6,7 @@ include 'assets/nav-links.php'; ?>
     <?php
     $id = $_GET['campaign'];
     include 'assets/connection.php';
-    $result = mysqli_query($db, " SELECT * FROM form_data where id = '$id' and status='Accepted'");
+    $result = mysqli_query($db, " SELECT * FROM campaigns_data where id = '$id' and status='Accepted'");
     while ($data = mysqli_fetch_array($result)) {
     ?>
 
@@ -39,7 +39,7 @@ include 'assets/nav-links.php'; ?>
     <?php }
     include 'assets/navbar.php';
 
-    $result = mysqli_query($db, " SELECT * FROM form_data where id = '$id'");
+    $result = mysqli_query($db, " SELECT * FROM campaigns_data where id = '$id'");
     while ($data = mysqli_fetch_array($result)) {
         // $today = time();
         $_SESSION['id'] = $data['id'];
@@ -372,7 +372,7 @@ include 'assets/nav-links.php'; ?>
                     <div class="card-body text-center">
                         <h5 class="card-title">
                             <?= $createrName;
-                            if ($_SESSION['user_type'] == 2 || $_SESSION['user_type'] == 1) { ?>
+                            if (isset($_SESSION['user_type']) && ($_SESSION['user_type'] == 2 || $_SESSION['user_type'] == 1)) { ?>
                                 <a href="mailto:<?php echo $data['beneficiary_email']; ?>"><i class="fas fa-envelope text-info cursor"></i></a>
                             <?php
                             } ?>

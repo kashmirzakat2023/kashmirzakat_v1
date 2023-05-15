@@ -117,7 +117,7 @@ include 'assets/connection.php';
             </div>
         </div>
         <?php
-        $result = mysqli_query($db, "SELECT * FROM form_data  where status='Accepted'");
+        $result = mysqli_query($db, "SELECT * FROM campaigns_data  where status='Accepted'");
         $query = mysqli_query($db, "SELECT * FROM payments  where status='complete'");
         $donations = 0;
         while ($row = mysqli_fetch_array($query))
@@ -145,11 +145,11 @@ include 'assets/connection.php';
     <?php
     $campaignsDivision = ['Featured', 'Successful', 'Education', 'Health', 'Livelihood', 'Others'];
     for ($i = 0; $i < sizeof($campaignsDivision); $i++) {
-        $resultsQuery = mysqli_query($db, "SELECT  * FROM form_data where status='Accepted' LIMIT 4");
+        $resultsQuery = mysqli_query($db, "SELECT  * FROM campaigns_data where status='Accepted' LIMIT 4");
         // $isFeaturedOrSuccessful = true;
 
         if ($campaignsDivision[$i] != 'Featured' && $campaignsDivision[$i] != 'Successful') {
-            $resultsQuery = mysqli_query($db, "SELECT  * FROM form_data where purpose='$campaignsDivision[$i]' and status='Accepted' LIMIT 4");
+            $resultsQuery = mysqli_query($db, "SELECT  * FROM campaigns_data where purpose='$campaignsDivision[$i]' and status='Accepted' LIMIT 4");
             // $isFeaturedOrSuccessful = false;
         } else {
             // while ($data = mysqli_fetch_array($resultsQuery)) {

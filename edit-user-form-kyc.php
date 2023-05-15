@@ -9,7 +9,7 @@ include 'assets/nav-links.php'; ?>
     $id = $_GET['id'];
 
     include 'assets/connection.php';
-    $result = mysqli_query($db, " SELECT * FROM form_data where id = '$id'");
+    $result = mysqli_query($db, " SELECT * FROM campaigns_data where id = '$id'");
     ?>
 </head>
 
@@ -132,7 +132,7 @@ if (isset($_POST['submit'])) {
     $acc_num = $_POST['acc_num'];
     $acc_name = $_POST['acc_name'];
 
-    $result = mysqli_query($db, "UPDATE form_data set
+    $result = mysqli_query($db, "UPDATE campaigns_data set
         beneficiary_phone='$beneficiary_phone',
         beneficiary_email='$beneficiary_email',
         ifsc='$ifsc',

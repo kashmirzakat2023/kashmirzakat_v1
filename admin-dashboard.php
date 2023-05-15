@@ -12,7 +12,7 @@ session_start(); ?>
 <?php
 include 'assets/connection.php';
 $useremail = $_SESSION['useremail'];
-$result = mysqli_query($db, "SELECT * FROM form_data  where status='Accepted'");
+$result = mysqli_query($db, "SELECT * FROM campaigns_data  where status='Accepted'");
 $user = mysqli_query($db, "SELECT * FROM users ");
 $query = mysqli_query($db, "SELECT * FROM payments  where status='complete'");
 if (isset($_SESSION['username']) && ($_SESSION['user_type'] == 2 || $_SESSION['user_type'] == 1)) {

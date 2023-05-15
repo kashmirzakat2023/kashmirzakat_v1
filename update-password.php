@@ -7,7 +7,7 @@ if (isset($_POST['submit'])) {
     $newpassword = $_POST['new-password'];
     $pass = mysqli_query($db,"SELECT * from users where name = '$username'");
     while($data = mysqli_fetch_array($pass))
-    $rpassword = $data['PASSWORD'];
+    $rpassword = md5($data['PASSWORD']);
     if($password == $rpassword){
         if($newpassword != ""){
 

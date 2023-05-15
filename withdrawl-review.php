@@ -13,7 +13,7 @@ $id = $_GET['id'];
 include 'assets/connection.php';
 $query1 = mysqli_query($db, "SELECT * FROM withdrawl_pending where wid = '$wid' and raiseid=$id ");
 $query2 = mysqli_query($db, "SELECT * FROM payments where raiseid= $id and status='Accepted'");
-$query3= mysqli_query($db, "SELECT * FROM form_data where id= $id");
+$query3= mysqli_query($db, "SELECT * FROM campaigns_data where id= $id");
 $tamt=0;
 $email;
 
@@ -56,7 +56,7 @@ $query = mysqli_query($db, "SELECT * FROM withdrawl_request where wid = '$wid' "
                             <input type="number" value="<?php echo $row1['amount']; ?>" class="form-control" name="amount" placeholder="Minimum amount ₹50 INR " aria-label="amount" aria-describedby="addon-wrapping" required>
                         </div>
                         <?php $raiseid = $row1['raiseid'];
-                        $result1 = mysqli_query($db, "SELECT * FROM form_data where id='$raiseid' and status='Accepted' ");
+                        $result1 = mysqli_query($db, "SELECT * FROM campaigns_data where id='$raiseid' and status='Accepted' ");
                         while ($rows = mysqli_fetch_array($result1)) {
                         ?>
                             <label for="">Cause Title</label>
@@ -112,7 +112,7 @@ $query = mysqli_query($db, "SELECT * FROM withdrawl_request where wid = '$wid' "
             $sql = "INSERT INTO withdrawl_pending(
                 name,raiseid,amount,tran_date,bank_name,tran_id,others,status,wid, email ) values
                 ('$name','$raiseid','$amount','$tran_date','$bank_name','$tran_id','$optional','$status','$wid', '$email') ";
-            $sql2="update form_data set withdrawl_amount='$total_amount' where id='$id'";
+            $sql2="update campaigns_data set withdrawl_amount='$total_amount' where id='$id'";
             if (mysqli_query($db, $sql) && mysqli_query($db,$sql2)) {
                 
                 $result = mysqli_query($db, "DELETE FROM withdrawl_request where wid= '$wid'");
@@ -124,7 +124,7 @@ $query = mysqli_query($db, "SELECT * FROM withdrawl_request where wid = '$wid' "
                     <div>Hi, ' . $name . '</div>
                     <div style="margin: 20px 0px;"><h2 style=" padding: 10px; font-size:40px; color:#E8582E;"><b>₹'.$amount.' </b></h2>has been transfered in your account</div>
                     
-                    <div>You can contact <b>admin</b> or mail at <b>kashmirzakat@gmail.com</b> for any queries</div>
+                    <div>You can contact <b>admin</b> or mail at <b>Kashmirzakat@gmail.com</b> for any queries</div>
                     </div>
                     </div>
                     </body>
@@ -134,7 +134,7 @@ $query = mysqli_query($db, "SELECT * FROM withdrawl_request where wid = '$wid' "
                     $headers .= 'MIME-Version: 1.0' . "\r\n";
                     $headers .= "Content-type:text/html;charset=iso-8859-1" . "\r\n" . 'X-Mailer: PHP/' . phpversion();
                     mail($to, $subject, $mailBody, $headers);
-                    mail('kashmirzakat@gmail.com', $subject, $mailBody, $headers);
+                    mail('Kashmirzakat@gmail.com', $subject, $mailBody, $headers);
                     mail('info@kashmirzakat.com', $subject, $mailBody, $headers);
                 echo '<script>alert("Withdrawl Requested accepted by Admin")</script>';
                 echo '<script>history.back()</script>';
@@ -162,7 +162,7 @@ $query = mysqli_query($db, "SELECT * FROM withdrawl_request where wid = '$wid' "
                     <div>Hi, ' . $name . '</div>
                     <div style="margin: 20px 0px;"><h2 style=" padding: 10px; font-size:40px; color:#E8582E;"><b>'.$amount.' </b></h2>request has been decliend due to '.$optional.'</div>
                     
-                    <div>You can contact <b>admin</b> or mail at <b>kashmirzakat@gmail.com</b> for any queries</div>
+                    <div>You can contact <b>admin</b> or mail at <b>Kashmirzakat@gmail.com</b> for any queries</div>
                     </div>
                     </div>
                     </body>
@@ -172,7 +172,7 @@ $query = mysqli_query($db, "SELECT * FROM withdrawl_request where wid = '$wid' "
                     $headers .= 'MIME-Version: 1.0' . "\r\n";
                     $headers .= "Content-type:text/html;charset=iso-8859-1" . "\r\n" . 'X-Mailer: PHP/' . phpversion();
                     mail($to, $subject, $mailBody, $headers);
-                    mail('kashmirzakat@gmail.com', $subject, $mailBody, $headers);
+                    mail('Kashmirzakat@gmail.com', $subject, $mailBody, $headers);
                     mail('info@kashmirzakat.com', $subject, $mailBody, $headers);
                 echo '<script>alert("Withdrawl request Rejected by Admin")</script>';
                 echo '<script>history.back()</script>';

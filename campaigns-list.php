@@ -53,12 +53,12 @@ if (isset($_SESSION['username'])) {
                 })
 
                 <?php
-                $result = mysqli_query($db, "SELECT * FROM form_data where status = '$status'");
+                $result = mysqli_query($db, "SELECT * FROM campaigns_data where status = '$status'");
                 if ($_SESSION['user_type'] == 1 || $_SESSION['user_type'] == 2) {
                     $column_data_fields = ['id', 'cause_title', 'purpose', 'amount', 'date', 'cause_manager', 'beneficiary_email', 'beneficiary_phone'];
                     $column_fields = ['ID', 'Cause', 'Purpose', 'Goal', 'Date', 'CM', 'Email', 'Phone'];
                 } else {
-                    $result = mysqli_query($db, "SELECT * FROM form_data where status = '$status' and email= '$useremail'");
+                    $result = mysqli_query($db, "SELECT * FROM campaigns_data where status = '$status' and email= '$useremail'");
                     $column_data_fields = ['id', 'cause_title', 'purpose', 'amount', 'date'];
                     $column_fields = ['ID', 'Cause', 'Purpose', 'Goal', 'Date'];
                 }

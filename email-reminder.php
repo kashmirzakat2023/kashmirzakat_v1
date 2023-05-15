@@ -1,6 +1,6 @@
 <?php
 include 'assets/connection.php';
-$result = mysqli_query($db, " SELECT * FROM form_data where status='Accepted' and counter <= 2 ");
+$result = mysqli_query($db, " SELECT * FROM campaigns_data where status='Accepted' and counter <= 2 ");
 while ($data = mysqli_fetch_array($result)) {
     $date = strtotime($data['approved_date']);
     $now = time();
@@ -25,7 +25,7 @@ while ($data = mysqli_fetch_array($result)) {
             <div>Hi, User</div>
             <div style="margin: 20px 0px;"><h2 style=" padding: 10px; font-size:40px; color:#E8582E;">Your Cause is Ending Soon</h2></div>
             <div><h2>Try to complete it before time</h2></div>
-            <div>You can contact <b>admin</b> or mail at <b>kashmirzakat@gmail.com</b> for date increment</div>
+            <div>You can contact <b>admin</b> or mail at <b>Kashmirzakat@gmail.com</b> for date increment</div>
             </div>
             </div>
             </body>
@@ -36,7 +36,7 @@ while ($data = mysqli_fetch_array($result)) {
         $headers .= "Content-type:text/html;charset=iso-8859-1" . "\r\n" . 'X-Mailer: PHP/' . phpversion();
         $counterCount = $data['counter'];
         if (mail($to, $subject, $mailBody, $headers)) {
-            $query = "UPDATE form_data set counter= '$counterCount'+1 where id='$uraiseid' ";
+            $query = "UPDATE campaigns_data set counter= '$counterCount'+1 where id='$uraiseid' ";
             if (mysqli_query($db, $query))
                 echo 'true';
             else echo 'db';

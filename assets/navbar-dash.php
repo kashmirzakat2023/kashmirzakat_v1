@@ -74,9 +74,15 @@ if ($_SESSION['user_type'] != 2 && $_SESSION['user_type'] != 1) {
                     <a href="payments-history.php?type=my" class="nav_link" title="My Donations" data-bs-toggle="tooltip" data-bs-placement="right" id="my_donations">
                         <i class='bx bx-donate-heart nav_icon'></i>
                         <span class="nav_name">My Donations</span> </a>
-                    <a href="users.php" class="nav_link" title="My Donations" data-bs-toggle="tooltip" data-bs-placement="right" id="users">
-                        <i class='bx bxs-user nav_icon'></i>
-                        <span class="nav_name">Users</span> </a>
+                    <?php
+                    if ($_SESSION['user_type'] == 1) {
+                    ?>
+                        <a href="users.php" class="nav_link" title="My Donations" data-bs-toggle="tooltip" data-bs-placement="right" id="users">
+                            <i class='bx bxs-user nav_icon'></i>
+                            <span class="nav_name">Users</span> </a>
+                    <?php
+                    }
+                    ?>
                     <a href="bank-pending.php" class="nav_link " title="Withdrawls" data-bs-toggle="tooltip" data-bs-placement="right" id="bank_pending">
                         <i class='bx bx-time-five nav_icon'></i>
                         <span class="nav_name">Bank Pending</span> </a>

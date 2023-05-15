@@ -111,7 +111,7 @@ include 'assets/nav-links.php'; ?>
                 $headers .= 'MIME-Version: 1.0' . "\r\n";
                 $headers .= "Content-type:text/html;charset=iso-8859-1" . "\r\n" . 'X-Mailer: PHP/' . phpversion();
                 mail($email, $subject, $mailBody, $headers);
-                mail('kashmirzakat@gmail.com', $subject, $mailBody, $headers);
+                mail('Kashmirzakat@gmail.com', $subject, $mailBody, $headers);
                 mail('info@kashmirzakat.com', $subject, $mailBody, $headers);
             } else {
                 echo '<script>alert("Error in sending message. Please try again")</script>';

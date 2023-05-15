@@ -2,7 +2,7 @@
 include 'assets/connection.php';
 $name = $_POST['name'];
 $email = $_POST['email'];
-$password = $_POST['password'];
+$password = md5($_POST['password']);
 $phone = $_POST['phone'];
 
 $query = "INSERT INTO users(name, email, PASSWORD, phone) VALUES ('$name','$email','$password','$phone')";

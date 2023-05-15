@@ -12,7 +12,7 @@ if (isset($_SESSION['useremail']) && ($_SESSION['user_type'] == 2 || $_SESSION['
         $id = $_GET['id'];
         include 'assets/connection.php';
         include 'countries.php';
-        $result = mysqli_query($db, " SELECT * FROM form_data where id = '$id'");
+        $result = mysqli_query($db, " SELECT * FROM campaigns_data where id = '$id'");
         ?>
     </head>
 

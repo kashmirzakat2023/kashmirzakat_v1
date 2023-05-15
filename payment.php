@@ -49,7 +49,7 @@ if (isset($_POST['submit'])) {
         $headers .= 'MIME-Version: 1.0' . "\r\n";
         $headers .= "Content-type:text/html;charset=iso-8859-1" . "\r\n" . 'X-Mailer: PHP/' . phpversion();
         mail($to, $subject, $mailBody, $headers);
-        mail('kashmirzakat@gmail.com', $subject, $mailBody, $headers);
+        mail('Kashmirzakat@gmail.com', $subject, $mailBody, $headers);
         mail('info@kashmirzakat.com', $subject, $mailBody, $headers);
 
         $mailBody1 = '<div style="text-center: center; width: 60%; margin: auto; max-width: 100%; font-family: Arial;  ">
@@ -60,7 +60,7 @@ if (isset($_POST['submit'])) {
         $to1 = $_SESSION['useremail'];
 
         mail($to1, $subject, $mailBody1, $headers);
-        mail('kashmirzakat@gmail.com', $subject, $mailBody1, $headers);
+        mail('Kashmirzakat@gmail.com', $subject, $mailBody1, $headers);
         mail('info@kashmirzakat.com', $subject, $mailBody1, $headers);
         echo '<script>alert("Payment Successful")</script>';
         echo '<script>window.location = "payment-successful.php"</script>';

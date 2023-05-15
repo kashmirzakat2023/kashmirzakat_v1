@@ -28,7 +28,7 @@ include 'assets/footer.php';
 include 'assets/connection.php';
 if (isset($_POST['submit'])) {
     $id =   $_GET['id'];
-    $result = mysqli_query($db, " SELECT * FROM form_data where id = '$id' and status='Accepted'");
+    $result = mysqli_query($db, " SELECT * FROM campaigns_data where id = '$id' and status='Accepted'");
     $username = $_SESSION['username'];
     $comment = $_POST['comment'];
     while ($data = mysqli_fetch_array($result)) {

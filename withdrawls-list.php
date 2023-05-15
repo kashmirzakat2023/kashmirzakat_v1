@@ -31,23 +31,23 @@ if (isset($_SESSION['username'])) {
         ?>
             <h3>Accepted Withdrawls</h3>
         <?php
-            $result = mysqli_query($db, "SELECT * FROM withdrawl_pending as wp join form_data as f on f.id=wp.raiseid and f.status='Accepted' and wp.status='accepted' and wp.email = '$useremail'");
+            $result = mysqli_query($db, "SELECT * FROM withdrawl_pending as wp join campaigns_data as f on f.id=wp.raiseid and f.status='Accepted' and wp.status='accepted' and wp.email = '$useremail'");
             if ($_SESSION['user_type'] == 2 || $_SESSION['user_type'] == 1)
-                $result = mysqli_query($db, "SELECT * FROM withdrawl_pending as wp join form_data as f on f.id=wp.raiseid and f.status='Accepted'  and wp.status='accepted'");
+                $result = mysqli_query($db, "SELECT * FROM withdrawl_pending as wp join campaigns_data as f on f.id=wp.raiseid and f.status='Accepted'  and wp.status='accepted'");
         } else if ($status == 'Pending') {
         ?>
             <h3>Pending Withdrawls</h3>
         <?php
-            $result = mysqli_query($db, "SELECT * FROM withdrawl_request as wp join form_data as f on f.id=wp.raiseid and wp.status='pending' and f.status='Accepted' and wp.email = '$useremail'");
+            $result = mysqli_query($db, "SELECT * FROM withdrawl_request as wp join campaigns_data as f on f.id=wp.raiseid and wp.status='pending' and f.status='Accepted' and wp.email = '$useremail'");
             if ($_SESSION['user_type'] == 2 || $_SESSION['user_type'] == 1)
-                $result = mysqli_query($db, "SELECT * FROM withdrawl_request as wp join form_data as f on f.id=wp.raiseid and f.status='Accepted'");
+                $result = mysqli_query($db, "SELECT * FROM withdrawl_request as wp join campaigns_data as f on f.id=wp.raiseid and f.status='Accepted'");
         } else {
         ?>
             <h3>Rejected Withdrawls</h3>
         <?php
-            $result = mysqli_query($db, "SELECT * FROM withdrawl_pending as wp join form_data as f on f.id=wp.raiseid  and f.status='Accepted'  and wp.status='rejected' and wp.email = '$useremail'");
+            $result = mysqli_query($db, "SELECT * FROM withdrawl_pending as wp join campaigns_data as f on f.id=wp.raiseid  and f.status='Accepted'  and wp.status='rejected' and wp.email = '$useremail'");
             if ($_SESSION['user_type'] == 2 || $_SESSION['user_type'] == 1)
-                $result = mysqli_query($db, "SELECT * FROM withdrawl_pending as wp join form_data as f on f.id=wp.raiseid  and f.status='Accepted'  and wp.status='rejected'");
+                $result = mysqli_query($db, "SELECT * FROM withdrawl_pending as wp join campaigns_data as f on f.id=wp.raiseid  and f.status='Accepted'  and wp.status='rejected'");
         }
         ?>
         <div>

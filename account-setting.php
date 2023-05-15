@@ -10,9 +10,9 @@ if (isset($_SESSION['username'])) {
         include 'assets/connection.php';
         include 'countries.php';
         $useremail = $_SESSION['useremail'];
-        $funds = mysqli_query($db, "SELECT * FROM form_data where email='$useremail' and status='Accepted' ");
-        $rej = mysqli_query($db, "SELECT * FROM form_data where email='$useremail' and status='Rejected' ");
-        $pend = mysqli_query($db, "SELECT * FROM form_data where email='$useremail'and status='Pending' ");
+        $funds = mysqli_query($db, "SELECT * FROM campaigns_data where email='$useremail' and status='Accepted' ");
+        $rej = mysqli_query($db, "SELECT * FROM campaigns_data where email='$useremail' and status='Rejected' ");
+        $pend = mysqli_query($db, "SELECT * FROM campaigns_data where email='$useremail'and status='Pending' ");
         $users = mysqli_query($db, "SELECT * FROM users where email='$useremail' ");
         ?>
         <title>Account Settings</title>
@@ -53,20 +53,31 @@ if (isset($_SESSION['username'])) {
                                                 <h4 class="text-right">Profile Settings</h4>
                                             </div>
                                             <div class="row mt-3">
-                                                <div class="col-12 mb-2"><label class="labels">Name</label><input type="text" name="name" class="form-control" placeholder="Name" value="<?php echo $data['name']; ?>"></div>
-                                                <div class="col-12 mb-2"><label class="labels">Email ID</label><input type="email" name="email" class="form-control" placeholder="Email" value="<?php echo $data['email']; ?>"></div>
-                                                <div class="col-12 mb-2"><label class="labels">Mobile Number</label><input type="text" name="phone" class="form-control" placeholder="Phone number" value="<?php echo $data['phone']; ?>"></div>
-                                                <div class="col-12 mb-2"><label class="labels">Country</label>
-                                                    <select class="form-select" class="form-control" id="floatingSelect" name="country" name="country" aria-label="Floating label select example">
-                                                        <?php
-                                                        for ($i = 0; $i < sizeof($countries); $i++) {
-                                                        ?>
-                                                            <option <?php if ($data['country'] == $countries[$i]) echo 'selected'; ?> value="<?= $countries[$i] ?>"><?= $countries[$i] ?></option>
-                                                        <?php
-                                                        }
-                                                        ?>
-                                                    </select>
+                                                <div class="col-12 mb-2">
+                                                    <label class="labels">Name</label>
+                                                    <input type="text" name="name" class="form-control" placeholder="Name" value="<?php echo $data['name']; ?>" required>
                                                 </div>
+                                                <div class="col-12 mb-2">
+                                                    <label class="labels">Email ID</label>
+                                                    <input type="email" name="email" class="form-control" placeholder="example@gmail.com" value="<?php echo $data['email']; ?>" required>
+                                                </div>
+                                                <div class="col-12 mb-2">
+                                                    <label class="labels">Mobile Number</label>
+                                                    <input type="text" name="phone" class="form-control" placeholder="+91 XXXXX XXXXX" value="<?php echo $data['phone']; ?>" required>
+                                                </div>
+                                                <div class="col-12 mb-2">
+                                                    <label class="labels">City</label>
+                                                    <input type="text" name="country" class="form-control" placeholder="Country" value="<?php echo $data['country']; ?>">
+                                                </div>
+                                                <!-- <select class="form-select" class="form-control" id="floatingSelect" name="country" aria-label="Floating label select example"> -->
+                                                <?php
+                                                // for ($i = 0; $i < sizeof($countries); $i++) {
+                                                ?>
+                                                <!-- <option <?php if ($data['country'] == $countries[$i]) echo 'selected'; ?> value="<?= $countries[$i] ?>"><?= $countries[$i] ?></option> -->
+                                                <?php
+                                                // }
+                                                ?>
+                                                <!-- </select> -->
                                                 <div class="mt-lg-5 mt-3 mb-0 text-center"><button class="btn btn-primary profile-button" name="submit" type="submit">Save Profile</button></div>
                                             </div>
                                         </div>

@@ -8,7 +8,7 @@ include 'assets/nav-links.php'; ?>
     <?php
     include 'assets/navbar.php';
     include 'assets/connection.php';
-    $result = mysqli_query($db, "SELECT * FROM form_data where purpose='Education' and status='Accepted'");
+    $result = mysqli_query($db, "SELECT * FROM campaigns_data where purpose='Education' and status='Accepted'");
     ?>
 </head>
 
@@ -144,7 +144,7 @@ include 'assets/nav-links.php'; ?>
 
         var otpVerify = jQuery('#otp1').val();
 
-        if (otpVerify != getOTPNumberCode1/786) {
+        if (md5(otpVerify) != getOTPNumberCode1) {
             alert('Please Check your email again OTP is wrong.');
             return false;
         } else {

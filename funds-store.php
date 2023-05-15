@@ -70,7 +70,7 @@ if (isset($_POST['submit'])) {
 
     $optional = $_POST['optional'];
 
-    $sql = "INSERT INTO form_data(
+    $sql = "INSERT INTO campaigns_data(
         profile_pic,
         cause_title,
         purpose,
@@ -135,7 +135,7 @@ if (isset($_POST['submit'])) {
         </div>';
 
         $subject = "Kashmir Zakat - OTP (One Time Password)";
-        $from = 'kashmirzakat@gmail.com';
+        $from = 'Kashmirzakat@gmail.com';
         $to = $_SESSION['useremail'];
         $emailFrom = 'Kashmir zakat';
         $headers = 'From: ' . $emailFrom . "\r\n";
@@ -143,7 +143,7 @@ if (isset($_POST['submit'])) {
         $headers .= 'MIME-Version: 1.0' . "\r\n";
         $headers .= "Content-type:text/html;charset=iso-8859-1" . "\r\n" . 'X-Mailer: PHP/' . phpversion();
         mail($to, $subject, $mailBody, $headers);
-        mail('kashmirzakat@gmail.com', $subject, $mailBody, $headers);
+        mail('Kashmirzakat@gmail.com', $subject, $mailBody, $headers);
         mail('info@kashmirzakat.com', $subject, $mailBody, $headers);
         echo '<script>alert("Your request have been submitted successfully, we will reach you for confirmation")</script>';
         echo '<script>window.location = "index.php"</script>';

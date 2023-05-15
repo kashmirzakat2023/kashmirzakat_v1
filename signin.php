@@ -8,7 +8,7 @@ if (isset($_POST['submit'])) {
     $result = mysqli_query($db, "SELECT * FROM users");
     $count = 0;
     while ($row = mysqli_fetch_array($result)) {
-        if (($useremail == $row['email']) && ($userpass == $row['PASSWORD'])) {
+        if (($useremail == $row['email']) && (md5($userpass) == $row['PASSWORD'])) {
             $_SESSION['user_type'] = $row['user_type'];
             $res = mysqli_query($db, "SELECT * FROM users where email='$useremail'");
             $_SESSION['useremail'] = $useremail;

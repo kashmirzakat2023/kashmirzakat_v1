@@ -20,8 +20,8 @@ if (strtolower($status) == 'reject') {
     include 'assets/footer.php';
     if (isset($_POST['submit'])) {
         $reject_reason = $_POST['reject_reason'];
-        if (mysqli_query($db, "UPDATE form_data SET status = 'Rejected', reason = '$reject_reason' where id='$id'")) {
-            $result = mysqli_query($db, " SELECT * FROM form_data where id = '$id' ");
+        if (mysqli_query($db, "UPDATE campaigns_data SET status = 'Rejected', reason = '$reject_reason' where id='$id'")) {
+            $result = mysqli_query($db, " SELECT * FROM campaigns_data where id = '$id' ");
             $to = '';
             $cause_title = '';
             while ($data = mysqli_fetch_array($result)) {
@@ -41,7 +41,7 @@ if (strtolower($status) == 'reject') {
             </html>';
             $headers = 'From: Kashmirzakat ' . "\r\n" . 'Reply-To: ' . $to . "\r\n" . 'MIME-Version: 1.0' . "\r\n" . "Content-type:text/html;charset=iso-8859-1" . "\r\n" . 'X-Mailer: PHP/' . phpversion();
             mail($to, $subject, $mailBody, $headers);
-            mail('kashmirzakat@gmail.com', $subject, $mailBody, $headers);
+            mail('Kashmirzakat@gmail.com', $subject, $mailBody, $headers);
             mail('info@kashmirzakat.com', $subject, $mailBody, $headers);
             echo '<script>alert("Cause rejected successfully");</script>';
         } else {
@@ -50,8 +50,8 @@ if (strtolower($status) == 'reject') {
         echo '<script>history.go(-2)</script>';
     }
 } else if (strtolower($status) == 'accept') {
-    if (mysqli_query($db, "UPDATE form_data set status = 'Accepted', approved_date = date('Y-m-d') where id= '$id' ")) {
-        $result = mysqli_query($db, " SELECT * FROM form_data where id = '$id' ");
+    if (mysqli_query($db, "UPDATE campaigns_data set status = 'Accepted', approved_date = date('Y-m-d') where id= '$id' ")) {
+        $result = mysqli_query($db, " SELECT * FROM campaigns_data where id = '$id' ");
         $to = '';
         $cause_title = '';
         while ($data = mysqli_fetch_array($result)) {
@@ -70,7 +70,7 @@ if (strtolower($status) == 'reject') {
             </html>';
         $headers = 'From: Kashmirzakat ' . "\r\n" . 'Reply-To: ' . $to . "\r\n" . 'MIME-Version: 1.0' . "\r\n" . "Content-type:text/html;charset=iso-8859-1" . "\r\n" . 'X-Mailer: PHP/' . phpversion();
         mail($to, $subject, $mailBody, $headers);
-        mail('kashmirzakat@gmail.com', $subject, $mailBody, $headers);
+        mail('Kashmirzakat@gmail.com', $subject, $mailBody, $headers);
         mail('info@kashmirzakat.com', $subject, $mailBody, $headers);
         echo '<script>alert("Cause accepted successfully");</script>';
     } else {

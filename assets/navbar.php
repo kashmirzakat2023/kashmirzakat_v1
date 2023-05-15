@@ -23,22 +23,22 @@
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                         <li>
-                            <a class="dropdown-item" href="cause-category.php?purpose=Education">Education</a>
+                            <a class="dropdown-item" href="campaigns-category.php?purpose=Education">Education</a>
                         </li>
                         <li>
-                            <a class="dropdown-item" href="cause-category.php?purpose=Healthcare">Healthcare</a>
+                            <a class="dropdown-item" href="campaigns-category.php?purpose=Healthcare">Healthcare</a>
                         </li>
                         <li>
-                            <a class="dropdown-item" href="cause-category.php?purpose=Livelihood">Livelihood</a>
+                            <a class="dropdown-item" href="campaigns-category.php?purpose=Livelihood">Livelihood</a>
                         </li>
                         <!-- <li>
                             <a class="dropdown-item" href="scholarship.php">Scholarship</a>
                         </li> -->
                         <li>
-                            <a class="dropdown-item" href="cause-category.php?purpose=Others">Others</a>
+                            <a class="dropdown-item" href="campaigns-category.php?purpose=Others">Others</a>
                         </li>
                         <li>
-                            <a class="dropdown-item" href="cause-category.php?purpose=Completed">Completed</a>
+                            <a class="dropdown-item" href="campaigns-category.php?purpose=Completed">Completed</a>
                         </li>
                     </ul>
                 </li>
@@ -77,12 +77,21 @@
                                 <li>
                                     <a class="dropdown-item" href="admin-dashboard.php">Dashboard</a>
                                 </li>
-                                <!-- <li>
-                                    <a class="dropdown-item" href="users-list.php?useremail=admin@admin.com">Users</a>
-                                </li> -->
                                 <li>
                                     <a class="dropdown-item" href="reportslist.php">Reports List</a>
                                 </li>
+                                <?php
+                                if ($_SESSION['user_type'] == 1) {
+                                ?>
+                                    <li>
+                                        <a class="dropdown-item" href="users.php">Users</a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item" href="account-setting.php">Account Settings</a>
+                                    </li>
+                                <?php
+                                }
+                                ?>
                                 <li>
                                     <a class="dropdown-item" href="logout.php">logout</a>
                                 </li>
@@ -156,11 +165,11 @@ if (!isset($_SESSION['username'])) {
 
                 <div class="modal-body " id="hidden">
                     <div class="form-floating mb-3">
-                        <input type="text" class="form-control" id="name" name="name" placeholder="John Hal" required />
+                        <input type="text" class="form-control" id="name" name="name" placeholder="Example" required />
                         <label for="floatingInput">Name</label>
                     </div>
                     <div class="form-floating">
-                        <input type="email" class="form-control" id="email" name="email" placeholder="name@example.com" required />
+                        <input type="email" class="form-control" id="email" name="email" placeholder="example@gmail.com" required />
                         <label for="floatingInput">Email address</label>
                     </div>
                     <label for="floatingInput" id="uname_response" class="mb-3"></label>
@@ -178,13 +187,14 @@ if (!isset($_SESSION['username'])) {
                     <label id="message" class="mb-3"></label>
 
                     <div class="form-floating mb-3">
-                        <input type="tel" class="form-control" id="phone" name="phone" placeholder="+91 1234567890" required />
+                        <input type="tel" class="form-control" id="phone" name="phone" placeholder="+91 XXXXX XXXXX" required />
                         <label for="floatingInput">Mobile No</label>
                     </div>
                     <div class="mb-3 form-check">
                         <input type="checkbox" name="checkbox" class="form-check-input" id="exampleCheck1" required />
-                        <label class="form-check-label mb-2" for="exampleCheck1">I Agree to <a href="#">Terms &
-                                conditions</a></label>
+                        <label class="form-check-label mb-2" for="exampleCheck1">I Agree to proper use of details.
+                            <!-- <a href="#">Terms & conditions</a> -->
+                        </label>
                         <br />
                         <label class="form-label" for="exampleCheck2">Already have an account?
                             <a id="signup-btn" class="text-decoration-underline" data-bs-toggle="modal" data-bs-target="#signin" type="button" onclick="close_up()">Login Now</a></label>
@@ -344,24 +354,12 @@ if (!isset($_SESSION['username'])) {
                     dataType: 'JSON',
                     success: function(data) {
                         getOTPNumberCode = data;
-                        $('#otpVerify').css({
-                            "display": "block"
-                        });
-                        $('#resendOTP').css({
-                            "display": 'block'
-                        });
-                        $('#submitOTP').css({
-                            "display": 'block'
-                        });
-                        $('#head').css({
-                            "display": 'block'
-                        });
-                        $('#hidden').css({
-                            "display": 'none'
-                        });
-                        $('#submit').css({
-                            "display": 'none'
-                        });
+                        $('#otpVerify').css({ "display": "block" });
+                        $('#resendOTP').css({ "display": 'block' });
+                        $('#submitOTP').css({ "display": 'block' });
+                        $('#head').css({ "display": 'block' });
+                        $('#hidden').css({ "display": 'none' });
+                        $('#submit').css({ "display": 'none' });
                         // document.getElementById('otpVerify').style.display = "block";
                         // document.getElementById('resendOTP').style.display = 'block';
                         // document.getElementById('submitOTP').style.display = 'block';
@@ -403,7 +401,7 @@ if (!isset($_SESSION['username'])) {
 
             var otpVerify = jQuery('#otp').val();
 
-            if (otpVerify != getOTPNumberCode / 786) {
+            if (md5(otpVerify) != getOTPNumberCode) {
                 alert('Please Check your email again OTP is wrong.');
                 return false;
             } else {

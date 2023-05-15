@@ -8,7 +8,7 @@ include 'assets/nav-links.php'; ?>
     <?php
     $id = $_GET['id'];
     include 'assets/connection.php';
-    $result = mysqli_query($db, "SELECT * FROM form_data where (status='Pending' or status = 'Rejected')  and id = '$id' ");
+    $result = mysqli_query($db, "SELECT * FROM campaigns_data where (status='Pending' or status = 'Rejected')  and id = '$id' ");
     ?>
 </head>
 

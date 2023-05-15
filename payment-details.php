@@ -59,7 +59,7 @@ if (isset($_SESSION['username']) and ($_SESSION['user_type'] == 2 || $_SESSION['
                                 <td>
                                     <?php
                                     $id = $row1['raiseid'];
-                                    $result = mysqli_query($db, "SELECT * FROM form_data where id='$id' and status='Accepted'  ");
+                                    $result = mysqli_query($db, "SELECT * FROM campaigns_data where id='$id' and status='Accepted'  ");
                                     while ($row = mysqli_fetch_array($result)) { ?>
                                         <a href="campaign-details.php?campaign=<?php echo $row['id']; ?>">
                                             <?php echo $row['cause_title']; ?>
@@ -182,7 +182,7 @@ if (isset($_SESSION['username']) and ($_SESSION['user_type'] == 2 || $_SESSION['
                                 <td>
                                     <?php
                                     $id = $row1['raiseid'];
-                                    $result = mysqli_query($db, "SELECT * FROM form_data where id='$id' and status='Accepted' ");
+                                    $result = mysqli_query($db, "SELECT * FROM campaigns_data where id='$id' and status='Accepted' ");
                                     while ($row = mysqli_fetch_array($result)) { ?>
                                         <a href="campaign-details.php?campaign=<?php echo $row['id']; ?>">
                                             <?php echo $row['cause_title']; ?>

@@ -11,9 +11,9 @@
     </style>
     <?php include 'assets/navbar.php'; ?>
     <h2 class=" text-center mt-2">How it works</h2>
-    <img src="kz_images/How It Works[192].png" class=" shadow d-flex mx-auto img-fluid img-thumbnail"  >
-    <h2 class=" text-center mt-2">FAQ's</h2>
-    <div class="accordion shadow accordion-flush mx-auto border w-75 w-sm-100 m-5 rounded-1" id="accordionFlushExample">
+    <img src="kz_images/How It Works[192].png" class=" shadow d-flex mx-auto img-fluid img-thumbnail w-25"  >
+    <h2 class=" text-center mt-5">FAQ's</h2>
+    <div class="accordion shadow accordion-flush mx-auto border w-75 w-sm-100 m-5 mt-2 rounded-1" id="accordionFlushExample">
         <div class="accordion-item">
             <h2 class="accordion-header" id="flush-headingOne">
                 <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
@@ -435,7 +435,7 @@
             <div id="flush-collapse27" class="accordion-collapse collapse" aria-labelledby="flush-heading27"
                 data-bs-parent="#accordionFlushExample">
                 <div class="accordion-body">
-                    Please email us at info@Kashmirzakat.com with your question, and we will respond as quickly as possible.                </div>
+                    Please email us at info@kashmirzakat.com with your question, and we will respond as quickly as possible.                </div>
             </div>
         </div>
 

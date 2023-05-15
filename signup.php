@@ -4,7 +4,6 @@ include 'assets/connection.php';
 if (isset($_POST['email'])) {
   $name = $_POST['name'];
   $email = $_POST['email'];
-  $password = $_POST['password'];
   $phone = $_POST['phone'];
 
   $six_digit_number = random_int(100000, 999999);
@@ -26,7 +25,7 @@ if (isset($_POST['email'])) {
   $headers .= "Content-type:text/html;charset=iso-8859-1" . "\r\n" . 'X-Mailer: PHP/' . phpversion();
 
   if (mail($to, $subject, $mailBody, $headers)){
-    echo $six_digit_number*786;
+    echo md5($six_digit_number);
   }
   else
     echo 'otp not sent';

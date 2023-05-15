@@ -68,7 +68,7 @@ if (isset($_SESSION['username']) && $_SESSION['user_type'] == 2 || $_SESSION['us
 
                 if (mysqli_query($db, $sql)) {
                     $subject = "Amount of '.$amount.' transfered to your account";
-                    // $result = mysqli_query($db, " SELECT * FROM form_data where id = '$id' ");
+                    // $result = mysqli_query($db, " SELECT * FROM campaigns_data where id = '$id' ");
                     // while ($data = mysqli_fetch_array($result)) {
                     $to = $useremail;
                     // }
@@ -77,7 +77,7 @@ if (isset($_SESSION['username']) && $_SESSION['user_type'] == 2 || $_SESSION['us
                 <div style="text-center: center; width: 60%; margin: auto; max-width: 100%; font-family: Arial;  ">
                 <div>Hi, ' . $_SESSION['username'] . '</div>
                 <div><h4>Your withdraw request has been accepted and an amount of<b>' . $amount . '</b> has been transfered with Transaction id :  <b>' . $tran_id . '</b> </h4></div>
-                <div>Contact : info@kashmirzakat.com , kashmirzakat@gmail.com </div>
+                <div>Contact : info@kashmirzakat.com , Kashmirzakat@gmail.com </div>
                 </div>
             </body>
             </html>';
@@ -86,7 +86,7 @@ if (isset($_SESSION['username']) && $_SESSION['user_type'] == 2 || $_SESSION['us
                     $headers .= 'MIME-Version: 1.0' . "\r\n";
                     $headers .= "Content-type:text/html;charset=iso-8859-1" . "\r\n" . 'X-Mailer: PHP/' . phpversion();
                     mail($to, $subject, $mailBody, $headers);
-                    mail('kashmirzakat@gmail.com', $subject, $mailBody, $headers);
+                    mail('Kashmirzakat@gmail.com', $subject, $mailBody, $headers);
                     mail('info@kashmirzakat.com', $subject, $mailBody, $headers);
                     echo '<script>window.location = "payment-successful.php"</script>';
                     // header('location:index.php');

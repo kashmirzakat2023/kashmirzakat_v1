@@ -46,7 +46,7 @@ if (isset($_SESSION['username'])) {
                     </thead>
                     <tbody>
                         <?php
-                        $result = mysqli_query($db, "SELECT * FROM form_data where email='$useremail' and status='Accepted'");
+                        $result = mysqli_query($db, "SELECT * FROM campaigns_data where email='$useremail' and status='Accepted'");
                         while ($row = mysqli_fetch_array($result)) {
                             $id = $row['id'];
                             $query = mysqli_query($db, "SELECT * FROM payments where raiseid='$id'and status='complete' ");
@@ -58,7 +58,7 @@ if (isset($_SESSION['username'])) {
                                     <td><?php echo $row1['name']; ?></td>
 
                                     <?php
-                                    $result1 = mysqli_query($db, "SELECT * FROM form_data where id='$id' and status='Accepted' ");
+                                    $result1 = mysqli_query($db, "SELECT * FROM campaigns_data where id='$id' and status='Accepted' ");
                                     while ($rows = mysqli_fetch_array($result1)) {
                                     ?>
                                         <td>

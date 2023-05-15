@@ -12,7 +12,7 @@
 include 'assets/connection.php';
 if (isset($_SESSION['username'])) {
     $useremail = $_SESSION['useremail'];
-    $result = mysqli_query($db, "SELECT * FROM form_data where email='$useremail' and status='Accepted'");
+    $result = mysqli_query($db, "SELECT * FROM campaigns_data where email='$useremail' and status='Accepted'");
     $user = mysqli_query($db, "SELECT * FROM users where email='$useremail'");
     $query = mysqli_query($db, "SELECT * FROM payments where email='$useremail'and status='complete'");
 ?>
@@ -40,7 +40,7 @@ if (isset($_SESSION['username'])) {
                                 <div class="col mr-2">
                                     <h2 class="mb-3 fw-bolder text-light" style="font-size: 50px !important;">
                                         <?php
-                                        $quer1 = mysqli_query($db, "SELECT * FROM form_data where email='$useremail' and status='Accepted'");
+                                        $quer1 = mysqli_query($db, "SELECT * FROM campaigns_data where email='$useremail' and status='Accepted'");
                                         $sum = 0;
                                         while ($row3 = mysqli_fetch_array($quer1)) {
                                             $id = $row3['id'];
@@ -74,7 +74,7 @@ if (isset($_SESSION['username'])) {
                                     <h2 class="mb-3 fw-bolder text-light" style="font-size: 50px !important;">₹
                                         <?php
                                         $donations = 0;
-                                        $quer = mysqli_query($db, "SELECT * FROM payments as p join form_data as f on f.id = p.raiseid and f.email='$useremail'and p.status='complete'");
+                                        $quer = mysqli_query($db, "SELECT * FROM payments as p join campaigns_data as f on f.id = p.raiseid and f.email='$useremail'and p.status='complete'");
                                         while ($row = mysqli_fetch_array($quer))
                                             $donations += $row['amount'];
                                         echo $donations;
@@ -143,7 +143,7 @@ if (isset($_SESSION['username'])) {
             <div class="row row-cols-1 mt-2 row-cols-md-2 row-cols-lg-2 g-4 mb-3">
                 <div class="col col-12 col-lg-6 col-md-6">
                     <?php
-                    $quer1 = mysqli_query($db, "SELECT * FROM form_data where email='$useremail' and status='Accepted'");
+                    $quer1 = mysqli_query($db, "SELECT * FROM campaigns_data where email='$useremail' and status='Accepted'");
                     while ($row3 = mysqli_fetch_array($quer1)) {
                         $id = $row3['id'];
                         $res = mysqli_query($db, "SELECT * FROM payments where raiseid='$id'and status='complete' LIMIT 1");
@@ -181,7 +181,7 @@ if (isset($_SESSION['username'])) {
                                         } ?>
                                         <div class="media-body card-body w-75">
                                             <?php
-                                            $quer1 = mysqli_query($db, "SELECT * FROM form_data where id='$id' and status='Accepted' ");
+                                            $quer1 = mysqli_query($db, "SELECT * FROM campaigns_data where id='$id' and status='Accepted' ");
                                             while ($row3 = mysqli_fetch_array($quer1)) {
                                             ?>
                                                 <a href="payment-details.php?tid=<?php echo $row2['tran_id']; ?>"><?php echo $row3['cause_title']; ?></a>
@@ -200,7 +200,7 @@ if (isset($_SESSION['username'])) {
                 </div>
                 <div class="col col-12 col-lg-6 col-md-6  ">
                     <?php
-                    $res = mysqli_query($db, "SELECT * FROM form_data where email='$useremail' and status='Accepted' LIMIT 1");
+                    $res = mysqli_query($db, "SELECT * FROM campaigns_data where email='$useremail' and status='Accepted' LIMIT 1");
                     if (mysqli_num_rows($res) > 0) {
                         while ($row2 = mysqli_fetch_array($res)) {
                             $date  = date_format(date_create($row2['date']), "M d,Y"); ?>
@@ -212,7 +212,7 @@ if (isset($_SESSION['username'])) {
                                     ?>
                                     <div class="media-body card-body w-75">
                                         <?php
-                                        $quer1 = mysqli_query($db, "SELECT * FROM form_data where id='$id' and status='Accepted'");
+                                        $quer1 = mysqli_query($db, "SELECT * FROM campaigns_data where id='$id' and status='Accepted'");
                                         while ($row3 = mysqli_fetch_array($quer1)) {
                                             // $username = '';
                                             // $email5 = '';

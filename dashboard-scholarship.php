@@ -11,7 +11,7 @@ session_start(); ?>
 <?php
 include 'assets/connection.php';
 $useremail = $_SESSION['useremail'];
-$result = mysqli_query($db, "SELECT * FROM form_data where email='$useremail' and status='Accepted'");
+$result = mysqli_query($db, "SELECT * FROM campaigns_data where email='$useremail' and status='Accepted'");
 if (isset($_SESSION['username'])) {
 ?>
 

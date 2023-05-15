@@ -23,7 +23,7 @@ $username = $_GET['username'];
         $liked = mysqli_query($db, "SELECT * FROM `like` where username='$username' ");
         while ($lik = mysqli_fetch_array($liked)) {
             $raiseid = $lik['raiseid'];
-            $result = mysqli_query($db, "SELECT * FROM form_data where id='$raiseid' and status='Accepted' ");
+            $result = mysqli_query($db, "SELECT * FROM campaigns_data where id='$raiseid' and status='Accepted' ");
             while ($data = mysqli_fetch_array($result)) {
                 $amount = $data['amount'];
                 $ramount = 0;
