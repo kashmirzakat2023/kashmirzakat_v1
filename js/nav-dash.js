@@ -10,7 +10,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
         if (toggle && nav && bodypd && headerpd) {
             toggle.addEventListener('click', () => {
                 // show navbar
-                nav.classList.toggle('show')
+                nav.classList.toggle('show-navbar')
                 // change icon
                 toggle.classList.toggle('bx-x')
                 // add padding to body
@@ -36,6 +36,6 @@ document.addEventListener("DOMContentLoaded", function (event) {
 });
 
 // window.onload = function(){
-//     // $('#nav-bar').attr('class', 'l-navbar show');
+//     
 //     $('#body-pd').attr('class', 'body-pd');
 //     }

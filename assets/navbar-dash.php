@@ -23,7 +23,7 @@
 <?php
 if ($_SESSION['user_type'] != 2 && $_SESSION['user_type'] != 1) {
 ?>
-    <div class="l-navbar show" id="nav-bar">
+    <div class="l-navbar show-navbar" id="nav-bar">
         <nav class="nav" style="z-index: 100 !important;">
             <div> <a href="user-dashboard.php" class="nav_logo">
                     <i class='bx bx-layer nav_logo-icon'></i>
@@ -55,7 +55,7 @@ if ($_SESSION['user_type'] != 2 && $_SESSION['user_type'] != 1) {
         </nav>
     </div>
 <?php } else { ?>
-    <div class="l-navbar show" id="nav-bar">
+    <div class="l-navbar show-navbar" id="nav-bar">
         <nav class="nav" style="z-index: 100 !important;">
             <div>
                 <a href="admin-dashboard.php " class="nav_logo">

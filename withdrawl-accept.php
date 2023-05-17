@@ -19,7 +19,7 @@ if (isset($_SESSION['username']) && $_SESSION['user_type'] == 2 || $_SESSION['us
         ?>
         <script>
             window.onload = (event) => {
-                // $('#nav-bar').attr('class', 'l-navbar show');
+                
                 $('#body-pd').attr('class', 'body-pd');
                 $('#withdrawls').addClass("nav_link active");
             }

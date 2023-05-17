@@ -21,7 +21,7 @@ if (isset($_SESSION['username']) and ($_SESSION['user_type'] == 2 || $_SESSION['
         ?>
         <script>
             window.onload = (event) => {
-                // $('#nav-bar').attr('class', 'l-navbar show');
+                
                 $('#body-pd').attr('class', 'body-pd');
                 $('#donations').addClass("nav_link active");
             }
@@ -145,7 +145,7 @@ if (isset($_SESSION['username']) and ($_SESSION['user_type'] == 2 || $_SESSION['
         <script>
             window.onload = (event) => {
                 $('#donations').addClass("nav_link active");
-                // $('#nav-bar').attr('class', 'l-navbar show');
+                
                 $('#body-pd').attr('class', 'body-pd');
             }
         </script>
