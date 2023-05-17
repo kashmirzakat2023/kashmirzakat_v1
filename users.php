@@ -41,7 +41,7 @@ if (isset($_SESSION['useremail']) && ($_SESSION['user_type'] == 2 || $_SESSION['
                     <div class="modal-body">
                         <div class="dropdown">
                             <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                                Dropdown button
+                                Change Role
                             </button>
                             <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                                 <li><a class="dropdown-item" data-value="0" href="#">User</a></li>
@@ -91,7 +91,7 @@ if (isset($_SESSION['useremail']) && ($_SESSION['user_type'] == 2 || $_SESSION['
                         buttonEl.setAttribute('data-bs-target', '#exampleModal');
                         buttonEl.setAttribute('data-user-id', params.data.ID);
                         buttonEl.setAttribute('id', 'exampleModal')
-                        buttonEl.textContent = 'Click me';
+                        buttonEl.textContent = 'Change Role';
                         buttonEl.addEventListener('click', () => {
                             currentModal = params.data.ID
                         });
